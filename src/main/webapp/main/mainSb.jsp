@@ -1,3 +1,4 @@
+<%@page import="kr.co.yomozomo.vo.BoardVO"%>
 <%@page import="kr.co.yomozomo.vo.ProductVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="kr.co.yomozomo.dao.OrderDAO"%>
@@ -36,14 +37,40 @@
   </head>
 
   <body>
- <!--  <strong>🥇 이주의 인기 콘텐츠 BEST 🥇</strong> -->
+ <!--  <strong>🥇 이주의 인기 사진 BEST 4 🥇</strong> -->
+ <!--  <strong>🥇 인기 사진 TOP 4 🥇</strong> -->
   		 
+		
+  		 <div class="s_title" id="tt">
+              <strong>🥇 이주의 인기 사진 BEST 4 🥇</strong>
+         </div>
+        <%
+        	/* 인기사진 BEST 4  */
+        	OrderDAO dao = new OrderDAO();
+			ArrayList<BoardVO> list4 = dao.selectPic();
+			for(BoardVO vo : list4){
+				String contents = vo.getB_CONTENTS();
+				if(contents.length()>10){
+					contents = contents.substring(0,12)+"..";
+				}
+		%>
+           	<div class="s_img">
+             	<a href="../community/pic_detail.jsp?b_num=<%= vo.getB_NUM()%>"><img img class="s_img2" src="<%= vo.getB_IMAGE()%>" alt="<%= vo.getB_TITLE()%>" /></a>
+             	<p><%= vo.getB_TITLE() %></p>
+             	<p><span style="font-size: 12px" font ><%= contents%></span></p>
+            </div>
+
+		<%
+			}
+		%>		
+		
+		
+		
   		 <div class="s_title">
   		 	<strong>이 달의 픽! 📌 조회수 TOP 4</strong>
          </div>
         <%
         	/* 조회수 상위 4건  */
-			OrderDAO dao = new OrderDAO();
 			ArrayList<ProductVO> list = dao.selectHit();
 			for(ProductVO vo : list){
 				String pname = vo.getP_NAME();
@@ -61,6 +88,8 @@
 		<%
 			}
 		%>		
+		
+		
 		
   		 <div class="s_title" id="tt">
               <strong>🔥 특가할인 🔥 </strong>
@@ -84,6 +113,9 @@
 		<%
 			}
 		%>		
+		
+		
+		
 		
   		 <div class="s_title">
               <strong>장난감 HOT BEST 4 😋 </strong>

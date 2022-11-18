@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import kr.co.yomozomo.vo.BoardVO;
 import kr.co.yomozomo.vo.OrderVO;
 import kr.co.yomozomo.vo.ProductVO;
 
@@ -141,9 +142,41 @@ public class OrderDAO {
 		return list;
 	}
 	
+	// SELECT * FROM BOARD ORDER BY B_HIT DESC LIMIT 4
+	// ---------------게시판 사진 조회수 상위 4개
+	public ArrayList<BoardVO> selectPic(){
+		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
+		
+		sb.setLength(0);
+		sb.append("SELECT * FROM BOARD ORDER BY B_HIT DESC LIMIT 4 ");
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String B_CONTENTS = rs.getString("B_CONTENTS");
+				int B_HIT = rs.getInt("B_HIT");
+				String B_IMAGE = rs.getString("B_IMAGE");
+				int B_NUM = rs.getInt("B_NUM");
+				String B_REGDATE = rs.getString("B_REGDATE");
+				String B_TITLE = rs.getString("B_TITLE");
+				int M_NUM = rs.getInt("M_NUM");
+				
+				BoardVO vo = new BoardVO(B_CONTENTS,B_HIT, B_IMAGE,B_NUM, B_REGDATE,B_TITLE, M_NUM);
+				list.add(vo);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	
     // SELECT * FROM PRODUCT WHERE P_CATEGORY = '장난감' ORDER BY HIT DESC LIMIT 4
-	// ---------------상품 조회수 상위 4개
+	// ---------------상품 카테고리 조회수 상위 4개
 	public ArrayList<ProductVO> selectPc(){
 		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 		
