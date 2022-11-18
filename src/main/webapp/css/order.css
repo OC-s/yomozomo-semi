@@ -1,0 +1,261 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#body-wrapper {
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 330px;
+}
+
+
+a{
+    text-decoration: none;
+}
+
+#yomozomo{
+    font-weight: 800;
+    font-size: 22px;
+}
+
+
+.header{
+    box-sizing: border-box;
+    width: 100%;
+}
+.header-bar {
+    position: fixed;
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    margin-right: 200px;
+    justify-content: center;
+    background-color: wheat;
+    top: 0;
+    border-bottom: 1px solid rgba(82, 82, 82, 0.445);
+    z-index: 100;
+}
+.header__community {
+    display: flex;
+}
+.header__community span,
+.header__column span {
+    margin-right: 10px;
+}
+.header__column{
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+.header__column:first-child a{
+    margin-bottom: 14px;
+}
+.input-group{
+    margin-left: 40px;
+    margin-right: 40px;
+    top: 3px;
+    margin-top: 10px;
+}
+.header__divider{
+    height: 20px;
+    background-color: rgba(0,0,0,0.2);
+    width: 1px;
+    margin-right: 7px; 
+}
+.header__text{
+    font-weight: 800;
+    font-size: 12px;
+}
+.header__text2{
+    font-weight: 800;
+    font-size: 10px;
+}
+
+#main{
+    margin-top: 111px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0px 200px;
+}
+
+
+/* main */
+h1{
+    margin-bottom: 30px;
+}
+h2{
+    margin-bottom: 30px;
+}
+
+.order_maindate{
+    position: relative;
+    min-width: 300px;
+    max-width: 700px;
+    width: 100%;
+
+}
+.order_title{
+    height: 30px;
+    border-bottom: 1px solid rgb(234, 235, 239);
+}
+
+.order_content{
+    margin: -3px;
+    padding: 23px 3px 3px;
+    box-sizing: border-box;
+}
+
+.section_box{
+    margin: 0px auto;
+    box-sizing: border-box;
+    width: auto;
+    max-width: 100%;
+    min-height: 1px;
+}
+
+.section_box2{
+    margin: 0px auto;
+    box-sizing: border-box;
+    width: auto;
+    max-width: 100%;
+    min-height: 1px;
+}
+
+.section_label{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+.section_address{
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.section_btn{
+    width: 85px;
+    height: 25px;
+    margin-right: 10px;
+    font-size: 13px;
+    border: 1px solid rgb(117, 117, 117);
+}
+.section_re{
+    font-size: 14px;
+    width: 250px;
+    height: 25px;
+    margin-left: 71px;
+}
+.section_text{
+    height: 25px;
+    width: 250px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+.section_text2{
+    height: 25px;
+    width: 100px;
+    margin-right: 10px;
+    font-size: 13px;
+}
+
+.section_text3{
+    height: 25px;
+    width: 155px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+.section_email{
+    margin-left: 10px;
+    font-size: 16px;
+    padding: 0;
+    width: 190px;
+    height: 25px;
+}
+.section_tel{
+    width: 85px;
+    height: 25px;
+    margin-right: 10px;
+    font-size: 14px;
+    padding: 0;
+}
+
+.section_title{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 72px;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgb(117, 117, 117);
+    white-space: pre-line;
+    max-height: 40px;
+    transition: color 0.25s ease 0s;
+    
+}
+
+.order{
+    flex: 0 1 0px;
+    min-width: 340px;
+    margin-left: 40px;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.order_container{
+    position: fixed;
+    max-width: 340px;
+}
+
+.order_container2{
+    padding: 20px;
+    border: 1px solid rgb(234, 235, 239);
+}
+
+.order_price{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.final_price{
+    display: flex;
+    margin-top: 20px;
+    border-top: 1px solid rgb(234, 235, 239);
+    justify-content: space-between;
+    padding-top: 19px;
+}
+
+.checkbox_1{
+    margin-top: 20px;
+    border-top:1px solid rgb(234, 235, 239);
+    font-size: 12px;
+    padding-top: 15px;
+}
+.checkbox_2{
+    margin-top: 10px;
+    border-top:1px solid rgb(234, 235, 239);
+    font-size: 13px;
+    padding-top: 15px;
+}
+
+.checkbox_text{
+    margin-top: 10px;
+    font-size: 12px;
+}
+.checkbox_text2{
+    margin-top: 9px;
+    font-size: 10px;
+}
+
+#btn{
+    height: 40px;
+    width: 340px;
+    border-radius: 5px;
+    border: none;
+    background-color: skyblue;
+}

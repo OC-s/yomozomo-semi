@@ -1,0 +1,11 @@
+@charset "UTF-8";
+.prod_cate{
+  background-color: white;
+  border: none;
+}
+li {
+  display: flex;
+}
+ul {
+  margin: 10px;
+}
