@@ -353,8 +353,6 @@ div#button{
 	</div>
 </form>
 
-<jsp:include page="../layout/footer.html"></jsp:include>
-
 </div>
 </head>
 <body>
