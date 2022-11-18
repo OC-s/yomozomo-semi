@@ -70,7 +70,8 @@
 		margin-top: 30px;		
 	}
 	#pic_btn{
-
+		position:relative;
+		left:450px;
 		width:60px;
 		height:30px;
 		font-size:12px;
@@ -165,7 +166,7 @@
 	<jsp:include page="pic_Nav.jsp"/>
  	
  	<%
-		Object obj = session.getAttribute("user");
+		Object obj = session.getAttribute("vo");
 		if(obj != null){
 			MemberVO vo = (MemberVO)obj;			
 		
@@ -251,6 +252,7 @@
 			</tr>			
 		</table>
 	</div>
+	
 
 </body>
 </html>

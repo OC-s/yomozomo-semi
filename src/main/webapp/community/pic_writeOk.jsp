@@ -44,7 +44,7 @@
 		vo.setB_TITLE(title);
 		vo.setB_CONTENTS(contents);
 		vo.setM_NUM(m_num);
-		vo.setB_IMAGE("../yomozomo_test/upload/"+f);
+		vo.setB_IMAGE("../upload/"+f);
 		
 		
 		dao.insertOne(vo);

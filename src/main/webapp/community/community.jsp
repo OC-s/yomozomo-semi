@@ -62,4 +62,6 @@
 		<jsp:include page="recentBoard.jsp"/>				
 	</div>
 </body>
+
+
 </html> 

@@ -31,7 +31,7 @@
  	
 	
 	<%
-		Object obj = session.getAttribute("user");
+		Object obj = session.getAttribute("vo");
 		if(obj != null){
 				MemberVO vo = (MemberVO)obj;
 		

@@ -32,7 +32,7 @@
 
 	String no = request.getParameter("b_num");
 
-	Object obj = session.getAttribute("user");
+	Object obj = session.getAttribute("vo");
 
 	if (no != null) {
 
