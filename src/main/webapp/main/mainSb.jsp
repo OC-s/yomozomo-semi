@@ -62,7 +62,7 @@
 			}
 		%>		
 		
-  		 <div class="s_title">
+  		 <div class="s_title" id="tt">
               <strong>🔥 특가할인 🔥 </strong>
          </div>
         <%

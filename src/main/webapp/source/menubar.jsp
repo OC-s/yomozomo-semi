@@ -22,8 +22,8 @@
 				<div id="category_column">
 					<a href="../main/main.jsp"><span class="category_text">홈</span></a> 
 					<a href="../store?category"><span class="category_text">스토어</span></a>
-					<a href="#"><span class="category_text">사진</span></a> 
-					<a href="#"><span class="category_text">질문과답변</span></a> 
+					<a href="../community/pic.jsp"><span class="category_text">사진</span></a> 
+					<a href="../community/qa.jsp"><span class="category_text">질문과답변</span></a> 
 					<a href="#"><span class="category_text">이벤트</span></a> 
 				</div>
 			</div>

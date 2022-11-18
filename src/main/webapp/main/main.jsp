@@ -49,7 +49,7 @@
        </div>
 
         
-		<!-- main small 배너? -->         
+		<!-- main small 4배너 -->         
           <div class="s_header">
             <div class="s_img">
 	         <%@ include file="mainSb.jsp" %>
