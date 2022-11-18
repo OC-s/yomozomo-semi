@@ -21,7 +21,7 @@
 	})
 </script>
 <style>
-div#main{
+div#maindiv{
 	position: relative;
 	top: 110px;
 	background-color: #eeeeee;
@@ -43,27 +43,29 @@ div#footer{
 	position: relative;
 	top: 150px;
 }
+div#cart_list{
+	border: 1px solid #dddddd;
+	width: 700px;
+}
 </style>
 <link rel="stylesheet" href="../css/order2.css" />
 <link rel="stylesheet" href="../css/footer.css" />
+<style>
+img#pimage{
+	width: 100px;
+}
+div#
+</style>
 </head>
 <body>
 <jsp:include page="../layout/header.html"></jsp:include>
-<div id="main">
-	<table class="table">
-		<tr>
-			<th>상품이미지</th>
-			<th>상품명</th>
-			<th>수량</th>
-			<th>가격</th>
-		</tr>
+<div id="maindiv">
 	<%
 	//현재 세션에서 cart의 속성 가져오기
 	Object obj=session.getAttribute("cart");
 	
 	if(obj!=null){
 		ArrayList<Integer> list = (ArrayList<Integer>) obj;
-		out.println(list);
 		
 		HashMap<Integer, Integer> map= new HashMap<Integer, Integer>();
 		
@@ -75,8 +77,6 @@ div#footer{
 			}
 		}
 		
-		out.println("map: "+map);
-		
 		ProductDAO dao=new ProductDAO();
 		
 		Set<Integer> set=map.keySet();
@@ -85,23 +85,22 @@ div#footer{
 		while(it.hasNext()){
 			int key=it.next();
 			ProductVO vo=dao.selectOne(key);
-			out.println(vo.getPname()+":"+map.get(key));
 			int cnt=map.get(key);
 
 	%>
-		<tr>
-			<th><img src="../<%=vo.getPthumbnail() %>" alt="" /></th>
-			<th><%=vo.getPname() %></th>
-			<th><%=cnt %></th>
-			<th><%=cnt * (Math.round(vo.getPprice() * (1 - vo.getPdiscount() * 0.01))) %></th>
-		</tr>
-	</table>
-</div>
+		<div id="cart_list">
+			<div class="form-check">
+  				<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+  				<label class="form-check-label" for="flexCheckChecked"></label>
+			</div>
+		</div>
+		<div id="orderBtn">
+			<a href="../order/order.jsp"><button type="button" class="btn btn-primary">결제하기</button></a>
+		</div>
 	<%
 		}
 	}else{
 	%>
-	<div id="main">
 		<div id="divimg">
 			<img id="cat" src="../image/cat.png" alt="" />
 		</div>
@@ -111,10 +110,10 @@ div#footer{
 		<div id="btn">
 			<a href="store.jsp"><button type="button" class="btn btn-info">쇼핑하러 가기</button></a>
 		</div>
-	</div>
 	<%
 	}
 	%>
+	</div>
 <jsp:include page="../layout/footer.html"></jsp:include>
 </body>
 </html>
