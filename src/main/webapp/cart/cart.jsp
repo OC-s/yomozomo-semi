@@ -1,6 +1,9 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%
 	//세션에 cart라는 이름의 속성객체 얻어오기
 	//session: 브라우저가 종료되기 전까지 유지됨, 같은 화면 봐도 세션마다 세션값은 다 다름
@@ -24,7 +27,7 @@
 	ArrayList<Integer> cart=(ArrayList<Integer>)obj;
 	
 	//no라는 파라미터 값을 가져오기
-	String pnum=request.getParameter("mnum");
+	String pnum =request.getParameter("pnum");
 	//상품번호로 쓸 것이므로 형변환해줌
 	int p=Integer.parseInt(pnum);
 	
@@ -38,5 +41,5 @@
 	//productDetail.jsp로 리다이렉트
 	//장바구니 클릭하면 바로 productDetail.jsp로 돌아오게 설정함. 
 	//누르면 그냥 그 화면에서 멈춰있는 것처럼 보임
-	response.sendRedirect("productDetail.jsp?pnum="+p);
+	response.sendRedirect("../detail?id="+p);
 %>

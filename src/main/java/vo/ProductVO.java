@@ -1,6 +1,5 @@
 package vo;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,4 +17,5 @@ public class ProductVO {
 	String pcategory;
 	String pthumbnail;
 	String pimage;
+	
 }
