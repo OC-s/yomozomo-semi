@@ -11,6 +11,8 @@
 <head>
 <meta charset="UTF-8">
 <title>YOMOZOMO</title>
+
+<link rel="stylesheet" href="../css/menubar.css"/>
 </head>
 <body>
 	

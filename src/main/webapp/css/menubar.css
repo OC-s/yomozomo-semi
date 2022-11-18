@@ -76,44 +76,25 @@ a{
 
 /* --------------------------------------------------------- */
 
-#main{
-    margin-top: 35px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+
+#category_bar{
     width: 100%;
-    margin-right: 200px;
-}
-
-
-
-#icon{
     display: flex;
     justify-content: center;
-    margin: 40px;
-    margin-bottom: 11px;
-
+    color: #424242;
+    font-size: 14px;
+    padding: 10px;
+    padding-right: 500px;
+    margin-top: 63px;
+    background-color: wheat;
+    border-bottom: 1px solid rgba(82, 82, 82, 0.445);
 }
 
-.icon_div{
-    text-align: center;
+.category_text{
     padding-right: 35px;
 }
-.icon_img>img{
-    width: 90px;
-    height: 77px; 
-}
 
-.s_header{
-    border-radius: 10px;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-content: center;
-} 
+/* -------------------------------------------------------------------- */
 
 
 

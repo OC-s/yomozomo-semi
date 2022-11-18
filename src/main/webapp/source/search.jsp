@@ -1,8 +1,8 @@
 
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="kr.co.yomozomo.vo.ProductVO"%>
 <%@page import="kr.co.yomozomo.dao.OrderDAO"%>
-<%@page import="java.util.List"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -19,12 +19,11 @@
 	
 		if(txt != null){
 			OrderDAO dao = new OrderDAO();
-			List<ProductVO> list = dao.select(txt);
+			ArrayList<ProductVO> list = dao.select(txt);
 			
 			response.sendRedirect("../store?category=");
 /* 			response.sendRedirect("../store?name="+list); */
 		}
-		
 		
 		
 	%>
