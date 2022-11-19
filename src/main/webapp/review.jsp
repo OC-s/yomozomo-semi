@@ -16,12 +16,71 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+    />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css" />
      <link rel="stylesheet" href="${pageContext.request.contextPath}/css/qna.css" />
     <style>
+    .wrap-star {
+        width: 10%;
+        height: 10%;
+      }
+      .inner-star::before {
+        color: #ff9600;
+      }
+      .outer-star {
+        position: relative;
+        display: inline-block;
+        color: #cccccc;
+      }
+      .inner-star {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0%;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .outer-star::before,
+      .inner-star::before {
+        content: "\f005 \f005 \f005 \f005 \f005";
+        font-family: "Font Awesome 5 free";
+        font-weight: 900;
+      }
     	#file{
     		background-color: white;
     	}
+    fieldset {
+      display: inline-block;
+      direction: rtl;
+      border: 0;
+      font-size: 15px;
+      margin-left: 10px;
+      font-weight: 800;
+    }
+    fieldset legend {
+      text-align: right;
+    }
+    input[type="radio"] {
+      display: none;
+    }
+    label {
+      font-size: 3em;
+      color: transparent;
+      text-shadow: 0 0 0 #f0f0f0;
+    }
+    label:hover {
+      text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+    }
+    label:hover ~ label {
+      text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+    }
+    input[type="radio"]:checked ~ label {
+      text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+    }
+   
     </style>
   </head>
   <body class="body">
@@ -83,7 +142,10 @@
 						원</div>
         <div class="qna__scope">별점 / 후기개수</div>
         <div class="qna__">
-          <button id="query-btn">리뷰쓰기</button>
+          <input type="${(check==false)?"hidden":"button"}" id="query-btn" value="리뷰작성">
+          <c:if test="${check==false}">
+          	<h4>상품 구매 후 리뷰작성 가능합니다.</h4>
+          </c:if>
         </div>
       </div>
     </div>
@@ -112,6 +174,29 @@
           <div class="file">
           <input type="file" name="file" accept=".jpg"/>
           </div>
+          <fieldset>
+        <span class="text-bold">별점을 선택해주세요</span>
+        <input type="radio" name="reviewStar" value="5" id="rate1" /><label
+          for="rate1"
+          >★</label
+        >
+        <input type="radio" name="reviewStar" value="4" id="rate2" /><label
+          for="rate2"
+          >★</label
+        >
+        <input type="radio" name="reviewStar" value="3" id="rate3" /><label
+          for="rate3"
+          >★</label
+        >
+        <input type="radio" name="reviewStar" value="2" id="rate4" /><label
+          for="rate4"
+          >★</label
+        >
+        <input type="radio" name="reviewStar" value="1" id="rate5" /><label
+          for="rate5"
+          >★</label
+        >
+      </fieldset>
           <div class="query-detail__secret">
             <span>비밀글 체크</span>
             <span>
@@ -126,11 +211,23 @@
       </div>
     </div>
 
-    <div class="line">
+    <div class="review__main">
+      <div class="review__column">
+        <div class="RatingStar">
+          <div class="RatingScore">
+            <div class="outer-star"><div class="inner-star"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <c:forEach var="review" items="${review}">
     
-		
-	</div>
-    
+    <div>
+    	<div>${review.scope}</div>
+    	<div>${review.contents}</div>
+    	<img src="${pageContext.request.contextPath}/upload/${review.image}" alt="" />
+    </div>
+    </c:forEach>
 
     <script>
       document
@@ -155,6 +252,24 @@
           .classList.toggle("show");
         document.getElementsByClassName("body")[0].classList.toggle("black");
       });
+      
+      /*<![CDATA[*/ 
+      ratings = { RatingScore: 3 };
+      totalRating = 5;
+      table = document.querySelector(".RatingStar");
+      function rateIt() {
+        for (rating in ratings) {
+          ratingPercentage = (ratings[rating] / totalRating) * 100;
+          ratingRounded = Math.round(ratingPercentage / 10) * 10 + "%";
+          console.log(rating);
+          star = table.querySelector('.RatingScore .inner-star');
+          numberRating = table.querySelector('.RatingScore .numberRating');
+          star.style.width = ratingRounded;
+          
+        }
+      }
+      
+      rateIt();
     </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"

@@ -9,30 +9,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
-import dao.QnaService;
+import dao.ReviewService;
 import dao.StoreService;
-import dto.AnsQnaDTO;
 import dto.ProductDTO;
+import dto.ReviewDTO;
 
 @WebServlet("/product/review")
 public class ReviewController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
 		request.setCharacterEncoding("utf-8");
-		StoreService service = new StoreService();
-		QnaService ansService = new QnaService();
 
-		ProductDTO product = service.getProductDetail(id);
-		List<AnsQnaDTO> ans = ansService.getAnswer(id);
-	
+		int id = Integer.parseInt(request.getParameter("id"));
 		HttpSession session = request.getSession();
-		Object s = session.getAttribute("userNum");
-		System.out.println(s);
-
-		request.setAttribute("ans", ans);
+		int mnum_=0;
+		Integer mnum =  (Integer)session.getAttribute("userNum");
+		
+		if(mnum !=null && !mnum.equals("")) mnum_=mnum; 
+		
+		StoreService service = new StoreService();
+		ReviewService serviceReview = new ReviewService();
+		
+		boolean check = serviceReview.getCheckProduct(mnum_,id);
+		ProductDTO product = service.getProductDetail(id);
+		List<ReviewDTO> review = serviceReview.getReview(id); 
+	
+		request.setAttribute("review", review);
+		request.setAttribute("check",check);
 		request.setAttribute("product",product);
 		request.setAttribute("id",id);
 		request.getRequestDispatcher("/review.jsp").forward(request, response);

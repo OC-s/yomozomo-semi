@@ -12,7 +12,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
+import dao.ReviewService;
 
 
 @MultipartConfig(
@@ -31,7 +34,15 @@ public class ReviewWriteController extends HttpServlet {
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
 		String secret = request.getParameter("secret");
+		int reviewStar =Integer.parseInt(request.getParameter("reviewStar"));
 		int pnum = Integer.parseInt(request.getParameter("id"));
+//		System.out.println("title: "+title+" contents: "+contents+"secret: "+ secret+" reviewStar: "+reviewStar+"id :"+pnum);
+		HttpSession session = request.getSession();
+		int mnum_=0;
+		Integer mnum =  (Integer)session.getAttribute("userNum");
+		
+		
+		if(mnum !=null && !mnum.equals("")) mnum_=mnum; 
 		if (secret == null || secret.equals(""))
 			secret = "N";
 		
@@ -49,10 +60,11 @@ public class ReviewWriteController extends HttpServlet {
 			builder.append(",");
 			
 			InputStream fis = filePart.getInputStream();
-			String realPath = request.getServletContext().getRealPath("/uploadReview");
-//			System.out.println(realPath); // 실제 파일이 저장되는 경로임 eclipse상 upload 경로가아니라
+			String realPath = request.getServletContext().getRealPath("/upload");
+			System.out.println("real"+realPath); // 실제 파일이 저장되는 경로임 eclipse상 upload 경로가아니라
 			String filePath = realPath + File.separator + fileName;
-//			System.out.println(filePath);
+			
+			System.out.println("file"+filePath);
 			FileOutputStream fos = new FileOutputStream(filePath);
 
 			byte[] buf = new byte[1024];
@@ -66,7 +78,9 @@ public class ReviewWriteController extends HttpServlet {
 		builder.delete(builder.length()-1, builder.length());
 //		System.out.println(builder.toString());
 		
-		
+		ReviewService reviewServire = new ReviewService();
+		int result =reviewServire.reviewInsert(mnum_, reviewStar, builder.toString(), contents,pnum ,builder.toString());
+		System.out.println(result);
 		
 		response.sendRedirect("/yomozomo/product/review?id="+pnum);
 	}
