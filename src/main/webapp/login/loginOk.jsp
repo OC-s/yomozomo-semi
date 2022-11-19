@@ -32,7 +32,8 @@
 	MemberDAO dao = new MemberDAO();
 
 	MemberVO user = dao.isExists(id, pw);
-	
+	int mnum = dao.userNum(id);
+
 	if (user == null) {
 		//로그인실패
 
@@ -54,7 +55,7 @@
 
 
 		session.setAttribute("vo", user);
-
+		session.setAttribute("userNum", mnum);
 	}
 	%>
 

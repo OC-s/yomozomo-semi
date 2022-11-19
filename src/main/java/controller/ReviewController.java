@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import dao.QnaService;
 import dao.StoreService;
@@ -26,7 +28,9 @@ public class ReviewController extends HttpServlet{
 		ProductDTO product = service.getProductDetail(id);
 		List<AnsQnaDTO> ans = ansService.getAnswer(id);
 	
-		
+		HttpSession session = request.getSession();
+		Object s = session.getAttribute("userNum");
+		System.out.println(s);
 
 		request.setAttribute("ans", ans);
 		request.setAttribute("product",product);

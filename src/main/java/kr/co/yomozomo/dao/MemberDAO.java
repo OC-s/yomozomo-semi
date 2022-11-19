@@ -5,7 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import dto.AnsQnaDTO;
 import kr.co.yomozomo.vo.MemberVO;
 
 //dao
@@ -40,7 +43,8 @@ public class MemberDAO {
 	public MemberVO isExists(String ID, String PASSWORD) {
 		// id와 pw를 가지고 있는사람의 데이터를 vo로 리턴
 		sb.setLength(0);
-		sb.append("SELECT ADDRESS, ADDRESSDETAIL, EMAIL, ID, M_NUM, NAME, NICKNAME, PASSWORD, PHONE, REGDATE, ZIPCODE ");
+		sb.append(
+				"SELECT ADDRESS, ADDRESSDETAIL, EMAIL, ID, M_NUM, NAME, NICKNAME, PASSWORD, PHONE, REGDATE, ZIPCODE ");
 		sb.append("FROM MEMBER ");
 		sb.append("WHERE ID = ? ");
 		sb.append("AND PASSWORD  = ? ");
@@ -140,6 +144,28 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 		return vo;
+	}
+
+	public int userNum(String id) {
+		int num = 0;
+		try {
+			String sql =  "SELECT M_NUM FROM MEMBER WHERE ID=?";
+			Connection con = DriverManager.getConnection(url, user, password);
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setString(1, id);
+			ResultSet rs = st.executeQuery();
+
+			if (rs.next()) {
+				num = rs.getInt("M_NUM");
+
+			}
+			rs.close();
+			st.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return num;
 	}
 
 	// 자원반납
