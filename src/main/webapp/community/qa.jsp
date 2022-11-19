@@ -153,7 +153,7 @@
 				<tbody>
 					<tr>
 						<td><%=vo.getQAB_NUM()%></td>
-						<td><a href="qa_detail.jsp?qab_num=<%=vo.getQAB_NUM()%>"><%=vo.getQAB_TITLE()%></a></td>
+						<td><a style="color:black; " href="qa_detail.jsp?qab_num=<%=vo.getQAB_NUM()%>"><%=vo.getQAB_TITLE()%></a></td>
 						<td><%=vo.getNICKNAME()%></td>
 						<td><%=vo.getQAB_REGDATE()%></td>
 					</tr>

@@ -42,7 +42,7 @@
  .cate{
  	padding-bottom: 100px;
  }
- 
+
 
 
 
@@ -56,11 +56,20 @@
 		
 	
 	<div>
-		<br /><br /><br /><br /><br /><br />	
+		<br /><br /><br /><br /><br /><br />
 		<jsp:include page="bestBoard.jsp" />				
-		<br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br />
 		<jsp:include page="recentBoard.jsp"/>				
 	</div>
+	
+	<table style="position: relative; left: 300px;">
+		<tr>
+			<td>
+			<br /><br /><br /><br /><br /><br />
+			<jsp:include page="recentQa.jsp"/>				
+			</td>				
+		</tr>
+	</table>
 </body>
 
 <jsp:include page="commu_footer.jsp"/>

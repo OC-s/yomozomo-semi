@@ -110,7 +110,6 @@
 			</tr>
 			<tr>
 				<td style="text-align: left; font-weight: bold;"><%= vo.getNICKNAME() %></td>
-				<td style="text-align: right;"><%= vo.getQAB_HIT() %></td>
 				<td style="text-align: right;"><%= vo.getQAB_REGDATE() %></td>
 								
 			</tr>
