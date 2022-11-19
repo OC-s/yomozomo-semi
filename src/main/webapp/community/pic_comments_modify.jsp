@@ -254,7 +254,7 @@
 	}
 	%>
 
-	<jsp:include page="commu_footer.jsp" />
+	
 
 
 </body>

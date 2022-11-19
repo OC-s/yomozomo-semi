@@ -152,8 +152,8 @@
 		%>	
 			</tr>
 		</table>
-		<jsp:include page="pic_comments.jsp" />
 	
+		<jsp:include page="pic_comments.jsp" />
 	</div>
 			
 	<%

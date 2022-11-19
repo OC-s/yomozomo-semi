@@ -19,16 +19,7 @@
 	integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 	crossorigin="anonymous"></script>
 <title>loginOk.jsp</title>
-<script>
-	window.onload = function() {
-		var btn1 = document.getElementById("btn1");
-		btn1.onclick = function() {
-			frm.action = "logout.jsp";
-			frm.method = "get";
-			frm.submit();
-		}
-	}
-</script>
+
 </head>
 <body>
 

@@ -149,11 +149,15 @@
 		<jsp:include page="qa_comments.jsp" />
 		
 	</div>
+	
 	<% 
 		}
 	%>
-		
+	
 	<jsp:include page="commu_footer.jsp"/>
+	
+	
+		
 
 </body>
 </html>

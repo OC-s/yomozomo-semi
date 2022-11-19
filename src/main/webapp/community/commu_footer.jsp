@@ -6,11 +6,11 @@
 <meta charset="UTF-8">
 <title>YOMOZOMO</title>
 <style>
-html, body {
+/* html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-}
+} */                             
 
 #body-wrapper {
     position: relative;
@@ -19,11 +19,12 @@ html, body {
 }
 
 #footer{
+	
     background-color: wheat;
     width: 100%;
     height: 270px;
     position: relative; 
-    top:200px; 
+    top:500px; 
     bottom: 0;
     left: 0;
     display: flex;
