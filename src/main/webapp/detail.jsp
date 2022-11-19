@@ -60,7 +60,7 @@
 				</div>
 			</div>
 			<div class="header__column">
-				<a href="/yomozomo/order/order.jsp?after"> <span class="material-symbols-outlined">
+				<a href="./cart/viewCart.jsp"> <span class="material-symbols-outlined">
 						shopping_cart </span></a>
 				<div class="header__divider"></div>
 				<a href="/yomozomo/login/login.jsp"><span class="header__text">로그인</span></a>
@@ -106,7 +106,8 @@
 				</div>
 				<img id="product-image" src="${product.thumbnail}" alt="" />
 			</div>
-			<form action="order/order.jsp">
+			<form action="./cart/cart.jsp">
+			<input type="hidden" name="pnum" value="${product.num}" />
 				<div class="product-detail__info">
 					<div class="product__name" >${product.name}</div>
 					<div class="product__review">
@@ -145,7 +146,7 @@
 					<div class="product__count">
 						<div class="product__count--num">
 							<button class="num--op">-</button>
-							<input id="num" type="text" value="1" min="0" />
+							<input id="num" name="num" type="text" value="1" min="0" />
 							<button class="num--op">+</button>
 						</div>
 						<div>

@@ -26,6 +26,8 @@
 }
 
 #qa_btn {
+	position:relative;
+	left:600px;
 	width: 60px;
 	height: 30px;
 	font-size: 12px;
@@ -108,12 +110,12 @@
 		}
 	}
 	%>
-	<jsp:include page="../source/header.jsp" />
+	<jsp:include page="commu_header.jsp" />
 	<jsp:include page="commuNav.jsp" />
 	<jsp:include page="qa_Nav.jsp" />
 
 	<%
-	Object obj = session.getAttribute("user");
+	Object obj = session.getAttribute("vo");
 	if (obj != null) {
 		MemberVO vo = (MemberVO) obj;
 	%>
@@ -138,7 +140,7 @@
 				<thead>
 					<tr>
 						<th style="background-color: #eeeeee; text-align: center;">번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">제목</th>
+						<th style="background-color: #eeeeee; text-align: center; width: 800px;">제목</th>
 						<th style="background-color: #eeeeee; text-align: center;">작성자</th>
 						<th style="background-color: #eeeeee; text-align: center;">작성일</th>
 					</tr>
@@ -211,6 +213,7 @@
 		</table>
 	</div>
 
+	<jsp:include page="commu_footer.jsp" />
 
 </body>
 </html>

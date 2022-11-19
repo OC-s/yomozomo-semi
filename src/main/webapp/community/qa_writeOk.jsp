@@ -45,7 +45,7 @@
 		vo.setQAB_TITLE(title);
 		vo.setQAB_CONTENTS(contents);
 		vo.setM_NUM(m_num);
-		vo.setQAB_IMAGE("../yomozomo_test/upload/"+f);
+		vo.setQAB_IMAGE("../upload/"+f);
 		
 		
 		dao.insertOne(vo);

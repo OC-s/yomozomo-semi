@@ -12,14 +12,30 @@
 <meta charset="UTF-8">
 <title>YOMOZOMO</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 <script type="text/javascript">
-	function Checkform(){
+	
+/* 	$(function(){
+		$("#button-addon2").on("click", function(){
+			if($("#txt").val() == ""){
+				$("#txt").focus();
+				alert('상품명을 입력해주세요');
+			} else {
+				document.frm.action = "../source/search.jsp";
+				document.frm.method="get";
+				document.frm.submit();
+				
+			}
+		})
+	}) */
+
+ 	function Checkform2(){
 	 	if(txt.value ==""){
 	 		txt.focus();
 			alert('상품명을 입력해주세요');
 			return false
 		}
-	}
+	} 
 </script>
 
 </head>
@@ -47,7 +63,7 @@
 					</div>
 				</div>
 				
-				<form action="../source/search.jsp" role="search" method="post" onSubmit="return Checkform()"  >
+				<form action="../source/search.jsp" role="search" name="frm" onSubmit="return Checkform2()" method="post"  >
 				<div class="header__column">
 					<div class="input-group mb-3">
 						<input type="text" class="form-control" name="txt" id="txt"
@@ -58,7 +74,7 @@
 					</div>
 				</div>
 				<div class="header__column">
-					<a href="../order/order.jsp"> <span class="material-symbols-outlined">
+					<a href="../cart/cart.jsp"> <span class="material-symbols-outlined">
 							shopping_cart </span></a>
 					<div class="header__divider"></div>
 					<a href="../login/logout.jsp"><span class="header__text2"><%= vo.getNAME()%> 로그아웃</span></a>
@@ -90,18 +106,18 @@
 					<a href="../store?category"><span class="header__text">스토어</span></a>
 				</div>
 			</div>
-			<form action="../source/search.jsp" role="search" method="get" onSubmit="return Checkform()"  >
+			<form action="../source/search.jsp" role="search"  name="frm" onSubmit="return Checkform2()" method="post"  >
 				<div class="header__column">
 					<div class="input-group mb-3">
 						<input type="text" class="form-control" name="txt" id="txt"
 							aria-label="Recipient's username" aria-describedby="button-addon2" />
-						<button class="btn btn-outline-secondary" type="submit"
+						<button class="btn btn-outline-secondary" type=""
 						 	value="검색" id="button-addon2">검색</button>
 						</form>
 					</div>
 				</div>
 			<div class="header__column">
-				<a href="../order/order.jsp?after"> <span class="material-symbols-outlined">
+				<a href="../cart/cart.jsp"> <span class="material-symbols-outlined">
 						shopping_cart </span></a>
 				<div class="header__divider"></div>
 				<a href="../login/login.jsp"><span class="header__text2">로그인</span></a>

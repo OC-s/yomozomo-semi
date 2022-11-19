@@ -58,7 +58,6 @@
 	
 	<!-- 체크 -->
 	<script type="text/javascript">
-
 	function Checkform(){
 	 	if(dname.value ==""){
 			dname.focus();
@@ -127,12 +126,12 @@
 </head>
 <body>
     <div id="body-wrapper">
-   		<form action="orderOk.jsp" onSubmit="return Checkform()" method="post">
    		
    		<!-- header -->
    		<%@ include file="/source/header.jsp" %>
+			
 		
-		
+   		<form action="orderOk.jsp" onSubmit="return Checkform()" method="post">
         <!-- main -->
         <div id="main">
             <main class="order_maindate">

@@ -38,46 +38,29 @@
 		background-color: skyblue;
 		color: white;
 	}
-	.login_logo{
-		width:200px;
+	.login_header{
+		text-decoration:none;
 		margin-top: 200px;
+		font-size: 50px;
 	}
-		
-</style>
-<script type="text/javascript">
+	.login_header>a{
+		text-decoration:none;
+		color:#0d6efd;
+		font-weight: bold;
 
-	window.onload=function(){
-		var btn1 = document.getElementById("login_btn1");
-		
-		btn1.onclick = function(){
-			
-			var frm = document.frm;
-			
-			frm.action="loginOk.jsp";
-			frm.method="post";
-			frm.submit();			
-		}
-		
-		var btn1 = document.getElementById("login_btn2");
-		
-		btn1.onclick = function(){
-			
-			var frm = document.frm;
-			
-			frm.action="register.jsp";
-			frm.method="get";
-			frm.submit();			
-		}		
-	}
-	
-</script>
+	}			
+</style>
+
 </head>
 <body>
 	
 	<div style="text-align: center;">
 	<div class="container">
-		<form action="loginOk.jsp" name="frm">
-			<img src="./image/logo.png" class="login_logo" alt="" />	
+
+		<div class="login_header">
+				<a href="../main/main.jsp"><span id="login_logo">yomozomo</span></a>
+		</div>
+	<form action="loginOk.jsp" method="post" >
 			<table class="login_table">			
 				<tr>
 					<th><input type="text" class="login_id" name="id" id="id" placeholder="아이디" /></th>
@@ -87,7 +70,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-					<input type="button" value="로그인" id="login_btn1" />
+					<input type="submit" value="로그인" id="login_btn1" />
 					</td>
 				</tr>
 				<tr>

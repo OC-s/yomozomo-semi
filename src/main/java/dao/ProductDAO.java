@@ -45,13 +45,13 @@ public class ProductDAO {
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()) {
-				String pname=rs.getString("pname");
-				int pprice=rs.getInt("pprice");
-				int pdiscount=rs.getInt("pdiscount");
-				int pstock=rs.getInt("pstock");
-				String pcategory=rs.getString("pcategory");
-				String pthumbnail=rs.getString("pthumbnail");
-				String pimage=rs.getString("pimage");
+				String pname=rs.getString("P_NAME");
+				int pprice=rs.getInt("P_PRICE");
+				int pdiscount=rs.getInt("P_DISCOUNT");
+				int pstock=rs.getInt("P_STOCK");
+				String pcategory=rs.getString("P_CATEGORY");
+				String pthumbnail=rs.getString("P_THUMBNAIL");
+				String pimage=rs.getString("P_IMAGE");
 				
 				vo=new ProductVO(pnum, pname, pprice, pdiscount, pstock, pcategory, pthumbnail, pimage);
 			}
@@ -60,6 +60,17 @@ public class ProductDAO {
 			e.printStackTrace();
 		}
 		return vo;
+	}
+	
+	public void close() {
+		try {
+			if(rs!=null) rs.close();
+			if(pstmt!=null) pstmt.close();
+			if(conn!=null) conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

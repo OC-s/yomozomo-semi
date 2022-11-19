@@ -6,9 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
-import kr.co.yomozomo.vo.MemberVO;
+import kr.co.yomozomo.vo.BoardVO;
 import kr.co.yomozomo.vo.OrderVO;
 import kr.co.yomozomo.vo.ProductVO;
 
@@ -111,10 +110,140 @@ public class OrderDAO {
 		return list;
 	}
 	
+	/* SELECT * FROM PRODUCT ORDER BY HIT DESC LIMIT 4 */
+	// ---------------상품 조회수 상위 4개
+	public ArrayList<ProductVO> selectHit(){
+		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
+		
+		sb.setLength(0);
+		sb.append("SELECT * FROM PRODUCT ORDER BY HIT DESC LIMIT 4 ");
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int P_NUM = rs.getInt("P_NUM");
+				String P_NAME = rs.getString("P_NAME");
+				int P_PRICE = rs.getInt("P_PRICE");
+				int P_DISCOUNT = rs.getInt("P_DISCOUNT");
+				String P_CATEGORY = rs.getString("P_CATEGORY");
+				String P_THUMBNAIL = rs.getString("P_THUMBNAIL");
+				String P_IMAGE = rs.getString("P_IMAGE");
+				
+				ProductVO vo = new ProductVO(P_NUM,P_NAME, P_PRICE,P_DISCOUNT, P_CATEGORY,P_THUMBNAIL, P_IMAGE);
+				list.add(vo);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	// SELECT * FROM BOARD ORDER BY B_HIT DESC LIMIT 4
+	// ---------------게시판 사진 조회수 상위 4개
+	public ArrayList<BoardVO> selectPic(){
+		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
+		
+		sb.setLength(0);
+		sb.append("SELECT * FROM BOARD ORDER BY B_HIT DESC LIMIT 4 ");
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String B_CONTENTS = rs.getString("B_CONTENTS");
+				int B_HIT = rs.getInt("B_HIT");
+				String B_IMAGE = rs.getString("B_IMAGE");
+				int B_NUM = rs.getInt("B_NUM");
+				String B_REGDATE = rs.getString("B_REGDATE");
+				String B_TITLE = rs.getString("B_TITLE");
+				int M_NUM = rs.getInt("M_NUM");
+				
+				BoardVO vo = new BoardVO(B_CONTENTS,B_HIT, B_IMAGE,B_NUM, B_REGDATE,B_TITLE, M_NUM);
+				list.add(vo);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	
+    // SELECT * FROM PRODUCT WHERE P_CATEGORY = '장난감' ORDER BY HIT DESC LIMIT 4
+	// ---------------상품 카테고리 조회수 상위 4개
+	public ArrayList<ProductVO> selectPc(){
+		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
+		
+		sb.setLength(0);
+		sb.append("SELECT * FROM PRODUCT WHERE P_CATEGORY = '장난감' ORDER BY HIT DESC LIMIT 4 ");
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int P_NUM = rs.getInt("P_NUM");
+				String P_NAME = rs.getString("P_NAME");
+				int P_PRICE = rs.getInt("P_PRICE");
+				int P_DISCOUNT = rs.getInt("P_DISCOUNT");
+				String P_CATEGORY = rs.getString("P_CATEGORY");
+				String P_THUMBNAIL = rs.getString("P_THUMBNAIL");
+				String P_IMAGE = rs.getString("P_IMAGE");
+				
+				ProductVO vo = new ProductVO(P_NUM,P_NAME, P_PRICE,P_DISCOUNT, P_CATEGORY,P_THUMBNAIL, P_IMAGE);
+				list.add(vo);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	
+	/* SELECT * FROM PRODUCT ORDER BY P_DISCOUNT DESC LIMIT 4 */
+	// ---------------상품 할인높은순 4개
+	public ArrayList<ProductVO> selectDis(){
+		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
+		
+		sb.setLength(0);
+		sb.append("SELECT * FROM PRODUCT ORDER BY P_DISCOUNT DESC LIMIT 4 ");
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int P_NUM = rs.getInt("P_NUM");
+				String P_NAME = rs.getString("P_NAME");
+				int P_PRICE = rs.getInt("P_PRICE");
+				int P_DISCOUNT = rs.getInt("P_DISCOUNT");
+				String P_CATEGORY = rs.getString("P_CATEGORY");
+				String P_THUMBNAIL = rs.getString("P_THUMBNAIL");
+				String P_IMAGE = rs.getString("P_IMAGE");
+				
+				ProductVO vo = new ProductVO(P_NUM,P_NAME, P_PRICE,P_DISCOUNT, P_CATEGORY,P_THUMBNAIL, P_IMAGE);
+				list.add(vo);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	
 	// ---------------상품명조회
-	public List<ProductVO> select(String P_NAME){
-		List<ProductVO> list = new ArrayList<ProductVO>();
+	public ArrayList<ProductVO> select(String str){
+		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 		
 		sb.setLength(0);
 		sb.append("SELECT * FROM PRODUCT WHERE P_NAME LIKE ? ");
@@ -123,12 +252,13 @@ public class OrderDAO {
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
 			
-			pstmt.setString(1, "%" + P_NAME + "%");
+			pstmt.setString(1, "%" + str + "%");
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				int P_NUM = rs.getInt("P_NUM");
+				String P_NAME = rs.getString("P_NAME");
 				int P_PRICE = rs.getInt("P_PRICE");
 				int P_DISCOUNT = rs.getInt("P_DISCOUNT");
 				String P_CATEGORY = rs.getString("P_CATEGORY");

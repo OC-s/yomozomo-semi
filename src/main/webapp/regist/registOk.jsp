@@ -1,4 +1,3 @@
-
 <%@page import="vo.MemberVO"%>
 <%@page import="dao.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -64,7 +63,7 @@ dao.close();
 <jsp:include page="../layout/header.html"></jsp:include>
 <div id="main">
 	<div id="msg"><%=name %>님, 회원가입이 완료되었습니다.</div> <br />
-	<div id="login"><a href="login.jsp">로그인 페이지로 돌아가기</a></div>
+	<div id="login"><a href="../login/login.jsp">로그인 페이지로 돌아가기</a></div>
 </div>
 <jsp:include page="../layout/footer.html"></jsp:include>
 </body>

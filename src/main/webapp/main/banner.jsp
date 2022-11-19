@@ -31,7 +31,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     
-    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="../css/mainBanner.css"/>
     
   </head>
 
@@ -44,8 +44,8 @@
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
               </div>
-              <div class="carousel-inner" >
-                <div class="carousel-item active">
+              <div class="carousel-inner2">
+                <div class="carousel-item active" >
                   <a href="../detail?id=1"><img src="../image/a01.jpg" class="d-block w-100" alt="임시"></a>
                 </div>
                 <div class="carousel-item">

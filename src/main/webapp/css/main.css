@@ -76,25 +76,6 @@ a{
 
 /* --------------------------------------------------------- */
 
-
-#category_bar{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    color: #424242;
-    font-size: 14px;
-    padding: 10px;
-    padding-right: 500px;
-    margin-top: 63px;
-    background-color: wheat;
-    border-bottom: 1px solid rgba(82, 82, 82, 0.445);
-}
-
-.category_text{
-    padding-right: 35px;
-}
-
-/* -------------------------------------------------------------------- */
 #main{
     margin-top: 35px;
     display: flex;
@@ -103,29 +84,8 @@ a{
     width: 100%;
     margin-right: 200px;
 }
-#banner{
-    border-radius: 10px;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    
-}
 
-.carousel-inner{
-    display: flex;
-    flex-direction: row;
-    border-radius: 10px;
-    width: 880px;
-    height: 500px;
-    border: 0.1px solid  rgb(208, 208, 208);
-}
 
-.carousel-item>a>img{
-    width: 100%;
-    height: 100%;
-}
 
 #icon{
     display: flex;
@@ -144,7 +104,6 @@ a{
     height: 77px; 
 }
 
-
 .s_header{
     border-radius: 10px;
     height: 100%;
@@ -154,25 +113,9 @@ a{
     justify-content: center;
     flex-wrap: wrap;
     align-content: center;
-}
-.s_title{
-    margin-bottom: 15px;
-    margin-top: 35px;
-}
+} 
 
-.s_img>a>img{
-    width: 210px;
-    height: 200px;
-    margin-right: 5px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
 
-a>img{
-    transition: all 0.2s linear;
-}
-a>img:hover{
-    transform: scale(1.05);
-}
+
 
 

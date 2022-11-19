@@ -1,4 +1,3 @@
-
 <%@page import="kr.co.yomozomo.vo.joinVO"%>
 <%@page import="kr.co.yomozomo.vo.BoardVO"%>
 <%@page import="kr.co.yomozomo.dao.BoardDAO"%>
@@ -8,22 +7,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device=widht, initial-scale=1">
-<!-- include libraries(jQuery, bootstrap) -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-<!-- include summernote css/js -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-<script src="../lang/summernote-ko-KR.js"></script>
-<script type="text/javascript"> 
 	
-</script>
 <title>Insert title here</title>
+<meta name="viewport" content="width=device=widht, initial-scale=1">
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
 </head>
+<style>
+	#pic_modify{
+		position: relative;
+		top:110px;
+	}
+	
+</style>
 <body>
+
+	<jsp:include page="commu_header.jsp"/>
+	<jsp:include page="commuNav.jsp"/>
+	<jsp:include page="pic_Nav.jsp"/>
+	
 	<%
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");		
@@ -40,9 +46,11 @@
 			
 			
 	%>
+	
+	
 	<form action="pic_modifyOk.jsp" method="post" enctype="multipart/form-data">
 		<div class="container">
-			<table class="table table-bordered table-striped">
+			<table class="table table-bordered table-striped" id="pic_modify">
 				<tr>
 					<th>작성자</th>
 					<td>
@@ -80,6 +88,7 @@
 		}	
 	%>
 	
+	<jsp:include page="commu_footer.jsp"/>
 
 </body>
 </html>

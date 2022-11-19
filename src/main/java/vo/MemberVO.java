@@ -20,4 +20,5 @@ public class MemberVO {
 	String zipcode;
 	String address;
 	String addrsDetail;
+	
 }

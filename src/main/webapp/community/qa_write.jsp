@@ -26,13 +26,13 @@
 </style>
 <body>
 
-	<jsp:include page="../source/header.jsp"/>
+	<jsp:include page="commu_header.jsp"/>
 	<jsp:include page="commuNav.jsp"/>
 	<jsp:include page="qa_Nav.jsp"/>
  	
 	
 	<%
-		Object obj = session.getAttribute("user");
+		Object obj = session.getAttribute("vo");
 		if(obj != null){
 				MemberVO vo = (MemberVO)obj;
 		
@@ -82,6 +82,8 @@
 			script.println("</script>");
 		}
 	%>
+	
+	<jsp:include page="commu_footer.jsp"/>
 	
 
 </body>
