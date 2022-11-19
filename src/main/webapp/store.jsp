@@ -201,7 +201,7 @@ input[type="submit"] {
 
 	</main>
 	<script>
-	
+	const user = 
 
 	function zoomIn(event) {
 	      event.target.style.transform = "scale(1.05)"; //1.05배 확대

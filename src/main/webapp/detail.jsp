@@ -21,6 +21,54 @@
 .information__text a{
 	font-weight: 600;
 }
+.review__scope{
+  margin: 0px 40px 20px 40px;
+  height: 200px;
+  border: 1px solid rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;  
+}
+.review__scope__column{
+  margin: 20px;
+}
+.star-rating {
+  width: 304px;
+}
+.star-rating,
+.star-rating span {
+  display: inline-block;
+  height: 55px;
+  overflow: hidden;
+  background: url(image/star.png) no-repeat;
+}
+.star-rating span {
+  background-position: left bottom;
+  line-height: 0;
+  vertical-align: top;
+}
+.review__scope__column:first-child{
+  display: flex;
+  flex-direction: column;
+}
+.review__rating{
+  margin-left: 140px;
+  margin-bottom: 10px;
+  font-weight: 800;
+  font-size: 25px;
+}
+.review__scope__column:nth-child(2){
+  margin-top: 30px;
+}
+.review__images{
+  display: flex;
+  margin:0px 40px ;
+  justify-content: flex-start;
+
+}
+.review__image{
+  width: 100%;
+  height: 200px;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"
 	integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
@@ -217,13 +265,58 @@
 	<div id="review-scroll"></div>
 	<div class="review">
 		<div class="review__header">
-			<div class="review__text">
-				<span>구매후기</span>
-			</div>
+			<div class="review__text"><span>구매후기</span></div>
 			<a href=""><button class="review__btn-more">더보기 ></button></a>
 		</div>
-		<div class="line"></div>
+		<div class="review__scope">
+        <div class="review__scope__column">
+          <div class="review__rating">4.5</div>
+          <div class="wrap-star">
+            <div class="star-rating">
+              <span style="width: 30%"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review__scope__column">
+          <div>
+            <span>5점</span
+            ><progress value="89.2" min="0" max="100"></progress>89.2%
+          </div>
+          <div>
+            <span>4점</span
+            ><progress value="10" min="0" max="100"></progress>10%
+          </div>
+          <div>
+            <span>3점</span
+            ><progress value="0.8" min="0" max="100"></progress>0.8%
+          </div>
+          <div>
+            <span>2점</span><progress value="0" min="0" max="100"></progress>0%
+          </div>
+          <div>
+            <span>1점</span><progress value="0" min="0" max="100"></progress>0%
+          </div>
+        </div>
+      </div>
+	  <div class="review__images">
+        <img class="review__image" src="" alt="" />
+        <img class="review__image" src="" alt="" />
+        <img class="review__image" src="" alt="" />
+        <img class="review__image" src="" alt="" />
+        <img class="review__image" src="" alt="" />
+        <img class="review__image" src="" alt="" />
+      </div>
+		
+      <div class="qna__main">
+        <div class="qna__title">질문</div>
+        <div class="qna__question">몇 g인가요?</div>
+        <div class="qna__title--answer">답변</div>
+        <div class="qna__answer">1캔 당 160g 입니다.</div>
+      </div>
 	</div>
+	
+	
 	<div id="cancel-scroll"></div>
 	<div class="cancel">
 		<div class="cancel__header">
