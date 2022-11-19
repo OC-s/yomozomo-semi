@@ -266,7 +266,7 @@
 	<div class="review">
 		<div class="review__header">
 			<div class="review__text"><span>구매후기</span></div>
-			<a href=""><button class="review__btn-more">더보기 ></button></a>
+			<a href="/yomozomo/product/review?id=${product.num}"><button class="review__btn-more">더보기 ></button></a>
 		</div>
 		<div class="review__scope">
         <div class="review__scope__column">
@@ -300,12 +300,12 @@
         </div>
       </div>
 	  <div class="review__images">
-        <img class="review__image" src="" alt="" />
-        <img class="review__image" src="" alt="" />
-        <img class="review__image" src="" alt="" />
-        <img class="review__image" src="" alt="" />
-        <img class="review__image" src="" alt="" />
-        <img class="review__image" src="" alt="" />
+        <img class="review__image" src="image/review/review1.jpg" alt="" />
+        <img class="review__image" src="image/review/review2.jpg" alt="" />
+        <img class="review__image" src="image/review/review3.jpg" alt="" />
+        <img class="review__image" src="image/review/review4.jpg" alt="" />
+        <img class="review__image" src="image/review/review5.jpg" alt="" />
+        <img class="review__image" src="image/review/review6.jpg" alt="" />
       </div>
 		
       <div class="qna__main">

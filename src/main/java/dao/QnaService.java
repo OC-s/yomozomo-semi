@@ -32,7 +32,7 @@ public class QnaService {
 			while(rs.next()) {
 				String title = rs.getString("Q_TITLE");
 				String contents = rs.getString("A_CONTENTS");
-				System.out.println(title+" "+ contents);
+				
 				a = new AnsQnaDTO(title, contents);
 				list.add(a);
 				  
