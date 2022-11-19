@@ -26,7 +26,7 @@
 </style>
 <body>
 
-	<jsp:include page="../source/header.jsp"/>
+	<jsp:include page="commu_header.jsp"/>
 	<jsp:include page="commuNav.jsp"/>
 	<jsp:include page="qa_Nav.jsp"/>
  	
@@ -82,6 +82,8 @@
 			script.println("</script>");
 		}
 	%>
+	
+	<jsp:include page="commu_footer.jsp"/>
 	
 
 </body>

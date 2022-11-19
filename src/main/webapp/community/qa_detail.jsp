@@ -17,6 +17,7 @@
 
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
 <title>Insert title here</title>
 <style>
 	
@@ -95,8 +96,8 @@
 			
 			//out.println(vo);						
 	%>
-	<jsp:include page="../source/header.jsp"/>
-	<jsp:include page="commuNav.jsp"/>
+	<jsp:include page="commu_header.jsp" />
+	<jsp:include page="commuNav.jsp" />
 	<jsp:include page="qa_Nav.jsp"/>
  	
  	
@@ -152,7 +153,7 @@
 		}
 	%>
 		
-	
+	<jsp:include page="commu_footer.jsp"/>
 
 </body>
 </html>

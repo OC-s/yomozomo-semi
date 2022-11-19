@@ -50,7 +50,7 @@
 </head>
 <body>
 
-<jsp:include page="../source/header.jsp"/>
+<jsp:include page="commu_header.jsp"/>
 <jsp:include page="commuNav.jsp"/>
 			
 		
@@ -62,6 +62,8 @@
 		<jsp:include page="recentBoard.jsp"/>				
 	</div>
 </body>
+
+<jsp:include page="commu_footer.jsp"/>
 
 
 </html> 
