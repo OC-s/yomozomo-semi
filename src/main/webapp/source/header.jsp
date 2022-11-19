@@ -74,7 +74,7 @@
 					</div>
 				</div>
 				<div class="header__column">
-					<a href="../cart/cart.jsp"> <span class="material-symbols-outlined">
+					<a href="../cart/viewCart.jsp"> <span class="material-symbols-outlined">
 							shopping_cart </span></a>
 					<div class="header__divider"></div>
 					<a href="../login/logout.jsp"><span class="header__text2"><%= vo.getNAME()%> 로그아웃</span></a>
@@ -117,7 +117,7 @@
 					</div>
 				</div>
 			<div class="header__column">
-				<a href="../cart/cart.jsp"> <span class="material-symbols-outlined">
+				<a href="../cart/viewCart.jsp"> <span class="material-symbols-outlined">
 						shopping_cart </span></a>
 				<div class="header__divider"></div>
 				<a href="../login/login.jsp"><span class="header__text2">로그인</span></a>

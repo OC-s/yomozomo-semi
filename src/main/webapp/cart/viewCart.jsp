@@ -41,20 +41,20 @@
 	});
 </script>
 <style>
-div#maindiv{
+div#maindiv1{
 	position: relative;
 	top: 110px;
-	background-color: #eeeeee;
 	padding: 100px;
 }
-div#divimg{
+div#maindiv2{
 	text-align: center;
+	background-color: #eeeeee;
+	position: relative;
+	top: 110px;
+	padding: 100px;
 }
-div#msg{
-	text-align: center;
-}
-div#btn{
-	text-align: center;
+img#pimage{
+	width: 100px;
 }
 img#cat{
 	width: 200px;
@@ -63,38 +63,8 @@ div#footer{
 	position: relative;
 	top: 150px;
 }
-div#cart_list{
-	border: 1px solid #dddddd;
-	width: 600px;
-	height: 200px;
-	background-color: white;
-	border-radius: 10px;
-}
-img#pimage{
-	width: 100px;
-}
-div.form-check{
-	margin-top: 30px;
-	margin-left: 30px;
-	width: 24px;
-	float: left;
-}
-div#product_img{
-	margin-right: 20px;
-	width: 100px;
-	height: 100px;
-	float: left;
-}
-div#product_name{
-	margin-top: 30px;
-	margin-left: 30px;
-}
-div#p_num{
-	width: 80px;
-}
-div#cart_product{
-	border-bottom: 1px solid #dddddd;
-	height: 120px;
+div#table{
+	width: 800px;
 }
 </style>
 <link rel="stylesheet" href="../css/order2.css" />
@@ -102,13 +72,27 @@ div#cart_product{
 </head>
 <body>
 <jsp:include page="../layout/header.html"></jsp:include>
-<div id="maindiv">
 	<%
 	//현재 세션에서 cart의 속성 가져오기
 	Object obj=session.getAttribute("cart");
 	
 	if(obj!=null){
-		
+	%>
+<div id="maindiv1">
+	<div id="table">
+	<table class="table">
+  		<thead>
+    		<tr>
+      			<th scope="col">선택</th>
+      			<th scope="col">상품이미지</th>
+      			<th scope="col">상품명</th>
+      			<th scope="col">가격</th>
+      			<th scope="col">수량</th>
+      			<th scope="col">총 가격</th>
+    		</tr>
+  		</thead>
+		<tbody class="table-group-divider">
+	<%
 		HashMap<Integer, Integer> list= (HashMap<Integer, Integer>)obj;
 		
 		
@@ -123,38 +107,38 @@ div#cart_product{
 			int cnt=list.get(key);
 
 	%>
-	<div id="cart_list">
-		<div id="cart_product">
-			<div class="form-check">
-  				<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-  				<label class="form-check-label" for="flexCheckChecked"></label>
-			</div>
-			<input type="hidden" id="stock" value="<%=vo.getPstock() %>" />
-			<a href="../detail?id=<%=vo.getPnum() %>">
-				<div id="product_img"><img id="pimage" src="../<%=vo.getPthumbnail() %>" alt="" /></div>
-				<div id="product_name"><%=vo.getPname() %></div>
-			</a>
-			<div id="p_num" class="input-group input-group-sm mb-3">
-  				<button class="btn btn-outline-secondary" type="button" id="minus">-</button>
-  				<input type="text" id="cnt_num" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" value="<%=cnt %>" >
-  				<button class="btn btn-outline-secondary" type="button" id="plus">+</button>
-			</div>
-		</div>
-		<div id="charge">
-			<span id="charge_msg">총 상품금액</span>
-			<span id="charge_num"></span>
-		</div>
-	</div>
+    	<tr>
+      		<td scope="row">
+      			<div class="form-check">
+  					<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+  					<label class="form-check-label" for="flexCheckChecked"></label>
+				</div>
+      		</td>
+      		<td><div id="product_img"><img id="pimage" src="../<%=vo.getPthumbnail() %>" alt="" /></div></td>
+      		<td><div id="product_name"><%=vo.getPname() %></div></td>
+      		<td><div id="product_price"><%=vo.getPprice() %></div></td>
+      		<td><div id="product_cnt"><%=cnt %></div></td>
+      		<td><div id="product_tprice"><%=cnt*(vo.getPprice()) %></div></td>
+    	</tr>
 	<%
 		}
 	%>
-		<div id="orderBtn">
-			<a href="../order/order.jsp"><button type="button" class="btn btn-primary">결제하기</button></a>
-		</div>
+	<tr>
+		<td colspan="6">
+			<div id="orderBtn">
+				<a href="../order/order.jsp"><button type="button" class="btn btn-primary">결제하기</button></a>
+			</div>
+		</td>
+	</tr>
+  	</tbody>
+</table>
+</div>
+</div>
 	
 	<%
 	}else{
 	%>
+	<div id="maindiv2">
 		<div id="divimg">
 			<img id="cat" src="../image/cat.png" alt="" />
 		</div>
@@ -164,10 +148,10 @@ div#cart_product{
 		<div id="btn">
 			<a href="store.jsp"><button type="button" class="btn btn-info">쇼핑하러 가기</button></a>
 		</div>
+	</div>
 	<%
 	}
 	%>
-	</div>
 <jsp:include page="../layout/footer.html"></jsp:include>
 </body>
 </html>
