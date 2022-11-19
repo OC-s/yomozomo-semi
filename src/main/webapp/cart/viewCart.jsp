@@ -18,7 +18,27 @@
 <script type="text/javascript">
 	$(function(){
 		console.log("이미지 출처: 고양이, 고양이, 동물 https://.pngtree.com/freepng/고양이--고양이--동물_6736820.html?share=1");
-	})
+		
+		var cntnum=parseInt($("#cnt_num").val());
+		var stock=parseInt($("#stock").val());
+		$("#minus").on("click", function(){
+			if(cntnum>1){
+				cntnum-=1;
+				$("#cnt_num").val(cntnum);
+			}else{
+				alert("더 이상 낮출 수 없습니다.");
+			}
+		});
+		
+		$("#plus").on("click", function(){
+			if(stock>cntnum){
+				cntnum+=1;
+				$("#cnt_num").val(cntnum);
+			}else{
+				alert("더 이상 늘릴 수 없습니다.");
+			}
+		});
+	});
 </script>
 <style>
 div#maindiv{
@@ -45,17 +65,40 @@ div#footer{
 }
 div#cart_list{
 	border: 1px solid #dddddd;
-	width: 700px;
+	width: 600px;
+	height: 200px;
+	background-color: white;
+	border-radius: 10px;
+}
+img#pimage{
+	width: 100px;
+}
+div.form-check{
+	margin-top: 30px;
+	margin-left: 30px;
+	width: 24px;
+	float: left;
+}
+div#product_img{
+	margin-right: 20px;
+	width: 100px;
+	height: 100px;
+	float: left;
+}
+div#product_name{
+	margin-top: 30px;
+	margin-left: 30px;
+}
+div#p_num{
+	width: 80px;
+}
+div#cart_product{
+	border-bottom: 1px solid #dddddd;
+	height: 120px;
 }
 </style>
 <link rel="stylesheet" href="../css/order2.css" />
 <link rel="stylesheet" href="../css/footer.css" />
-<style>
-img#pimage{
-	width: 100px;
-}
-div#
-</style>
 </head>
 <body>
 <jsp:include page="../layout/header.html"></jsp:include>
@@ -65,40 +108,51 @@ div#
 	Object obj=session.getAttribute("cart");
 	
 	if(obj!=null){
-		ArrayList<Integer> list = (ArrayList<Integer>) obj;
 		
-		HashMap<Integer, Integer> map= new HashMap<Integer, Integer>();
+		HashMap<Integer, Integer> list= (HashMap<Integer, Integer>)obj;
 		
-		for(int x: list){
-			if(map.containsKey(x)){
-				map.put(x, map.get(x)+1);
-			}else{
-				map.put(x,1);
-			}
-		}
 		
 		ProductDAO dao=new ProductDAO();
 		
-		Set<Integer> set=map.keySet();
+		Set<Integer> set=list.keySet();
 		Iterator<Integer> it=set.iterator();
 		
 		while(it.hasNext()){
 			int key=it.next();
 			ProductVO vo=dao.selectOne(key);
-			int cnt=map.get(key);
+			int cnt=list.get(key);
 
 	%>
-		<div id="cart_list">
+	<div id="cart_list">
+		<div id="cart_product">
 			<div class="form-check">
   				<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
   				<label class="form-check-label" for="flexCheckChecked"></label>
 			</div>
+			<input type="hidden" id="stock" value="<%=vo.getPstock() %>" />
+			<a href="../detail?id=<%=vo.getPnum() %>">
+				<div id="product_img"><img id="pimage" src="../<%=vo.getPthumbnail() %>" alt="" /></div>
+				<div id="product_name"><%=vo.getPname() %></div>
+			</a>
+			<div id="p_num" class="input-group input-group-sm mb-3">
+  				<button class="btn btn-outline-secondary" type="button" id="minus">-</button>
+  				<input type="text" id="cnt_num" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" value="<%=cnt %>" >
+  				<button class="btn btn-outline-secondary" type="button" id="plus">+</button>
+			</div>
 		</div>
+		<div id="charge">
+			<span id="charge_msg">총 상품금액</span>
+			<span id="charge_num"></span>
+		</div>
+	</div>
+	<%
+		}
+	%>
 		<div id="orderBtn">
 			<a href="../order/order.jsp"><button type="button" class="btn btn-primary">결제하기</button></a>
 		</div>
+	
 	<%
-		}
 	}else{
 	%>
 		<div id="divimg">

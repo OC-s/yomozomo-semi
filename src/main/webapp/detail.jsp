@@ -146,7 +146,7 @@
 					<div class="product__count">
 						<div class="product__count--num">
 							<button class="num--op">-</button>
-							<input id="num" type="text" value="1" min="0" />
+							<input id="num" name="num" type="text" value="1" min="0" />
 							<button class="num--op">+</button>
 						</div>
 						<div>
