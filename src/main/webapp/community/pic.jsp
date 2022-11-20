@@ -25,15 +25,7 @@
 		width: 1000px;
 		margin: auto;
 	}
-	/* .contents{
-		align-items:center;
-		width: 280px;
-		height: 200px;
-	} */
 	
-	.navbar_body > p{
-		text-align: center;
-	}
 	.wrap{
 	position:relative;
 	top:100px;
@@ -50,13 +42,7 @@
 		font-weight: bold;
 		text-align: left;
 	}
-	.navbar_body{
-		padding-top:30px;;
-		color: #2F3438;
-		font-size: 20px;
- 		font-weight: bold;
-		background-color:#f8f9fa;
-	}
+	
 	.pic_img{
 		margin-top:0px;
 		width: 280px;
@@ -74,12 +60,9 @@
 		left:450px;
 		width:60px;
 		height:30px;
-		font-size:12px;
+		font-size:15px;
 		font-weight:bold;
-		border:solid 0px skyblue;
-		border-radius:10px;
-		background-color: skyblue;
-		color: white;
+		color: #2F3438;
 	}
 
 
@@ -108,17 +91,11 @@
 			}
 			
 			//1페이지당 게시물 수		
-			recoredPerPage = 6;
-			
-			//게시물 시작번호와 끝번호 계산
-			//현재 페이지가 1이면
-			//시작 번호 : 1 부터 끝번호 : 10
-			
-			//현재 페이지가 2이면
-			//시작번호 11부터 끝번호 20
+			recoredPerPage = 9;
+						
 			startNo3 = (currentPage-1)*recoredPerPage+1;
 			//int endNo = currentPage*recoredPerPage;
-			endNo3 = 6;
+			endNo3 = 9;
 				
 			//총게시물수
 			BoardDAO dao = new BoardDAO();
@@ -173,8 +150,8 @@
 	%>
  	<table class="pic_table">
  		<tr>
- 			<td>
-			<a href="pic_write.jsp"><input type="button" value="자랑하기" id="pic_btn" /></a>					
+ 			<td>					
+			<a href="pic_write.jsp" id="pic_btn" >자랑하기&#x270D;</a>					
  			</td>
  		</tr>
  	</table>	
@@ -187,15 +164,11 @@
 		<%	
 			ArrayList<joinVO> list = dao.joinAll(startNo3,endNo3);
 			for(joinVO vo : list){
-				/* String contents = jboardvo.getB_CONTENTS();
-				if(contents.length()>7){
-					contents = contents.substring(0,7)+"...";
-				} */
 				
 		%>	
 		<div class="wrap" >	
 			<div class="pic_info">
-				<p><%=vo.getNICKNAME() %></p>		
+				<p><%=vo.getNICKNAME() %>님</p>		
 			</div>			
 			<a href="pic_detail.jsp?b_num=<%=vo.getB_NUM() %>">
 			<img src=<%=vo.getB_IMAGE() %> alt="" class="pic_img"/>

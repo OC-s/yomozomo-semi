@@ -47,7 +47,7 @@
 			
 			
 	%>
-	<form action="qa_modifyOk.jsp" method="post" enctype="multipart/form-data">
+	<form action="qa_modifyOk.jsp" method="post" >
 		<div class="container">
 			<table class="table table-bordered table-striped" id="qa_modify">
 				<tr>
@@ -71,13 +71,9 @@
 					</td>
 				</tr>
 				<tr>
-				<th>첨부파일</th>
-				<td><input type="file" name="filename" id="" /></td>
-			   </tr>
-				<tr>
 				<td colspan="6">
-					<input type="submit" value="수정완료" class="btn btn-primary" />
-					<a href="pic_detail.jsp?qab_num=<%=vo.getQAB_NUM()%>"><input type="button" value="취소" class="btn btn-danger"/></a>
+					<input type="submit" value="수정완료" class="btn btn-outline-secondary" />
+					<a href="pic_detail.jsp?qab_num=<%=vo.getQAB_NUM()%>"><input type="button" value="취소" class="btn btn-outline-secondary"/></a>
 				</td>
 				</tr>
 			</table>

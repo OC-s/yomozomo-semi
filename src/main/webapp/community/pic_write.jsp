@@ -65,8 +65,8 @@
 			   </tr>
 				<tr>
 					<td colspan="4">
-						<a href="pic.jsp"><input type="button" value="목록" class="btn btn-success"/></a>
-						<input type="submit" value="작성" class="btn btn-primary" />
+						<a href="pic.jsp"><input type="button" value="목록" class="btn btn-outline-secondary"/></a>
+						<input type="submit" value="작성" class="btn btn-outline-secondary" />
 					</td>
 				</tr>			
 			</table>

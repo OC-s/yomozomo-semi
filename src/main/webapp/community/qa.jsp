@@ -30,13 +30,9 @@
 	left:600px;
 	width: 60px;
 	height: 30px;
-	font-size: 12px;
+	font-size: 15px;
 	font-weight: bold;
-	border: solid 0px skyblue;
-	border-radius: 10px;
-	background-color: skyblue;
-	margin-bottom: 50px;
-	color: white;
+	color: #2F3438;
 }
 </style>
 </head>
@@ -62,17 +58,11 @@
 	}
 
 	//1페이지당 게시물 수		
-	recoredPerPage = 6;
+	recoredPerPage = 10;
 
-	//게시물 시작번호와 끝번호 계산
-	//현재 페이지가 1이면
-	//시작 번호 : 1 부터 끝번호 : 10
-
-	//현재 페이지가 2이면
-	//시작번호 11부터 끝번호 20
 	startNo2 = (currentPage - 1) * recoredPerPage + 1;
-	//int endNo = currentPage*recoredPerPage;
-	endNo2 = 6;
+	
+	endNo2 = 10;
 
 	//총게시물수
 	QaboardDAO dao = new QaboardDAO();
@@ -123,8 +113,9 @@
 
 	<table class="qa_table">
 		<tr>
-			<td><a href="qa_write.jsp"><input type="button" value="글쓰기"
-					id="qa_btn" /></a></td>
+			<td>
+			<a href="qa_write.jsp" id="qa_btn">물어보기&#x270D;</a>
+			</td>
 		</tr>
 	</table>
 	<%
@@ -136,7 +127,7 @@
 	<div class="container">
 		<div class="row">
 			<table class="table table-bordered"
-				style="position: relative; top: 100px; text-align: center; border: 1px solid #dddddd;">
+				style="position: relative; top: 100px; text-align: center; border: 1px solid #dddddd; margin-top: 50px;">
 				<thead>
 					<tr>
 						<th style="background-color: #eeeeee; text-align: center;">번호</th>
@@ -152,7 +143,7 @@
 
 				<tbody>
 					<tr>
-						<td><%=vo.getQAB_NUM()%></td>
+						<td><a style="color:black; " href="qa_detail.jsp?qab_num=<%=vo.getQAB_NUM()%>"><%=vo.getQAB_NUM()%></a></td>
 						<td><a style="color:black; " href="qa_detail.jsp?qab_num=<%=vo.getQAB_NUM()%>"><%=vo.getQAB_TITLE()%></a></td>
 						<td><%=vo.getNICKNAME()%></td>
 						<td><%=vo.getQAB_REGDATE()%></td>

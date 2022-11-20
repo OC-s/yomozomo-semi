@@ -48,6 +48,7 @@ public class StoreService {
 		return list;
 		
 	}
+	
 	public int getCountProduct(String cate) {
 		ProductDTO p = null;
 		int count=0;
@@ -117,5 +118,25 @@ public class StoreService {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	public int getCountReview(int id) {
+		int count=0;
+		try {
+			String sql = "SELECT count(*) c FROM REVIEW WHERE P_NUM= ?";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con =DriverManager.getConnection(url,user,passWord);
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, id);
+			ResultSet rs = st.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt("c");
+			}
+			rs.close();
+			st.close();
+			con.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
 	}
 }

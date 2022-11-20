@@ -34,7 +34,7 @@ public class ReviewController extends HttpServlet{
 		boolean check = serviceReview.getCheckProduct(mnum_,id);
 		ProductDTO product = service.getProductDetail(id);
 		List<ReviewDTO> review = serviceReview.getReview(id); 
-	
+		
 		request.setAttribute("review", review);
 		request.setAttribute("check",check);
 		request.setAttribute("product",product);

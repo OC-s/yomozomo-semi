@@ -106,7 +106,7 @@
 					<input type="hidden" name="b_num" id="" value="<%=vo.getB_NUM()%>" />
 				</td>
 					
-				<td><input type="submit" class="btn btn-success" value="작성하기"
+				<td><input type="submit" class="btn btn-outline-secondary" value="작성하기"
 					style="margin-top: 10px; margin-right: 100px;"></td>
 
 			</tr>
@@ -124,7 +124,7 @@
 						cols="100"></textarea></td>
 						
 				<td>
-				<a href="../login/login.jsp"><input type="button" class="btn btn-success" value="로그인"
+				<a href="../login/login.jsp"><input type="button" class="btn btn-outline-secondary" value="로그인"
 					style="margin-top: 10px; margin-right: 100px;"></a>
 				</td>
 

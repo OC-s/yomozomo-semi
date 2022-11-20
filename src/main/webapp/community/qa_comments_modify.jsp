@@ -4,14 +4,10 @@
 <%@page import="kr.co.yomozomo.vo.QajoinVO"%>
 <%@page import="kr.co.yomozomo.dao.QaboardDAO"%>
 <%@page import="kr.co.yomozomo.vo.CmtjoinVO"%>
-<%@page import="kr.co.yomozomo.vo.CommentsVO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="kr.co.yomozomo.dao.CommentsDAO"%>
-<%@page import="kr.co.yomozomo.vo.joinVO"%>
 <%@page import="kr.co.yomozomo.vo.MemberVO"%>
 <%@page import="kr.co.yomozomo.dao.MemberDAO"%>
-<%@page import="kr.co.yomozomo.vo.BoardVO"%>
-<%@page import="kr.co.yomozomo.dao.BoardDAO"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,19 +16,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device=widht, initial-scale=1">
 <!-- CSS only -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-	crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
 <!-- JavaScript Bundle with Popper -->
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <title>Insert title here</title>
 <style>
+
 .detail_img {
 	width: 300px;
 	height: 400px;
@@ -49,12 +39,12 @@
 	background-color: #f8f9fa;
 }
 
-.detail_contain {
-	position: relative;
-	top: 150px;
-	width: 1000px;
-	margin: auto;
-}
+.qadetail_contain{
+		position:relative;
+		top:150px;
+		width: 1000px;
+		margin: auto;
+	}
 
 .navbar_body>p {
 	text-align: center;
@@ -120,7 +110,7 @@
 
 
 
-	<div class="detail_contain">
+	<div class="qadetail_contain">
 		<table class="table table-bordered">
 			<tr>
 				<th colspan="3" style="text-align: center;"><h3><%=vo.getQAB_TITLE()%></h3></th>
@@ -132,14 +122,14 @@
 			</tr>
 			<tr>
 				<td colspan="3" style="text-align: center; word-break:break-all;">
-					<img src="<%=vo.getQAB_IMAGE()%>" alt="" class="detail_img" /><br /> <%=vo.getQAB_CONTENTS()%>
+					<%=vo.getQAB_CONTENTS()%>
 				</td>
 			</tr>
 		</table>
 		<table class="table table-bordered" style="position: relative; top:5px; border: transparent" >
 			<tr>
 				<td colspan="3"><a href="pic.jsp"><input type="button"
-						value="목록" class="btn btn-success" /></a> 
+						value="목록" class="btn btn-outline-secondary" /></a> 
 		
 		<%
 		
@@ -151,9 +141,9 @@
  					
  		%> 
 				 <a href="qa_modify.jsp?qab_num=<%=vo.getQAB_NUM()%>"><input
-						type="button" value="수정" class="btn btn-primary" /></a> 
+						type="button" value="수정" class="btn btn-outline-secondary" /></a> 
 				<a href="qa_deleteOk.jsp?qab_num=<%=vo.getQAB_NUM()%>"><input
-						type="button" value="삭제" class="btn btn-danger" /></a>
+						type="button" value="삭제" class="btn btn-outline-secondary" /></a>
 						
 				</td>
 
@@ -245,13 +235,12 @@
 						<input type="hidden" name="qab_num" id="" value="<%=vo.getQAB_NUM() %>"/>
 						<input type="hidden" name="qac_num" id="" value="<%=vo3.getQAC_NUM() %>"/>
 						</td>						
-							<td><input type="submit" class="btn btn-success" value="수정하기" style="margin-top: 10px; "></td>
+							<td><input type="submit" class="btn btn-outline-secondary" value="수정하기" style="margin-top: 10px; "></td>
 							<td><a href="qa_detail.jsp?qab_num=<%=vo.getQAB_NUM() %>" >
-								<input type="button" value="취소" class="btn btn-success" style="margin-top: 10px;" /></a>	</td>
+								<input type="button" value="취소" class="btn btn-outline-secondary" style="margin-top: 10px;" /></a>	</td>
 						</tr>				
 				</table>
-			</form>
-	
+			</form>	
 	</div>
 			
 	<%

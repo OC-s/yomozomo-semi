@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <style>
-	.pic_contain{
+	.qa_contain{
 		position:relative;
 		top:113px;
 		text-align:center;
@@ -22,7 +22,7 @@
 </style>
 <body>
 
-	<div id="pic_contain" class="pic_contain">
+	<div id="qa_contain" class="qa_contain">
  	<nav class="navbar_body" style="height: 150px; ">
 			<h3 align="center">질문과 답변</h3>
 			<p>집사들끼리 묻고 답해요</p>

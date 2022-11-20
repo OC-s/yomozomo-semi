@@ -13,20 +13,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>Insert title here</title>
+
 <meta name="viewport" content="width=device=widht, initial-scale=1">
 <!-- CSS only -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-	crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
 <!-- JavaScript Bundle with Popper -->
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-	crossorigin="anonymous"></script>
-<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <style>
 .detail_img {
 	width: 300px;
@@ -83,6 +77,20 @@
 	border-radius: 20px 20px 20px 20px;
 }
 </style>
+<script>
+
+	$(function(){
+		
+		$("#moveBtn").on("click",function(){
+			
+			var offset = $("#preId").offset();
+			
+			$('html,body').animate({scrollTop:offset.top},2000);
+			
+		});		
+	});
+
+</script>
 </head>
 <body>
 
@@ -134,7 +142,7 @@
 		<table class="table table-bordered" style="position: relative; top:5px; border: transparent" >
 			<tr>
 				<td colspan="3"><a href="pic.jsp"><input type="button"
-						value="목록" class="btn btn-success" /></a> 
+						value="목록" class="btn btn-outline-secondary" /></a> 
 		
 		<%
 		
@@ -146,9 +154,9 @@
  					
  		%> 
 				 <a href="pic_modify.jsp?b_num=<%=vo.getB_NUM()%>"><input
-						type="button" value="수정" class="btn btn-primary" /></a> 
+						type="button" value="수정" class="btn btn-outline-secondary" /></a> 
 				<a href="pic_deleteOk.jsp?b_num=<%=vo.getB_NUM()%>"><input
-						type="button" value="삭제" class="btn btn-danger" /></a>
+						type="button" value="삭제" class="btn btn-outline-secondary" /></a>
 						
 				</td>
 
@@ -240,9 +248,9 @@
 						<input type="hidden" name="b_num" id="" value="<%=vo.getB_NUM() %>"/>
 						<input type="hidden" name="c_num" id="" value="<%=vo3.getC_NUM() %>"/>
 						</td>						
-							<td><input type="submit" class="btn btn-success" value="수정하기" style="margin-top: 10px; "></td>
+							<td><input type="submit" class="btn btn-outline-secondary" value="수정하기" style="margin-top: 10px; "></td>
 							<td><a href="pic_detail.jsp?b_num=<%=vo.getB_NUM() %>" >
-								<input type="button" value="취소" class="btn btn-success" style="margin-top: 10px;" /></a>	</td>
+								<input type="button" value="취소" class="btn btn-outline-secondary" style="margin-top: 10px;" /></a>	</td>
 						</tr>				
 				</table>
 			</form>

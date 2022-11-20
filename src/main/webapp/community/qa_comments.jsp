@@ -1,13 +1,10 @@
-
 <%@page import="kr.co.yomozomo.vo.QacmtjoinVO"%>
 <%@page import="kr.co.yomozomo.dao.QacommentsDAO"%>
 <%@page import="kr.co.yomozomo.vo.QajoinVO"%>
 <%@page import="kr.co.yomozomo.dao.QaboardDAO"%>
 <%@page import="kr.co.yomozomo.vo.CmtjoinVO"%>
 <%@page import="kr.co.yomozomo.vo.MemberVO"%>
-<%@page import="kr.co.yomozomo.vo.CommentsVO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="kr.co.yomozomo.dao.CommentsDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -109,7 +106,7 @@
 					<input type="hidden" name="qab_num" id="" value="<%=vo.getQAB_NUM()%>" />
 				</td>
 					
-				<td><input type="submit" class="btn btn-success" value="작성하기"
+				<td><input type="submit" class="btn btn-outline-secondary" value="작성하기"
 					style="margin-top: 10px; margin-right: 100px;"></td>
 
 			</tr>
@@ -129,7 +126,7 @@
 						
 		
 				<td>
-				<a href="../login/login.jsp"><input type="button" class="btn btn-success" value="로그인"
+				<a href="../login/login.jsp"><input type="button" class="btn btn-outline-secondary" value="로그인"
 					style="margin-top: 10px; margin-right: 100px;"></a>
 				</td>
 

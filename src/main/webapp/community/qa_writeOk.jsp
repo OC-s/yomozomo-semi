@@ -1,7 +1,6 @@
+<%@page import="java.io.PrintWriter"%>
 <%@page import="kr.co.yomozomo.vo.QaboardVO"%>
 <%@page import="kr.co.yomozomo.dao.QaboardDAO"%>
-<%@page import="kr.co.yomozomo.vo.BoardVO"%>
-<%@page import="kr.co.yomozomo.dao.BoardDAO"%>
 <%@page import="java.io.File" %>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
@@ -13,29 +12,16 @@
 	request.setCharacterEncoding("UTF-8");
 	response.setContentType("text/html;charset=UTF-8");
 	
-	//upload 디렐토리 실제경로얻어오기
-	String saveDir = application.getRealPath("/upload");
-	//out.println(saveDir);
 	
-	//첨부파일의 최대 크기
-	int maxFileSize = 1024*1024*10;
+	String writer = request.getParameter("writer");
+	String title = request.getParameter("title");
+	String contents = request.getParameter("contents");
+	String num= request.getParameter("m_num");
 	
-	//파라미터값가져오기
-	MultipartRequest mr = new MultipartRequest(request,saveDir,maxFileSize,"UTF-8",new DefaultFileRenamePolicy());
-
-	
-	String writer = mr.getParameter("writer");
-	String title = mr.getParameter("title");
-	String contents = mr.getParameter("contents");
-	String num= mr.getParameter("m_num");
 		
-	//원래 파일의 이름
-	String f = mr.getOriginalFileName("filename");
-	
-	String realf = mr.getFilesystemName("filename"); 
-	
-	if(writer != null && title != null && contents != null){
+		if(title != "" && contents != "" ){
 		
+	
 		int m_num = Integer.parseInt(num);
 		
 		QaboardDAO dao = new QaboardDAO();
@@ -45,14 +31,28 @@
 		vo.setQAB_TITLE(title);
 		vo.setQAB_CONTENTS(contents);
 		vo.setM_NUM(m_num);
-		vo.setQAB_IMAGE("../upload/"+f);
-		
-		
+				
 		dao.insertOne(vo);
+			
+		response.sendRedirect("qa.jsp");
 		
-		out.println(vo);
+	}else if(title == ""){
+		
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('제목을 작성해 주세요')");
+		script.println("history.back()");
+		script.println("</script>");
+		
+	}else if(contents == ""){
+		
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('내용을 작성해 주세요')");
+		script.println("history.back()");
+		script.println("</script>");
+		
 	}
-	response.sendRedirect("qa.jsp");
 
 
 

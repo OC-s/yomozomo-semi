@@ -14,7 +14,7 @@ public class ProductDTO {
 	
 	public ProductDTO(int num, String name, int price, int discount, int stock, String category, String thumbnail,
 			String image, int hit) {
-		super();
+
 		this.num = num;
 		this.name = name;
 		this.price = price;

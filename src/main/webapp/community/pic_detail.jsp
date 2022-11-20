@@ -21,61 +21,23 @@
 
 
 <title>Insert title here</title>
+
 <style>
 .detail_img {
 	width: 300px;
 	height: 400px;
 	margin-left: 25px;
 	margin-top: 20px;
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 }
-
-.navbar_body {
-	padding-top: 30px;;
-	color: #2F3438;
-	font-size: 20px;
-	font-weight: bold;
-	background-color: #f8f9fa;
-}
-
 .detail_contain {
 	position: relative;
 	top: 150px;
 	width: 1000px;
 	margin: auto;
+	color:#2F3438;
 }
 
-.navbar_body>p {
-	text-align: center;
-}
-
-.detail_ul1 {
-	list-style: none;
-}
-
-.detail_ul2 {
-	margin-top: 10px;
-	list-style: none;
-	font-weight: bold;
-}
-
-.detail_ul2>li {
-	float: left;
-	margin-right: 50px;
-}
-
-.detail_div2 {
-	position: relative;
-	top: 40px;
-	border-radius: 20px 20px 20px 20px;
-	padding-bottom: 100px;
-}
-
-.detail_div3 {
-	position: relative;
-	left: 80px;
-	border-radius: 20px 20px 20px 20px;
-}
 </style>
 </head>
 <body>
@@ -112,23 +74,26 @@
 	<div class="detail_contain">
 		<table class="table table-bordered">
 			<tr>
-				<th colspan="3" style="text-align: center;"><h3><%=vo.getB_TITLE()%></h3></th>
+				<th colspan="3" style="text-align: center;"><h5><%=vo.getB_TITLE()%></h5></th>
 			</tr>
 			<tr>
-				<td style="text-align: left; font-weight: bold;"><%=vo.getNICKNAME()%></td>
-				<td style="text-align: right;"><%=vo.getB_REGDATE()%></td>
-
+				<td style="text-align: left; font-weight: bold;"><%=vo.getNICKNAME()%>님</td>
+				<td style="text-align: right; font-size: 12px">&#128065;<%=vo.getB_HIT()%></td>
 			</tr>
 			<tr>
-				<td colspan="3" style="text-align: center; word-break:break-all;">
-					<img src="<%=vo.getB_IMAGE()%>" alt="" class="detail_img" /><br /> <%=vo.getB_CONTENTS()%>
+				<td colspan="2" style="text-align: right; font-size: 12px; border-bottom:1px solid transparent;"><%=vo.getB_REGDATE()%></td>
+			</tr>
+			<tr>
+				<td colspan="3" class="detail_contents" style="text-align: center; word-break:break-all;">
+					<img src="<%=vo.getB_IMAGE()%>" alt="" class="detail_img" /><br /> 
+						<%=vo.getB_CONTENTS()%> <br /><br /><br />
 				</td>
 			</tr>
 		</table>
 		<table class="table table-bordered" style="position: relative; top:5px; border: transparent" >
 			<tr>
 				<td colspan="3"><a href="pic.jsp"><input type="button"
-						value="목록" class="btn btn-success" /></a> 
+						value="목록" class="btn btn-outline-secondary" /></a> 
 		
 		<%
 		
@@ -140,9 +105,9 @@
  					
  		%> 
 				 <a href="pic_modify.jsp?b_num=<%=vo.getB_NUM()%>"><input
-						type="button" value="수정" class="btn btn-primary" /></a> 
+						type="button" value="수정" class="btn btn-outline-secondary" /></a> 
 				<a href="pic_deleteOk.jsp?b_num=<%=vo.getB_NUM()%>"><input
-						type="button" value="삭제" class="btn btn-danger" /></a>
+						type="button" value="삭제" class="btn btn-outline-secondary" /></a>
 						
 				</td>
 
