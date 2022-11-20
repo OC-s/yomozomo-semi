@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,14 +27,22 @@ public class DetailController extends HttpServlet{
 		
 		StoreService service = new StoreService();
 		QnaService ansService = new QnaService();
-		ReviewService reServire = new ReviewService();
+		ReviewService reService = new ReviewService();
 		
 		
-		List<ReviewDTO> review = reServire.getReview(id);
+		List<ReviewDTO> review = reService.getReview(id);
 		ProductDTO product = service.getProductDetail(id);
 		List<AnsQnaDTO> ans = ansService.getAnswer(id);
 		int result = service.updateProductHit(id);
-
+		float star = reService.getRatingAvg(id);
+		List<Integer> count = reService.getRatingCount(id);
+		int sum = 0;
+		for(int i=0; i<count.size(); i++)
+			sum +=count.get(i);
+		
+		request.setAttribute("sum",sum);
+		request.setAttribute("count", count);
+		request.setAttribute("star", star);
 		request.setAttribute("review", review);
 		request.setAttribute("ans",ans);
 		request.setAttribute("product",product);

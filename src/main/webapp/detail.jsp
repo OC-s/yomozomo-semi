@@ -271,32 +271,32 @@
 		</div>
 		<div class="review__scope">
         <div class="review__scope__column">
-          <div class="review__rating">4.5</div>
+          <div class="review__rating"><fmt:formatNumber value="${star}" pattern=".0"/></div>
           <div class="wrap-star">
             <div class="star-rating">
-              <span style="width: 30%"></span>
+              <span style="width: ${star*20}%"></span>
             </div>
           </div>
         </div>
-
+		
         <div class="review__scope__column">
           <div>
             <span>5점</span
-            ><progress value="89.2" min="0" max="100"></progress>89.2%
+            ><progress value="${count[0]/sum*100}" min="0" max="100"></progress><fmt:formatNumber value="${count[0]/sum*100}" pattern=".0"/>%
           </div>
           <div>
             <span>4점</span
-            ><progress value="10" min="0" max="100"></progress>10%
+            ><progress value="${count[1]/sum*100}" min="0" max="100"></progress><fmt:formatNumber value="${count[1]/sum*100}" pattern=".0"/>%
           </div>
           <div>
             <span>3점</span
-            ><progress value="0.8" min="0" max="100"></progress>0.8%
+            ><progress value="${count[2]/sum*100}" min="0" max="100"></progress><fmt:formatNumber value="${count[2]/sum*100}" pattern=".0"/>%
           </div>
           <div>
-            <span>2점</span><progress value="0" min="0" max="100"></progress>0%
+            <span>2점</span><progress value="${count[3]/sum*100}" min="0" max="100"></progress><fmt:formatNumber value="${count[3]/sum*100}" pattern=".0"/>%
           </div>
           <div>
-            <span>1점</span><progress value="0" min="0" max="100"></progress>0%
+            <span>1점</span><progress value="${count[4]/sum*100}" min="0" max="100"></progress><fmt:formatNumber value="${count[4]/sum*100}" pattern=".0"/>%
           </div>
         </div>
       </div>
