@@ -21,7 +21,7 @@
 		String addrs2 = request.getParameter("addrs2");
 		String oname = request.getParameter("oname");
 		String tel2 = request.getParameter("tel2")+request.getParameter("tel3");
-		String email = request.getParameter("email")+'@'+request.getParameter("email2");
+		String email = request.getParameter("email1")+'@'+request.getParameter("email2");
 		
 		OrderDAO dao = new OrderDAO();
 		
