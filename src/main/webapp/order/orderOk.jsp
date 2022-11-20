@@ -38,7 +38,9 @@
 		
 		dao.insertOne(vo);	
 		
-		response.sendRedirect("../order/orderComplete.jsp");
+/* 		response.sendRedirect("../order/orderComplete.jsp"); */
+    	
+		pageContext.forward("orderComplete.jsp");	
 	
 	%>
 	

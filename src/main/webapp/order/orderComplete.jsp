@@ -1,3 +1,9 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="vo.ProductVO"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="dao.ProductDAO"%>
+<%@page import="java.util.Set"%>
+<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -37,18 +43,56 @@
                 <div class="main_title"><img class="order_img" src="../image/icon/order.webp" alt=""></div>
             </div>
             <table class="order_Cbox">
+            
                 <tr class="order_tr">
                     <td class="order_td">주문상품</td>
-                    <td class="order_td2">상품명</td>
+          <%
+            
+            int sum = 0;
+         	String pname = ""; 
+          	int namecnt = 0;
+            HashMap<Integer, Integer> list = (HashMap<Integer, Integer>)session.getAttribute("cart");
+            if(list == null){
+				list = new HashMap<>();
+				
+      		} else {
+      			Set<Integer> set=list.keySet();
+          		Iterator<Integer> it = set.iterator();
+       			ProductDAO dao = new ProductDAO();
+       			DecimalFormat df = new DecimalFormat("#원,##0");
+       			
+       			while(it.hasNext()){
+       				int key=it.next();
+       				ProductVO vo = dao.selectOne(key);
+       				int cnt = list.get(key);
+       				
+       				namecnt ++;
+       				
+       				pname = vo.getPname();
+       				pname += pname; 
+       				
+       				sum += cnt*(Math.round(vo.getPprice()*(1-vo.getPdiscount()*0.01)));
+       			}
+       			
+       		 	if(pname.length()>15){
+   					pname = pname.substring(0,15)+" ...외 "+(namecnt-1)+"건";
+   				} 
+      		%>
+                    <td class="order_td2"><%= pname%></td>
                 </tr>
+                
                 <tr class="order_tr">
                     <td class="order_td">배송지</td>
-                    <td class="order_td2">배송지명</td>
+                    <td class="order_td2"><%= request.getParameter("addrs") + request.getParameter("addrs2")%></td>
                 </tr>
+                
                 <tr class="order_tr">
                     <td class="order_td">결제금액</td>
-                    <td class="order_td2">결제금액</td>
+                    <td class="order_td2"><%= df.format(sum) %></td>
                 </tr>
+           	<% 
+    		}
+    		%>      
             </table>
             <div>
                 <a href="../main/main.jsp"><button class="order_btn1">쇼핑 계속하기</button></a>
