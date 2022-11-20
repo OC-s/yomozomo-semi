@@ -25,15 +25,7 @@
 		width: 1000px;
 		margin: auto;
 	}
-	/* .contents{
-		align-items:center;
-		width: 280px;
-		height: 200px;
-	} */
 	
-	.navbar_body > p{
-		text-align: center;
-	}
 	.wrap{
 	position:relative;
 	top:100px;
@@ -50,13 +42,7 @@
 		font-weight: bold;
 		text-align: left;
 	}
-	.navbar_body{
-		padding-top:30px;;
-		color: #2F3438;
-		font-size: 20px;
- 		font-weight: bold;
-		background-color:#f8f9fa;
-	}
+	
 	.pic_img{
 		margin-top:0px;
 		width: 280px;
@@ -182,7 +168,7 @@
 		%>	
 		<div class="wrap" >	
 			<div class="pic_info">
-				<p><%=vo.getNICKNAME() %></p>		
+				<p><%=vo.getNICKNAME() %>님</p>		
 			</div>			
 			<a href="pic_detail.jsp?b_num=<%=vo.getB_NUM() %>">
 			<img src=<%=vo.getB_IMAGE() %> alt="" class="pic_img"/>

@@ -38,7 +38,7 @@
 	%>
 	
 	<div class="container">
-		<form action="qa_writeOk.jsp" method="post" enctype="multipart/form-data">
+		<form action="qa_writeOk.jsp" method="post" >
 			<table class="table table-bordered table-striped " id="qa_table">
 				<tr>
 					<th>작성자</th>
@@ -60,9 +60,6 @@
 					</td>
 				</tr>
 				<tr>
-				<th>첨부파일</th>
-				<td><input type="file" name="filename" id="" /></td>
-			   </tr>
 				<tr>
 					<td colspan="4">
 						<a href="qa.jsp"><input type="button" value="목록" class="btn btn-outline-secondary"/></a>
