@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.QnaService;
+import dao.ReviewService;
 import dao.StoreService;
 import dto.AnsQnaDTO;
 import dto.ProductDTO;
+import dto.ReviewDTO;
 
 @WebServlet("/detail")
 public class DetailController extends HttpServlet{
@@ -24,12 +26,15 @@ public class DetailController extends HttpServlet{
 		
 		StoreService service = new StoreService();
 		QnaService ansService = new QnaService();
+		ReviewService reServire = new ReviewService();
 		
 		
+		List<ReviewDTO> review = reServire.getReview(id);
 		ProductDTO product = service.getProductDetail(id);
 		List<AnsQnaDTO> ans = ansService.getAnswer(id);
 		int result = service.updateProductHit(id);
 
+		request.setAttribute("review", review);
 		request.setAttribute("ans",ans);
 		request.setAttribute("product",product);
 		request.getRequestDispatcher("/detail.jsp").forward(request, response);
