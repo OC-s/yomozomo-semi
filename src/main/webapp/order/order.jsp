@@ -173,7 +173,7 @@
                                 <option value="">배송전 미리 연락주세요</option>
                                 <option value="">부재시 경비실에 맡겨 주세요 </option>
                                 <option value="">부재시 전화주시거나 문자 남겨 주세요 </option>
-                            <option value="">직접입력</option>
+                            	<option value="direct">직접입력</option>
                             <input class="section_text" type="text" name="" id="" placeholder="배송 요청사항을 입력해주세요"hidden><br>
                             </select>
                         </section>
