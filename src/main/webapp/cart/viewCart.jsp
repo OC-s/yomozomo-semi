@@ -78,6 +78,7 @@ span#tpmsg{
 	
 	if(obj1!=null){
 	%>
+<form action="../order/order.jsp">
 <div id="maindiv1">
 	<div id="table">
 	<table class="table">
@@ -132,9 +133,10 @@ span#tpmsg{
 </table>
 </div>
 	<div id="orderBtn">
-		<a href="../order/order.jsp"><button type="button" class="btn btn-primary">결제하기</button></a>
+		<a href="../order/order.jsp"><button type="submit" class="btn btn-primary">결제하기</button></a>
 	</div>
 </div>
+</form>
 	<%
 	}else{
 	%>
