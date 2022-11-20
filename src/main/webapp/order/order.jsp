@@ -308,7 +308,7 @@
 	       				price += cnt*(vo.getPprice());
 	       				
         	%>  
-        	
+        		
              
                     <div>
                         <section>
