@@ -9,7 +9,7 @@ public class ReviewDTO {
 	private String contents;
 	public ReviewDTO() {}
 	public ReviewDTO(Date regdate, int scope, String image, String contents) {
-		super();
+
 		this.regdate = regdate;
 		this.scope = scope;
 		this.image = image;

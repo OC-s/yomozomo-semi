@@ -18,56 +18,90 @@
 	border-bottom: 4px solid blueviolet;
 	color: blueviolet;
 }
-.information__text a{
+
+.information__text a {
 	font-weight: 600;
 }
-.review__scope{
-  margin: 0px 40px 20px 40px;
-  height: 200px;
-  border: 1px solid rgba(0,0,0,0.2);
-  display: flex;
-  justify-content: center;  
-}
-.review__scope__column{
-  margin: 20px;
-}
-.star-rating {
-  width: 304px;
-}
-.star-rating,
-.star-rating span {
-  display: inline-block;
-  height: 55px;
-  overflow: hidden;
-  background: url(image/star.png) no-repeat;
-}
-.star-rating span {
-  background-position: left bottom;
-  line-height: 0;
-  vertical-align: top;
-}
-.review__scope__column:first-child{
-  display: flex;
-  flex-direction: column;
-}
-.review__rating{
-  margin-left: 140px;
-  margin-bottom: 10px;
-  font-weight: 800;
-  font-size: 25px;
-}
-.review__scope__column:nth-child(2){
-  margin-top: 30px;
-}
-.review__images{
-  display: flex;
-  margin:0px 40px ;
-  justify-content: flex-start;
 
+.review__scope {
+	margin: 0px 40px 20px 40px;
+	height: 200px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	display: flex;
+	justify-content: center;
 }
-.review__image{
-  width: 100%;
-  height: 200px;
+
+.review__scope__column {
+	margin: 20px;
+}
+
+.star-rating {
+	width: 304px;
+}
+
+.star-rating, .star-rating span {
+	display: inline-block;
+	height: 55px;
+	overflow: hidden;
+	background: url(image/star.png) no-repeat;
+}
+
+.star-rating span {
+	background-position: left bottom;
+	line-height: 0;
+	vertical-align: top;
+}
+
+.review__scope__column:first-child {
+	display: flex;
+	flex-direction: column;
+}
+
+.review__rating {
+	margin-left: 140px;
+	margin-bottom: 10px;
+	font-weight: 800;
+	font-size: 25px;
+}
+
+.review__scope__column:nth-child(2) {
+	margin-top: 30px;
+}
+
+.review__images {
+	display: flex;
+	margin: 0px 40px;
+	justify-content: flex-start;
+}
+
+.review__image {
+	width: 100%;
+	height: 200px;
+}
+
+.review__main {
+	margin: 0px 40px 0px 40px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-left: none;
+	border-right: none;
+	font-weight: 500;
+}
+
+.review__column:first-child {
+	display: flex;
+}
+
+.review__column {
+	
+	
+}
+
+.review__check, .review__divider {
+	margin-right: 5px;
+}
+
+.review__divider {
+	color: rgba(0, 0, 0, 0.2);
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -85,68 +119,27 @@
 
 </head>
 <body>
-<%@include file="/source/header.jsp" %>
-	<!-- 
-	<header class="header">
-		header bar start
-		<div class="header-bar">
-			<div class="header__column">
-				<a href="main/main.jsp"><span id="yomozomo">Yomozomo</span></a>
-			</div>
-			<div class="header__column">
-				<div class="header__community">
-					<a href="/yomozomo/community/community.jsp"><span class="header__text">커뮤니티</span></a>
-					<div class="header__divider"></div>
-					<a href="store?category="><span class="header__text">스토어</span></a>
-				</div>
-			</div>
-			<div class="header__column">
-				<div class="input-group mb-3">
-					<input type="text" class="form-control"
-						aria-label="Recipient's username" aria-describedby="button-addon2" />
-					<button class="btn btn-outline-secondary" type="button"
-						id="button-addon2">검색</button>
-				</div>
-			</div>
-			<div class="header__column">
-				<a href="./cart/viewCart.jsp"> <span class="material-symbols-outlined">
-						shopping_cart </span></a>
-				<div class="header__divider"></div>
-				<a href="/yomozomo/login/login.jsp"><span class="header__text">로그인</span></a>
-				<div class="header__divider"></div>
-				<a href="/yomozomo/regist/regist.jsp"><span class="header__text">회원가입</span></a>
-				<div class="header__divider"></div>
-				<a href="#"><span class="header__text">고객센터</span></a>
-			</div>
-		</div>
-	</header> -->
+	<%@include file="/source/header.jsp"%>
+
 	<nav>
 		<div>
-			<form action="store?category=" method="get">
-				<li>
-					<ul>
-						<input class="prod_cate" type="submit" value="전체" name="category" />
-					</ul>
-					<ul>
-						<input class="prod_cate" type="submit" value="사료" name="category" />
-					</ul>
-					<ul>
-						<input class="prod_cate" type="submit" value="간식" name="category" />
-					</ul>
-					<ul>
-						<input class="prod_cate" type="submit" value="건강관리"
-							name="category" />
-					</ul>
-					<ul>
-						<input class="prod_cate" type="submit" value="장난감" name="category" />
-					</ul>
-				</li>
-			</form>
+			<ul>
+				<li><a href="store?category=전체" class="prod_cate"
+					name="category">전체</a></li>
+				<li><a href="store?category=사료" class="prod_cate"
+					name="category">사료</a></li>
+				<li><a href="store?category=간식" class="prod_cate"
+					name="category">간식</a></li>
+				<li><a href="store?category=건강관리" class="prod_cate"
+					name="category">건강관리</a></li>
+				<li><a href="store?category=장난감" class="prod_cate"
+					name="category">장난감</a></li>
+			</ul>
 		</div>
 	</nav>
 
 	<main>
-		
+
 		<c:set var="price" value="${product.price*(1-product.discount/100)}" />
 		<div class="product-detail">
 			<div class="product-detail__image">
@@ -156,9 +149,9 @@
 				<img id="product-image" src="${product.thumbnail}" alt="" />
 			</div>
 			<form action="./cart/cart.jsp">
-			<input type="hidden" name="pnum" value="${product.num}" />
+				<input type="hidden" name="pnum" value="${product.num}" />
 				<div class="product-detail__info">
-					<div class="product__name" >${product.name}</div>
+					<div class="product__name">${product.name}</div>
 					<div class="product__review">
 						<span>별점/</span><span>후기</span>
 					</div>
@@ -266,55 +259,80 @@
 	<div id="review-scroll"></div>
 	<div class="review">
 		<div class="review__header">
-			<div class="review__text"><span>구매후기</span></div>
-			<a href="/yomozomo/product/review?id=${product.num}"><button class="review__btn-more">리뷰작성 ></button></a>
+			<div class="review__text">
+				<span>구매후기</span>
+			</div>
+			<a href="/yomozomo/product/review?id=${product.num}"><button
+					class="review__btn-more">리뷰작성 ></button></a>
 		</div>
 		<div class="review__scope">
-        <div class="review__scope__column">
-          <div class="review__rating"><fmt:formatNumber value="${star}" pattern=".0"/></div>
-          <div class="wrap-star">
-            <div class="star-rating">
-              <span style="width: ${star*20}%"></span>
-            </div>
-          </div>
-        </div>
+			<div class="review__scope__column">
+				<div class="review__rating">
+					<fmt:formatNumber value="${star}" pattern=".0" />
+				</div>
+				<div class="wrap-star">
+					<div class="star-rating">
+						<span style="width: ${star*20}%"></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="review__scope__column">
+				<div>
+					<span>5점</span>
+					<progress value="${count[0]/sum*100}" min="0" max="100"></progress>
+					<fmt:formatNumber value="${count[0]/sum*100}" pattern=".0" />
+					%
+				</div>
+				<div>
+					<span>4점</span>
+					<progress value="${count[1]/sum*100}" min="0" max="100"></progress>
+					<fmt:formatNumber value="${count[1]/sum*100}" pattern=".0" />
+					%
+				</div>
+				<div>
+					<span>3점</span>
+					<progress value="${count[2]/sum*100}" min="0" max="100"></progress>
+					<fmt:formatNumber value="${count[2]/sum*100}" pattern=".0" />
+					%
+				</div>
+				<div>
+					<span>2점</span>
+					<progress value="${count[3]/sum*100}" min="0" max="100"></progress>
+					<fmt:formatNumber value="${count[3]/sum*100}" pattern=".0" />
+					%
+				</div>
+				<div>
+					<span>1점</span>
+					<progress value="${count[4]/sum*100}" min="0" max="100"></progress>
+					<fmt:formatNumber value="${count[4]/sum*100}" pattern=".0" />
+					%
+				</div>
+			</div>
+		</div>
+		<div class="review__images">
+			<c:forEach var="review" items="${review}" begin="0" end="6">
+				<img class="review__image"
+					src="/yomozomo/uploadReview/${review.image}" />
+			</c:forEach>
+		</div>
 		
-        <div class="review__scope__column">
-          <div>
-            <span>5점</span
-            ><progress value="${count[0]/sum*100}" min="0" max="100"></progress><fmt:formatNumber value="${count[0]/sum*100}" pattern=".0"/>%
-          </div>
-          <div>
-            <span>4점</span
-            ><progress value="${count[1]/sum*100}" min="0" max="100"></progress><fmt:formatNumber value="${count[1]/sum*100}" pattern=".0"/>%
-          </div>
-          <div>
-            <span>3점</span
-            ><progress value="${count[2]/sum*100}" min="0" max="100"></progress><fmt:formatNumber value="${count[2]/sum*100}" pattern=".0"/>%
-          </div>
-          <div>
-            <span>2점</span><progress value="${count[3]/sum*100}" min="0" max="100"></progress><fmt:formatNumber value="${count[3]/sum*100}" pattern=".0"/>%
-          </div>
-          <div>
-            <span>1점</span><progress value="${count[4]/sum*100}" min="0" max="100"></progress><fmt:formatNumber value="${count[4]/sum*100}" pattern=".0"/>%
-          </div>
+		<c:forEach var="review" items="${review}">
+		<div class="review__main">
+        <div class="review__column">
+          <div class="review__check">구매인증됨</div>
+          <div class="review__divider">|</div>
+          <div class="review__date">${review.regdate}</div>
+        </div>
+        <div class="review__column">rudnf550</div>
+        <div class="review__column">
+          <div class="review__contents">${review.contents}</div>
         </div>
       </div>
-	  <div class="review__images">
-	  	<c:forEach var="review" items="${review}" begin="0" end="6">
-        <img class="review__image" src="${pageContext.request.contextPath}/upload/${review.image}" />
-       	</c:forEach>
-      </div>
-		
-      <div class="qna__main">
-        <div class="qna__title">질문</div>
-        <div class="qna__question">몇 g인가요?</div>
-        <div class="qna__title--answer">답변</div>
-        <div class="qna__answer">1캔 당 160g 입니다.</div>
-      </div>
+      </c:forEach>
 	</div>
-	
-	
+
+
 	<div id="cancel-scroll"></div>
 	<div class="cancel">
 		<div class="cancel__header">
@@ -336,15 +354,18 @@
 	<script>
 		let num = Number(document.getElementById("num").value);
 		let totalPrice = Number(document.getElementById("total-price").innerHTML);
-		let price = ${price}
-		
+		let price = $
+		{
+			price
+		}
+
 		const information_btn = $(".information__text");
-	      for (let i = 0; i < $(".information__text").length; i++) {
-	        information_btn.eq(i).on("click", function () {
-	          information_btn.removeClass("violet");
-	          information_btn.eq(i).addClass("violet");
-	        });
-	      }
+		for (let i = 0; i < $(".information__text").length; i++) {
+			information_btn.eq(i).on("click", function() {
+				information_btn.removeClass("violet");
+				information_btn.eq(i).addClass("violet");
+			});
+		}
 
 		function priceToString(price) {
 			return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');

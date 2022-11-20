@@ -82,7 +82,7 @@ div#orderBtn{
 	
 	if(obj1!=null){
 	%>
-<form action="orderCart.jsp">
+<form action="../order/order.jsp">
 <div id="maindiv1">
 	<div id="table">
 	<table class="table">

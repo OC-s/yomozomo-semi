@@ -21,13 +21,13 @@ Iterator<HashMap.Entry<Integer, Integer>> itr=list.entrySet().iterator();
 
 while(itr.hasNext()){
 	HashMap.Entry<Integer, Integer> entry=itr.next();
+	int pnum=entry.getKey();
 	
 	CartDAO cdao=new CartDAO();
 	ProductDAO pdao=new ProductDAO();
-	ProductVO pvo=new ProductVO();
+	ProductVO pvo=pdao.selectOne(pnum);
 	
-	int pnum=entry.getKey();
-	pdao.selectOne(pnum);
+
 	String pname=pvo.getPname();
 	int count=entry.getValue();
 	int price=pvo.getPprice();

@@ -72,7 +72,7 @@ public class ReviewService {
 		List<ReviewDTO> list = new ArrayList<ReviewDTO>();
 		ReviewDTO p = null;
 		try {
-			String sql = "SELECT * FROM REVIEW WHERE P_NUM=? ";
+			String sql = "SELECT * FROM REVIEW WHERE P_NUM=? ORDER BY R_REGDATE DESC";
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con =DriverManager.getConnection(url,user,passWord);
 			PreparedStatement st = con.prepareStatement(sql);
@@ -161,4 +161,5 @@ public class ReviewService {
 		return count;
 		
 	}
+	
 }

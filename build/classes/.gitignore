@@ -1,4 +1,8 @@
 /controller/
 /dao/
 /dto/
+<<<<<<< HEAD
+=======
+/kr/
+>>>>>>> branch 'master' of https://github.com/jemok96/yomozomo.git
 /vo/
