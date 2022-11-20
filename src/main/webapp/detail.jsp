@@ -1,11 +1,15 @@
 
+<%@page import="dao.ReviewService"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
+<%
+	ReviewService service = new ReviewService();
+	request.setAttribute("s", service);
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -311,24 +315,27 @@
 			</div>
 		</div>
 		<div class="review__images">
+			
 			<c:forEach var="review" items="${review}" begin="0" end="6">
 				<img class="review__image"
 					src="/yomozomo/uploadReview/${review.image}" />
 			</c:forEach>
 		</div>
 		
-		<c:forEach var="review" items="${review}">
+		<c:forEach var="review" items="${review}" varStatus="st" begin="0" end="4">
+		<c:set var="loop_flag" value="false" />
 		<div class="review__main">
         <div class="review__column">
           <div class="review__check">구매인증됨</div>
           <div class="review__divider">|</div>
           <div class="review__date">${review.regdate}</div>
         </div>
-        <div class="review__column">rudnf550</div>
+        <div class="review__column">${s.getUserId(review.mnum)}</div>
         <div class="review__column">
           <div class="review__contents">${review.contents}</div>
         </div>
       </div>
+ 
       </c:forEach>
 	</div>
 

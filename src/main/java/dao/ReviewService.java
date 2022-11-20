@@ -83,7 +83,8 @@ public class ReviewService {
 				int scope = rs.getInt("R_SCOPE");
 				String image = rs.getString("test");
 				String contents = rs.getString("R_CONTENTS");
-				p = new ReviewDTO(regdate, scope, image, contents);
+				int mnum = rs.getInt("M_NUM");
+				p = new ReviewDTO(regdate, scope, image, contents,mnum);
 				list.add(p);
 			}
 			rs.close();
@@ -160,6 +161,27 @@ public class ReviewService {
 		}
 		return count;
 		
+	}
+	public String getUserId(int mnum ) {
+		String nickName ="";
+		try {
+			String sql = "SELECT NICKNAME FROM MEMBER WHERE M_NUM = ?";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con =DriverManager.getConnection(url,user,passWord);
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1,mnum);
+			ResultSet rs = st.executeQuery();
+			if(rs.next()) {
+				nickName = rs.getString(mnum);
+			}
+			rs.close();
+			st.close();
+			con.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return nickName;
 	}
 	
 }
