@@ -276,7 +276,7 @@
       </div>
 	  <div class="review__images">
 	  	<c:forEach var="review" items="${review}" begin="0" end="6">
-        <img class="review__image" src="${pageContext.request.contextPath}/upload/${review.image}" />
+        <img class="review__image" src="/yomozomo/upload/${review.image}"/>
        	</c:forEach>
       </div>
 		

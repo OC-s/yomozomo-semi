@@ -186,7 +186,8 @@
     <div>
     	<div>${review.scope}</div>
     	<div>${review.contents}</div>
-    	<img src="${pageContext.request.contextPath}/upload/${review.image}" />
+    	<img src="/yomozomo/upload/${review.image}" />
+    	
     </div>
     </c:forEach>
 
