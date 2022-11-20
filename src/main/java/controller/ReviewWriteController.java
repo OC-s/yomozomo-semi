@@ -60,8 +60,9 @@ public class ReviewWriteController extends HttpServlet {
 			builder.append(",");
 			
 			InputStream fis = filePart.getInputStream();
-			String realPath = request.getServletContext().getRealPath("/upload");
-//			System.out.println("real"+realPath); // 실제 파일이 저장되는 경로임 eclipse상 upload 경로가아니라
+//			String realPath = request.getServletContext().getRealPath("/upload");
+			String realPath = "C:\\Users\\rudnf\\eclipse-workspace\\web_workspace\\yomozomo\\src\\main\\webapp\\uploadReview";
+			System.out.println("real"+realPath); // 실제 파일이 저장되는 경로임 eclipse상 upload 경로가아니라
 			
 			File path = new File(realPath);
 			if(!path.exists())
@@ -70,7 +71,7 @@ public class ReviewWriteController extends HttpServlet {
 			String filePath = realPath + File.separator + fileName;
 			FileOutputStream fos = new FileOutputStream(filePath);
 			
-//			System.out.println("file"+filePath);
+			System.out.println("file"+filePath);
 
 			byte[] buf = new byte[1024];
 			int size = 0;

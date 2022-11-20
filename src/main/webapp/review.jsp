@@ -186,7 +186,7 @@
     <div>
     	<div>${review.scope}</div>
     	<div>${review.contents}</div>
-    	<img src="/yomozomo/upload/${review.image}" />
+    	<img src="/yomozomo/uploadReview/${review.image}" />
     	
     </div>
     </c:forEach>
