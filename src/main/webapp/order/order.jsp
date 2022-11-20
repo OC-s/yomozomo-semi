@@ -165,7 +165,6 @@
 		/* 로그인 정보 없을때 로그인창으로 이동  */
 		if(obj == null){
 			response.sendRedirect("../login/login.jsp");
-			
 		} else {
 			
 		%>

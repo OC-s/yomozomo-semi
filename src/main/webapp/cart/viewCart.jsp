@@ -21,6 +21,10 @@
 		console.log("이미지 출처: 고양이, 고양이, 동물 https://.pngtree.com/freepng/고양이--고양이--동물_6736820.html?share=1");
 		
 	});
+	
+	function delete(){
+		location.href="deleteOne.jsp";
+	}
 </script>
 <style>
 div#maindiv1{
@@ -92,7 +96,7 @@ div#orderBtn{
       			<th scope="col">상품명</th>
       			<th scope="col">가격</th>
       			<th scope="col">수량</th>
-      			<th scope="col">총 가격</th> 			
+      			<th scope="col">총 가격</th> 						
     		</tr>
   		</thead>
 		<tbody class="table-group-divider">
@@ -136,6 +140,9 @@ div#orderBtn{
   	</tbody>
 </table>
 </div>
+	<span id="shoppingBtn">
+		<a href="/yomozomo/store?category"><button type="button" class="btn btn-secondary">쇼핑 계속하기</button></a>
+	</span>
 	<span id="cancelBtn">
 		<a href="clearCart.jsp"><button type="button" class="btn btn-danger">장바구니 비우기</button></a>
 	</span>
