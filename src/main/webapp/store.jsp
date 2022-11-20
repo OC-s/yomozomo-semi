@@ -1,4 +1,5 @@
 
+<%@page import="dao.StoreService"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -6,6 +7,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<%
+	StoreService s = new StoreService();
+	request.setAttribute("t", s);
+	
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -134,9 +140,10 @@ input[type="submit"] {
 	<main>
 		<div class="total">총<span id="total_count">${count}개</span> 상품</div>
 		<c:forEach var="p" items="${list}" varStatus="st" step="4">
+		
 		<div class="product">
 			<div class="product__column">
-			
+				
 				<div>
 					<a href="detail?id=${list[st.index].num}"><img class="product__thumbnail" src="${list[st.index].thumbnail}" onmouseenter="zoomIn(event)" 
         onmouseleave="zoomOut(event)"/></a>
@@ -148,7 +155,7 @@ input[type="submit"] {
 					<span class="discount__rate">${list[st.index].discount}%</span> <span><fmt:formatNumber type="number" pattern="###,###,###,###,###,###" value="${list[st.index].price}" />원</span>
 				</div>
 				<div>
-					<span>별점</span> <span>후기</span>
+					<span>별점 |</span> <span>후기${t.getCountReview(list[st.index].num)} </span>
 				</div>
 			</div>
 			<div class="product__column">
@@ -163,7 +170,7 @@ input[type="submit"] {
 					<span class="discount__rate">${list[st.index+1].discount}%</span> <span><fmt:formatNumber type="number" pattern="###,###,###,###,###,###" value="${list[st.index+1].price}" />원</span>
 				</div>
 				<div>
-					<span>별점</span> <span>후기</span>
+					<span>별점|</span> <span>후기${t.getCountReview(list[st.index+1].num)}</span>
 				</div>
 			</div>
 			<div class="product__column">
@@ -178,7 +185,7 @@ input[type="submit"] {
 					<span class="discount__rate">${list[st.index+2].discount}%</span> <span><fmt:formatNumber type="number" pattern="###,###,###,###,###,###" value="${list[st.index+2].price}" />원</span>
 				</div>
 				<div>
-					<span>별점</span> <span>후기</span>
+					<span>별점|</span> <span>후기${t.getCountReview(list[st.index+2].num)}</span>
 				</div>
 			</div>
 			<div class="product__column">
@@ -193,7 +200,7 @@ input[type="submit"] {
 					<span class="discount__rate">${list[st.index+3].discount}%</span> <span><fmt:formatNumber type="number" pattern="###,###,###,###,###,###" value="${list[st.index+3].price}" />원</span>
 				</div>
 				<div>
-					<span>별점</span> <span>후기</span>
+					<span>별점|</span> <span>후기${t.getCountReview(list[st.index+3].num)}</span>
 				</div>
 			</div>
 		</div>

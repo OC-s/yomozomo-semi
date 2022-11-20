@@ -94,6 +94,27 @@ public class ReviewService {
 		}
 		return list;
 	}
+	public int getCountReview(int id) {
+		int count = 0;
+		try {
+			String sql = "SELECT COUNT(*) count  FROM REVIEW WHERE P_NUM =?";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con =DriverManager.getConnection(url,user,passWord);
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, id);
+			ResultSet rs = st.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt("count");
+			}
+			rs.close();
+			st.close();
+			con.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+		
+	}
 	public float getRatingAvg(int id) {
 		float result = 0;
 		try {
