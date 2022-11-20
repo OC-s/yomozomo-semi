@@ -36,9 +36,15 @@ public class DetailController extends HttpServlet{
 		int result = service.updateProductHit(id);
 		float star = reService.getRatingAvg(id);
 		List<Integer> count = reService.getRatingCount(id);
+		
+		
 		int sum = 0;
 		for(int i=0; i<count.size(); i++)
 			sum +=count.get(i);
+		
+		
+		
+		
 		
 		request.setAttribute("sum",sum);
 		request.setAttribute("count", count);
