@@ -61,11 +61,16 @@ public class ReviewWriteController extends HttpServlet {
 			
 			InputStream fis = filePart.getInputStream();
 			String realPath = request.getServletContext().getRealPath("/upload");
-			System.out.println("real"+realPath); // 실제 파일이 저장되는 경로임 eclipse상 upload 경로가아니라
-			String filePath = realPath + File.separator + fileName;
+//			System.out.println("real"+realPath); // 실제 파일이 저장되는 경로임 eclipse상 upload 경로가아니라
 			
-			System.out.println("file"+filePath);
+			File path = new File(realPath);
+			if(!path.exists())
+				path.mkdirs();
+			
+			String filePath = realPath + File.separator + fileName;
 			FileOutputStream fos = new FileOutputStream(filePath);
+			
+//			System.out.println("file"+filePath);
 
 			byte[] buf = new byte[1024];
 			int size = 0;

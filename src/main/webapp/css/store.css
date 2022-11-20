@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+.product__thumbnail {
+	width: 250px;
+	height: 180px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.product {
+	display: flex;
+	justify-content: space-around;
+	margin: 40px 0px;
+}
+
+.product__column {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+main {
+	margin: 30px 100px;
+}
+
+.product__name {
+	font-weight: 700;
+	font-size: 12px;
+	margin: 2px 0px;
+}
+
+#total_count {
+	font-weight: 800;
+	margin-left: 5px;
+}
+
+.total {
+	margin-left: 60px;
+}
+
+.discount__rate {
+	color: red;
+}
+
+.review__text, .star {
+	font-size: 15px;
+	font-weight: 600;
+}
+

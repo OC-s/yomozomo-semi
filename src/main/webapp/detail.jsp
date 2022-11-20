@@ -86,63 +86,37 @@
 </head>
 <body>
 <%@include file="/source/header.jsp" %>
-	<!-- 
-	<header class="header">
-		header bar start
-		<div class="header-bar">
-			<div class="header__column">
-				<a href="main/main.jsp"><span id="yomozomo">Yomozomo</span></a>
-			</div>
-			<div class="header__column">
-				<div class="header__community">
-					<a href="/yomozomo/community/community.jsp"><span class="header__text">커뮤니티</span></a>
-					<div class="header__divider"></div>
-					<a href="store?category="><span class="header__text">스토어</span></a>
-				</div>
-			</div>
-			<div class="header__column">
-				<div class="input-group mb-3">
-					<input type="text" class="form-control"
-						aria-label="Recipient's username" aria-describedby="button-addon2" />
-					<button class="btn btn-outline-secondary" type="button"
-						id="button-addon2">검색</button>
-				</div>
-			</div>
-			<div class="header__column">
-				<a href="./cart/viewCart.jsp"> <span class="material-symbols-outlined">
-						shopping_cart </span></a>
-				<div class="header__divider"></div>
-				<a href="/yomozomo/login/login.jsp"><span class="header__text">로그인</span></a>
-				<div class="header__divider"></div>
-				<a href="/yomozomo/regist/regist.jsp"><span class="header__text">회원가입</span></a>
-				<div class="header__divider"></div>
-				<a href="#"><span class="header__text">고객센터</span></a>
-			</div>
-		</div>
-	</header> -->
+	
 	<nav>
 		<div>
-			<form action="store?category=" method="get">
-				<li>
-					<ul>
-						<input class="prod_cate" type="submit" value="전체" name="category" />
-					</ul>
-					<ul>
-						<input class="prod_cate" type="submit" value="사료" name="category" />
-					</ul>
-					<ul>
-						<input class="prod_cate" type="submit" value="간식" name="category" />
-					</ul>
-					<ul>
-						<input class="prod_cate" type="submit" value="건강관리"
-							name="category" />
-					</ul>
-					<ul>
-						<input class="prod_cate" type="submit" value="장난감" name="category" />
-					</ul>
-				</li>
-			</form>
-		</div>
+      <ul>
+        <li>
+          <a href="store?category=전체" class="prod_cate" name="category"
+            >전체</a
+          >
+        </li>
+        <li>
+          <a href="store?category=사료" class="prod_cate" name="category"
+            >사료</a
+          >
+        </li>
+        <li>
+          <a href="store?category=간식" class="prod_cate" name="category"
+            >간식</a
+          >
+        </li>
+        <li>
+          <a href="store?category=건강관리" class="prod_cate" name="category"
+            >건강관리</a
+          >
+        </li>
+        <li>
+          <a href="store?category=장난감" class="prod_cate" name="category"
+            >장난감</a
+          >
+        </li>
+      </ul>
+    </div>
 	</nav>
 
 	<main>
