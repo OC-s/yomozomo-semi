@@ -1,3 +1,5 @@
+<%@page import="vo.ProductVO"%>
+<%@page import="dao.ProductDAO"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Set"%>
 
@@ -125,6 +127,13 @@
 	
 </head>
 <body>
+<%
+request.setCharacterEncoding("UTF-8");
+response.setContentType("text/html;charset=UTF-8");
+
+String tp=request.getParameter("totalPrice");
+int totalprice=Integer.parseInt(tp);
+%>
     <div id="body-wrapper">
    		
    		<!-- header -->
@@ -228,46 +237,32 @@
                 <br><br>
                
                
-         <%--        <!--상품정보 가져오기 -->
+        <!--상품정보 가져오기 -->
             	<%
-            		Object obj = session.getAttribute("count");
+            		Object obj = session.getAttribute("cart");
             	
             		if(obj != null){
-						ArrayList<Integer> list = (ArrayList<Integer>)obj;
-						
-						HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-						
-						for(int x : list){
-							if(map.containsKey(x)){
-								map.put(x, map.get(x)+1);
-							}else{
-								map.put(x,1);
-							}
-						}
-							
-            			OrderDAO dao = new OrderDAO();
-            			
-            			Set<Integer> set = map.keySet();
-            			
-            			Iterator<Integer> it = set.iterator();
-            			
-            			while(it.hasNext()){
-            				int key = it.next();
-            				
-            				ProductVO vo = dao.selectOne(key);
-            				
-            				int cnt = map.get(key);
-            				String pt = "../"+vo.getP_THUMBNAIL();
-           		%>  --%>
-           		
-           		
-                
+           		%>
                 <section class="section_box">
                     <section>
                             <div class="order_title"></div>
                     </section>
                     <div>
                         <section>
+                        <%
+                        HashMap<Integer, Integer> list=(HashMap<Integer, Integer>)obj;
+                        
+                        ProductDAO dao=new ProductDAO();
+                        
+                        Set<Integer> set=list.keySet();
+                		Iterator<Integer> it=set.iterator();
+                		int totalSum = 0;
+                		
+                		while(it.hasNext()){
+                			int key=it.next();
+                			ProductVO vo=dao.selectOne(key);
+                			int cnt=list.get(key);
+                        %>
                             <div>
                                 <div>
                                     <div>(주)yomozomo</div>
@@ -306,10 +301,9 @@
 
                     </div>
                 </section>
-                
-             		<%--  <% 
+                  <% 
             			}
-            		%>	 --%>
+            		%>
             		
             		
             		
@@ -338,7 +332,7 @@
                             <h2 class=""><strong>결제금액</strong></h2>
                             <div class="order_price">
                                 <span class="">총 상품 금액</span>
-                                <span class="">8,900원</span>
+                                <span class=""><%=totalprice %></span>
                             </div>
                             <div class="order_price">
                                 <span class="">배송비</span>
