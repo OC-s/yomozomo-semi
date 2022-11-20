@@ -1,6 +1,8 @@
-<%@page import="java.util.Iterator"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.Set"%>
-
+<%@page import="java.util.Iterator"%>
+<%@page import="vo.ProductVO"%>
+<%@page import="dao.ProductDAO"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -36,6 +38,20 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     
     <link rel="stylesheet" href="../css/order.css">
+    
+    <style type="text/css">
+    	.section_pname{
+		    margin-left: 10px;
+		    margin-bottom: 10px;
+		}
+		
+		.section_list {
+		    display: flex;
+		    flex-direction: row;
+		    margin-bottom: 10px;
+		}
+    </style>
+    
     
     <!-- 주소가져오기 -->
 	<script type="text/javascript">
@@ -90,17 +106,17 @@
 			alert('이름을 입력해주세요');
 			return false
 		}
-		if(email.value ==""){
-			email.focus();
+		if(email1.value ==""){
+			email1.focus();
 			alert('이메일을 입력해주세요');
 			return false
 		}
 		
-		if(email2.value =="email"){
-			email2.focus();
+		if(email2.value =='0'){
+			email.focus();
 			alert('이메일을 선택해주세요');
 			return false
-		}
+		} 
 		
 		if(tel2.value == "1"){
 			tel2.focus();
@@ -123,13 +139,37 @@
 	}
 	</script>
 	
+	<script type="text/javascript">
+	function selectEmail(ele){
+	    var $ele = $(ele);
+	    var $email2 = $('input[name=email2]');
+
+	    // '1'인 경우 직접입력
+	    if($ele.val() == "1"){
+	        $email2.attr('readonly', false);
+	        $email2.val('');
+	    } else {
+	        $email2.attr('readonly', true);
+	        $email2.val($ele.val());
+	    }
+	}
+	</script>
+
 </head>
 <body>
     <div id="body-wrapper">
    		
    		<!-- header -->
    		<%@ include file="/source/header.jsp" %>
+		
+		<%
+		/* 로그인 정보 없을때 로그인창으로 이동  */
+		if(obj == null){
+			response.sendRedirect("../login/login.jsp");
 			
+		} else {
+			
+		%>
 		
    		<form action="orderOk.jsp" onSubmit="return Checkform()" method="post">
         <!-- main -->
@@ -167,14 +207,12 @@
                                     <input class="section_text" type="text" name="addrs2" id="addrs2" placeholder="상세주소 입력"><br>
                                 </div>
                             </label>
-                            <select class="section_re" name="">
-                                <option value="">배송시 요청사항을 선택해주세요</option>
-                                <option value="">부재시 문앞에 놓아주세요</option>
-                                <option value="">배송전 미리 연락주세요</option>
-                                <option value="">부재시 경비실에 맡겨 주세요 </option>
-                                <option value="">부재시 전화주시거나 문자 남겨 주세요 </option>
-                            	<option value="direct">직접입력</option>
-                            <input class="section_text" type="text" name="" id="" placeholder="배송 요청사항을 입력해주세요"hidden><br>
+                            <select class="section_re" name="section_re" onChange="selectDe(this)">
+                                <option value="배송시 요청사항을 선택해주세요">배송시 요청사항을 선택해주세요</option>
+                                <option value="부재시 문앞에 놓아주세요">부재시 문앞에 놓아주세요</option>
+                                <option value="배송전 미리 연락주세요">배송전 미리 연락주세요</option>
+                                <option value="부재시 경비실에 맡겨 주세요">부재시 경비실에 맡겨 주세요 </option>
+                                <option value="부재시 전화주시거나 문자 남겨 주세요">부재시 전화주시거나 문자 남겨 주세요 </option>
                             </select>
                         </section>
                     </div>
@@ -193,21 +231,23 @@
                                 <div class="section_title">이름</div>
                                 <input class="section_text" type="text" name="oname" id="oname"><br>
                             </label>
+                            
                             <label class="section_label">
                                 <div class="section_title">이메일</div>
-                                <input class="section_text" type="text" name="email" id="email"> @
-                                <select class="section_email" name="email2" id="email2">
-                                    <option value="email">이메일선택</option>
-                                    <option value="naver">naver.com</option>
-                                    <option value="gmail">gmail.com</option>
-                                    <option value="daum">daum.com</option>
-                                    <option value="kakao">kakao.com</option>
-                                    <option value="nate">nate.com </option>
-                                    <option value="hanmail">hanmail.com</option>
-                                    <option value="">직접입력</option>
-                                </select> 
-                                <input class="section_text" type="text" name="email3" id="email3" hidden><br>
+	                                <input class="section_text" type="text" name="email1" id="email1" style="width: 150px" >   @
+	                                <input class="section_text" type="text" name="email2" id="email2" style="width: 150px" >
+	                                <select class="section_email" name="email" id="email" style="width: 130px" onChange="selectEmail(this)">
+	                                    <option value="" selected>선택하세요</option>
+	                                    <option value="naver.com">naver.com</option>
+	                                    <option value="gmail.com">gmail.com</option>
+	                                    <option value="daum.com">daum.com</option>
+	                                    <option value="kakao.com">kakao.com</option>
+	                                    <option value="nate.com">nate.com </option>
+	                                    <option value="hanmail.com">hanmail.com</option>
+	                                    <option value="1">직접입력</option>
+	                                </select>
                             </label>
+
                             <label class="section_label">
                                 <div class="section_title">휴대전화</div>
                                 <select class="section_tel" name="tel2" id="tel2">
@@ -226,93 +266,73 @@
                 </section>
                 
                 <br><br>
+	           <section class="section_box">
+	             <section>
+	                     <div class="order_title">주문상품</div>
+	             </section>
                
-               
-         <%--        <!--상품정보 가져오기 -->
-            	<%
-            		Object obj = session.getAttribute("count");
-            	
-            		if(obj != null){
-						ArrayList<Integer> list = (ArrayList<Integer>)obj;
-						
-						HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-						
-						for(int x : list){
-							if(map.containsKey(x)){
-								map.put(x, map.get(x)+1);
-							}else{
-								map.put(x,1);
-							}
-						}
-							
-            			OrderDAO dao = new OrderDAO();
+    		    <!--상품정보 가져오기 -->
+          	<%
+          	
+           		int sum = 0;
+           		int price = 0;
+           		int dis = 0;
+         		HashMap<Integer, Integer> list = (HashMap<Integer, Integer>)session.getAttribute("cart");
+            		
+          		if(list == null){
+					list = new HashMap<>();
+					
+          		} else {
+          	
+	          		Set<Integer> set=list.keySet();
+	          		Iterator<Integer> it=set.iterator();
+	       			ProductDAO dao = new ProductDAO();
+	       			DecimalFormat df = new DecimalFormat("#원,##0");
+	       			
+	       			while(it.hasNext()){
+	       				int key=it.next();
+	       				ProductVO vo = dao.selectOne(key);
+	       				int cnt = list.get(key);
+	       				
+	       				String pname = vo.getPname();
+	       				String pt = "../"+vo.getPthumbnail();
+	       				
+	       				
+	       				if(pname.length()>25){
+	       					pname = pname.substring(0,25)+"...";
+	       				}
             			
-            			Set<Integer> set = map.keySet();
-            			
-            			Iterator<Integer> it = set.iterator();
-            			
-            			while(it.hasNext()){
-            				int key = it.next();
-            				
-            				ProductVO vo = dao.selectOne(key);
-            				
-            				int cnt = map.get(key);
-            				String pt = "../"+vo.getP_THUMBNAIL();
-           		%>  --%>
-           		
-           		
-                
-                <section class="section_box">
-                    <section>
-                            <div class="order_title"></div>
-                    </section>
+	       				/* 할인후 총상품금액 */
+	       				sum += cnt*(Math.round(vo.getPprice()*(1-vo.getPdiscount()*0.01)));
+	       				
+	       				/* 원가 총상품금액  */
+	       				price += cnt*(vo.getPprice());
+	       				
+        	%>  
+        	
+             
                     <div>
                         <section>
+                        <div>
+                        	<div class = "section_list" style="display: flex">
+                            	<div style="display: inline-block;">
+                              		<picture><img src="<%= pt %>" alt="" style="width: 200px", "height= 200px"></picture>
+                              	</div>
                             <div>
-                                <div>
-                                    <div>(주)yomozomo</div>
-                                    <div>
-                                        <span>배송비</span>
-                                        0원
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <div>
-                                    <picture>
-                                        <img src="" alt="">
-                                    </picture>
-
-                                    <div>
-                                        <div>
-                                        이름
-                                        </div>
-                                        <ul>
-                                            <li>상품옵션</li>
-                                        </ul>
-                                    </div>
-
-                                    <div>
-                                      <%--   <p class = "del"><%= vo.getP_PRICE() %> / <%= vo.getP_DISCOUNT() %>%할인</p>
-										<p>할인가 : <%= Math.round(vo.getP_PRICE()*(1-vo.getP_DISCOUNT()*0.01)) %></p>
-                                        <div class="header__divider"></div>
-                                        <span><%= cnt%></span> --%>
-                                    </div>
-
-                                </div>
-                            </div>
+	                            <div class="section_pname">상품명 : <%= pname%> </div>
+								<div class="section_pname">할인가 : <%= df.format(Math.round(vo.getPprice()*(1-vo.getPdiscount()*0.01))) %></div>
+								<div class="section_pname">수량 : <%= cnt%></div>
+								<div class="section_pname"><strong>총상품 금액 : <%= df.format(cnt*(Math.round(vo.getPprice()*(1-vo.getPdiscount()*0.01)))) %></strong></div>
+                           	</div>
+                        </div>
                         </section>
 
                     </div>
                 </section>
                 
-             		<%--  <% 
-            			}
-            		%>	 --%>
-            		
-            		
-            		
+		             	<% 
+		            		}
+		            	%>	
             		
                 <br><br>
                 
@@ -338,25 +358,28 @@
                             <h2 class=""><strong>결제금액</strong></h2>
                             <div class="order_price">
                                 <span class="">총 상품 금액</span>
-                                <span class="">8,900원</span>
+                                <span class=""><%= df.format(price)%></span>
                             </div>
                             <div class="order_price">
-                                <span class="">배송비</span>
-                                <span class="">0원</span>
-                            </div>
-                            <div class="order_price">
-                                <span class="">쿠폰 사용</span>
-                                <span class="">0원</span>
+                                <span class="">할인금액</span>
+                                <span class=""><%= df.format(price-sum) %></span>
                             </div>
                             <div class="order_price">
                                 <span class="">포인트 사용</span>
                                 <span class="">0원</span>
                             </div>
+                            <div class="order_price">
+                                <span class="">배송비</span>
+                                <span class="">무료</span>
+                            </div>
                             <div class="final_price">
                                 <span class="">최종 결제 금액</span>
-                                <span class="order_price2"><strong>0원</strong></span>
+                                <span class="order_price2"><strong><%= df.format(sum)%></strong></span>
                             </div>
                         </div>
+          	<%
+          		}
+			%>
 
                         <div>
                             <div class="checkbox_2">
@@ -379,14 +402,17 @@
                 </div>
 
             </div>
-
+            
             <div>
                 <br>
                	<button class="" type="submit" id="btn">원 결제하기</button>
             </div>
         </div>
         <!-- main end -->
-
+		
+		<% 	
+		}
+		%>
         
         <!-- footer -->
      	<%@ include file="/source/footer.jsp" %>
