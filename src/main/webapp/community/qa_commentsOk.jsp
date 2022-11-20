@@ -1,8 +1,7 @@
-
+<%@page import="java.io.PrintWriter"%>
 <%@page import="kr.co.yomozomo.vo.QacommentsVO"%>
 <%@page import="kr.co.yomozomo.dao.QacommentsDAO"%>
-<%@page import="kr.co.yomozomo.vo.CommentsVO"%>
-<%@page import="kr.co.yomozomo.dao.CommentsDAO"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -15,11 +14,8 @@
 	String num2 = request.getParameter("qab_num");
 	String contents = request.getParameter("contents");
 	
-
 	
-	
-	
-	if(contents!=null){
+	if(contents!=""){
 		
 		int m_num = Integer.parseInt(num);
 		int qab_num = Integer.parseInt(num2);
@@ -40,6 +36,14 @@
 		
 		// 5. list.jsp 로 리다이렉트
 		response.sendRedirect("qa_detail.jsp?qab_num="+qab_num);
+	
+	}else{
+		
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('댓글을 작성해 주세요')");
+		script.println("history.back()");
+		script.println("</script>");
 	}
 	
 	

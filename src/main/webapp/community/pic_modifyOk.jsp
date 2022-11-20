@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@page import="kr.co.yomozomo.vo.BoardVO"%>
 <%@page import="kr.co.yomozomo.dao.BoardDAO"%>
 <%@page import="java.io.File" %>
@@ -29,14 +30,14 @@
 	
 	String realf = mr.getFilesystemName("filename"); 
 	
-	if(no != null ){
+	String writer = mr.getParameter("writer");
+	String title = mr.getParameter("title");
+	String contents = mr.getParameter("contents");
+	
+	if(title != null && contents != null && f != null){
 		
 		int b_num = Integer.parseInt(no);
-		
-		String writer = mr.getParameter("writer");
-		String title = mr.getParameter("title");
-		String contents = mr.getParameter("contents");
-		
+				
 		int m_num = Integer.parseInt(writer);
 		
 		BoardDAO dao = new BoardDAO();
@@ -45,15 +46,39 @@
 		
 		vo.setB_NUM(b_num);
 		vo.setB_CONTENTS(contents);
-		vo.setB_IMAGE("../yomozomo_test/upload/"+f);
+		vo.setB_IMAGE("../upload/"+f);
 		vo.setB_TITLE(title);
 		
 		
 		dao.updateOne(vo);
 		
-		/* out.println(vo); */
+		response.sendRedirect("pic.jsp");
+	
+	}else if(title == null){
+		
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('제목을 작성해 주세요')");
+		script.println("history.back()");
+		script.println("</script>");
+		
+	}else if(contents == null){
+		
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('내용을 작성해 주세요')");
+		script.println("history.back()");
+		script.println("</script>");
+		
+	}else if(f == null){
+		
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('사진을 올려 주세요')");
+		script.println("history.back()");
+		script.println("</script>");
+		
 	}
-	response.sendRedirect("pic.jsp");
 
 
 

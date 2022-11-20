@@ -115,15 +115,15 @@
 			</tr>
 			<tr>
 				<td colspan="3"  style="text-align: center;">
-				<img src="<%=vo.getQAB_IMAGE() %>" alt="" class="qadetail_img" /><br />
-				<%=vo.getQAB_CONTENTS() %>
+					<img src="<%=vo.getQAB_IMAGE() %>" alt="" class="qadetail_img" /><br />
+					<%=vo.getQAB_CONTENTS() %>
 				</td>
 			</tr>
 			</table>		
 			<table class="table table-bordered" style="border: transparent" >
 			<tr>
 				<td colspan="3">					
-					<a href="qa.jsp"><input type="button" value="목록" class="btn btn-success"/></a>
+					<a href="qa.jsp"><input type="button" value="목록" class="btn btn-outline-secondary"/></a>
 				<%
 		
 			
@@ -134,8 +134,8 @@
 				if(log.getM_NUM() == vo.getM_NUM()){
 				
 				%>				
-					<a href="qa_modify.jsp?qab_num=<%=vo.getQAB_NUM()%>"><input type="button" value="수정" class="btn btn-primary"/></a>
-					<a href="qa_deleteOk.jsp?qab_num=<%=vo.getQAB_NUM()%>"><input type="button" value="삭제" class="btn btn-danger"/></a> 
+					<a href="qa_modify.jsp?qab_num=<%=vo.getQAB_NUM()%>"><input type="button" value="수정" class="btn btn-outline-secondary"/></a>
+					<a href="qa_deleteOk.jsp?qab_num=<%=vo.getQAB_NUM()%>"><input type="button" value="삭제" class="btn btn-outline-secondary"/></a> 
 				
 				</td>
 				
@@ -145,8 +145,7 @@
 		%> 
 			</tr>
 		</table>
-		<jsp:include page="qa_comments.jsp" />
-		
+		<jsp:include page="qa_comments.jsp" />	
 	</div>
 	
 	<% 

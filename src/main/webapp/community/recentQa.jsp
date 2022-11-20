@@ -40,14 +40,8 @@
 	//1페이지당 게시물 수		
 	recoredPerPage = 5;
 
-	//게시물 시작번호와 끝번호 계산
-	//현재 페이지가 1이면
-	//시작 번호 : 1 부터 끝번호 : 10
-
-	//현재 페이지가 2이면
-	//시작번호 11부터 끝번호 20
 	startNo2 = (currentPage - 1) * recoredPerPage + 1;
-	//int endNo = currentPage*recoredPerPage;
+
 	endNo2 = 5;
 
 	//총게시물수
