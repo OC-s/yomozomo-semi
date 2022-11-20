@@ -53,17 +53,17 @@
 			<!-- header bar start-->
 			<div class="header-bar">
 				<div class="header__column">
-					<a href="../main/main.jsp"><span id="yomozomo">yomozomo</span></a>
+					<a href="/yomozomo/main/main.jsp"><span id="yomozomo">yomozomo</span></a>
 				</div>
 				<div class="header__column">
 					<div class="header__community">
-						<a href="../community/community.jsp"><span class="header__text">커뮤니티</span></a>
+						<a href="/yomozomo/community/community.jsp"><span class="header__text">커뮤니티</span></a>
 						<div class="header__divider"></div>
-						<a href="../store?category"><span class="header__text">스토어</span></a>
+						<a href="/yomozomo/store?category"><span class="header__text">스토어</span></a>
 					</div>
 				</div>
 				
-				<form action="../source/search.jsp" role="search" name="frm" onSubmit="return Checkform2()" method="post"  >
+				<form action="/yomozomo/source/search.jsp" role="search" name="frm" onSubmit="return Checkform2()" method="post"  >
 				<div class="header__column">
 					<div class="input-group mb-3">
 						<input type="text" class="form-control" name="txt" id="txt"
@@ -74,12 +74,12 @@
 					</div>
 				</div>
 				<div class="header__column">
-					<a href="../cart/viewCart.jsp"> <span class="material-symbols-outlined">
+					<a href="/yomozomo/cart/viewCart.jsp"> <span class="material-symbols-outlined">
 							shopping_cart </span></a>
 					<div class="header__divider"></div>
-					<a href="../login/logout.jsp"><span class="header__text2"><%= vo.getNAME()%> 로그아웃</span></a>
+					<a href="/yomozomo/login/logout.jsp"><span class="header__text2"><%= vo.getNAME()%> 로그아웃</span></a>
 					<div class="header__divider"></div>
-					<a href="../regist/regist.jsp"><span class="header__text2">회원가입</span></a>
+					<a href="/yomozomo/regist/regist.jsp"><span class="header__text2">회원가입</span></a>
 					<div class="header__divider"></div>
 					<a href="#"><span class="header__text2">고객센터</span></a>
 				</div>
@@ -97,13 +97,13 @@
 		<!-- header bar start-->
 		<div class="header-bar">
 			<div class="header__column">
-				<a href="../main/main.jsp"><span id="yomozomo">yomozomo</span></a>
+				<a href="/yomozomo/main/main.jsp"><span id="yomozomo">yomozomo</span></a>
 			</div>
 			<div class="header__column">
 				<div class="header__community">
-					<a href="../community/community.jsp"><span class="header__text">커뮤니티</span></a>
+					<a href="/yomozomo/community/community.jsp"><span class="header__text">커뮤니티</span></a>
 					<div class="header__divider"></div>
-					<a href="../store?category"><span class="header__text">스토어</span></a>
+					<a href="/yomozomo/store?category"><span class="header__text">스토어</span></a>
 				</div>
 			</div>
 			<form action="../source/search.jsp" role="search"  name="frm" onSubmit="return Checkform2()" method="post"  >
@@ -117,12 +117,12 @@
 					</div>
 				</div>
 			<div class="header__column">
-				<a href="../cart/viewCart.jsp"> <span class="material-symbols-outlined">
+				<a href="/yomozomo/cart/viewCart.jsp"> <span class="material-symbols-outlined">
 						shopping_cart </span></a>
 				<div class="header__divider"></div>
-				<a href="../login/login.jsp"><span class="header__text2">로그인</span></a>
+				<a href="/yomozomo/login/login.jsp"><span class="header__text2">로그인</span></a>
 				<div class="header__divider"></div>
-				<a href="../regist/regist.jsp"><span class="header__text2">회원가입</span></a>
+				<a href="/yomozomo/regist/regist.jsp"><span class="header__text2">회원가입</span></a>
 				<div class="header__divider"></div>
 				<a href="#"><span class="header__text2">고객센터</span></a>
 			</div>

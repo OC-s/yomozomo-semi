@@ -85,9 +85,10 @@
 
 </head>
 <body>
-	
+<%@include file="/source/header.jsp" %>
+	<!-- 
 	<header class="header">
-		<!-- header bar start-->
+		header bar start
 		<div class="header-bar">
 			<div class="header__column">
 				<a href="main/main.jsp"><span id="yomozomo">Yomozomo</span></a>
@@ -118,7 +119,7 @@
 				<a href="#"><span class="header__text">고객센터</span></a>
 			</div>
 		</div>
-	</header>
+	</header> -->
 	<nav>
 		<div>
 			<form action="store?category=" method="get">
@@ -266,46 +267,43 @@
 	<div class="review">
 		<div class="review__header">
 			<div class="review__text"><span>구매후기</span></div>
-			<a href="/yomozomo/product/review?id=${product.num}"><button class="review__btn-more">더보기 ></button></a>
+			<a href="/yomozomo/product/review?id=${product.num}"><button class="review__btn-more">리뷰작성 ></button></a>
 		</div>
 		<div class="review__scope">
         <div class="review__scope__column">
-          <div class="review__rating">4.5</div>
+          <div class="review__rating"><fmt:formatNumber value="${star}" pattern=".0"/></div>
           <div class="wrap-star">
             <div class="star-rating">
-              <span style="width: 30%"></span>
+              <span style="width: ${star*20}%"></span>
             </div>
           </div>
         </div>
-
+		
         <div class="review__scope__column">
           <div>
             <span>5점</span
-            ><progress value="89.2" min="0" max="100"></progress>89.2%
+            ><progress value="${count[0]/sum*100}" min="0" max="100"></progress><fmt:formatNumber value="${count[0]/sum*100}" pattern=".0"/>%
           </div>
           <div>
             <span>4점</span
-            ><progress value="10" min="0" max="100"></progress>10%
+            ><progress value="${count[1]/sum*100}" min="0" max="100"></progress><fmt:formatNumber value="${count[1]/sum*100}" pattern=".0"/>%
           </div>
           <div>
             <span>3점</span
-            ><progress value="0.8" min="0" max="100"></progress>0.8%
+            ><progress value="${count[2]/sum*100}" min="0" max="100"></progress><fmt:formatNumber value="${count[2]/sum*100}" pattern=".0"/>%
           </div>
           <div>
-            <span>2점</span><progress value="0" min="0" max="100"></progress>0%
+            <span>2점</span><progress value="${count[3]/sum*100}" min="0" max="100"></progress><fmt:formatNumber value="${count[3]/sum*100}" pattern=".0"/>%
           </div>
           <div>
-            <span>1점</span><progress value="0" min="0" max="100"></progress>0%
+            <span>1점</span><progress value="${count[4]/sum*100}" min="0" max="100"></progress><fmt:formatNumber value="${count[4]/sum*100}" pattern=".0"/>%
           </div>
         </div>
       </div>
 	  <div class="review__images">
-        <img class="review__image" src="image/review/review1.jpg" alt="" />
-        <img class="review__image" src="image/review/review2.jpg" alt="" />
-        <img class="review__image" src="image/review/review3.jpg" alt="" />
-        <img class="review__image" src="image/review/review4.jpg" alt="" />
-        <img class="review__image" src="image/review/review5.jpg" alt="" />
-        <img class="review__image" src="image/review/review6.jpg" alt="" />
+	  	<c:forEach var="review" items="${review}" begin="0" end="6">
+        <img class="review__image" src="${pageContext.request.contextPath}/upload/${review.image}" />
+       	</c:forEach>
       </div>
 		
       <div class="qna__main">

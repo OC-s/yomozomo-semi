@@ -84,8 +84,9 @@
     </style>
   </head>
   <body class="body">
-    <header class="header">
-      <!-- header bar start-->
+  <%@include file="/source/header.jsp" %>
+    <!-- <header class="header">
+      header bar start
       <div class="header-bar">
         <div class="header__column">
           <a href="/yomozomo/main/main.jsp"><span id="yomozomo">Yomozomo</span></a>
@@ -126,7 +127,9 @@
           <a href="#"><span class="header__text">고객센터</span></a>
         </div>
       </div>
-    </header>
+    </header> -->
+    
+    
     <!-- header bar end-->
     <div class="category">
       홈 > ${product.category} > ${product.name} > 구매후기
@@ -225,7 +228,7 @@
     <div>
     	<div>${review.scope}</div>
     	<div>${review.contents}</div>
-    	<img src="${pageContext.request.contextPath}/upload/${review.image}" alt="" />
+    	<img src="${pageContext.request.contextPath}/upload/${review.image}" />
     </div>
     </c:forEach>
 

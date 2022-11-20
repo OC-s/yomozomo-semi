@@ -94,4 +94,50 @@ public class ReviewService {
 		}
 		return list;
 	}
+	public float getRatingAvg(int id) {
+		float result = 0;
+		try {
+			String sql = "SELECT AVG(R_SCOPE) AVG FROM REVIEW WHERE P_NUM =? ";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con =DriverManager.getConnection(url,user,passWord);
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, id);
+			ResultSet rs = st.executeQuery();
+			if(rs.next()) {
+				result = rs.getFloat("AVG");
+			}
+			rs.close();
+			st.close();
+			con.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+		
+	}
+	public List<Integer> getRatingCount(int id){
+		List<Integer> count = new ArrayList<Integer>();
+		int cnt =0;
+		try {
+			String sql = "SELECT COUNT(R_SCOPE) C FROM REVIEW WHERE P_NUM =? "
+					+ " GROUP BY R_SCOPE "
+					+ " ORDER BY R_SCOPE DESC ";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con =DriverManager.getConnection(url,user,passWord);
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, id);
+			ResultSet rs = st.executeQuery();
+			while(rs.next()) {
+				cnt = rs.getInt("C");
+				count.add(cnt);
+			}
+			rs.close();
+			st.close();
+			con.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+		
+	}
 }
