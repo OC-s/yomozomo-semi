@@ -21,6 +21,10 @@
 		console.log("이미지 출처: 고양이, 고양이, 동물 https://.pngtree.com/freepng/고양이--고양이--동물_6736820.html?share=1");
 		
 	});
+	
+	function delete(){
+		location.href="deleteOne.jsp";
+	}
 </script>
 <style>
 div#maindiv1{
@@ -59,11 +63,15 @@ div#totalprice{
 }
 span#tp{
 	position: relative;
-	right: 60px;
+	right: 85px;
 }
 span#tpmsg{
 	position: relative;
-	right: 120px;
+	right: 160px;
+}
+div#orderBtn{
+	position: absolute;
+	right: 175px;
 }
 </style>
 <link rel="stylesheet" href="../css/order2.css" />
@@ -78,6 +86,7 @@ span#tpmsg{
 	
 	if(obj1!=null){
 	%>
+<form action="../order/order.jsp">
 <div id="maindiv1">
 	<div id="table">
 	<table class="table">
@@ -87,7 +96,7 @@ span#tpmsg{
       			<th scope="col">상품명</th>
       			<th scope="col">가격</th>
       			<th scope="col">수량</th>
-      			<th scope="col">총 가격</th>
+      			<th scope="col">총 가격</th> 						
     		</tr>
   		</thead>
 		<tbody class="table-group-divider">
@@ -123,7 +132,7 @@ span#tpmsg{
 			<span id="tpmsg">
 				합계
 			</span>
-			<span id="tp">
+			<span name="totalPrice" id="tp">
 				<%= df.format(totalSum)%>
 			</span>
 		</td>
@@ -131,10 +140,17 @@ span#tpmsg{
   	</tbody>
 </table>
 </div>
-	<div id="orderBtn">
-		<a href="../order/order.jsp"><button type="button" class="btn btn-primary">결제하기</button></a>
-	</div>
+	<span id="shoppingBtn">
+		<a href="/yomozomo/store?category"><button type="button" class="btn btn-secondary">쇼핑 계속하기</button></a>
+	</span>
+	<span id="cancelBtn">
+		<a href="clearCart.jsp"><button type="button" class="btn btn-danger">장바구니 비우기</button></a>
+	</span>
+	<span id="orderBtn">
+		<a href="../order/order.jsp"><button type="submit" class="btn btn-primary">결제하기</button></a>
+	</span>
 </div>
+</form>
 	<%
 	}else{
 	%>
@@ -146,7 +162,7 @@ span#tpmsg{
 			장바구니에 상품이 없습니다.
 		</div>
 		<div id="btn">
-			<a href="../store.jsp"><button type="button" class="btn btn-info">쇼핑하러 가기</button></a>
+			<a href="/yomozomo/store?category"><button type="button" class="btn btn-info">쇼핑하러 가기</button></a>
 		</div>
 	</div>
 	<%

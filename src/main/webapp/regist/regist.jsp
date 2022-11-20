@@ -349,7 +349,7 @@ div#button{
 	</div>
 	<div id="button">
 		<button type="submit" class="btn btn-primary">회원가입하기</button>
-		<button type="button" class="btn btn-secondary">취소하기</button>
+		<a href="../main/main.jsp"><button type="button" class="btn btn-secondary">취소하기</button></a>
 	</div>
 </form>
 

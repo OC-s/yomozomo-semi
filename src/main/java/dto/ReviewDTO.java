@@ -7,14 +7,18 @@ public class ReviewDTO {
 	private int scope;
 	private String image;
 	private String contents;
+	private int mnum;
 	public ReviewDTO() {}
-	public ReviewDTO(Date regdate, int scope, String image, String contents) {
-		super();
+	
+	public ReviewDTO(Date regdate, int scope, String image, String contents, int mnum) {
+
 		this.regdate = regdate;
 		this.scope = scope;
 		this.image = image;
 		this.contents = contents;
+		this.mnum = mnum;
 	}
+
 	public Date getRegdate() {
 		return regdate;
 	}
@@ -39,5 +43,12 @@ public class ReviewDTO {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
+	public int getMnum() {
+		return mnum;
+	}
+	public void setMnum(int mnum) {
+		this.mnum = mnum;
+	}
+	
 	
 }
