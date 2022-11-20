@@ -70,12 +70,13 @@ span#tpmsg{
 <link rel="stylesheet" href="../css/footer.css" />
 </head>
 <body>
-<jsp:include page="../layout/header.html"></jsp:include>
+	<%@include file="/source/header.jsp" %>
+
 	<%
 	//현재 세션에서 cart의 속성 가져오기
-	Object obj=session.getAttribute("cart");
+	Object obj1=session.getAttribute("cart");
 	
-	if(obj!=null){
+	if(obj1!=null){
 	%>
 <div id="maindiv1">
 	<div id="table">
@@ -91,14 +92,14 @@ span#tpmsg{
   		</thead>
 		<tbody class="table-group-divider">
 	<%
-		HashMap<Integer, Integer> list= (HashMap<Integer, Integer>)obj;
+		HashMap<Integer, Integer> list= (HashMap<Integer, Integer>)obj1;
 		
 		
 		ProductDAO dao=new ProductDAO();
 		
 		Set<Integer> set=list.keySet();
 		Iterator<Integer> it=set.iterator();
-		int totalSum = 0, total = 0;
+		int totalSum = 0;
 		DecimalFormat df = new DecimalFormat("￦#,##0");
 		
 		while(it.hasNext()){
