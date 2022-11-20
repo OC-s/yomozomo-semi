@@ -47,7 +47,7 @@
 			
 			
 	%>
-	<form action="qa_modifyOk.jsp" method="post" enctype="multipart/form-data">
+	<form action="qa_modifyOk.jsp" method="post" >
 		<div class="container">
 			<table class="table table-bordered table-striped" id="qa_modify">
 				<tr>
@@ -70,10 +70,6 @@
 						<textarea id="contents" rows="20" cols="80" name="contents"><%=vo.getQAB_CONTENTS() %></textarea>
 					</td>
 				</tr>
-				<tr>
-				<th>첨부파일</th>
-				<td><input type="file" name="filename" id="" /></td>
-			   </tr>
 				<tr>
 				<td colspan="6">
 					<input type="submit" value="수정완료" class="btn btn-outline-secondary" />

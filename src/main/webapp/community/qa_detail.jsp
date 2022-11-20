@@ -21,53 +21,21 @@
 <title>Insert title here</title>
 <style>
 	
-	.detail_img{
+	.qadetail_img{
 		width: 300px;
 		height: 400px;
 		margin-left: 25px;
 		margin-top: 20px;
-		margin-bottom: 50px;
-
-	}
-	.navbar_body{
-		padding-top:30px;;
-		color: #2F3438;
-		font-size: 20px;
- 		font-weight: bold;
-		background-color:#f8f9fa;
+		margin-bottom: 20px;
 	}
 	.qadetail_contain{
 		position:relative;
 		top:150px;
 		width: 1000px;
 		margin: auto;
-	}
-	.navbar_body > p{
-		text-align: center;
-	}
-	.detail_ul1{
-		list-style : none;
-	}
-	.detail_ul2{
-		margin-top:10px;
-		list-style : none;
-		font-weight: bold;
-	}
-	.detail_ul2>li{
-		float: left;
-		margin-right: 50px;
-	}
-	.detail_div2{
-		position: relative;
-		top: 40px;
-		border-radius: 20px 20px 20px 20px;
-		padding-bottom: 100px;
-	}
-	.detail_div3{
-		position: relative;
-		left: 80px;
-		border-radius: 20px 20px 20px 20px;
-	}
+		color:#2F3438;
+	}	
+	
 
 </style>
 </head>
@@ -109,14 +77,16 @@
 				<th colspan="3" style="text-align: center;" ><h3><%=vo.getQAB_TITLE() %></h3></th>
 			</tr>
 			<tr>
-				<td style="text-align: left; font-weight: bold;"><%= vo.getNICKNAME() %></td>
-				<td style="text-align: right;"><%= vo.getQAB_REGDATE() %></td>
-								
+				<td style="text-align: left; font-weight: bold;"><%= vo.getNICKNAME() %>님</td>
+				<td style="text-align: right; font-size: 12px">&#128065;<%=vo.getQAB_HIT()%></td>					
+			</tr>
+			<tr>
+				<td colspan="2" style="text-align: right; font-size: 12px; border-bottom:1px solid transparent;"><%=vo.getQAB_REGDATE()%></td>
 			</tr>
 			<tr>
 				<td colspan="3"  style="text-align: center;">
-					<img src="<%=vo.getQAB_IMAGE() %>" alt="" class="qadetail_img" /><br />
-					<%=vo.getQAB_CONTENTS() %>
+					
+					<%=vo.getQAB_CONTENTS() %> <br /><br /><br />
 				</td>
 			</tr>
 			</table>		

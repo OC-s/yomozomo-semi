@@ -122,7 +122,6 @@
 			</tr>
 			<tr>
 				<td colspan="3" style="text-align: center; word-break:break-all;">
-					<img src="<%=vo.getQAB_IMAGE()%>" alt="" class="qadetail_img" /><br /> 
 					<%=vo.getQAB_CONTENTS()%>
 				</td>
 			</tr>

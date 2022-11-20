@@ -142,7 +142,7 @@
 		<table class="table table-bordered" style="position: relative; top:5px; border: transparent" >
 			<tr>
 				<td colspan="3"><a href="pic.jsp"><input type="button"
-						value="목록" class="btn btn-success" /></a> 
+						value="목록" class="btn btn-outline-secondary" /></a> 
 		
 		<%
 		
@@ -154,9 +154,9 @@
  					
  		%> 
 				 <a href="pic_modify.jsp?b_num=<%=vo.getB_NUM()%>"><input
-						type="button" value="수정" class="btn btn-primary" /></a> 
+						type="button" value="수정" class="btn btn-outline-secondary" /></a> 
 				<a href="pic_deleteOk.jsp?b_num=<%=vo.getB_NUM()%>"><input
-						type="button" value="삭제" class="btn btn-danger" /></a>
+						type="button" value="삭제" class="btn btn-outline-secondary" /></a>
 						
 				</td>
 
