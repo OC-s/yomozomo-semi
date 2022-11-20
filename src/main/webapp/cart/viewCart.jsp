@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="vo.ProductVO"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Set"%>
@@ -19,31 +20,12 @@
 	$(function(){
 		console.log("이미지 출처: 고양이, 고양이, 동물 https://.pngtree.com/freepng/고양이--고양이--동물_6736820.html?share=1");
 		
-		var cntnum=parseInt($("#cnt_num").val());
-		var stock=parseInt($("#stock").val());
-		$("#minus").on("click", function(){
-			if(cntnum>1){
-				cntnum-=1;
-				$("#cnt_num").val(cntnum);
-			}else{
-				alert("더 이상 낮출 수 없습니다.");
-			}
-		});
-		
-		$("#plus").on("click", function(){
-			if(stock>cntnum){
-				cntnum+=1;
-				$("#cnt_num").val(cntnum);
-			}else{
-				alert("더 이상 늘릴 수 없습니다.");
-			}
-		});
 	});
 </script>
 <style>
 div#maindiv1{
 	position: relative;
-	top: 110px;
+	top: 50px;
 	padding: 100px;
 }
 div#maindiv2{
@@ -63,8 +45,25 @@ div#footer{
 	position: relative;
 	top: 150px;
 }
-div#table{
-	width: 800px;
+
+div#totalprice{
+	border: 1px solid #dddddd;
+	position: relative;
+	left: 900px;
+	width: 400px;
+	height: 200px;
+	border-radius: 10px;
+}
+#totalprice{
+	text-align: right;
+}
+span#tp{
+	position: relative;
+	right: 60px;
+}
+span#tpmsg{
+	position: relative;
+	right: 120px;
 }
 </style>
 <link rel="stylesheet" href="../css/order2.css" />
@@ -83,7 +82,6 @@ div#table{
 	<table class="table">
   		<thead>
     		<tr>
-      			<th scope="col">선택</th>
       			<th scope="col">상품이미지</th>
       			<th scope="col">상품명</th>
       			<th scope="col">가격</th>
@@ -100,41 +98,42 @@ div#table{
 		
 		Set<Integer> set=list.keySet();
 		Iterator<Integer> it=set.iterator();
+		int totalSum = 0, total = 0;
+		DecimalFormat df = new DecimalFormat("￦#,##0");
 		
 		while(it.hasNext()){
 			int key=it.next();
 			ProductVO vo=dao.selectOne(key);
 			int cnt=list.get(key);
-
 	%>
     	<tr>
-      		<td scope="row">
-      			<div class="form-check">
-  					<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-  					<label class="form-check-label" for="flexCheckChecked"></label>
-				</div>
-      		</td>
       		<td><div id="product_img"><img id="pimage" src="../<%=vo.getPthumbnail() %>" alt="" /></div></td>
       		<td><div id="product_name"><%=vo.getPname() %></div></td>
-      		<td><div id="product_price"><%=vo.getPprice() %></div></td>
+      		<td><div id="product_price"><%=df.format(vo.getPprice()) %></div></td>
       		<td><div id="product_cnt"><%=cnt %></div></td>
-      		<td><div id="product_tprice"><%=cnt*(vo.getPprice()) %></div></td>
+      		<td><div id="product_tprice"><%=df.format(cnt*(vo.getPprice())) %></div></td>
     	</tr>
 	<%
+		totalSum += cnt*(vo.getPprice());
 		}
 	%>
 	<tr>
-		<td colspan="6">
-			<div id="orderBtn">
-				<a href="../order/order.jsp"><button type="button" class="btn btn-primary">결제하기</button></a>
-			</div>
+		<td colspan="5" id="totalprice" >
+			<span id="tpmsg">
+				합계
+			</span>
+			<span id="tp">
+				<%= df.format(totalSum)%>
+			</span>
 		</td>
 	</tr>
   	</tbody>
 </table>
 </div>
+	<div id="orderBtn">
+		<a href="../order/order.jsp"><button type="button" class="btn btn-primary">결제하기</button></a>
+	</div>
 </div>
-	
 	<%
 	}else{
 	%>
@@ -146,7 +145,7 @@ div#table{
 			장바구니에 상품이 없습니다.
 		</div>
 		<div id="btn">
-			<a href="store.jsp"><button type="button" class="btn btn-info">쇼핑하러 가기</button></a>
+			<a href="../store.jsp"><button type="button" class="btn btn-info">쇼핑하러 가기</button></a>
 		</div>
 	</div>
 	<%
