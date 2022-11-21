@@ -17,6 +17,10 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
 <script type="text/javascript" src="../js/jquery.cookie.js"></script>
 <title>Insert title here</title>
 
@@ -67,6 +71,7 @@
 
 
 </style>
+<link rel="stylesheet" href="../css/order2.css" />
 </head>
 <body>
 	
@@ -138,7 +143,7 @@
 	/* Object obj = session.getAttribute("user"); */
 	%>
 		
-	<jsp:include page="commu_header.jsp"/>
+	<jsp:include page="/source/header.jsp"/>
 	<jsp:include page="commuNav.jsp"/>
 	<jsp:include page="pic_Nav.jsp"/>
  	
