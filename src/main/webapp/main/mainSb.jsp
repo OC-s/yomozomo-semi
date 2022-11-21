@@ -33,6 +33,12 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     
     <link rel="stylesheet" href="../css/mainSb.css"/>
+    <style type="text/css">
+    a{
+    text-decoration: none;
+    color: black;
+	}
+    </style>
     
   </head>
 

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>YOMOZOMO</title>
-<link rel="stylesheet" href="../css/footer.css?after" />
+<link rel="stylesheet" href="../css/footer.css" />
 </head>
  <body>
       <div id="footer">
