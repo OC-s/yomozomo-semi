@@ -69,9 +69,10 @@ main {
 							<div class="product__name">${p.name}</div>
 						</div>
 						<div>
+							<c:set var="price" value="${p.price*(1-p.discount/100)}" />
 							<span class="discount__rate">${p.discount}%</span> <span><fmt:formatNumber
 									type="number" pattern="###,###,###,###,###,###"
-									value="${p.price}" />원</span>
+									value="${price}" />원</span>
 						</div>
 						<div>
 							
