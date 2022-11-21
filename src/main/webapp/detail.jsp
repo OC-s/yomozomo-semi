@@ -9,6 +9,10 @@
 <%
 	ReviewService service = new ReviewService();
 	request.setAttribute("s", service);
+	
+	HttpSession sess = request.getSession();
+	int userId = (int) sess.getAttribute("userNum");
+	System.out.println(userId);
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -330,9 +334,12 @@
           <div class="review__divider">|</div>
           <div class="review__date">${review.regdate}</div>
         </div>
-        <div class="review__column">${s.getUserId(review.mnum)}</div>
+        <c:set var="v" value="<%=userId %>"></c:set>
+
+        <div class="review__column" id="nickname">${s.getUserId(v)}</div>
+        <div class="review__column"></div>
         <div class="review__column">
-          <div class="review__contents">${review.contents}</div>
+          <div class="review__contents" id="contents">${review.contents}</div>
         </div>
       </div>
  
