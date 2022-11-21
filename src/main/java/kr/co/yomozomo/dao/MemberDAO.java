@@ -145,6 +145,42 @@ public class MemberDAO {
 		}
 		return vo;
 	}
+	
+	// 회원찾기
+		public MemberVO searchOne(String NAME, String PHONE ) {
+			// 4.sql문
+			sb.setLength(0);
+			sb.append("SELECT * FROM MEMBER WHERE NAME = ? ");
+			sb.append("AND PHONE = ? ");
+			MemberVO vo = null;
+
+			try {
+				// 5.문장객체 생성
+				pstmt = conn.prepareStatement(sb.toString());
+				pstmt.setString(1, NAME);
+				pstmt.setString(2, PHONE);
+				// 6.실행
+				rs = pstmt.executeQuery();
+				// 7.레코드별 로직 처리
+				while (rs.next()) {
+					String ADDRESS = rs.getString("ADDRESS");
+					String ADDRESSDETAIL = rs.getString("ADDRESSDETAIL");
+					String EMAIL = rs.getString("EMAIL");
+					int M_NUM = rs.getInt("M_NUM");
+					String ID = rs.getString("ID");
+					String NICKNAME = rs.getString("NICKNAME");
+					String PASSWORD = rs.getString("PASSWORD");
+					String REGDATE = rs.getString("REGDATE");
+					String ZIPCODE = rs.getString("ZIPCODE");
+					vo = new MemberVO(ADDRESS, ADDRESSDETAIL, EMAIL, ID, M_NUM, NAME, NICKNAME, PASSWORD, PHONE, REGDATE,
+							ZIPCODE);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return vo;
+		}
 
 	public int userNum(String id) {
 		int num = 0;
