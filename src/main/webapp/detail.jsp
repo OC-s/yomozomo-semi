@@ -22,6 +22,94 @@ request.setAttribute("t", s);
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>yomozomo</title>
 <style>
+.violet {
+	border-bottom: 4px solid blueviolet;
+	color: blueviolet;
+}
+
+.information__text a {
+	font-weight: 600;
+}
+
+.review__scope {
+	margin: 0px 40px 20px 40px;
+	height: 200px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	display: flex;
+	justify-content: center;
+}
+
+.review__scope__column {
+	margin: 20px;
+}
+
+.star-rating {
+	width: 304px;
+}
+
+.star-rating, .star-rating span {
+	display: inline-block;
+	height: 55px;
+	overflow: hidden;
+	background: url(image/star.png) no-repeat;
+}
+
+.star-rating span {
+	background-position: left bottom;
+	line-height: 0;
+	vertical-align: top;
+}
+
+.review__scope__column:first-child {
+	display: flex;
+	flex-direction: column;
+}
+
+.review__rating {
+	margin-left: 140px;
+	margin-bottom: 10px;
+	font-weight: 800;
+	font-size: 25px;
+}
+
+.review__scope__column:nth-child(2) {
+	margin-top: 30px;
+}
+
+.review__images {
+	display: flex;
+	margin: 0px 40px;
+	justify-content: flex-start;
+}
+
+.review__image {
+	width: 100%;
+	height: 200px;
+}
+
+.review__main {
+	margin: 0px 40px 0px 40px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-left: none;
+	border-right: none;
+	font-weight: 500;
+}
+
+.review__column:first-child {
+	display: flex;
+}
+
+.review__check, .review__divider {
+	margin-right: 5px;
+}
+
+.review__divider {
+	color: rgba(0, 0, 0, 0.2);
+}
+
+#star {
+	color: #F1C40F;
+}
 
 </style>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -36,7 +124,7 @@ request.setAttribute("t", s);
 <link rel="stylesheet" href="css/nav.css" />
 <link rel="stylesheet" href="css/detail-main.css" />
 <link rel="stylesheet" href="css/detail-footer.css" />
-<link rel="stylesheet" href="css/review.css" />
+
 
 </head>
 <body>
@@ -191,7 +279,6 @@ request.setAttribute("t", s);
 		<div class="review__scope">
 			<div class="review__scope__column">
 				<div class="review__rating">
-
 					<fmt:formatNumber value="${star}" pattern=".0" />
 				</div>
 				<div class="wrap-star">
@@ -340,7 +427,7 @@ request.setAttribute("t", s);
 
 				$("html,body").animate({
 					scrollTop : $(this.hash).offset().top
-				}, 500);
+				}, 0);
 			});
 		});
 	</script>

@@ -58,7 +58,7 @@ main {
 
 
 		<div class="product">
-			<c:forEach var="p" items="${list}">
+			<c:forEach var="p" items="${list}" >
 				
 					<div class="product__column">
 						<div>
