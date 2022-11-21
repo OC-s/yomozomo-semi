@@ -431,7 +431,7 @@
             MemberVO vo2 = (MemberVO)obj2;
             		
             %>
-            <input type="hidden" name="mnum" id="" value="<%= vo2.getM_NUM() %>"/> 
+            <input type="hidden" name="mnum" id="" value="<%= vo2.getM_NUM()%>"/> 
 			<input type="hidden" name="ototal" id="" value="<%= sum%>" />
             
             <% 
