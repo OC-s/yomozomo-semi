@@ -466,9 +466,6 @@
                                 <span class="order_price2" id="total_priceeeee"><strong ><%= df.format(sum)%></strong></span>
                             </div>
                         </div>
-          	<%
-          		}
-			%>
 
                         <div>
                             <div class="checkbox_2">
@@ -496,6 +493,11 @@
                 <br>
                	<button class="" type="submit" id="btn"><strong><%= df.format(sum)%> 결제하기</strong></button>
             </div>
+            
+             <%
+          		}
+			%>
+            
         </div>
         <!-- main end -->
 		

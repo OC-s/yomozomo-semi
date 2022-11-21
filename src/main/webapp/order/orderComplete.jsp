@@ -95,7 +95,7 @@
     		%>      
             </table>
             <div>
-                <a href="../main/main.jsp"><button class="order_btn1">쇼핑 계속하기</button></a>
+                <a href="../store?category"><button class="order_btn1">쇼핑 계속하기</button></a>
                 <a href="#"><button class="order_btn2">주문현황 보기</button></a>
             </div>
         </div>
