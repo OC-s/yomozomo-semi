@@ -108,6 +108,8 @@ request.setAttribute("t", s);
 }
 
 #star {
+	position :relative;
+	bottom : 2px;
 	color: #F1C40F;
 }
 
@@ -148,6 +150,8 @@ request.setAttribute("t", s);
 	</nav>
 
 	<main>
+
+		
 
 		<c:set var="price" value="${product.price*(1-product.discount/100)}" />
 		<div class="product-detail">
@@ -258,8 +262,9 @@ request.setAttribute("t", s);
 			<div class="qna__main">
 				<div class="qna__title">질문</div>
 				<div class="qna__question">${a.title}</div>
+				<div>${a.qcontents}</div>
 				<div class="qna__title--answer">답변</div>
-				<div class="qna__answer">${a.contents}</div>
+				<div class="qna__answer">${a.acontents}</div>
 				<c:if test="${st.index ==2}">
 					<c:set var="loop_flag" value="true" />
 				</c:if>

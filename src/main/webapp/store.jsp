@@ -33,6 +33,11 @@ request.setAttribute("rs", rs);
 main {
 	margin: 30px 180px;
 }
+.star{
+	position :relative;
+	bottom : 2px;
+	color: #F1C40F;
+}
 </style>
 </head>
 <body>
@@ -58,7 +63,8 @@ main {
 
 
 		<div class="product">
-			<c:forEach var="p" items="${list}" >
+			
+			<c:forEach var="p" items="${list}" begin="0" varStatus="st" >
 				
 					<div class="product__column">
 						<div>
@@ -83,7 +89,7 @@ main {
 								 </span>
 						</div>
 					</div>
-
+				
 			</c:forEach>
 		</div>
 

@@ -2,13 +2,32 @@ package dto;
 
 public class AnsQnaDTO {
 	private String title;
-	private String contents;
+	private String qcontents;
+	private String acontents;
 	
 	public AnsQnaDTO() {}
 	
-	public AnsQnaDTO(String title, String contents) {
+	public AnsQnaDTO(String title, String qcontents,String acontents) {
 		this.title = title;
-		this.contents = contents;
+		this.qcontents = qcontents;
+		this.acontents = acontents;
+	}
+
+	
+	public String getQcontents() {
+		return qcontents;
+	}
+
+	public void setQcontents(String qcontents) {
+		this.qcontents = qcontents;
+	}
+
+	public String getAcontents() {
+		return acontents;
+	}
+
+	public void setAcontents(String acontents) {
+		this.acontents = acontents;
 	}
 
 	public String getTitle() {
@@ -17,16 +36,13 @@ public class AnsQnaDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getContents() {
-		return contents;
-	}
-	public void setContents(String contents) {
-		this.contents = contents;
-	}
+
 	@Override
 	public String toString() {
-		return "AnsQnaDTO [title=" + title + ", contents=" + contents + "]";
+		return "AnsQnaDTO [title=" + title + ", Qcontents=" + qcontents + ", Acontents=" + acontents + "]";
 	}
+
+	
 	
 	
 	

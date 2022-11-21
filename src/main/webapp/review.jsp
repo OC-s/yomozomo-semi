@@ -159,7 +159,6 @@
         >
       </fieldset>
           <div class="query-detail__secret">
-            <span>비밀글 체크</span>
             <span>
               <input type="checkbox" name="secret" value="Y"/>
             </span>
