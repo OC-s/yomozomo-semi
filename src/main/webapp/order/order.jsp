@@ -60,7 +60,6 @@
 		}
     </style>
     
-    
     <!-- 주소가져오기 -->
 	<script type="text/javascript">
 		/* daum 주소 가져오기 */
@@ -79,6 +78,8 @@
 		}
 		    
 	</script>
+	
+	<!-- 결제관련 -->
 	<script>
       var IMP = window.IMP; // 생략가능
       IMP.init("imp05666044");
@@ -86,6 +87,7 @@
      
        
     </script>
+	
 	<!-- 체크 -->
 	<script type="text/javascript">
 
@@ -229,7 +231,18 @@
 	    }
 	}
 	</script>
-
+	
+	<!-- 주문취소 -->
+	<script type="text/javascript">
+	function button_event(){
+		  if (confirm("정말 취소하시겠습니까??") == true){    //확인
+		      document.location.href = "../cart/viewCart.jsp";
+		  }else{   //취소
+		      return;
+		  }
+		}
+	
+	</script>
 </head>
 <body>
     <div id="body-wrapper">
@@ -492,6 +505,7 @@
             <div>
                 <br>
                	<button onclick="Checkform()" id="btn"><strong><%= df.format(sum)%> 결제하기</strong></button>
+               	<button onclick="button_event();" style="position:relative; margin-top: 11px; border: none; top:-465px; right:-248px;">주문취소</button>
             </div>
             
              <%
