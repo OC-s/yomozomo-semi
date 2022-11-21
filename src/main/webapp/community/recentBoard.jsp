@@ -173,7 +173,6 @@ $(function(){
 				<div>
 				<a style="text-decoration: none; color:black;" href="pic_detail.jsp?b_num=<%=vo.getB_NUM()%>">
 				<img src=<%=vo.getB_IMAGE() %> alt="" class="recentBoard_img"/>
-				<%=vo.getB_TITLE() %>
 				</a>
 				</div>								
 										
