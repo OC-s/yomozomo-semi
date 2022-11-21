@@ -172,7 +172,15 @@
       </div>
     </div>
 
-  
+    <div class="review__main">
+      <div class="review__column">
+        <div class="RatingStar">
+          <div class="RatingScore">
+            <div class="outer-star"><div class="inner-star"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <c:forEach var="review" items="${review}">
     
     <div>
@@ -207,7 +215,23 @@
         document.getElementsByClassName("body")[0].classList.toggle("black");
       });
       
-
+      /*<![CDATA[*/ 
+      ratings = { RatingScore: 3 };
+      totalRating = 5;
+      table = document.querySelector(".RatingStar");
+      function rateIt() {
+        for (rating in ratings) {
+          ratingPercentage = (ratings[rating] / totalRating) * 100;
+          ratingRounded = Math.round(ratingPercentage / 10) * 10 + "%";
+          console.log(rating);
+          star = table.querySelector('.RatingScore .inner-star');
+          numberRating = table.querySelector('.RatingScore .numberRating');
+          star.style.width = ratingRounded;
+          
+        }
+      }
+      
+      rateIt();
     </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"

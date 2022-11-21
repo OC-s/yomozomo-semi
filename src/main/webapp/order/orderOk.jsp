@@ -13,6 +13,13 @@
 	<%
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
+		
+		String mnum1 = request.getParameter("mnum");
+		int mnum = Integer.parseInt(mnum1);
+		
+		String ototal1 = request.getParameter("ototal");
+		int ototal = Integer.parseInt(ototal1);
+		
 		String dname = request.getParameter("dname");
 		String dname2 = request.getParameter("dname2");
 		String tel = request.getParameter("tel");
@@ -26,6 +33,8 @@
 		OrderDAO dao = new OrderDAO();
 		
 		OrderVO vo = new OrderVO();
+		vo.setM_num(mnum);
+		vo.setO_TOTAL(ototal);
 		vo.setO_ZIPCODE(post);
 		vo.setO_ADDRESS(addrs);
 		vo.setO_ADDRESSDETAIL(addrs2);
