@@ -55,20 +55,22 @@ public class OrderDAO {
 		sb.setLength(0);
 		sb.append("INSERT INTO UserOrder ");
 		sb.append("(M_NUM, O_DATE, O_ZIPCODE, O_ADDRESS, O_ADDRESSDETAIL, O_NAME, O_PHONE, O_STATUS, O_TOTAL, O_EMAIL, O_ADDNAME , O_ADDNAME2 , O_ADDTEL) ");
-		sb.append("VALUES (2,DEFAULT,?,?,?,?,?,DEFAULT,13000,?,?,?,? ) ");
+		sb.append("VALUES (?,DEFAULT,?,?,?,?,?,DEFAULT,?,?,?,?,? ) ");
 		
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
 			
-			pstmt.setString(1, vo.getO_ZIPCODE());
-			pstmt.setString(2, vo.getO_ADDRESS());
-			pstmt.setString(3, vo.getO_ADDRESSDETAIL());
-			pstmt.setString(4, vo.getO_NAME());
-			pstmt.setString(5, vo.getO_PHONE());
-			pstmt.setString(6, vo.getO_EMAIL());
-			pstmt.setString(7, vo.getO_ADDNAME());
-			pstmt.setString(8, vo.getO_ADDNAME2());
-			pstmt.setString(9, vo.getO_ADDTEL());
+			pstmt.setInt(1, vo.getM_num());
+			pstmt.setString(2, vo.getO_ZIPCODE());
+			pstmt.setString(3, vo.getO_ADDRESS());
+			pstmt.setString(4, vo.getO_ADDRESSDETAIL());
+			pstmt.setString(5, vo.getO_NAME());
+			pstmt.setString(6, vo.getO_PHONE());
+			pstmt.setInt(7, vo.getO_TOTAL());
+			pstmt.setString(8, vo.getO_EMAIL());
+			pstmt.setString(9, vo.getO_ADDNAME());
+			pstmt.setString(10, vo.getO_ADDNAME2());
+			pstmt.setString(11, vo.getO_ADDTEL());
 			
 			pstmt.executeUpdate();
 			

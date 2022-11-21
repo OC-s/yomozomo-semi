@@ -1,3 +1,5 @@
+<%@page import="kr.co.yomozomo.vo.OrderVO"%>
+<%@page import="kr.co.yomozomo.dao.OrderDAO"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.Iterator"%>
@@ -308,7 +310,6 @@
 	       				price += cnt*(vo.getPprice());
 	       				
         	%>  
-        	
              
                     <div>
                         <section>
@@ -347,7 +348,19 @@
                     </section>
                 </section>
             </main>
-
+            
+            <!-- mnum / total  -->
+            <%
+            Object obj2 = session.getAttribute("vo");
+            MemberVO vo2 = (MemberVO)obj2;
+            		
+            %>
+            <input type="hidden" name="mnum" id="" value="<%= vo2.getM_NUM() %>" /> 
+			<input type="hidden" name="ototal" id="" value="<%= sum%>" />
+            
+            <% 
+            %>
+            
             <!-- 결제주문관련  -->
             <div class="order">
                 <div class="order_container">
