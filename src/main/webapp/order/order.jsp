@@ -491,7 +491,7 @@
             
             <div>
                 <br>
-               	<button class="" type="submit" id="btn"><strong><%= df.format(sum)%> 결제하기</strong></button>
+               	<button onclick="Checkform()" id="btn"><strong><%= df.format(sum)%> 결제하기</strong></button>
             </div>
             
              <%

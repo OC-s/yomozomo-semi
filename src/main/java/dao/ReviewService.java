@@ -172,7 +172,7 @@ public class ReviewService {
 			st.setInt(1,mnum);
 			ResultSet rs = st.executeQuery();
 			if(rs.next()) {
-				nickName = rs.getString(mnum);
+				nickName = rs.getString("NICKNAME");
 			}
 			rs.close();
 			st.close();
