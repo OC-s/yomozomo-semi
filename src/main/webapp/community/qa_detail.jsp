@@ -86,7 +86,7 @@
 			<tr>
 				<td colspan="3"  style="text-align: center;">
 					
-					<%=vo.getQAB_CONTENTS() %> <br /><br /><br />
+					<p style="width: 500px; position: relative; left: 250px;"><%=vo.getQAB_CONTENTS() %></p> <br /><br /><br />
 				</td>
 			</tr>
 			</table>		

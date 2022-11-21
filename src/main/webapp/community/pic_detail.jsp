@@ -86,7 +86,7 @@
 			<tr>
 				<td colspan="3" class="detail_contents" style="text-align: center; word-break:break-all;">
 					<img src="<%=vo.getB_IMAGE()%>" alt="" class="detail_img" /><br /> 
-						<%=vo.getB_CONTENTS()%> <br /><br /><br />
+						<p style="width: 500px; position: relative; left: 250px;"><%=vo.getB_CONTENTS()%></p> <br /><br /><br />
 				</td>
 			</tr>
 		</table>
