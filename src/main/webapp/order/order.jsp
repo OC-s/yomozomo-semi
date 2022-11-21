@@ -424,6 +424,18 @@
                     </section>
                 </section>
             </main>
+            
+            <!-- mnum / total  -->
+            <%
+            Object obj2 = session.getAttribute("vo");
+            MemberVO vo2 = (MemberVO)obj2;
+            		
+            %>
+            <input type="hidden" name="mnum" id="" value="<%= vo2.getM_NUM() %>" /> 
+			<input type="hidden" name="ototal" id="" value="<%= sum%>" />
+            
+            <% 
+            %>
 
             <!-- 결제주문관련  -->
             <div class="order">
@@ -482,7 +494,7 @@
             
             <div>
                 <br>
-               	<button onclick="Checkform()" id="btn">원 결제하기</button>
+               	<button class="" type="submit" id="btn"><strong><%= df.format(sum)%> 결제하기</strong></button>
             </div>
         </div>
         <!-- main end -->
