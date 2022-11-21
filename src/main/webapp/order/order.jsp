@@ -282,8 +282,9 @@
 					
           		} else {
           	
-	          		Set<Integer> set=list.keySet();
-	          		Iterator<Integer> it=set.iterator();
+	          		Set<Integer> set = list.keySet();
+	          		Iterator<Integer> it = set.iterator();
+	          		
 	       			ProductDAO dao = new ProductDAO();
 	       			DecimalFormat df = new DecimalFormat("#원,##0");
 	       			
@@ -375,10 +376,7 @@
                                 <span class="order_price2"><strong><%= df.format(sum)%></strong></span>
                             </div>
                         </div>
-          	<%
-          		}
-			%>
-
+          	
                         <div>
                             <div class="checkbox_2">
                                 <div>
@@ -403,8 +401,13 @@
             
             <div>
                 <br>
-               	<button class="" type="submit" id="btn">원 결제하기</button>
+               	<button class="" type="submit" id="btn"><strong><%= df.format(sum)%> 결제하기</strong></button>
             </div>
+            
+            <%
+          		}
+			%>
+            
         </div>
         <!-- main end -->
 		
