@@ -14,12 +14,12 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <style>
-	.login_table{
+	.search_table{
 		margin-left:auto;
 		margin-right:auto;
 		margin-top: 30px;		
 	}
-	.login_id,.login_pw{
+	.search_name,.search_phone{
 		width:300px;
 		height:30px;
 		margin-top: 5px;
@@ -27,7 +27,7 @@
 		border-radius:10px;
 		border-color: silver;
 	}	
-	#login_btn1{
+	#search_btn1{
 		width:300px;
 		height:50px;
 		font-size:15px;
@@ -38,12 +38,12 @@
 		color: white;
 		margin-top: 50px;
 	}
-	.login_header{
+	.search_header{
 		text-decoration:none;
 		margin-top: 200px;
 		font-size: 50px;
 	}
-	.login_header>a{
+	.search_header>a{
 		text-decoration:none;
 		color:#0d6efd;
 		font-weight: bold;
@@ -57,28 +57,22 @@
 	<div style="text-align: center;">
 	<div class="container">
 
-		<div class="login_header">
-				<a href="../main/main.jsp"><span id="login_logo">yomozomo</span></a>
+		<div class="search_header">
+				<a href="../main/main.jsp"><span id="search_logo">yomozomo</span></a>
 		</div>
-	<form action="loginOk.jsp" method="post" >
-			<table class="login_table">			
+	<form action="searchOk.jsp" method="post" >
+			<table class="search_table">			
 				<tr>
-					<th><input type="text" class="login_id" name="id" id="id" placeholder="아이디" /></th>
+					<th><input type="text" class="search_name" name="name" id="name" placeholder="이름" /></th>
 				</tr>
 				<tr>
-					<th><input type="password" class="login_pw" name="pw" id="pw" placeholder="비밀번호" /></th>
-				</tr>
-				<tr>
-					<td colspan="2">
-					<input type="submit" value="로그인" id="login_btn1" />
-					</td>
+					<th><input type="text" class="search_phone" name="phone" id="phone" placeholder="전화번호 11자리" /></th>
 				</tr>
 				<tr>
 					<td colspan="2">
-					<a href="search.jsp">아이디를 잃어버리셨나요?</a>ㅣ
-					<a href="../regist/regist.jsp" id="login_btn2">회원가입</a>
+					<input type="submit" value="찾기" id="search_btn1" />
 					</td>
-				</tr>				
+				</tr>								
 			</table>	
 		</form>
 	</div>
