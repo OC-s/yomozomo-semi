@@ -56,9 +56,9 @@
 		%>
            	<div class="s_img">
              	<a href="../community/pic_detail.jsp?b_num=<%= vo.getB_NUM()%>"><img img class="s_img2" src="<%= vo.getB_IMAGE()%>" alt="<%= vo.getB_TITLE()%>" /></a>
-             	<p><%= vo.getB_TITLE() %></p>
-             	<p><span style="font-size: 12px" font ><%= contents%></span></p>
-            </div>
+<%--              	<p><%= vo.getB_TITLE() %></p>
+             	<p><span style="font-size: 12px" font ><%= contents%></span></p> --%>    
+        </div>
 
 		<%
 			}
