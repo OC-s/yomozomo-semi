@@ -22,14 +22,13 @@ public class DetailController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		
-		
+
 		
 		StoreService service = new StoreService();
 		QnaService ansService = new QnaService();
 		ReviewService reService = new ReviewService();
 		
-		
+//		오류, 수정해야함
 		List<ReviewDTO> review = reService.getReview(id);
 		ProductDTO product = service.getProductDetail(id);
 		List<AnsQnaDTO> ans = ansService.getAnswer(id);

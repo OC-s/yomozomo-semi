@@ -25,6 +25,14 @@
         crossorigin="anonymous"
     />
     <script
+    type="text/javascript"
+    src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://code.jquery.com/jquery-1.12.4.min.js"
+  ></script>
+    <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
     crossorigin="anonymous"
@@ -71,9 +79,16 @@
 		}
 		    
 	</script>
-	
+	<script>
+      var IMP = window.IMP; // 생략가능
+      IMP.init("imp05666044");
+      //결제 시스템을 실행시키는 함수
+     
+       
+    </script>
 	<!-- 체크 -->
 	<script type="text/javascript">
+
 	function Checkform(){
 	 	if(dname.value ==""){
 			dname.focus();
@@ -136,7 +151,68 @@
 			alert('개인정보 수집 및 제3자 제공 동의해주세요');
 			return false
 		} 
+		else{
+		 IMP.request_pay(
+		          {
+		        	pg: "html5_inicis",
+		            pay_method: "card",
+		            merchant_uid: "merchant_" + new Date().getTime(),
+		            name: "yomozomo",
+		            amount: Number(document.getElementById("total_price").value),
+		            buyer_email: "jemok9605@naver.cm",
+		            buyer_name: "경제목",
+		            buyer_tel: "01040",
+		            buyer_addr: "adada",
+		            buyer_postcode: "s_zipNo",
+		          },
+		          function (rsp) {
+		            console.log(rsp);
+		            if (rsp.success) {
+		              var msg = "결제가 완료되었습니다.";
+		              msg += "고유ID : " + rsp.imp_uid;
+		              msg += "상점 거래ID : " + rsp.merchant_uid;
+		              msg += "결제 금액 : " + rsp.paid_amount;
+		              msg += "카드 승인번호 : " + rsp.apply_num;
+		 
+		              $.ajax({
+		                url: "/yomozomo/order/orderOok",
+		                type: "get",
+		                data: {
+		                	dname : $("#dname").val(),
+		                    dname2 : $("#dname2").val(),
+		                    tel : $("#tel").val(),
+		                    post : $("#post").val(),
+		                    addrs : $("#addrs").val(),
+		                    addrs2 : $("#addrs2").val(),
+		                    oname : $("#oname").val(),
+		                    email1 : $("#email1").val(),
+		                    email2 : $("#email2").val(),
+		                    email : $("#email").val(),
+		                    tel2 : $("#tel2").val(),
+		                    tel3 : $("#tel3").val(),
+		                    amount:Number(document.getElementById("total_price").value),
+		                },
+
+		                success: function (result) {
+		                  if (result == "y") {
+		                    location.href="/yomozomo/order/orderComplete.jsp"
+		                  } else {
+		                    alert("디비입력실패");
+		                    return false;
+		                  }
+		                },
+		                error: function (a, b, c) {},
+		              });
+		            } else {
+		              var msg = "결제에 실패하였습니다.";
+		              msg += "에러내용 : " + rsp.error_msg;
+		            }
+		            alert(msg);
+		          }
+		        );
+		      }
 	}
+      
 	</script>
 	
 	<script type="text/javascript">
@@ -169,7 +245,7 @@
 			
 		%>
 		
-   		<form action="orderOk.jsp" onSubmit="return Checkform()" method="post">
+   		
         <!-- main -->
         <div id="main">
             <main class="order_maindate">
@@ -286,12 +362,13 @@
 	          		Iterator<Integer> it=set.iterator();
 	       			ProductDAO dao = new ProductDAO();
 	       			DecimalFormat df = new DecimalFormat("#원,##0");
-	       			
+	    
 	       			while(it.hasNext()){
 	       				int key=it.next();
 	       				ProductVO vo = dao.selectOne(key);
 	       				int cnt = list.get(key);
 	       				
+	      
 	       				String pname = vo.getPname();
 	       				String pt = "../"+vo.getPthumbnail();
 	       				
@@ -305,7 +382,7 @@
 	       				
 	       				/* 원가 총상품금액  */
 	       				price += cnt*(vo.getPprice());
-	       				
+	       			
         	%>  
         		
              
@@ -317,6 +394,7 @@
                               		<picture><img src="<%= pt %>" alt="" style="width: 200px", "height= 200px"></picture>
                               	</div>
                             <div>
+                            	
 	                            <div class="section_pname">상품명 : <%= pname%> </div>
 								<div class="section_pname">할인가 : <%= df.format(Math.round(vo.getPprice()*(1-vo.getPdiscount()*0.01))) %></div>
 								<div class="section_pname">수량 : <%= cnt%></div>
@@ -331,7 +409,7 @@
 		             	<% 
 		            		}
 		            	%>	
-            		
+  
                 <br><br>
                 
                 <section class="section_box">
@@ -372,7 +450,8 @@
                             </div>
                             <div class="final_price">
                                 <span class="">최종 결제 금액</span>
-                                <span class="order_price2"><strong><%= df.format(sum)%></strong></span>
+                                <input type="hidden"  id="total_price" value="<%=sum %>"/>
+                                <span class="order_price2" id="total_priceeeee"><strong ><%= df.format(sum)%></strong></span>
                             </div>
                         </div>
           	<%
@@ -403,7 +482,7 @@
             
             <div>
                 <br>
-               	<button class="" type="submit" id="btn">원 결제하기</button>
+               	<button onclick="Checkform()" id="btn">원 결제하기</button>
             </div>
         </div>
         <!-- main end -->

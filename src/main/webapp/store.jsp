@@ -75,8 +75,7 @@
 			<div class="product__column">
 				
 				<div>
-					<a href="detail?id=${list[st.index].num}"><img class="product__thumbnail" src="${list[st.index].thumbnail}" onmouseenter="zoomIn(event)" 
-        onmouseleave="zoomOut(event)"/></a>
+					<a href="detail?id=${list[st.index].num}"><img class="product__thumbnail" src="${list[st.index].thumbnail}" /></a>
 				</div>
 				<div>
 					<div  class="product__name">${list[st.index].name}</div>
@@ -90,8 +89,7 @@
 			</div>
 			<div class="product__column">
 				<div>
-					<a href="detail?id=${list[st.index+1].num}"><img class="product__thumbnail" src="${list[st.index+1].thumbnail}"  onmouseenter="zoomIn(event)" 
-        onmouseleave="zoomOut(event)"/></a>
+					<a href="detail?id=${list[st.index+1].num}"><img class="product__thumbnail" src="${list[st.index+1].thumbnail}"  /></a>
 				</div>
 				<div>
 					<div class="product__name">${list[st.index+1].name}</div>
@@ -120,8 +118,7 @@
 			</div>
 			<div class="product__column">
 				<div>
-					<a href="detail?id=${list[st.index+3].num}"><img class="product__thumbnail" src="${list[st.index+3].thumbnail}" onmouseenter="zoomIn(event)" 
-        onmouseleave="zoomOut(event)"/></a>
+					<a href="detail?id=${list[st.index+3].num}"><img class="product__thumbnail" src="${list[st.index+3].thumbnail}" /></a>
 				</div>
 				<div>
 					<div class="product__name">${list[st.index+3].name}</div>
@@ -140,7 +137,7 @@
 	<script>
 
 
-	function zoomIn(event) {
+/* 	function zoomIn(event) {
 	      event.target.style.transform = "scale(1.05)"; //1.05배 확대
 	      event.target.style.zIndex = 1;
 	      event.target.style.transition = "all 0.5s";// 속도
@@ -150,7 +147,7 @@
 	      event.target.style.transform = "scale(1)";
 	      event.target.style.zIndex = 0;
 	      event.target.style.transition = "all 0.5s";
-	    }
+	    } */
 	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
