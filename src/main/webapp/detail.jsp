@@ -368,10 +368,7 @@
 	<script>
 		let num = Number(document.getElementById("num").value);
 		let totalPrice = Number(document.getElementById("total-price").innerHTML);
-		let price = $
-		{
-			price
-		}
+		let price = ${price};
 
 		const information_btn = $(".information__text");
 		for (let i = 0; i < $(".information__text").length; i++) {

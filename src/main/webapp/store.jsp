@@ -140,21 +140,6 @@
 	<script>
 
 
-<<<<<<< HEAD
-
-=======
-	function zoomIn(event) {
-	      event.target.style.transform = "scale(1.05)"; //1.05배 확대
-	      event.target.style.zIndex = 1;
-	      event.target.style.transition = "all 0.5s";// 속도
-	    }
-	  
-	    function zoomOut(event) {
-	      event.target.style.transform = "scale(1)";
-	      event.target.style.zIndex = 0;
-	      event.target.style.transition = "all 0.5s";
-	    }
->>>>>>> branch 'master' of https://github.com/jemok96/yomozomo.git
 	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
