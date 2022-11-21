@@ -11,6 +11,134 @@
 <head>
 <meta charset="UTF-8">
 <title>YOMOZOMO</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#body-wrapper {
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 330px;
+}
+
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a>span{
+	color: black;
+}
+a>div{
+	color: black;
+}
+
+#yomozomo{
+    font-weight: 800;
+    font-size: 22px;
+}
+
+
+.header{
+    box-sizing: border-box;
+    width: 100%;
+}
+.header-bar {
+    position: fixed;
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    margin-right: 200px;
+    justify-content: center;
+    background-color: wheat;
+    top: 0;
+    border-bottom: 1px solid rgba(82, 82, 82, 0.445);
+    z-index: 100;
+}
+.header__community {
+    display: flex;
+}
+.header__community span,
+.header__column span {
+    margin-right: 10px;
+}
+.header__column{
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+.header__column:first-child a{
+    margin-bottom: 14px;
+}
+.input-group{
+    margin-left: 40px;
+    margin-right: 40px;
+    top: 3px;
+    margin-top: 10px;
+}
+.header__divider{
+    height: 20px;
+    background-color: rgba(0,0,0,0.2);
+    width: 1px;
+    margin-right: 7px; 
+}
+.header__text{
+    font-weight: 800;
+    font-size: 12px;
+}
+.header__text2{
+    font-weight: 800;
+    font-size: 10px;
+}
+
+
+/* --------------------------------------------------------- */
+
+#main{
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin-right: 200px;
+}
+
+
+
+#icon{
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+    margin-bottom: 11px;
+
+}
+
+.icon_div{
+    text-align: center;
+    padding-right: 35px;
+}
+.icon_img>img{
+    width: 90px;
+    height: 77px; 
+}
+
+.s_header{
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+} 
+
+
+</style>
 <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -29,53 +157,8 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
+<script type="text/javascript">
 
-    
-<style>
-@charset "UTF-8";
-
-#yomozomo{
-
-    font-weight: 800;
-    font-size: 22px;
-}
-.header{
-    box-sizing: border-box;
-    width: 100%;
-}
-.header-bar {
-    position: fixed;
-    box-sizing: border-box;
-    display: flex;
-    width: 100%;
-    margin-right: 200px;
-    justify-content: center;
-    background-color: wheat;
-    top: 0;
-    border-bottom: 1px solid rgba(82, 82, 82, 0.445);
-    z-index: 100;
-}
-.header__community {
-
-    display: flex;
-}
-.header__community span,
-.header__column span {
-    margin-right: 10px;
-}
-.header__column{
-	margin-top:10px;
-    display: flex;
-    align-items: center;
-    margin-right: 25px;
-}
-.header__column:first-child a{
-    margin-bottom: 14px;
-}
-
-
-
-</style>
 	
 /* 	$(function(){
 		$("#button-addon2").on("click", function(){
@@ -99,6 +182,8 @@
 		}
 	} 
 </script>
+
+
 
 </head>
 <body>

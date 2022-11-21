@@ -71,7 +71,7 @@
 
 
 </style>
-<link rel="stylesheet" href="../css/order2.css" />
+
 </head>
 <body>
 	
@@ -143,7 +143,7 @@
 	/* Object obj = session.getAttribute("user"); */
 	%>
 		
-	<jsp:include page="/source/header.jsp"/>
+	<jsp:include page="commu_header.jsp"/>
 	<jsp:include page="commuNav.jsp"/>
 	<jsp:include page="pic_Nav.jsp"/>
  	
