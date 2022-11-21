@@ -8,18 +8,17 @@
 
 .product {
 	display: flex;
-	justify-content: space-around;
+	justify-content: flex-start;
+	flex-wrap: wrap;
 	margin: 40px 0px;
+	margin-left: 100px;
 }
-
 .product__column {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	margin:10px;
+	width: 22%;
 }
-
-main {
-	margin: 30px 100px;
+.star{
+	color: #F1C40F;
 }
 
 .product__name {
@@ -34,7 +33,7 @@ main {
 }
 
 .total {
-	margin-left: 60px;
+	margin-left: 110px;
 }
 
 .discount__rate {

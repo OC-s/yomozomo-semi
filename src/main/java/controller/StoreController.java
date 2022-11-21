@@ -24,11 +24,10 @@ public class StoreController extends HttpServlet {
 			cate = "";
 
 		StoreService service = new StoreService();
-		List<ProductDTO> list = service.getProduct(cate);
 		ReviewService serviceReview=new ReviewService();
-
 		
 		
+		List<ProductDTO> list = service.getProduct(cate);		
 		int count = service.getCountProduct(cate);
 
 
