@@ -16,11 +16,13 @@
 	String saveDir = application.getRealPath("/upload");
 	//out.println(saveDir);
 	
+	String realFolder = "C:\\Users\\gkw\\git\\yomozomo\\src\\main\\webapp\\uploadPic";
+	
 	//첨부파일의 최대 크기
 	int maxFileSize = 1024*1024*10;
 	
 	//파라미터값가져오기
-	MultipartRequest mr = new MultipartRequest(request,saveDir,maxFileSize,"UTF-8",new DefaultFileRenamePolicy());
+	MultipartRequest mr = new MultipartRequest(request,realFolder,maxFileSize,"UTF-8",new DefaultFileRenamePolicy());
 	
 	String writer = mr.getParameter("writer");
 	String title = mr.getParameter("title");
@@ -43,7 +45,7 @@
 		vo.setB_TITLE(title);
 		vo.setB_CONTENTS(contents);
 		vo.setM_NUM(m_num);
-		vo.setB_IMAGE("../upload/"+f);
+		vo.setB_IMAGE("/yomozomo/uploadPic/"+f);
 		
 		
 		dao.insertOne(vo);
