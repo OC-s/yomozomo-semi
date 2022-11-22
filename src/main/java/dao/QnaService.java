@@ -134,6 +134,7 @@ public class QnaService {
 		try {
 			String sql = "INSERT INTO QNA(M_NUM, P_NUM,Q_TITLE,Q_REGDATE, "
 					+ " Q_CONTENTS, Q_IMAGE, Q_SECRET) VALUES(?,?,?,NOW(),?,?,? " + " )";
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(url, user, passWord);
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setInt(1, mnum);
@@ -146,7 +147,29 @@ public class QnaService {
 			result = st.executeUpdate();
 			st.close();
 			con.close();
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public int setReview( int pnum, String title, String contents, String image, String secret) {
+		int result = 0;
+		try {
+			String sql = "INSERT INTO QNA(M_NUM, P_NUM,Q_TITLE,Q_REGDATE, "
+					+ " Q_CONTENTS, Q_IMAGE, Q_SECRET) VALUES(null,?,?,NOW(),?,?,? " + " )";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection(url, user, passWord);
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, pnum);
+			st.setString(2, title);
+			st.setString(3, contents);
+			st.setString(4, image);
+			st.setString(5, secret);
+
+			result = st.executeUpdate();
+			st.close();
+			con.close();
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return result;
