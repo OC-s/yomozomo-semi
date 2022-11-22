@@ -17,7 +17,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   
-  <!-- 선택 체크확인 -->
+  <!-- 선택 체크확인-->
   <script type="text/javascript">
 	function Checkform(){
 		if(document.querySelectorAll('input[name="mnum"]:checked').length==0){
