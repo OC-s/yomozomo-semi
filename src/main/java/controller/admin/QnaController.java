@@ -16,9 +16,11 @@ import controller.admin.dto.AdminQnaDTO;
 public class QnaController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int page = Integer.parseInt(request.getParameter("cp"));
+		String page = request.getParameter("cp");
+		int page_=1;
+		if(page!=null && !page.equals("")) page_ =  Integer.parseInt(request.getParameter("cp")); 
 		QnaService qnaService= new QnaService();
-		List<AdminQnaDTO> list = qnaService.getAnswer(page);
+		List<AdminQnaDTO> list = qnaService.getAnswer(page_);
 
 		request.setAttribute("list",list);
 
