@@ -68,7 +68,7 @@
 		
 		dao.insertOne(vo);
 		
-		response.sendRedirect("admin_page.jsp");
+		response.sendRedirect("/yomozomo/resources/ymzm/p_mngmn.jsp");
 	}
 
 
