@@ -20,8 +20,7 @@ public class SalesMemberController extends HttpServlet{
 		List<AdminSalesDTO> list = sService.getMemberSales();
 		
 		request.setAttribute("list", list);
-		System.out.println(list);
-		
+
 		request.getRequestDispatcher("/resources/user/u_sales.jsp").forward(request, response);
 	}
 }
