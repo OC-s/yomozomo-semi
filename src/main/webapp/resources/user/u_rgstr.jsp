@@ -1,26 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>yomozomo | Dashboard </title>
+  <title>Admin | 회원관리</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="/resources/plugins/fontawesome-free/css/all.min.css">
-  <!-- IonIcons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 </head>
-<!--
-`body` tag options:
-  Apply one or more of the following classes to to the body tag
-  to get the desired effect
-  * sidebar-collapse
-  * sidebar-mini
--->
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
@@ -55,7 +48,7 @@
           </form>
         </div>
       </li>
-     <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
         </a>
@@ -95,15 +88,13 @@
           </div>
         </div>
       </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          
           <li class="nav-item">
-            <a href="../main/main.jsp" class="nav-link">
+            <a href="../../main/main.jsp" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 쇼핑몰 홈
@@ -113,17 +104,18 @@
           </li>
           
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="../index3.html" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard1
+                Dashboard
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
           
+          
           <!-- 회원관리 -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item  menu-open" >
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                쇼핑몰 회원관리
@@ -132,19 +124,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="user/u_rgstr.jsp" class="nav-link">
+                <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원 등록</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="user/u_mngmn.jsp" class="nav-link">
+                <a href="u_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원목록 조회,수정</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="user/u_sales.jsp" class="nav-link">
+                <a href="u_sales.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원매출 조회</p>
                 </a>
@@ -164,13 +156,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="board/b_rgstr.jsp" class="nav-link">
+                <a href="../board/b_rgstr.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>게시판 등록</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="board/b_mngmn.jsp" class="nav-link">
+                <a href="../board/b_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>게시판목록 조회,수정</p>
                 </a>
@@ -178,7 +170,6 @@
             </ul>
           </li>
         <!-- 게시판 end -->
-          
           
           <!-- 쇼핑몰 관리 -->
           <li class="nav-item">
@@ -191,25 +182,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="ymzm/o_mngmn.jsp" class="nav-link">
+                <a href="../ymzm/o_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>주문 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="ymzm/p_mngmn.jsp" class="nav-link">
+                <a href="../ymzm/p_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>상품 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="ymzm/r_mngmn.jsp" class="nav-link">
+                <a href="../ymzm/r_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>리뷰 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="ymzm/q_mngmn.jsp" class="nav-link">
+                <a href="../ymzm/q_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>문의 관리</p>
                 </a>
@@ -230,63 +221,54 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
+    <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
-          </div><!-- /.col -->
+            <h1>회원관리</h1>
+          </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
+              <li class="breadcrumb-item active">회원관리</li>
             </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
+          </div>
+        </div>
       </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+    </section>
 
     <!-- Main content -->
-    <div class="content">
-  
-  
-  
-  
-    </div>
+    <section class="content">
+      
+      
+      
+    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  
+  
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.2.0
+    </div>
+  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
-
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer>
 </div>
 <!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
-
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE -->
-<script src="dist/js/adminlte.js"></script>
-
-<!-- OPTIONAL SCRIPTS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard3.js"></script>
+<script src="../dist/js/demo.js"></script>
 </body>
 </html>

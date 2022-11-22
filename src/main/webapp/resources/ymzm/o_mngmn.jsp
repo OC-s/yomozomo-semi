@@ -1,3 +1,6 @@
+<%@page import="vo.ProductVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dao.ProductDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin | 회원목록</title>
+  <title>Admin | 주문관리</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -114,8 +117,8 @@
           
           
           <!-- 회원관리 -->
-          <li class="nav-item  menu-open" >
-            <a href="#" class="nav-link active">
+          <li class="nav-item" >
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                쇼핑몰 회원관리
@@ -124,19 +127,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="../user/u_rgstr.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원 등록</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="../user/u_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원목록 조회,수정</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="../user/u_sales.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원매출 조회</p>
                 </a>
@@ -156,13 +159,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="../board/b_rgstr.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>게시판 등록</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="../board/b_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>게시판목록 조회,수정</p>
                 </a>
@@ -172,8 +175,8 @@
         <!-- 게시판 end -->
           
           <!-- 쇼핑몰 관리 -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                쇼핑몰 관리
@@ -182,25 +185,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>주문 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="p_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>상품 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="r_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>리뷰 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="q_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>문의 관리</p>
                 </a>
@@ -225,12 +228,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>회원목록</h1>
+            <h1>주문관리</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">회원목록</li>
+              <li class="breadcrumb-item active">주문관리</li>
             </ol>
           </div>
         </div>
@@ -239,8 +242,7 @@
 
     <!-- Main content -->
     <section class="content">
-      
-      
+    
       
     </section>
     <!-- /.content -->

@@ -8,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin | 회원목록</title>
+  <title>Admin | 리뷰관리</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -127,19 +127,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="../user/u_rgstr.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원 등록</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="../user/u_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원목록 조회,수정</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="../user/u_sales.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원매출 조회</p>
                 </a>
@@ -159,13 +159,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="../board/b_rgstr.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>게시판 등록</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="../board/b_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>게시판목록 조회,수정</p>
                 </a>
@@ -185,25 +185,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>주문 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="p_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>상품 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>리뷰 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/yomozomo/resources/ymzm/qna_list.jsp" class="nav-link">
+                <a href="q_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>문의 관리</p>
                 </a>
@@ -228,12 +228,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>상품목록</h1>
+            <h1>리뷰관리</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">상품목록</li>
+              <li class="breadcrumb-item active">리뷰관리</li>
             </ol>
           </div>
         </div>
@@ -242,160 +242,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <%
-	int startNo2 = 0;
-	int endNo2 = 0;
-	int currentPage = 0;
-	int currentBlock = 0;
-	int totalCount = 0;
-	int totalPage = 0;
-	int recoredPerPage = 0;
-	int startPage = 0;
-	int endPage = 0;
-
-	//현재 페이지
-	String cp = request.getParameter("cp");
-	if (cp != null) {
-		currentPage = Integer.parseInt(cp);
-	} else {
-		currentPage = 1;
-	}
-
-	//1페이지당 게시물 수		
-	recoredPerPage = 15;
-
-	startNo2 = (currentPage - 1) * recoredPerPage + 1;
-	
-	endNo2 = 15;
-
-	//총게시물수
-	ProductDAO dao = new ProductDAO();
-
-	totalCount = dao.getTotal();
-
-	//총 페이지
-	totalPage = (totalCount % recoredPerPage == 0) ? totalCount / recoredPerPage : totalCount / recoredPerPage + 1;
-
-	//시작페이지 번호	
-	startPage = 1;
-
-	//끝페이지 번호
-	endPage = totalPage;
-
-	//시작페이지 미세조정
-	if (currentPage <= 5) {
-		startPage = 1;
-	} else if (currentPage >= 6) {
-		startPage = currentPage - 4;
-	}
-
-	//끝페이지 미세조정
-	if (totalPage - currentPage <= 5) {
-		endPage = totalPage;
-	} else if (totalPage - currentPage > 5) {
-		if (currentPage <= 5) {
-			if (totalPage > 10) {
-		endPage = 10;
-			} else {
-		endPage = totalPage;
-			}
-		} else {
-			endPage = currentPage + 4;
-		}
-	}
-	%>
-	
-		<div class="container">
-		<div class="row">
-			<table class="table table-bordered"
-				style="position: relative; top: 100px; text-align: center; border: 1px solid #dddddd; margin-top: 50px;">
-				<thead>
-					<tr>
-						<td colspan="6">
-							<h2>문의 전체목록</h2>						
-						</td>
-					</tr>
-					<tr>
-						<th style="background-color: #eeeeee; text-align: center;">상품 번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">회원 번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">질문</th>
-						<th style="background-color: #eeeeee; text-align: center;">내용</th>
-						<th style="background-color: #eeeeee; text-align: center;">날짜</th>
-						<th style="background-color: #eeeeee; text-align: center;">답변</th>
-					</tr>
-				</thead>
-				<%
-				ArrayList<ProductVO> list = dao.selectAll(startNo2, endNo2);
-				for (ProductVO vo : list) {
-				%>
-
-				<tbody>
-					<tr>
-						<td><%=vo.getPnum()%></td>
-						<td><%=vo.getPcategory() %></td>
-						<td><%=vo.getPname()%></td>
-						<td><%=vo.getPprice()%></td>
-						<td><%=vo.getPdiscount()%></td>
-						<td><%=vo.getPstock()%></td>
-	
-					</tr>
-				<%
-				}
-				%>
-					
-				</tbody>
-			</table>
-		</div>
-	</div>
-
-	<div class="container" id="admin_list_all_container">
-		<table class="table table-bordered" style="border: transparent;">
-			<tr>
-				<td colspan="4">
-					<nav aria-label="Page navigation example">
-						<ul class="pagination justify-content-center">
-							<%
-							if (startPage == 1) {
-							%>
-							<li class="page-item"><a class="page-link" href="#"
-								tabindex="-1" aria-disabled="true">Previous</a></li>
-							<%
-							} else {
-							%>
-							<li class="page-item"><a class="page-link"
-								href="admin_page.jsp?cp=<%=startPage - 1%>" tabindex="-1"
-								aria-disabled="true">Previous</a></li>
-							<%
-							}
-							%>
-							<%
-							for (int i = startPage; i <= endPage; i++) {
-							%>
-							<li class="page-item"><a class="page-link"
-								href="admin_page.jsp?cp=<%=i%>"><%=i%></a></li>
-							<%
-							}
-							%>
-							<%
-							if (totalPage == endPage) {
-							%>
-							<li class="page-item disalbed "><a class="page-link"
-								href="#">Next</a></li>
-							<%
-							} else {
-							%>
-							<li class="page-item"><a class="page-link"
-								href="admin_page.jsp?cp=<%=endPage + 1%>">Next</a></li>
-							<%
-							}
-							%>
-						</ul>
-					</nav>
-				</td>
-			</tr>			
-		</table>
-	</div>
-      
+    
       
     </section>
     <!-- /.content -->
