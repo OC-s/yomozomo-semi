@@ -25,6 +25,9 @@
 	a{
 		color: inherit;
 	}
+	.table-bordered{
+		margin-top: 82px;
+	}
 </style>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -148,7 +151,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="/yomozomo/resources/user/u_sales" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원매출 조회</p>
                 </a>
@@ -200,7 +203,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="/yomozomo/resources/ymzm/p_mngmn" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>상품 관리</p>
                 </a>
@@ -321,7 +324,7 @@
 				<thead>
 					<tr>
 						<td colspan="6">
-							<h2>상품 전체목록</h2>						
+							<h2>질문 전체목록</h2>						
 						</td>
 					</tr>
 					<tr>
@@ -347,7 +350,7 @@
 							<c:if test="${empty ans}">
 								답변하러가기
 							</c:if>
-							<c:if test="${!empty ans}">
+							<c:if test="${!empty ans}" >
 								${ans}
 							</c:if>
 						 </a></td>
@@ -355,8 +358,6 @@
 	
 					</tr>
 					</c:forEach>
-		
-
 				</tbody>
 			</table>
 		</div>

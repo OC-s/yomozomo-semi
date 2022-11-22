@@ -38,7 +38,7 @@
 			<!-- header bar start-->
 			<div class="header-bar">
 				<div class="header__column">
-					<a href="/yomozomo/main/main.jsp"><span id="yomozomo">yomozomo</span></a>
+					<a href="/yomozomo/admin/main.jsp"><span id="yomozomo">yomozomo</span></a>
 				</div>
 				<div class="header__column">
 					<div class="header__community">

@@ -60,13 +60,14 @@
 		<div class="search_header">
 				<a href="../main/main.jsp"><span id="search_logo">yomozomo</span></a>
 		</div>
-	<form action="searchOk.jsp" method="post" >
+		<form action="searchOk.jsp" method="post" >
 			<table class="search_table">			
 				<tr>
-					<th><input type="text" class="search_name" name="name" id="name" placeholder="이름" /></th>
+					<th><input type="text" class="search_name" name="name" id="name" placeholder="email" /></th><button>보내기</button>
 				</tr>
+				
 				<tr>
-					<th><input type="text" class="search_phone" name="phone" id="phone" placeholder="전화번호 11자리" /></th>
+					<th><input type="text" class="search_phone" name="number" id="number" placeholder="인증번호" /></th>
 				</tr>
 				<tr>
 					<td colspan="2">
