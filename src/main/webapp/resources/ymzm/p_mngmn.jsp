@@ -8,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin | 회원목록</title>
+  <title>Admin | 상품목록</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -260,11 +260,11 @@
 	}
 
 	//1페이지당 게시물 수		
-	recoredPerPage = 15;
+	recoredPerPage = 10;
 
 	startNo2 = (currentPage - 1) * recoredPerPage + 1;
 	
-	endNo2 = 15;
+	endNo2 = 10;
 
 	//총게시물수
 	ProductDAO dao = new ProductDAO();
@@ -309,7 +309,7 @@
 				style="position: relative; text-align: center; border: 1px solid #dddddd; margin-top: 50px;">
 				<thead>
 					<tr>
-						<td colspan="6">
+						<td colspan="7">
 							<h2>상품 전체목록</h2>						
 						</td>
 					</tr>
@@ -320,6 +320,7 @@
 						<th style="background-color: #eeeeee; text-align: center;">가격</th>
 						<th style="background-color: #eeeeee; text-align: center;">할인</th>
 						<th style="background-color: #eeeeee; text-align: center;">수량</th>
+						<th style="background-color: #eeeeee; text-align: center;">수정/삭제</th>
 					</tr>
 				</thead>
 				<%
@@ -331,18 +332,28 @@
 					<tr>
 						<td><%=vo.getPnum()%></td>
 						<td><%=vo.getPcategory() %></td>
-						<td><%=vo.getPname()%></td>
+						<td><a href="/yomozomo/detail?id=<%=vo.getPnum()%>"><%=vo.getPname()%></a></td>
 						<td><%=vo.getPprice()%></td>
 						<td><%=vo.getPdiscount()%></td>
 						<td><%=vo.getPstock()%></td>
+						<td>
+							<a href="p_mngmn_modify.jsp?id=<%=vo.getPnum()%>">
+							<input type="button" value="수정" />
+							
+							</a>
+							
+							<a href="/yomozomo/admin/admin_deleteProOk.jsp?id=<%=vo.getPnum()%>">
+							<input type="button" value="삭제" />
+							</a>						
+						</td>
 	
 					</tr>
 				<%
 				}
 				%>
 					<tr>
-						<td colspan="6">
-							<a href="admin_addPro"><input type="button" value="상품등록" /></a>
+						<td colspan="7">
+							<a href="p_mngmn_add.jsp"><input type="button" value="상품등록" /></a>
 						</td>
 					</tr>
 				</tbody>
@@ -365,7 +376,7 @@
 							} else {
 							%>
 							<li class="page-item"><a class="page-link"
-								href="admin_page.jsp?cp=<%=startPage - 1%>" tabindex="-1"
+								href="p_mngmn.jsp?cp=<%=startPage - 1%>" tabindex="-1"
 								aria-disabled="true">Previous</a></li>
 							<%
 							}
@@ -374,7 +385,7 @@
 							for (int i = startPage; i <= endPage; i++) {
 							%>
 							<li class="page-item"><a class="page-link"
-								href="admin_page.jsp?cp=<%=i%>"><%=i%></a></li>
+								href="p_mngmn.jsp?cp=<%=i%>"><%=i%></a></li>
 							<%
 							}
 							%>
@@ -387,7 +398,7 @@
 							} else {
 							%>
 							<li class="page-item"><a class="page-link"
-								href="admin_page.jsp?cp=<%=endPage + 1%>">Next</a></li>
+								href="p_mngmn.jsp?cp=<%=endPage + 1%>">Next</a></li>
 							<%
 							}
 							%>

@@ -28,7 +28,7 @@
 		border-color: silver;
 	}	
 	#search_btn1{
-		width:300px;
+		width:370px;
 		height:50px;
 		font-size:15px;
 		font-weight:bold;
@@ -47,8 +47,13 @@
 		text-decoration:none;
 		color:#0d6efd;
 		font-weight: bold;
-
 	}			
+	#email-send{
+		border-radius:5px;
+		border:none;
+		background-color: skyblue;
+		color: white;
+	}
 </style>
 
 </head>
@@ -60,23 +65,40 @@
 		<div class="search_header">
 				<a href="../main/main.jsp"><span id="search_logo">yomozomo</span></a>
 		</div>
-	<form action="searchOk.jsp" method="post" >
+		
 			<table class="search_table">			
 				<tr>
-					<th><input type="text" class="search_name" name="name" id="name" placeholder="이름" /></th>
+					<form action="/yomozomo/login/search/email">
+					<th><input type="text" class="search_name" name="email" id="name" placeholder="email" /></th>
+					<th><input type="submit" value="보내기" id="email-send"/></th>
+					</form>
+				</tr>
+				
+				<tr>
+					
+					<th><input type="text" class="search_phone" name="userNum" id="number" placeholder="인증번호" /></th>
 				</tr>
 				<tr>
-					<th><input type="text" class="search_phone" name="phone" id="phone" placeholder="전화번호 11자리" /></th>
-				</tr>
-				<tr>
-					<td colspan="2">
+					<td colspan="4">
 					<input type="submit" value="찾기" id="search_btn1" />
 					</td>
 				</tr>								
 			</table>	
-		</form>
+		
 	</div>
 	</div>
 	
+	<script>
+	const num = ${num}
+	document.getElementById("search_btn1").addEventListener('click',function(){
+		const userNum = document.getElementById("number").value;
+		if(num == userNum){
+			alert("인증성공");
+		}
+		else{
+			alert("인증실패");
+		}
+	})
+	</script>
 </body>
 </html>

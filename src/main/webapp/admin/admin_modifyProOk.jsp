@@ -31,6 +31,8 @@
 	//파라미터값가져오기
 	MultipartRequest mr = new MultipartRequest(request,realFolder,maxFileSize,"UTF-8",new DefaultFileRenamePolicy());
 	
+	
+	String no = mr.getParameter("id");
 	String P_CATEGORY = mr.getParameter("P_CATEGORY");
 	String P_NAME = mr.getParameter("P_NAME");
 	String P_PRICEno = mr.getParameter("P_PRICE");
@@ -46,11 +48,13 @@
 	
 	String P_IMAGE2 = mr.getFilesystemName("P_IMAGE"); 
 	
-	if(P_CATEGORY != null && P_NAME != null ){
+	
+	  if(P_CATEGORY != null && P_NAME != null ){
 		
 		int P_PRICE = Integer.parseInt(P_PRICEno);
 		int P_DISCOUNT = Integer.parseInt(P_DISCOUNTno);
 		int P_STOCK = Integer.parseInt(P_STOCKno);
+		int P_NUM = Integer.parseInt(no);
 		
 		ProductDAO dao = new ProductDAO();
 		
@@ -63,13 +67,14 @@
 		vo.setPstock(P_STOCK);
 		vo.setPthumbnail("image/"+P_THUMBNAIL);
 		vo.setPimage("image/"+P_IMAGE);
+		vo.setPnum(P_NUM);
 		
 		
 		
-		dao.insertOne(vo);
+		dao.updateOne(vo);
 		
 		response.sendRedirect("/yomozomo/resources/ymzm/p_mngmn.jsp");
-	}
+	}  
 
 
 %>

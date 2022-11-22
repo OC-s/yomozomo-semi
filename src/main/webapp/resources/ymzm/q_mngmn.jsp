@@ -12,7 +12,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin | 회원목록</title>
+  <title>Admin | 질문목록</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -21,6 +21,14 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 </head>
+<style>
+	a{
+		color: inherit;
+	}
+	.table-bordered{
+		margin-top: 82px;
+	}
+</style>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
@@ -143,7 +151,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="/yomozomo/resources/user/u_sales" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원매출 조회</p>
                 </a>
@@ -195,7 +203,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="/yomozomo/resources/ymzm/p_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>상품 관리</p>
                 </a>
@@ -207,7 +215,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/yomozomo/resources/ymzm/q_mngmn" class="nav-link">
+                <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>문의 관리</p>
                 </a>
@@ -232,12 +240,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>상품목록</h1>
+            <h1>질문관리</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">상품목록</li>
+              <li class="breadcrumb-item active">질문목록</li>
             </ol>
           </div>
         </div>
@@ -316,7 +324,7 @@
 				<thead>
 					<tr>
 						<td colspan="6">
-							<h2>상품 전체목록</h2>						
+							<h2>질문 전체목록</h2>						
 						</td>
 					</tr>
 					<tr>
@@ -333,17 +341,23 @@
 				<tbody>
 					<c:forEach var="q" items="${list}">
 					<tr>
+						<c:set var="ans" value="${q.acontents}"></c:set>
 						<td>${q.pnum}</td>
 						<td>${q.mnum}</td>
 						<td>${q.title}</td>
 						<td>${q.contents}</td>
-						<td>${q.acontents }</td>
+						<td><a href="/yomozomo/product/qna?id=${q.pnum}">
+							<c:if test="${empty ans}">
+								답변하러가기
+							</c:if>
+							<c:if test="${!empty ans}" >
+								${ans}
+							</c:if>
+						 </a></td>
 						<td>${q.regdate}</td>
 	
 					</tr>
 					</c:forEach>
-		
-
 				</tbody>
 			</table>
 		</div>

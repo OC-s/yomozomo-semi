@@ -69,7 +69,7 @@
 					<td style="text-align: right;"><%=vo2.getQAC_REGDATE()%> <%
 						 if (obj != null) {
 						
-						 	if (log.getM_NUM() == vo2.getM_NUM()) {
+						 	if (log.getM_NUM() == vo2.getM_NUM() || log.getM_NUM()==9) {
 						 %> 
 						 <a href="qa_comments_modify.jsp?qab_num=<%=vo2.getQAB_NUM()%>&qac_num=<%=vo2.getQAC_NUM()%>">
 							<input type="button" value="[수정]" class="btn btn-default btn-xs" />

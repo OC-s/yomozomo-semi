@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import kr.co.yomozomo.vo.BoardVO;
 import vo.ProductVO;
 
 public class ProductDAO {
@@ -137,6 +138,48 @@ public class ProductDAO {
 						e.printStackTrace();
 					}
 					return list;
+				}
+				
+				//수정
+				public void updateOne(ProductVO vo) {
+					sb.setLength(0);
+					sb.append("UPDATE PRODUCT ");
+					sb.append("SET P_CATEGORY = ?, P_DISCOUNT = ?, P_IMAGE = ?, P_NAME = ?, P_PRICE = ?, P_STOCK = ?, P_THUMBNAIL = ? ");
+					sb.append("WHERE P_NUM = ? ");
+					
+					try {
+						pstmt = conn.prepareStatement(sb.toString());
+						pstmt.setString(1, vo.getPcategory());
+						pstmt.setInt(2, vo.getPdiscount());
+						pstmt.setString(3, vo.getPimage());
+						pstmt.setString(4, vo.getPname());
+						pstmt.setInt(5, vo.getPprice());
+						pstmt.setInt(6, vo.getPstock());
+						pstmt.setString(7, vo.getPthumbnail());
+						pstmt.setInt(8, vo.getPnum());
+						
+						
+						pstmt.executeUpdate();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}	
+				}
+				
+				//삭제
+				public void deleteOne(int pnum) {
+					sb.setLength(0);
+					sb.append("DELETE FROM PRODUCT WHERE P_NUM = ? ");
+					
+					try {
+						pstmt = conn.prepareStatement(sb.toString());
+						pstmt.setInt(1, pnum);
+						
+						pstmt.executeUpdate();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}		
 				}
 	
 	public void close() {

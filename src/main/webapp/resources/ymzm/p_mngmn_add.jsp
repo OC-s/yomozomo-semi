@@ -8,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin | 게시판관리</title>
+  <title>Admin | 회원목록</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -127,7 +127,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../user/u_rgstr.jsp" class="nav-link">
+                <a href="../user/u_regts.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원 등록</p>
                 </a>
@@ -149,8 +149,8 @@
         <!-- 회원관리 end -->
         
           <!-- 게시판 관리 -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                게시판 관리
@@ -159,13 +159,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="b_rgstr.jsp" class="nav-link">
+                <a href="../board/b_rgstr.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>게시판 등록</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="../board/b_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>게시판목록 조회,수정</p>
                 </a>
@@ -175,8 +175,8 @@
         <!-- 게시판 end -->
           
           <!-- 쇼핑몰 관리 -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                쇼핑몰 관리
@@ -185,25 +185,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../ymzm/o_mngmn.jsp" class="nav-link">
+                <a href="o_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>주문 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../ymzm/p_mngmn.jsp" class="nav-link">
+                <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>상품 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../ymzm/r_mngmn.jsp" class="nav-link">
+                <a href="r_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>리뷰 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../ymzm/q_mngmn.jsp" class="nav-link">
+                <a href="q_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>문의 관리</p>
                 </a>
@@ -211,8 +211,6 @@
             </ul>
           </li>
         <!-- 쇼핑몰 end -->
-        
-        
         
         </ul>
       </nav>
@@ -228,12 +226,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>게시판관리</h1>
+            <h1>상품관리</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">게시판관리</li>
+              <li class="breadcrumb-item active">상품목록</li>
             </ol>
           </div>
         </div>
@@ -242,7 +240,51 @@
 
     <!-- Main content -->
     <section class="content">
-    
+    <div class="container">
+		<form action="/yomozomo/admin/admin_addProOk.jsp" method="post" enctype="multipart/form-data">
+			<table class="table table-bordered table-striped" id="admin_addPro_table">
+				<tr>
+					<td colspan="4">
+					<h2>상품등록</h2>
+					</td>
+				</tr>
+				<tr>
+					<th>카테고리</th>
+					<td><input type="text" name="P_CATEGORY" id="" /></td>
+				</tr>
+				<tr>
+					<th>상품명</th>
+					<td><input type="text" name="P_NAME" id="" /></td>
+				</tr>
+				<tr>
+					<th>가격</th>
+					<td><input type="text" name="P_PRICE" id="" /></td>
+				</tr>
+				<tr>
+					<th>할인</th>
+					<td><input type="text" name="P_DISCOUNT" id="" /></td>
+				</tr>
+				<tr>
+					<th>수량</th>
+					<td><input type="text" name="P_STOCK" id="" /></td>
+				</tr>
+				<tr>
+				<th>썸네일</th>
+				<td><input type="file" name="P_THUMBNAIL" id="" /></td>
+			   </tr>
+			   <tr>
+				<th>상세이미지</th>
+				<td><input type="file" name="P_IMAGE" id="" /></td>
+			   </tr>
+			   
+				<tr>
+					<td colspan="4">					
+						<input type="submit" value="등록" class="btn btn-outline-secondary" />
+					</td>
+				</tr>			
+			</table>
+		</form>
+	</div>
       
     </section>
     <!-- /.content -->

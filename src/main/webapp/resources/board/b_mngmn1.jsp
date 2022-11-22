@@ -1,18 +1,21 @@
-<%@page import="controller.admin.dao.QnaService"%>
+<%@page import="kr.co.yomozomo.dao.BoardDAO"%>
+<%@page import="kr.co.yomozomo.vo.BoardVO"%>
 <%@page import="vo.ProductVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.ProductDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
+<style>
+td#paging{
+	text-align: center;
+}
+</style>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin | 회원목록</title>
+  <title>Admin | 게시판관리</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -21,14 +24,6 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 </head>
-<style>
-	a{
-		color: inherit;
-	}
-	.table-bordered{
-		margin-top: 82px;
-	}
-</style>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
@@ -139,19 +134,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="../user/u_rgstr.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원 등록</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="../user/u_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원목록 조회,수정</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="../user/u_sales.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원매출 조회</p>
                 </a>
@@ -161,8 +156,8 @@
         <!-- 회원관리 end -->
         
           <!-- 게시판 관리 -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                게시판 관리
@@ -171,15 +166,21 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="b_rgstr.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>게시판 등록</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="b_mngmn1.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>게시판목록 조회,수정</p>
+                  <p>고양이자랑게시판 조회,수정</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="b_mngmn2.jsp" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>질문게시판목록 조회,수정</p>
                 </a>
               </li>
             </ul>
@@ -187,8 +188,8 @@
         <!-- 게시판 end -->
           
           <!-- 쇼핑몰 관리 -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                쇼핑몰 관리
@@ -197,25 +198,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="../ymzm/o_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>주문 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/yomozomo/resources/ymzm/p_mngmn.jsp" class="nav-link active">
+                <a href="../ymzm/p_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>상품 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="../ymzm/r_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>리뷰 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/yomozomo/resources/ymzm/q_mngmn" class="nav-link">
+                <a href="../ymzm/q_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>문의 관리</p>
                 </a>
@@ -240,12 +241,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>상품목록</h1>
+            <h1>게시판관리</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">상품목록</li>
+              <li class="breadcrumb-item active">게시판관리</li>
             </ol>
           </div>
         </div>
@@ -254,154 +255,169 @@
 
     <!-- Main content -->
     <section class="content">
-      <%
-	int startNo2 = 0;
-	int endNo2 = 0;
-	int currentPage = 0;
-	int currentBlock = 0;
-	int totalCount = 0;
-	int totalPage = 0;
-	int recoredPerPage = 0;
-	int startPage = 0;
-	int endPage = 0;
+    <%
+    //현재 페이지 번호값
+    String cp=request.getParameter("cp");
+    
+    //페이지 번호 담아줄 변수
+    int currentPage=0;
+    
+    //만약 cp가 0이 아니면
+    if(cp!=null){
+    	//만들어준 페이지 번수에 얻어온 파라미터 값을 형변환해서 담아줌
+    	currentPage=Integer.parseInt(cp);
+    	
+    	//파라미터 값이 null이면(==처음 페이지면)
+    }else{
+    	//페이지번호는 무조건 1로 주기
+    	currentPage=1;
+    }
+    
+    //1페이지당 게시물 수 10개로 설정
+    int recordPerPage=10;
+    
+    int startNo=(currentPage-1)*recordPerPage+1;
+    
+    //끝번호
+    int endNo=currentPage*recordPerPage;
+    
+    //총 게시물 수 알아오기
+    BoardDAO dao=new BoardDAO();
+    int totalCount=dao.getTotal();
+    
+    int totalPage=(totalCount%recordPerPage==0)? totalCount/recordPerPage:totalCount/recordPerPage+1;
+    
+    //시작페이지 번호
+    int startPage=1;
+    //끝페이지
+    int endPage=totalPage;
+    
+  //시작 페이지 미세조정
+  	if(currentPage<=5){
+  		startPage=1;
+  	}else if(currentPage>=6){
+  		startPage = currentPage-4;
+  	}
+  	
+  	//끝 페이지 미세조정
+  	if(totalPage-currentPage<=5){
+  		endPage=totalPage;
+  	}else if(totalPage-currentPage>5){
+  		if(currentPage<=5){
+  			if(totalPage>10){
+  				endPage=10;
+  			}else{
+  				endPage=totalPage;
+  			}
+  		}else{
+  			endPage=currentPage+4;
+  		}
+  	}
+  	
+  	//previous, next버튼 보일지 안 보일지 정해줄 변수 설정
+  	boolean isPre = false;
+  	boolean isNext = false;
+  	
+  	//이전값이 존재하면 true
+  	//다음값이 존재하면 true
+  	
+  	//현재페이지번호에서 6을 뺀 값이 0 이상이면 이전값이 존재
+  	//6페이지부터 previous버튼이 보이도록 하기
+  	if(currentPage-5> 0){
+  		isPre=true;
+  	}
 
-	//현재 페이지
-	String cp = request.getParameter("cp");
-	if (cp != null) {
-		currentPage = Integer.parseInt(cp);
-	} else {
-		currentPage = 1;
-	}
+  	//현재 페이지 번호에서 5를 더한 값이 끝페이지 번호보다 작으면 다음값이 존재
+  	//38페이지부터 next버튼이 보이도록 하기
+  	if(currentPage+5 <=totalPage){
+  		isNext=true;
+  	}
 
-	//1페이지당 게시물 수		
-	recoredPerPage = 15;
-
-	startNo2 = (currentPage - 1) * recoredPerPage + 1;
-	
-	endNo2 = 15;
-
-	//총게시물수
-	QnaService qnaService= new QnaService();
-
-	totalCount = qnaService.getCountAnswer();
-
-	//총 페이지
-	totalPage = (totalCount % recoredPerPage == 0) ? totalCount / recoredPerPage : totalCount / recoredPerPage + 1;
-
-	//시작페이지 번호	
-	startPage = 1;
-
-	//끝페이지 번호
-	endPage = totalPage;
-
-	//시작페이지 미세조정
-	if (currentPage <= 5) {
-		startPage = 1;
-	} else if (currentPage >= 6) {
-		startPage = currentPage - 4;
-	}
-
-	//끝페이지 미세조정
-	if (totalPage - currentPage <= 5) {
-		endPage = totalPage;
-	} else if (totalPage - currentPage > 5) {
-		if (currentPage <= 5) {
-			if (totalPage > 10) {
-		endPage = 10;
-			} else {
-		endPage = totalPage;
-			}
-		} else {
-			endPage = currentPage + 4;
-		}
-	}
-	%>
-	
-		<div class="container">
+    %>
+    
+    <div class="container">
 		<div class="row">
 			<table class="table table-bordered"
-				style="position: relative; top: 100px; text-align: center; border: 1px solid #dddddd; margin-top: 50px;">
+				style="position: relative; text-align: center; border: 1px solid #dddddd; margin-top: 50px;">
 				<thead>
 					<tr>
-						<td colspan="6">
-							<h2>회원매출 </h2>						
+						<td colspan="11">
+							<h2>고양이자랑해요 게시글 전체목록</h2>						
 						</td>
 					</tr>
 					<tr>
 						<th style="background-color: #eeeeee; text-align: center;">회원번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">아이디</th>
-						<th style="background-color: #eeeeee; text-align: center;">이름</th>
-						<th style="background-color: #eeeeee; text-align: center;">총 구매</th>
+						<th style="background-color: #eeeeee; text-align: center;">게시글 번호</th>
+						<th style="background-color: #eeeeee; text-align: center;">제목</th>
+						<th style="background-color: #eeeeee; text-align: center;">내용</th>
+						<th style="background-color: #eeeeee; text-align: center;">작성일시</th>
+						<th style="background-color: #eeeeee; text-align: center;">조회수</th>
+						<th style="background-color: #eeeeee; text-align: center;">이미지</th>
+						<th style="background-color: #eeeeee; text-align: center;">삭제</th>
 					</tr>
 				</thead>
-
-
+				<%
+				ArrayList<BoardVO> list =dao.selectAll(startNo, endNo);
+				for(BoardVO vo : list){
+				%>
+				
 				<tbody>
-					<c:forEach var="q" items="${list}">
-					<tr>
-						
-						<td>${q.mnum}</td>
-						<td>${q.id}</td>
-						<td>${q.name}</td>
-						<td>${q.total}</td>
-						
-	
-					</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
+						<tr>
+							<td><%=vo.getM_NUM()%></td>
+							<td><%=vo.getB_NUM()%></td>
+							<td><%=vo.getB_TITLE()%></td>
+							<td><%=vo.getB_CONTENTS() %></td>
+							<td><%=vo.getB_REGDATE()%></td>
+							<td><%=vo.getB_HIT()%></td>
+							<td><%=vo.getB_IMAGE()%></td>
+							<td>
+								<form action="deleteBoard.jsp">
+									<button type="submit" class="btn btn-danger">삭제</button>
+									<input type="hidden" name="bnum" value=<%=vo.getB_NUM() %> />
+								</form>
+							</td>
+						</tr>
+				<%
+				}
+				dao.close();
+				%>
+				<tr>
+					<td colspan="8"></td>
+				</tr>
+				<tr>
+					<td id="paging" colspan="8">
+						<nav aria-label="Page navigation example">
+  							<ul class="pagination">
+  				<%
+  				if(isPre){
+  				%>
+  					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+  				<%
+  				}
+  				%>
+  				<%
+  					for(int i=startPage;i<=endPage;i++){
+  				%>
+  					<li class="page-item"><a class="page-link" href="b_mngmn1.jsp?cp=<%=i%>"><%=i %></a></li>
+				<%
+  					}
+				%>
+				<%
+				if(isNext){
+				%>
+					<li class="page-item"><a class="page-link" href="#">Next</a></li>
+				<%
+				}
+				%>
+					</ul>
+				</nav>
+			</td>
+		</tr>
+		
+	</tbody>
+	</table>
 	</div>
-
-	<div class="container" id="admin_list_all_container">
-		<table class="table table-bordered" style="border: transparent;">
-			<tr>
-				<td colspan="4">
-					<nav aria-label="Page navigation example">
-						<ul class="pagination justify-content-center">
-							<%
-							if (startPage == 1) {
-							%>
-							<li class="page-item"><a class="page-link" href="#"
-								tabindex="-1" aria-disabled="true">Previous</a></li>
-							<%
-							} else {
-							%>
-							<li class="page-item"><a class="page-link"
-								href="q_mngmn?cp=<%=startPage - 1%>" tabindex="-1"
-								aria-disabled="true">Previous</a></li>
-							<%
-							}
-							%>
-							<%
-							for (int i = startPage; i <= endPage; i++) {
-							%>
-							<li class="page-item"><a class="page-link"
-								href="q_mngmn?cp=<%=i%>"><%=i%></a></li>
-							<%
-							}
-							%>
-							<%
-							if (totalPage == endPage) {
-							%>
-							<li class="page-item disalbed "><a class="page-link"
-								href="#">Next</a></li>
-							<%
-							} else {
-							%>
-							<li class="page-item"><a class="page-link"
-								href="q_mngmn?cp=<%=endPage + 1%>">Next</a></li>
-							<%
-							}
-							%>
-						</ul>
-					</nav>
-				</td>
-			</tr>			
-		</table>
-	</div>
-      
-      
+    </div>  
     </section>
     <!-- /.content -->
   </div>

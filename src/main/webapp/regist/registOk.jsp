@@ -62,8 +62,8 @@ dao.close();
 %>
 <jsp:include page="../layout/header.html"></jsp:include>
 <div id="main">
-	<div id="msg"><%=name %>님, 회원가입이 완료되었습니다.</div> <br />
-	<div id="login"><a href="../login/login.jsp">로그인 페이지로 돌아가기</a></div>
+	<div id="msg"><%=name %>님, 이메일 인증을 하면 회원가입이 완료됩니다.</div> <br />
+	<div id="login"><a href="../login/login.jsp">이메일 인증 진행하기</a></div>
 </div>
 <jsp:include page="../layout/footer.html"></jsp:include>
 </body>
