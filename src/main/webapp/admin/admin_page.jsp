@@ -1,3 +1,4 @@
+<%@page import="kr.co.yomozomo.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,9 +22,19 @@
 </head>
 <body>
 
+	<%
+		Object obj = session.getAttribute("vo");
+		if(obj != null){
+				MemberVO vo = (MemberVO)obj;
+		
+	%>	
+
 <jsp:include page="/community/commu_header.jsp"/>
 <jsp:include page="./admin_list_all.jsp"/>
-
+	
+	<%
+		}
+	%>
 
 
 </body>
