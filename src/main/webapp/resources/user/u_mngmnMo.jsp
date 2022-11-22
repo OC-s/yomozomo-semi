@@ -333,8 +333,8 @@
 					%>
 						<tr>
 							<td colspan="12" style="text-align: left;">
-								<input type="submit" name="btn1" value="수정" />
-								<a href="u_mngmn.jsp"><input type="button" value="취소" /></a>
+								<input type="submit" name="btn1" value="수정"/>
+								<a href="u_mngmn.jsp"><input type="button" value="취소"/></a>
 							</td>
 						</tr>
 					</tbody>
