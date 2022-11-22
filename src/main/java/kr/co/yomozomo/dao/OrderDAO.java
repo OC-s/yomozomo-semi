@@ -81,16 +81,37 @@ public class OrderDAO {
 		
 	}
 	
+	// -- 회원 count
+	public int getTotal() {
+		sb.setLength(0);
+		sb.append("SELECT count(*) cnt FROM MEMBER ");
+		int count = 1;
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			rs = pstmt.executeQuery();
+			rs.next();
+			count = rs.getInt("cnt");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;		
+	}
+	
 	
 	// ---------------회원 전체조회
-	public ArrayList<MemberVO> selectAllm(){
+	public ArrayList<MemberVO> selectAllm(int startNo, int endNo){
 		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
 		
 		sb.setLength(0);
 		sb.append("SELECT * FROM MEMBER ");
+		sb.append("ORDER BY M_NUM asc ");
+		sb.append("LIMIT ?, ? ");
 		
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, startNo-1);
+			pstmt.setInt(2, endNo);
 			
 			rs = pstmt.executeQuery();
 			
