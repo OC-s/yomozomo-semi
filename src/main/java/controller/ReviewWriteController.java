@@ -36,13 +36,14 @@ public class ReviewWriteController extends HttpServlet {
 		String secret = request.getParameter("secret");
 		int reviewStar =Integer.parseInt(request.getParameter("reviewStar"));
 		int pnum = Integer.parseInt(request.getParameter("id"));
-//		System.out.println("title: "+title+" contents: "+contents+"secret: "+ secret+" reviewStar: "+reviewStar+"id :"+pnum);
+
 		HttpSession session = request.getSession();
 		int mnum_=0;
-		Integer mnum =  (Integer)session.getAttribute("userNum");
+		String mnum = String.valueOf(session.getAttribute("userNum"));
+		
+		if (mnum!=null && !mnum.equals("null")) mnum_ = Integer.parseInt(mnum);
 		
 		
-		if(mnum !=null && !mnum.equals("")) mnum_=mnum; 
 		if (secret == null || secret.equals(""))
 			secret = "N";
 		

@@ -1,12 +1,8 @@
-<%@page import="controller.admin.dao.QnaService"%>
 <%@page import="vo.ProductVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.ProductDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -207,7 +203,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/yomozomo/resources/ymzm/q_mngmn" class="nav-link">
+                <a href="/yomozomo/resources/ymzm/qna_list.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>문의 관리</p>
                 </a>
@@ -273,9 +269,9 @@
 	endNo2 = 15;
 
 	//총게시물수
-	QnaService qnaService= new QnaService();
+	ProductDAO dao = new ProductDAO();
 
-	totalCount = qnaService.getCountAnswer();
+	totalCount = dao.getTotal();
 
 	//총 페이지
 	totalPage = (totalCount % recoredPerPage == 0) ? totalCount / recoredPerPage : totalCount / recoredPerPage + 1;
@@ -320,30 +316,37 @@
 						</td>
 					</tr>
 					<tr>
-						<th style="background-color: #eeeeee; text-align: center;">상품번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">회원번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">제목</th>
-						<th style="background-color: #eeeeee; text-align: center;">내용</th>
-						<th style="background-color: #eeeeee; text-align: center;">답변</th>
-						<th style="background-color: #eeeeee; text-align: center;">날짜</th>
+						<th style="background-color: #eeeeee; text-align: center;">번호</th>
+						<th style="background-color: #eeeeee; text-align: center;">카테고리</th>
+						<th style="background-color: #eeeeee; text-align: center;">이름</th>
+						<th style="background-color: #eeeeee; text-align: center;">가격</th>
+						<th style="background-color: #eeeeee; text-align: center;">할인</th>
+						<th style="background-color: #eeeeee; text-align: center;">수량</th>
 					</tr>
 				</thead>
-
+				<%
+				ArrayList<ProductVO> list = dao.selectAll(startNo2, endNo2);
+				for (ProductVO vo : list) {
+				%>
 
 				<tbody>
-					<c:forEach var="q" items="${list}">
 					<tr>
-						<td>${q.pnum}</td>
-						<td>${q.mnum}</td>
-						<td>${q.title}</td>
-						<td>${q.contents}</td>
-						<td>${q.acontents }</td>
-						<td>${q.regdate}</td>
+						<td><%=vo.getPnum()%></td>
+						<td><%=vo.getPcategory() %></td>
+						<td><%=vo.getPname()%></td>
+						<td><%=vo.getPprice()%></td>
+						<td><%=vo.getPdiscount()%></td>
+						<td><%=vo.getPstock()%></td>
 	
 					</tr>
-					</c:forEach>
-		
-
+				<%
+				}
+				%>
+					<tr>
+						<td colspan="6">
+							<a href="admin_addPro"><input type="button" value="상품등록" /></a>
+						</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
@@ -364,7 +367,7 @@
 							} else {
 							%>
 							<li class="page-item"><a class="page-link"
-								href="q_mngmn?cp=<%=startPage - 1%>" tabindex="-1"
+								href="admin_page.jsp?cp=<%=startPage - 1%>" tabindex="-1"
 								aria-disabled="true">Previous</a></li>
 							<%
 							}
@@ -373,7 +376,7 @@
 							for (int i = startPage; i <= endPage; i++) {
 							%>
 							<li class="page-item"><a class="page-link"
-								href="q_mngmn?cp=<%=i%>"><%=i%></a></li>
+								href="admin_page.jsp?cp=<%=i%>"><%=i%></a></li>
 							<%
 							}
 							%>
@@ -386,7 +389,7 @@
 							} else {
 							%>
 							<li class="page-item"><a class="page-link"
-								href="q_mngmn?cp=<%=endPage + 1%>">Next</a></li>
+								href="admin_page.jsp?cp=<%=endPage + 1%>">Next</a></li>
 							<%
 							}
 							%>
