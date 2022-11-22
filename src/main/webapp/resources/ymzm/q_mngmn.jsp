@@ -21,6 +21,11 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 </head>
+<style>
+	a{
+		color: inherit;
+	}
+</style>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
@@ -333,11 +338,19 @@
 				<tbody>
 					<c:forEach var="q" items="${list}">
 					<tr>
+						<c:set var="ans" value="${q.acontents}"></c:set>
 						<td>${q.pnum}</td>
 						<td>${q.mnum}</td>
 						<td>${q.title}</td>
 						<td>${q.contents}</td>
-						<td>${q.acontents }</td>
+						<td><a href="/yomozomo/product/qna?id=${q.pnum}">
+							<c:if test="${empty ans}">
+								답변하러가기
+							</c:if>
+							<c:if test="${!empty ans}">
+								${ans}
+							</c:if>
+						 </a></td>
 						<td>${q.regdate}</td>
 	
 					</tr>

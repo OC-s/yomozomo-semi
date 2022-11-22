@@ -70,5 +70,23 @@ public class QnaService {
 		}
 		return result;
 	}
-
+	public int insertAns(int qnum,int pnum, String contents) {
+		int result = 0;
+		try {
+			String sql = "INSERT INTO ANS(Q_NUM,P_NUM,A_CONTENTS,A_REGDATE) VALUES(?,?,?,NOW());";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection(url, user, passWord);
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, qnum);
+			st.setInt(2, pnum);
+			st.setString(3,contents);
+			result = st.executeUpdate();
+			
+			st.close();
+			con.close();
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
