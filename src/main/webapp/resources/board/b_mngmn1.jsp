@@ -280,7 +280,7 @@
     BoardDAO dao=new BoardDAO();
     int totalCount=dao.getTotal();
     
-    int totalPage=(totalCount%recordPerPage==0)? totalCount/recordPerPage:totalCount/recordPerPage;
+    int totalPage=(totalCount%recordPerPage==0)? totalCount/recordPerPage:totalCount/recordPerPage+1;
     
     //시작페이지 번호
     int startPage=1;
@@ -351,7 +351,7 @@
 					</tr>
 				</thead>
 				<%
-				ArrayList<BoardVO> list =dao.selectAll();
+				ArrayList<BoardVO> list =dao.selectAll(startNo, endNo);
 				for(BoardVO vo : list){
 				%>
 				
@@ -383,7 +383,7 @@
   				<%
   					for(int i=startPage;i<=endPage;i++){
   				%>
-  					<li class="page-item"><a class="page-link" href="#"><%=i %></a></li>
+  					<li class="page-item"><a class="page-link" href="b_mngmn1.jsp?cp=<%=i%>"><%=i %></a></li>
 				<%
   					}
 				%>

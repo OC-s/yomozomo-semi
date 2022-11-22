@@ -26,7 +26,7 @@ public class QnaService {
 		AnsQnaDTO a = null;
 
 		try {
-			String sql = "SELECT Q.Q_TITLE, Q.Q_CONTENTS, A.A_CONTENTS FROM( "
+			String sql = "SELECT Q.Q_NUM,Q.Q_TITLE, Q.Q_CONTENTS, A.A_CONTENTS FROM( "
 					+ " (SELECT * FROM QNA Q WHERE P_NUM= ?) Q LEFT JOIN ANS A " + " ON  A.Q_NUM =Q.Q_NUM "
 					+ " )ORDER BY Q.Q_REGDATE DESC " + " LIMIT ?,?";
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -40,8 +40,8 @@ public class QnaService {
 				String title = rs.getString("Q_TITLE");
 				String acontents = rs.getString("A_CONTENTS");
 				String qcontents = rs.getString("Q_CONTENTS");
-
-				a = new AnsQnaDTO(title, qcontents, acontents);
+				int qnum = rs.getInt("Q_NUM");
+				a = new AnsQnaDTO(title, qcontents, acontents,qnum);
 				list.add(a);
 
 			}

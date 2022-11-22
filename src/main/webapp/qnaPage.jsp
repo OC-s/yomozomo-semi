@@ -67,6 +67,13 @@ li {
 	bottom : 2px;
 	color: #F1C40F;
 }
+#qna__admin{
+	width: 100px;
+	background-color: #A646F4;
+	border: none;
+	color: white;
+	border-radius: 5px;
+}
 </style>
 </head>
 <body class="body">
@@ -131,12 +138,22 @@ li {
 	<div class="line">
 
 		<c:forEach var="a" items="${ans}">
+			<c:set var="ans" value="${a.acontents}"></c:set>
 			<div class="qna__main">
 				<div class="qna__title">질문</div>
 				<div class="qna__question">${a.title}</div>
 				<div>${a.qcontents}</div>
 				<div class="qna__title--answer">답변</div>
 				<div class="qna__answer">${a.acontents}</div>
+				<c:if test="${empty ans}">
+					<form action="/yomozomo/product/qna/admin" method="GET">
+					<input type="hidden" name="q_num" value="${a.qnum}" />
+					<input type="hidden" name="p_num" value="${product.num}" />
+					<input type="${(mnum==9)?"text":"hidden"}" placeholder="답변" id="input-admin" name="content"/>
+					<input id="qna__admin" type="${(mnum==9)?"submit":"hidden"}" value="답변하기"/>
+					</form>
+				</c:if>
+			
 			</div>
 		</c:forEach>
 	</div>
@@ -176,7 +193,7 @@ li {
 		</div>
 	</div>
 	<script>
-
+	
       
       document
         .getElementById("query-btn")

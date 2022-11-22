@@ -282,7 +282,7 @@
     QaboardDAO dao=new QaboardDAO();
     int totalCount=dao.getTotal();
     
-    int totalPage=(totalCount%recordPerPage==0)? totalCount/recordPerPage:totalCount/recordPerPage;
+    int totalPage=(totalCount%recordPerPage==0)? totalCount/recordPerPage:totalCount/recordPerPage+1;
     
     //시작페이지 번호
     int startPage=1;
@@ -353,7 +353,7 @@
 					</tr>
 				</thead>
 				<%
-				ArrayList<QaboardVO> list =dao.selectAll();
+				ArrayList<QaboardVO> list =dao.selectAll(startNo, endNo);
 				for(QaboardVO vo : list){
 				%>
 				
@@ -385,7 +385,7 @@
   				<%
   					for(int i=startPage;i<=endPage;i++){
   				%>
-  					<li class="page-item"><a class="page-link" href="#"><%=i %></a></li>
+  					<li class="page-item"><a class="page-link" href="b_mngmn2.jsp?cp=<%=i%>"><%=i %></a></li>
 				<%
   					}
 				%>
