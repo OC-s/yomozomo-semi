@@ -76,7 +76,7 @@
 				
 				<tr>
 					
-					<th><input type="text" class="search_phone" name="number" id="number" placeholder="인증번호" /></th>
+					<th><input type="text" class="search_phone" name="userNum" id="number" placeholder="인증번호" /></th>
 				</tr>
 				<tr>
 					<td colspan="4">
@@ -88,5 +88,17 @@
 	</div>
 	</div>
 	
+	<script>
+	const num = ${num}
+	document.getElementById("search_btn1").addEventListener('click',function(){
+		const userNum = document.getElementById("number").value;
+		if(num == userNum){
+			alert("인증성공");
+		}
+		else{
+			alert("인증실패");
+		}
+	})
+	</script>
 </body>
 </html>
