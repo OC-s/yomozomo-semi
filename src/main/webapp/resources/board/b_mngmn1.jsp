@@ -1,3 +1,5 @@
+<%@page import="kr.co.yomozomo.dao.BoardDAO"%>
+<%@page import="kr.co.yomozomo.vo.BoardVO"%>
 <%@page import="vo.ProductVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.ProductDAO"%>
@@ -242,8 +244,159 @@
 
     <!-- Main content -->
     <section class="content">
+    <%
+    //현재 페이지 번호값
+    String cp=request.getParameter("cp");
     
-      
+    //페이지 번호 담아줄 변수
+    int currentPage=0;
+    
+    //만약 cp가 0이 아니면
+    if(cp!=null){
+    	//만들어준 페이지 번수에 얻어온 파라미터 값을 형변환해서 담아줌
+    	currentPage=Integer.parseInt(cp);
+    	
+    	//파라미터 값이 null이면(==처음 페이지면)
+    }else{
+    	//페이지번호는 무조건 1로 주기
+    	currentPage=1;
+    }
+    
+    //1페이지당 게시물 수 10개로 설정
+    int recordPerPage=10;
+    
+    int startNo=(currentPage-1)*recordPerPage+1;
+    
+    //끝번호
+    int endNo=currentPage*recordPerPage;
+    
+    //총 게시물 수 알아오기
+    BoardDAO dao=new BoardDAO();
+    int totalCount=dao.getTotal();
+    
+    int totalPage=(totalCount%recordPerPage==0)? totalCount/recordPerPage:totalCount/recordPerPage;
+    
+    //시작페이지 번호
+    int startPage=1;
+    //끝페이지
+    int endPage=totalPage;
+    
+  //시작 페이지 미세조정
+  	if(currentPage<=5){
+  		startPage=1;
+  	}else if(currentPage>=6){
+  		startPage = currentPage-4;
+  	}
+  	
+  	//끝 페이지 미세조정
+  	if(totalPage-currentPage<=5){
+  		endPage=totalPage;
+  	}else if(totalPage-currentPage>5){
+  		if(currentPage<=5){
+  			if(totalPage>10){
+  				endPage=10;
+  			}else{
+  				endPage=totalPage;
+  			}
+  		}else{
+  			endPage=currentPage+4;
+  		}
+  	}
+  	
+  	//previous, next버튼 보일지 안 보일지 정해줄 변수 설정
+  	boolean isPre = false;
+  	boolean isNext = false;
+  	
+  	//이전값이 존재하면 true
+  	//다음값이 존재하면 true
+  	
+  	//현재페이지번호에서 6을 뺀 값이 0 이상이면 이전값이 존재
+  	//6페이지부터 previous버튼이 보이도록 하기
+  	if(currentPage-5> 0){
+  		isPre=true;
+  	}
+
+  	//현재 페이지 번호에서 5를 더한 값이 끝페이지 번호보다 작으면 다음값이 존재
+  	//38페이지부터 next버튼이 보이도록 하기
+  	if(currentPage+5 <=totalPage){
+  		isNext=true;
+  	}
+
+    %>
+    
+    <div class="container">
+		<div class="row">
+			<table class="table table-bordered"
+				style="position: relative; text-align: center; border: 1px solid #dddddd; margin-top: 50px;">
+				<thead>
+					<tr>
+						<td colspan="11">
+							<h2>고양이자랑해요 게시글 전체목록</h2>						
+						</td>
+					</tr>
+					<tr>
+						<th style="background-color: #eeeeee; text-align: center;">회원번호</th>
+						<th style="background-color: #eeeeee; text-align: center;">게시글 번호</th>
+						<th style="background-color: #eeeeee; text-align: center;">제목</th>
+						<th style="background-color: #eeeeee; text-align: center;">내용</th>
+						<th style="background-color: #eeeeee; text-align: center;">작성일시</th>
+						<th style="background-color: #eeeeee; text-align: center;">조회수</th>
+						<th style="background-color: #eeeeee; text-align: center;">이미지</th>
+					</tr>
+				</thead>
+				<%
+				ArrayList<BoardVO> list =dao.selectAll();
+				for(BoardVO vo : list){
+				%>
+				
+				<tbody>
+						<tr>
+							<td><%=vo.getM_NUM()%></td>
+							<td><%=vo.getB_NUM()%></td>
+							<td><%=vo.getB_TITLE()%></td>
+							<td><%=vo.getB_CONTENTS() %></td>
+							<td><%=vo.getB_REGDATE()%></td>
+							<td><%=vo.getB_HIT()%></td>
+							<td><%=vo.getB_IMAGE()%></td>
+						</tr>
+				<%
+				}
+				dao.close();
+				%>
+				<tr>
+					<td colspan="7">
+						<nav aria-label="Page navigation example">
+  							<ul class="pagination">
+  				<%
+  				if(isPre){
+  				%>
+  					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+  				<%
+  				}
+  				%>
+  				<%
+  					for(int i=startPage;i<=endPage;i++){
+  				%>
+  					<li class="page-item"><a class="page-link" href="#"><%=i %></a></li>
+				<%
+  					}
+				%>
+				<%
+				if(isNext){
+				%>
+					<li class="page-item"><a class="page-link" href="#">Next</a></li>
+				<%
+				}
+				%>
+					</ul>
+				</nav>
+			</td>
+		</tr>
+		
+	</tbody>
+	</table>
+	</div>
+    </div>  
     </section>
     <!-- /.content -->
   </div>

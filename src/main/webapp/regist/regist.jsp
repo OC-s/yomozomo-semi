@@ -300,7 +300,7 @@ div#button{
 		<a href="../main/main.jsp" >YOMOZOMO</a>
 	</div>
 	<div id="regist">회원가입</div>
-<form action=".../java/util/UserController.java" method="post" onsubmit="return checkAll()">
+<form action="registOk.java" method="post" onsubmit="return checkAll()">
 	<h6>아이디</h6>
 	<div class="input-group mb-3">
 		<input type="text" id="id" name="id" class="form-control" placeholder="아이디" aria-label="Recipient's username" aria-describedby="button-addon2">

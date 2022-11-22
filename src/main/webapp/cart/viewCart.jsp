@@ -97,6 +97,7 @@ div#orderBtn{
       			<th scope="col">가격</th>
       			<th scope="col">수량</th>
       			<th scope="col">총 가격</th> 						
+      			<th scope="col">삭제</th> 						
     		</tr>
   		</thead>
 		<tbody class="table-group-divider">
@@ -116,13 +117,16 @@ div#orderBtn{
 			ProductVO vo=dao.selectOne(key);
 			int cnt=list.get(key);
 	%>
+	<form action="deleteCart.jsp">
     	<tr>
       		<td><div id="product_img"><img id="pimage" src="../<%=vo.getPthumbnail() %>" alt="" /></div></td>
       		<td><div id="product_name"><%=vo.getPname() %></div></td>
       		<td><div id="product_price"><%=df.format(vo.getPprice()) %></div></td>
       		<td><div id="product_cnt"><%=cnt %></div></td>
       		<td><div id="product_tprice"><%=df.format(cnt*(vo.getPprice())) %></div></td>
+      		<td><button type="submit" class="btn btn-danger">삭제</button></td>
     	</tr>
+	</form>
 	<%
 		totalSum += cnt*(vo.getPprice());
 		}
