@@ -203,6 +203,29 @@ public class MemberDAO {
 		}
 		return num;
 	}
+	public int checkAdmin(String id,String pw) {
+		int result = 0;
+		try {
+			String sql =  "SELECT ADMIN FROM MEMBER WHERE ID=? AND PASSWORD =?";
+			Connection con = DriverManager.getConnection(url, user, password);
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setString(1, id);
+			st.setString(2, pw);
+			ResultSet rs = st.executeQuery();
+
+			if (rs.next()) {
+				result = rs.getInt("ADMIN");
+
+			}
+			rs.close();
+			st.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+		
+	}
 
 	// 자원반납
 	public void close() {
