@@ -203,7 +203,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/yomozomo/resources/ymzm/p_mngmn" class="nav-link active">
+                <a href="/yomozomo/resources/ymzm/p_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>상품 관리</p>
                 </a>
@@ -215,7 +215,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/yomozomo/resources/ymzm/q_mngmn" class="nav-link">
+                <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>문의 관리</p>
                 </a>
