@@ -395,7 +395,7 @@
 						</tr>
 						<tr>
 							<td colspan="11">
-								<a href="#"><input type="button" value="..임시" /></a>
+								<a href="#"><input type="button" value=".임시" /></a>
 							</td>
 						</tr>
 					</tbody>
