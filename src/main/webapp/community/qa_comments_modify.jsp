@@ -192,7 +192,7 @@
 								
 								MemberVO log = (MemberVO) obj;
 							
-								if(log.getM_NUM()==vo2.getM_NUM()){
+								if(log.getM_NUM()==vo2.getM_NUM() || log.getM_NUM()==9){
 							
 						%>
 							<td>

@@ -101,7 +101,7 @@
 				
 				MemberVO log = (MemberVO) obj;
 
- 				if (log.getM_NUM() == vo.getM_NUM()) {
+ 				if (log.getM_NUM() == vo.getM_NUM() || log.getM_NUM()==9) {
  					
  		%> 
 				 <a href="pic_modify.jsp?b_num=<%=vo.getB_NUM()%>"><input
