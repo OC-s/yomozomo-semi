@@ -29,6 +29,7 @@ public class QnaService {
 			String sql = "SELECT Q.Q_TITLE, Q.Q_CONTENTS, A.A_CONTENTS FROM( "
 					+ " (SELECT * FROM QNA Q WHERE P_NUM= ?) Q LEFT JOIN ANS A " + " ON  A.Q_NUM =Q.Q_NUM "
 					+ " )ORDER BY Q.Q_REGDATE DESC " + " LIMIT ?,?";
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(url, user, passWord);
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setInt(1, id);
@@ -47,7 +48,7 @@ public class QnaService {
 			rs.close();
 			st.close();
 			con.close();
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return list;
@@ -57,6 +58,7 @@ public class QnaService {
 		int result = 0;
 		try {
 			String sql = "SELECT count(*) COUNT FROM QNA where p_num =?";
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(url, user, passWord);
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setInt(1, id);
@@ -69,7 +71,7 @@ public class QnaService {
 			rs.close();
 			st.close();
 			con.close();
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return result;

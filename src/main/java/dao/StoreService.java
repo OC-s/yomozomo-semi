@@ -108,13 +108,14 @@ public class StoreService {
 			String sql = "UPDATE PRODUCT "
 					+ " SET HIT = HIT+1 "
 					+ " WHERE P_NUM=? ";
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con =DriverManager.getConnection(url,user,passWord);
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setInt(1, id);
 			result = st.executeUpdate();
 			st.close();
 			con.close();
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		return result;
