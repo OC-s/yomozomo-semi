@@ -260,11 +260,11 @@
 	}
 
 	//1페이지당 게시물 수		
-	recoredPerPage = 15;
+	recoredPerPage = 10;
 
 	startNo2 = (currentPage - 1) * recoredPerPage + 1;
 	
-	endNo2 = 15;
+	endNo2 = 10;
 
 	//총게시물수
 	ProductDAO dao = new ProductDAO();
@@ -342,7 +342,7 @@
 				%>
 					<tr>
 						<td colspan="6">
-							<a href="admin_addPro"><input type="button" value="상품등록" /></a>
+							<a href="/yomozomo/admin/admin_addPro.jsp"><input type="button" value="상품등록" /></a>
 						</td>
 					</tr>
 				</tbody>
@@ -365,7 +365,7 @@
 							} else {
 							%>
 							<li class="page-item"><a class="page-link"
-								href="admin_page.jsp?cp=<%=startPage - 1%>" tabindex="-1"
+								href="p_mngmn.jsp?cp=<%=startPage - 1%>" tabindex="-1"
 								aria-disabled="true">Previous</a></li>
 							<%
 							}
@@ -374,7 +374,7 @@
 							for (int i = startPage; i <= endPage; i++) {
 							%>
 							<li class="page-item"><a class="page-link"
-								href="admin_page.jsp?cp=<%=i%>"><%=i%></a></li>
+								href="p_mngmn.jsp?cp=<%=i%>"><%=i%></a></li>
 							<%
 							}
 							%>
@@ -387,7 +387,7 @@
 							} else {
 							%>
 							<li class="page-item"><a class="page-link"
-								href="admin_page.jsp?cp=<%=endPage + 1%>">Next</a></li>
+								href="p_mngmn.jsp?cp=<%=endPage + 1%>">Next</a></li>
 							<%
 							}
 							%>

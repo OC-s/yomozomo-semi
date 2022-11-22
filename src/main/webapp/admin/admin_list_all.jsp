@@ -43,11 +43,11 @@
 	}
 
 	//1페이지당 게시물 수		
-	recoredPerPage = 15;
+	recoredPerPage = 10;
 
 	startNo2 = (currentPage - 1) * recoredPerPage + 1;
 	
-	endNo2 = 15;
+	endNo2 = 10;
 
 	//총게시물수
 	ProductDAO dao = new ProductDAO();
@@ -125,7 +125,7 @@
 				%>
 					<tr>
 						<td colspan="6">
-							<a href="admin_addPro.jsp"><input type="button" value="상품등록" /></a>
+							<a href="admin_addPro.jsp" ><input type="button" value="상품등록" /></a>
 						</td>
 					</tr>
 				</tbody>
