@@ -27,11 +27,12 @@ public class EmailController extends HttpServlet{
         p.put("mail.smtp.host", "smtp.naver.com");
         p.put("mail.smtp.auth", "true");
         p.put("mail.smtp.port", "587");
-		//return new PasswordAuthentication("jemok9605@naver.com", ""); 
 		Session session = Session.getInstance(p, new Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
 				//보내는 관리자 email, password
+				
+				//return new PasswordAuthentication("jemok9605@naver.com", "비밀번호");
 				return null;
 			}
 		});
