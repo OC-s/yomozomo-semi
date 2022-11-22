@@ -31,20 +31,19 @@ public class EmailController extends HttpServlet{
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
 				//보내는 관리자 email, password
+				return new PasswordAuthentication("yomozomo99999@naver.com", "yomozomo!");
 				
-				//return new PasswordAuthentication("jemok9605@naver.com", "비밀번호");
-				return null;
 			}
 		});
 		
 		String receiver = memerber; // 메일 받을 주소
 		String title = "yomozomo 인증번호 입니다.";
 
-		String num ="12345678";
+		String num ="12345678"; // 인증번호 -> 나중에 랜덤난수 설정
 		Message message = new MimeMessage(session);
 		try {
 //			보내는 사람 정보 
-			message.setFrom(new InternetAddress("jemok9605@naver.com", "관리자", "utf-8"));
+			message.setFrom(new InternetAddress("yomozomo99999@naver.com", "yomozomo", "utf-8"));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
 			message.setSubject(title);
 			message.setContent(num,"text/html; charset=utf-8");
