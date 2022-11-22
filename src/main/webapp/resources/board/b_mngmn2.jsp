@@ -1,3 +1,5 @@
+<%@page import="kr.co.yomozomo.vo.QaboardVO"%>
+<%@page import="kr.co.yomozomo.dao.QaboardDAO"%>
 <%@page import="kr.co.yomozomo.dao.BoardDAO"%>
 <%@page import="kr.co.yomozomo.vo.BoardVO"%>
 <%@page import="vo.ProductVO"%>
@@ -167,13 +169,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="b_mngmn1.jsp" class="nav-link">
+                <a href="b_mngmn1.jsp" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>고양이자랑게시판 조회,수정</p>
+                  <p>고양이자랑게시판목록 조회,수정</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="b_mngmn2.jsp" class="nav-link">
+                <a href="b_mngmn2.jsp" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>질문게시판목록 조회,수정</p>
                 </a>
@@ -277,7 +279,7 @@
     int endNo=currentPage*recordPerPage;
     
     //총 게시물 수 알아오기
-    BoardDAO dao=new BoardDAO();
+    QaboardDAO dao=new QaboardDAO();
     int totalCount=dao.getTotal();
     
     int totalPage=(totalCount%recordPerPage==0)? totalCount/recordPerPage:totalCount/recordPerPage;
@@ -337,7 +339,7 @@
 				<thead>
 					<tr>
 						<td colspan="11">
-							<h2>고양이자랑해요 게시글 전체목록</h2>						
+							<h2>질문게시판 게시글 전체목록</h2>						
 						</td>
 					</tr>
 					<tr>
@@ -351,19 +353,19 @@
 					</tr>
 				</thead>
 				<%
-				ArrayList<BoardVO> list =dao.selectAll();
-				for(BoardVO vo : list){
+				ArrayList<QaboardVO> list =dao.selectAll();
+				for(QaboardVO vo : list){
 				%>
 				
 				<tbody>
 						<tr>
 							<td><%=vo.getM_NUM()%></td>
-							<td><%=vo.getB_NUM()%></td>
-							<td><%=vo.getB_TITLE()%></td>
-							<td><%=vo.getB_CONTENTS() %></td>
-							<td><%=vo.getB_REGDATE()%></td>
-							<td><%=vo.getB_HIT()%></td>
-							<td><%=vo.getB_IMAGE()%></td>
+							<td><%=vo.getQAB_NUM() %></td>
+							<td><%=vo.getQAB_TITLE() %></td>
+							<td><%=vo.getQAB_CONTENTS() %></td>
+							<td><%=vo.getQAB_REGDATE()%></td>
+							<td><%=vo.getQAB_HIT()%></td>
+							<td><%=vo.getQAB_IMAGE()%></td>
 						</tr>
 				<%
 				}
