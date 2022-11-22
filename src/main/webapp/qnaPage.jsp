@@ -144,7 +144,7 @@ li {
 	<c:set var="page" value="${(empty param.p)?1:param.p}"></c:set>
 	<c:set var="startNum" value="${page-(page-1)%5}"></c:set>
 	<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}"></c:set>
-
+	
 	<div class="number-wrap">
 		<div class="number">
 			<div class="number__left">

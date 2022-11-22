@@ -3,7 +3,7 @@
 .product__thumbnail {
 	width: 250px;
 	height: 180px;
-	border: 1px solid rgba(0, 0, 0, 0.1);
+	border: 1px solid rgba(0,0,0,0.2);
 }
 
 .product {
@@ -38,10 +38,15 @@
 
 .discount__rate {
 	color: red;
+	margin-right: 5px;
 }
-
+#ppp{
+	font-weight: 600;
+}
 .review__text, .star {
 	font-size: 15px;
 	font-weight: 600;
 }
+
+
 

@@ -183,7 +183,7 @@ public class MemberDAO {
 		}
 
 	public int userNum(String id) {
-		int num = 0;
+		int num =0;
 		try {
 			String sql =  "SELECT M_NUM FROM MEMBER WHERE ID=?";
 			Connection con = DriverManager.getConnection(url, user, password);
