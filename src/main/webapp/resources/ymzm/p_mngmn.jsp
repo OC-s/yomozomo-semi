@@ -139,7 +139,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../user/u_sales.jsp" class="nav-link">
+                <a href="../user/u_sales" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원매출 조회</p>
                 </a>
@@ -203,7 +203,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="q_mngmn.jsp" class="nav-link">
+                <a href="q_mngmn" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>문의 관리</p>
                 </a>

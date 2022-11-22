@@ -84,7 +84,9 @@ public class ReviewService {
 				String image = rs.getString("test");
 				String contents = rs.getString("R_CONTENTS");
 				int mnum = rs.getInt("M_NUM");
-				p = new ReviewDTO(regdate, scope, image, contents,mnum);
+				int rnum = rs.getInt("R_NUM");
+				int pnum = rs.getInt("P_NUM");
+				p = new ReviewDTO(regdate, scope, image, contents,mnum,rnum,pnum);
 				list.add(p);
 			}
 			rs.close();

@@ -13,7 +13,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin | 질문목록</title>
-
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+	integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+	crossorigin="anonymous"></script>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -215,7 +217,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="/yomozomo/resources/ymzm/q_mngmn" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>문의 관리</p>
                 </a>
@@ -334,6 +336,7 @@
 						<th style="background-color: #eeeeee; text-align: center;">내용</th>
 						<th style="background-color: #eeeeee; text-align: center;">답변</th>
 						<th style="background-color: #eeeeee; text-align: center;">날짜</th>
+						<th style="background-color: #eeeeee; text-align: center;">삭제</th>
 					</tr>
 				</thead>
 
@@ -355,7 +358,9 @@
 							</c:if>
 						 </a></td>
 						<td>${q.regdate}</td>
-	
+
+						<td><a href="/yomozomo/deleteQna?id=${q.qnum}"><input type="button" value="삭제" class="delete"/></a></td>
+						
 					</tr>
 					</c:forEach>
 				</tbody>
@@ -431,7 +436,9 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+<script>
 
+</script>
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
