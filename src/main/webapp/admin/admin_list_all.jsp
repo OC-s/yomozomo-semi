@@ -125,7 +125,7 @@
 				%>
 					<tr>
 						<td colspan="6">
-							<a href="admin_addPro"><input type="button" value="상품등록" /></a>
+							<a href="admin_addPro.jsp"><input type="button" value="상품등록" /></a>
 						</td>
 					</tr>
 				</tbody>
