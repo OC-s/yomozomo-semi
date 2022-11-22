@@ -22,27 +22,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   
-  <!-- 작성 체크 -->
-  <script type="text/javascript">
-	  function Checkform(){
-		 	if(NAME.value ==""){
-		 		NAME.focus();
-				alert('이름을 입력해주세요');
-				return false
-			}
-			if(ID.value ==""){
-				ID.focus();
-				alert('ID를 입력해주세요');
-				return false
-			}
-			if(PASSWORD.value ==""){
-				tel.focus();
-				alert('비밀번호를 입력해주세요');
-				return false
-			}
-	  }
-  </script>
-  
   
   <style type="text/css">
   	#table_add{
@@ -274,7 +253,7 @@
     </section>
     <!-- Main content -->
 	<div class="container">
-    	<form action="u_mngmnMoOk.jsp" method="post">
+    	<form action="u_mngmnMoOk.jsp" method="post" >
 			<%
 				String num = request.getParameter("mnum");
 				
@@ -305,11 +284,11 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="text" nume="name" value="<%=vo.getNAME()%>"/></td>
-							<td><input type="text" nume="nickname" value="<%=vo.getNICKNAME()%>"/></td>
-							<td><input type="text" nume="id" value="<%=vo.getID()%>"/></td>
-							<td><input type="text" nume="password" value="<%=vo.getPASSWORD()%>"/></td>
-							<td><input type="text" nume="email" value="<%=vo.getEMAIL()%>"/></td>
+							<td><input type="text" name="name" value="<%=vo.getNAME()%>"/></td>
+							<td><input type="text" name="nickname" value="<%=vo.getNICKNAME()%>"/></td>
+							<td><input type="text" name="id" value="<%=vo.getID()%>"/></td>
+							<td><input type="text" name="password" value="<%=vo.getPASSWORD()%>"/></td>
+							<td><input type="text" name="email" value="<%=vo.getEMAIL()%>"/></td>
 						</tr>
 					</tbody>
 					
@@ -323,10 +302,11 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="text" nume="phone" value="<%=vo.getPHONE()%>"/></td>
-							<td><input type="text" nume="zipcode" value="<%=vo.getZIPCODE()%>"/></td>
-							<td><input type="text" nume="add" value="<%=vo.getADDRESS()%>"/></td>
-							<td><input type="text" nume="add2" value="<%=vo.getADDRESSDETAIL()%>"/></td>
+							<td><input type="text" name="phone" value="<%=vo.getPHONE()%>"/></td>
+							<td><input type="text" name="zipcode" value="<%=vo.getZIPCODE()%>"/></td>
+							<td><input type="text" name="add" value="<%=vo.getADDRESS()%>"/></td>
+							<td><input type="text" name="add2" value="<%=vo.getADDRESSDETAIL()%>"/></td>
+							<input type="hidden" name="mnum" value="<%= vo.getM_NUM()%>" />
 						</tr>
 					<%
 					}

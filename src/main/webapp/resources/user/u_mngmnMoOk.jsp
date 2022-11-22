@@ -26,7 +26,6 @@
 			MemberDAO dao = new MemberDAO();
 			
 			MemberVO vo = new MemberVO();
-			vo.setM_NUM(mnum);
 			vo.setNAME(name);
 			vo.setNICKNAME(nickname);
 			vo.setID(id);
@@ -36,6 +35,7 @@
 			vo.setZIPCODE(zipcode);
 			vo.setADDRESS(add);
 			vo.setADDRESSDETAIL(add2);
+			vo.setM_NUM(mnum);
 			
 			dao.updateOne(vo);
 			

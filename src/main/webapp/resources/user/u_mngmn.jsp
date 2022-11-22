@@ -17,6 +17,15 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   
+  <script type="text/javascript">
+	function Checkform(){
+		if(document.querySelectorAll('input[name="mnum"]:checked').length==0){
+			alert("회원을 체크해주세요");
+			return false;
+		}
+	}
+  </script>
+  
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -307,7 +316,7 @@
 			}
 			
 			%>
-		<form method="post" name="form">
+		<form method="post" name="form" id="test" onsubmit="return Checkform()" >
 		<div class="container" style="max-width:1400px">
 			<div class="row">
 				<table class="table table-bordered" style="position: relative; text-align: center; border: 1px solid #dddddd; margin-top: 50px;">
@@ -389,6 +398,7 @@
 						</tr>
 						<tr>
 							<td colspan="12" style="text-align: left;">
+								<input type="reset" value="선택취소" />
 								<input type="submit" name="btn1" value="수정" formaction="u_mngmnMo.jsp" />
 								<input type="submit" name="btn1" value="삭제" formaction="u_mngmnDe.jsp" />
 							</td>

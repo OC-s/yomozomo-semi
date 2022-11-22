@@ -251,7 +251,7 @@ public class MemberDAO {
 		// 4.sql문 작성
 		sb.setLength(0);
 		sb.append("UPDATE MEMBER ");
-		sb.append("SET NAME = ?, NICKNAME = ?, ID = ?,ADDRESS, PASSWORD = ?, EMAIL = ?, PHONE = ?, ZIPCODE = ? ,ADDRESS = ? , ADDRESSDETAIL = ? ) ");
+		sb.append("SET NAME = ?, NICKNAME = ?, ID = ?, PASSWORD = ?, EMAIL = ?, PHONE = ?, ZIPCODE = ? ,ADDRESS = ? , ADDRESSDETAIL = ? ");
 		sb.append("WHERE M_NUM = ? ");
 
 		try {
@@ -267,8 +267,11 @@ public class MemberDAO {
 			pstmt.setString(7, vo.getZIPCODE());
 			pstmt.setString(8, vo.getADDRESS());
 			pstmt.setString(9, vo.getADDRESSDETAIL());
+			pstmt.setInt(10, vo.getM_NUM());
+			
 			// 6.실행
 			pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
