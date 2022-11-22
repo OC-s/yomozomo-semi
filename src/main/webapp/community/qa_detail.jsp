@@ -105,12 +105,11 @@
 				
 				MemberVO log = (MemberVO)obj;
 				
-				if(log.getM_NUM() == vo.getM_NUM()){
+				if(log.getM_NUM() == vo.getM_NUM() || log.getM_NUM()==9){
 				
 				%>				
 					<a href="qa_modify.jsp?qab_num=<%=vo.getQAB_NUM()%>"><input type="button" value="수정" class="btn btn-outline-secondary"/></a>
 					<a href="qa_deleteOk.jsp?qab_num=<%=vo.getQAB_NUM()%>"><input type="button" value="삭제" class="btn btn-outline-secondary"/></a> 
-				
 				</td>
 				
 		<% 		
