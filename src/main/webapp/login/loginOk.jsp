@@ -38,7 +38,7 @@
 	else if(admin ==1 ){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("location.href = '../admin/main/main.jsp'");
+		script.println("location.href = '../admin/main.jsp'");
 		script.println("</script>");
 		session.setAttribute("vo", user);
 		session.setAttribute("userNum", mnum);

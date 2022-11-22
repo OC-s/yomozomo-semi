@@ -34,7 +34,8 @@
     <div id="body-wrapper">
     
     	<!-- 헤더, 메뉴바-->
-    	<%@ include file="/source/header.jsp" %>
+		<
+    	<%@ include file="./header.jsp" %>
     	<%@ include file="/source/menubar.jsp" %>
     	
     	<!-- main 배너, 아이콘-->
@@ -42,7 +43,6 @@
 	       	<%@ include file="banner.jsp" %>
     		<%@ include file="icon.jsp" %>
        </div>
-
         
 		<!-- main small 4배너 -->         
           <div class="s_header">
