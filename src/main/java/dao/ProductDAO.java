@@ -66,7 +66,7 @@ public class ProductDAO {
 	//추가
 		public void insertOne(ProductVO vo) {
 			sb.setLength(0);
-			sb.append("INSERT INTO PRODUCT (P_NAME, P_PRICE, P_DISCOUNT, P_STOCK, p_CATEGORY, P_THUMBNAIL, P_IMAGE) ");
+			sb.append("INSERT INTO PRODUCT (P_NAME, P_PRICE, P_DISCOUNT, P_STOCK, P_CATEGORY, P_THUMBNAIL, P_IMAGE) ");
 			sb.append("VALUES (?,?,?,?,?,?,?) ");
 			
 			try {
