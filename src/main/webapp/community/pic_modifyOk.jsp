@@ -13,7 +13,7 @@
 	response.setContentType("text/html;charset=UTF-8");
 	
 	//upload 디렐토리 실제경로얻어오기
-	String saveDir = request.getSession().getServletContext().getRealPath("/upload");
+	String saveDir = application.getRealPath("/upload");
 	//out.println(saveDir);
 	
 	String realFolder = "C:\\Users\\gkw\\git\\yomozomo\\src\\main\\webapp\\uploadPic";
