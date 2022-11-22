@@ -226,6 +226,54 @@ public class MemberDAO {
 		return result;
 		
 	}
+	
+	// 삭제
+	public void deleteOne(int mnum) {
+		sb.setLength(0);
+		sb.append("DELETE FROM MEMBER ");
+		sb.append("WHERE M_NUM = ? ");
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			
+			pstmt.setInt(1, mnum);
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	// 수정
+	public void updateOne(MemberVO vo) {
+		// 4.sql문 작성
+		sb.setLength(0);
+		sb.append("UPDATE MEMBER ");
+		sb.append("SET NAME = ?, NICKNAME = ?, ID = ?,ADDRESS, PASSWORD = ?, EMAIL = ?, PHONE = ?, ZIPCODE = ? ,ADDRESS = ? , ADDRESSDETAIL = ? ) ");
+		sb.append("WHERE M_NUM = ? ");
+
+		try {
+			// 5.문장객체 생성
+			pstmt = conn.prepareStatement(sb.toString());
+			
+			pstmt.setString(1, vo.getNAME());
+			pstmt.setString(2, vo.getNICKNAME());
+			pstmt.setString(3, vo.getID());
+			pstmt.setString(4, vo.getPASSWORD());
+			pstmt.setString(5, vo.getEMAIL());
+			pstmt.setString(6, vo.getPHONE());
+			pstmt.setString(7, vo.getZIPCODE());
+			pstmt.setString(8, vo.getADDRESS());
+			pstmt.setString(9, vo.getADDRESSDETAIL());
+			// 6.실행
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
 
 	// 자원반납
 	public void close() {
