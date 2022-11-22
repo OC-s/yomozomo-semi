@@ -240,173 +240,50 @@
 
     <!-- Main content -->
     <section class="content">
-      <%
-	int startNo2 = 0;
-	int endNo2 = 0;
-	int currentPage = 0;
-	int currentBlock = 0;
-	int totalCount = 0;
-	int totalPage = 0;
-	int recoredPerPage = 0;
-	int startPage = 0;
-	int endPage = 0;
-
-	//현재 페이지
-	String cp = request.getParameter("cp");
-	if (cp != null) {
-		currentPage = Integer.parseInt(cp);
-	} else {
-		currentPage = 1;
-	}
-
-	//1페이지당 게시물 수		
-	recoredPerPage = 10;
-
-	startNo2 = (currentPage - 1) * recoredPerPage + 1;
-	
-	endNo2 = 10;
-
-	//총게시물수
-	ProductDAO dao = new ProductDAO();
-
-	totalCount = dao.getTotal();
-
-	//총 페이지
-	totalPage = (totalCount % recoredPerPage == 0) ? totalCount / recoredPerPage : totalCount / recoredPerPage + 1;
-
-	//시작페이지 번호	
-	startPage = 1;
-
-	//끝페이지 번호
-	endPage = totalPage;
-
-	//시작페이지 미세조정
-	if (currentPage <= 5) {
-		startPage = 1;
-	} else if (currentPage >= 6) {
-		startPage = currentPage - 4;
-	}
-
-	//끝페이지 미세조정
-	if (totalPage - currentPage <= 5) {
-		endPage = totalPage;
-	} else if (totalPage - currentPage > 5) {
-		if (currentPage <= 5) {
-			if (totalPage > 10) {
-		endPage = 10;
-			} else {
-		endPage = totalPage;
-			}
-		} else {
-			endPage = currentPage + 4;
-		}
-	}
-	%>
-	
-		<div class="container">
-		<div class="row">
-			<table class="table table-bordered"
-				style="position: relative; text-align: center; border: 1px solid #dddddd; margin-top: 50px;">
-				<thead>
-					<tr>
-						<td colspan="7">
-							<h2>상품 전체목록</h2>						
-						</td>
-					</tr>
-					<tr>
-						<th style="background-color: #eeeeee; text-align: center;">번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">카테고리</th>
-						<th style="background-color: #eeeeee; text-align: center;">이름</th>
-						<th style="background-color: #eeeeee; text-align: center;">가격</th>
-						<th style="background-color: #eeeeee; text-align: center;">할인</th>
-						<th style="background-color: #eeeeee; text-align: center;">수량</th>
-						<th style="background-color: #eeeeee; text-align: center;">수정/삭제</th>
-					</tr>
-				</thead>
-				<%
-				ArrayList<ProductVO> list = dao.selectAll(startNo2, endNo2);
-				for (ProductVO vo : list) {
-				%>
-
-				<tbody>
-					<tr>
-						<td><%=vo.getPnum()%></td>
-						<td><%=vo.getPcategory() %></td>
-						<td><a href="/yomozomo/detail?id=<%=vo.getPnum()%>"><%=vo.getPname()%></a></td>
-						<td><%=vo.getPprice()%></td>
-						<td><%=vo.getPdiscount()%></td>
-						<td><%=vo.getPstock()%></td>
-						<td>
-							<a href="p_mngmn_modify.jsp?id=<%=vo.getPnum()%>">
-							<input type="button" value="수정" />
-							
-							</a>
-							
-							<a href="/yomozomo/admin/admin_deleteProOk.jsp?id=<%=vo.getPnum()%>">
-							<input type="button" value="삭제" />
-							</a>						
-						</td>
-	
-					</tr>
-				<%
-				}
-				%>
-					<tr>
-						<td colspan="7">
-							<a href="p_mngmn_add.jsp"><input type="button" value="상품등록" /></a>
-						</td>
-					</tr>
-				</tbody>
+    <div class="container">
+		<form action="/yomozomo/admin/admin_addProOk.jsp" method="post" enctype="multipart/form-data">
+			<table class="table table-bordered table-striped" id="admin_addPro_table">
+				<tr>
+					<td colspan="4">
+					<h2>상품등록</h2>
+					</td>
+				</tr>
+				<tr>
+					<th>카테고리</th>
+					<td><input type="text" name="P_CATEGORY" id="" /></td>
+				</tr>
+				<tr>
+					<th>상품명</th>
+					<td><input type="text" name="P_NAME" id="" /></td>
+				</tr>
+				<tr>
+					<th>가격</th>
+					<td><input type="text" name="P_PRICE" id="" /></td>
+				</tr>
+				<tr>
+					<th>할인</th>
+					<td><input type="text" name="P_DISCOUNT" id="" /></td>
+				</tr>
+				<tr>
+					<th>수량</th>
+					<td><input type="text" name="P_STOCK" id="" /></td>
+				</tr>
+				<tr>
+				<th>썸네일</th>
+				<td><input type="file" name="P_THUMBNAIL" id="" /></td>
+			   </tr>
+			   <tr>
+				<th>상세이미지</th>
+				<td><input type="file" name="P_IMAGE" id="" /></td>
+			   </tr>
+			   
+				<tr>
+					<td colspan="4">					
+						<input type="submit" value="등록" class="btn btn-outline-secondary" />
+					</td>
+				</tr>			
 			</table>
-		</div>
-	</div>
-
-	<div class="container" id="admin_list_all_container">
-		<table class="table table-bordered" style="border: transparent;">
-			<tr>
-				<td colspan="4">
-					<nav aria-label="Page navigation example">
-						<ul class="pagination justify-content-center">
-							<%
-							if (startPage == 1) {
-							%>
-							<li class="page-item"><a class="page-link" href="#"
-								tabindex="-1" aria-disabled="true">Previous</a></li>
-							<%
-							} else {
-							%>
-							<li class="page-item"><a class="page-link"
-								href="p_mngmn.jsp?cp=<%=startPage - 1%>" tabindex="-1"
-								aria-disabled="true">Previous</a></li>
-							<%
-							}
-							%>
-							<%
-							for (int i = startPage; i <= endPage; i++) {
-							%>
-							<li class="page-item"><a class="page-link"
-								href="p_mngmn.jsp?cp=<%=i%>"><%=i%></a></li>
-							<%
-							}
-							%>
-							<%
-							if (totalPage == endPage) {
-							%>
-							<li class="page-item disalbed "><a class="page-link"
-								href="#">Next</a></li>
-							<%
-							} else {
-							%>
-							<li class="page-item"><a class="page-link"
-								href="p_mngmn.jsp?cp=<%=endPage + 1%>">Next</a></li>
-							<%
-							}
-							%>
-						</ul>
-					</nav>
-				</td>
-			</tr>			
-		</table>
+		</form>
 	</div>
       
     </section>
