@@ -61,8 +61,8 @@
 		vo.setPprice(P_PRICE);
 		vo.setPdiscount(P_DISCOUNT);
 		vo.setPstock(P_STOCK);
-		vo.setPthumbnail(P_THUMBNAIL);
-		vo.setPimage(P_IMAGE);
+		vo.setPthumbnail("image/"+P_THUMBNAIL);
+		vo.setPimage("image/"+P_IMAGE);
 		
 		
 		
