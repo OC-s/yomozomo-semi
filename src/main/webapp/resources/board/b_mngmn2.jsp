@@ -9,6 +9,11 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+<style>
+td#paging{
+	text-align: center;
+}
+</style>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -350,6 +355,7 @@
 						<th style="background-color: #eeeeee; text-align: center;">작성일시</th>
 						<th style="background-color: #eeeeee; text-align: center;">조회수</th>
 						<th style="background-color: #eeeeee; text-align: center;">이미지</th>
+						<th style="background-color: #eeeeee; text-align: center;">삭제</th>
 					</tr>
 				</thead>
 				<%
@@ -366,13 +372,19 @@
 							<td><%=vo.getQAB_REGDATE()%></td>
 							<td><%=vo.getQAB_HIT()%></td>
 							<td><%=vo.getQAB_IMAGE()%></td>
+							<td>
+								<form action="deleteQaboard.jsp">
+									<button type="submit" class="btn btn-danger">삭제</button>
+									<input type="hidden" name="qanum" value=<%=vo.getQAB_NUM() %> />
+								</form>
+							</td>
 						</tr>
 				<%
 				}
 				dao.close();
 				%>
 				<tr>
-					<td colspan="7">
+					<td id="paging" colspan="8">
 						<nav aria-label="Page navigation example">
   							<ul class="pagination">
   				<%
@@ -398,6 +410,11 @@
 				%>
 					</ul>
 				</nav>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="8">
+				
 			</td>
 		</tr>
 		

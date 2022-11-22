@@ -7,6 +7,11 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+<style>
+td#paging{
+	text-align: center;
+}
+</style>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -348,6 +353,7 @@
 						<th style="background-color: #eeeeee; text-align: center;">작성일시</th>
 						<th style="background-color: #eeeeee; text-align: center;">조회수</th>
 						<th style="background-color: #eeeeee; text-align: center;">이미지</th>
+						<th style="background-color: #eeeeee; text-align: center;">삭제</th>
 					</tr>
 				</thead>
 				<%
@@ -364,13 +370,22 @@
 							<td><%=vo.getB_REGDATE()%></td>
 							<td><%=vo.getB_HIT()%></td>
 							<td><%=vo.getB_IMAGE()%></td>
+							<td>
+								<form action="deleteBoard.jsp">
+									<button type="submit" class="btn btn-danger">삭제</button>
+									<input type="hidden" name="bnum" value=<%=vo.getB_NUM() %> />
+								</form>
+							</td>
 						</tr>
 				<%
 				}
 				dao.close();
 				%>
 				<tr>
-					<td colspan="7">
+					<td colspan="8"></td>
+				</tr>
+				<tr>
+					<td id="paging" colspan="8">
 						<nav aria-label="Page navigation example">
   							<ul class="pagination">
   				<%
