@@ -212,8 +212,6 @@
           </li>
         <!-- 쇼핑몰 end -->
         
-        
-        
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -308,7 +306,7 @@
 		<div class="container">
 		<div class="row">
 			<table class="table table-bordered"
-				style="position: relative; top: 100px; text-align: center; border: 1px solid #dddddd; margin-top: 50px;">
+				style="position: relative; text-align: center; border: 1px solid #dddddd; margin-top: 50px;">
 				<thead>
 					<tr>
 						<td colspan="6">
@@ -399,7 +397,6 @@
 			</tr>			
 		</table>
 	</div>
-      
       
     </section>
     <!-- /.content -->
