@@ -69,7 +69,7 @@
 			<table class="search_table">			
 				<tr>
 					<form action="/yomozomo/login/search/email">
-					<th><input type="text" class="search_name" name="email" id="name" placeholder="email" /></th>
+					<th><input type="text" class="search_name" name="email" id="email" placeholder="email" /></th>
 					<th><input type="submit" value="보내기" id="email-send"/></th>
 					</form>
 				</tr>
@@ -87,13 +87,17 @@
 		
 	</div>
 	</div>
-	
+
 	<script>
 	const num = ${num}
+	let email="${email}"
+	
+	
 	document.getElementById("search_btn1").addEventListener('click',function(){
 		const userNum = document.getElementById("number").value;
 		if(num == userNum){
-			alert("인증성공");
+			alert("인증성공"); 
+			location.href="/yomozomo/login/searchEmail?email="+email;
 		}
 		else{
 			alert("인증실패");

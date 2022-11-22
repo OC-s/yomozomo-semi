@@ -203,6 +203,26 @@ public class MemberDAO {
 		}
 		return num;
 	}
+	public String getUserId(String email) {
+		String id ="";
+		try {
+			String sql =  "SELECT ID FROM MEMBER WHERE EMAIL = ?";
+			Connection con = DriverManager.getConnection(url, user, password);
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setString(1, email);
+			ResultSet rs = st.executeQuery();
+
+			if (rs.next()) {
+				id= rs.getString("ID");
+			}
+			rs.close();
+			st.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return id;
+	}
 	public int checkAdmin(String id,String pw) {
 		int result = 0;
 		try {

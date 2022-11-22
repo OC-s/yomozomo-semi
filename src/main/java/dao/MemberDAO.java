@@ -81,6 +81,7 @@ public class MemberDAO {
 		}
 		
 	}
+
 	
 	public void close() {
 		try {

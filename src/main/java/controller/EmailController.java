@@ -53,6 +53,7 @@ public class EmailController extends HttpServlet{
 		}
 	
 		 req.setAttribute("num", num);
+		 req.setAttribute("email",memerber);
 		 req.getRequestDispatcher("/login/search.jsp").forward(req, res);
 		 
 		}
