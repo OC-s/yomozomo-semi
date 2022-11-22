@@ -14,21 +14,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-	
-/* 	$(function(){
-		$("#button-addon2").on("click", function(){
-			if($("#txt").val() == ""){
-				$("#txt").focus();
-				alert('상품명을 입력해주세요');
-			} else {
-				document.frm.action = "../source/search.jsp";
-				document.frm.method="get";
-				document.frm.submit();
-				
-			}
-		})
-	}) */
-
  	function Checkform2(){
 	 	if(txt.value ==""){
 	 		txt.focus();

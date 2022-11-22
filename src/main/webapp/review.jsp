@@ -1,8 +1,18 @@
+<%@page import="dao.StoreService"%>
+<%@page import="dao.ReviewService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%
+ReviewService service = new ReviewService();
+request.setAttribute("s", service);
+
+StoreService s = new StoreService();
+request.setAttribute("t", s);
+
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,7 +31,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
     />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css" />
-     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/qna.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/qna.css" />
+   	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/review.css"  />
     <style>
     .wrap-star {
         width: 10%;
@@ -80,14 +91,13 @@
     input[type="radio"]:checked ~ label {
       text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
     }
-   
+	.delte-hide{
+		visibility: hidden;
+	}
     </style>
   </head>
   <body class="body">
   <%@include file="/source/header.jsp" %>
-    
-    
-    
     <!-- header bar end-->
     <div class="category">
       홈 > ${product.category} > ${product.name} > 구매후기
@@ -95,13 +105,15 @@
     <c:set var="price"
 			value="${product.price*(1-product.discount/100)}" />
     <div class="qna">
-      <div><img src="${pageContext.request.contextPath}/${product.thumbnail}" alt="" /></div>
+      <div><a href="/yomozomo/detail?id=${product.num}"><img src="${pageContext.request.contextPath}/${product.thumbnail}" /></a></div>
       <div class="qna__column">
         <div class="qna__title">${product.name}</div>
         <div class="qna__price"><fmt:formatNumber type="number" pattern="###,###,###,###,###,###"
 							value="${price}" />
 						원</div>
-        <div class="qna__scope">별점 / 후기개수</div>
+        <div class="qna__scope"><c:set var="rating" value="${s.getRatingAvg(product.num)}"></c:set>
+						<span id="star">★</span><span><fmt:formatNumber
+								value="${rating}" pattern="${(rating==0.0)?0:.0}" /> / </span><span>${t.getCountReview(product.num)}</span></div>
         <div class="qna__">
           <input type="${(check==false)?"hidden":"button"}" id="query-btn" value="리뷰작성">
           <c:if test="${check==false}">
@@ -133,7 +145,7 @@
             ></textarea>
           </div>
           <div class="file">
-          <input type="file" name="file" accept=".jpg"/>
+          <input type="file" name="file" accept=".jpg" required="required"/>
           </div>
           <fieldset>
         <span class="text-bold">별점을 선택해주세요</span>
@@ -159,9 +171,8 @@
         >
       </fieldset>
           <div class="query-detail__secret">
-            <span>비밀글 체크</span>
             <span>
-              <input type="checkbox" name="secret" value="Y"/>
+              <input type="hidden" name="secret" value="Y"/>
             </span>
           </div>
           <div class="btn">
@@ -172,26 +183,33 @@
       </div>
     </div>
 
-    <div class="review__main">
-      <div class="review__column">
-        <div class="RatingStar">
-          <div class="RatingScore">
-            <div class="outer-star"><div class="inner-star"></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <c:forEach var="review" items="${review}">
-    
-    <div>
-    	<div>${review.scope}</div>
-    	<div>${review.contents}</div>
-    	<img src="/yomozomo/uploadReview/${review.image}" />
-    	
-    </div>
-    </c:forEach>
 
+
+	<c:forEach var="review" items="${review}" varStatus="st" begin="0"
+			end="4">
+			<div class="review__main">
+				<div class="review__column">
+					<div class="review__icon">🙂</div>
+					<div class="review__check">구매인증됨</div>
+					<div class="review__divider">|</div>
+					<div class="review__date">${review.regdate}</div>
+				</div>
+				<div class="review__column">
+					<span class="review__nickname">닉네임 : </span>
+					<span id="nickname">${s.getUserId(review.mnum)}</span>
+				</div>
+				<div class="review__column">
+					<img class="review__image"src="/yomozomo/uploadReview/${review.image}" />
+					<div class="review__contents" id="contents">${review.contents}</div>
+					<div class="review__delete"><a href=""><span class="material-symbols-outlined">delete</span></a></div>
+			
+				</div>
+				
+			</div>
+
+		</c:forEach>
     <script>
+ 
       document
         .getElementById("query-btn")
         .addEventListener("click", function () {
@@ -215,23 +233,7 @@
         document.getElementsByClassName("body")[0].classList.toggle("black");
       });
       
-      /*<![CDATA[*/ 
-      ratings = { RatingScore: 3 };
-      totalRating = 5;
-      table = document.querySelector(".RatingStar");
-      function rateIt() {
-        for (rating in ratings) {
-          ratingPercentage = (ratings[rating] / totalRating) * 100;
-          ratingRounded = Math.round(ratingPercentage / 10) * 10 + "%";
-          console.log(rating);
-          star = table.querySelector('.RatingScore .inner-star');
-          numberRating = table.querySelector('.RatingScore .numberRating');
-          star.style.width = ratingRounded;
-          
-        }
-      }
-      
-      rateIt();
+ 
     </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"

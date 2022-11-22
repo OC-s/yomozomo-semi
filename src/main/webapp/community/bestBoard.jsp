@@ -86,6 +86,7 @@ $(function(){
 		color:black;
 	}
 	.bestBoard_img{
+		border-radius: 10%;
 		position:relative;
 		right:80px;
 		width: 300px;
@@ -176,8 +177,9 @@ $(function(){
 		%>
 							
 				<div>
-				<a href="pic_detail.jsp?b_num=<%=boardvo.getB_NUM()%>">
+				<a style="text-decoration: none; color:black;" href="pic_detail.jsp?b_num=<%=boardvo.getB_NUM()%>">
 				<img src=<%=boardvo.getB_IMAGE() %> alt="" class="bestBoard_img"/>
+			
 				</a>
 				</div>	
 																				

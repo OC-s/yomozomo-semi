@@ -12,10 +12,32 @@
 <meta charset="UTF-8">
 <title>YOMOZOMO</title>
 <style>
-@charset "UTF-8";
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#body-wrapper {
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 330px;
+}
+
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a>span{
+	color: black;
+}
+a>div{
+	color: black;
+}
 
 #yomozomo{
-
     font-weight: 800;
     font-size: 22px;
 }
@@ -38,7 +60,6 @@
     z-index: 100;
 }
 .header__community {
-
     display: flex;
 }
 .header__community span,
@@ -46,21 +67,98 @@
     margin-right: 10px;
 }
 .header__column{
-	margin-top:10px;
     display: flex;
     align-items: center;
-    margin-right: 25px;
+    margin-right: 30px;
 }
 .header__column:first-child a{
     margin-bottom: 14px;
 }
+.input-group{
+    margin-left: 40px;
+    margin-right: 40px;
+    top: 3px;
+    margin-top: 10px;
+}
+.header__divider{
+    height: 20px;
+    background-color: rgba(0,0,0,0.2);
+    width: 1px;
+    margin-right: 7px; 
+}
+.header__text{
+    font-weight: 800;
+    font-size: 12px;
+}
+.header__text2{
+    font-weight: 800;
+    font-size: 10px;
+}
 
+
+/* --------------------------------------------------------- */
+
+#main{
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin-right: 200px;
+}
+
+
+
+#icon{
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+    margin-bottom: 11px;
+
+}
+
+.icon_div{
+    text-align: center;
+    padding-right: 35px;
+}
+.icon_img>img{
+    width: 90px;
+    height: 77px; 
+}
+
+.s_header{
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+} 
 
 
 </style>
+<link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"
+    ></script>
+    <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <script type="text/javascript">
+
 	
 /* 	$(function(){
 		$("#button-addon2").on("click", function(){
@@ -84,6 +182,8 @@
 		}
 	} 
 </script>
+
+
 
 </head>
 <body>

@@ -18,16 +18,25 @@ import dto.ProductDTO;
 public class QnaController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
 		request.setCharacterEncoding("utf-8");
+
+		int id = Integer.parseInt(request.getParameter("id"));
+		String page_ = request.getParameter("p");
+		int page =1;
+		
+		if(page_!=null && !page_.equals("")) page = Integer.parseInt(page_);
+		
+		
 		StoreService service = new StoreService();
 		QnaService ansService = new QnaService();
 
 		ProductDTO product = service.getProductDetail(id);
-		List<AnsQnaDTO> ans = ansService.getAnswer(id);
-	
+		List<AnsQnaDTO> ans = ansService.getAnswer(id,page);
+		int count = ansService.getAnswerCount(id);
+
 		
 
+		request.setAttribute("count",count);
 		request.setAttribute("ans", ans);
 		request.setAttribute("product",product);
 		request.setAttribute("id",id);

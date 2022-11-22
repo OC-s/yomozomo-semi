@@ -38,11 +38,11 @@
 	}
 
 	//1페이지당 게시물 수		
-	recoredPerPage = 5;
+	recoredPerPage = 10;
 
 	startNo2 = (currentPage - 1) * recoredPerPage + 1;
 
-	endNo2 = 5;
+	endNo2 = 10;
 
 	//총게시물수
 	QaboardDAO dao = new QaboardDAO();

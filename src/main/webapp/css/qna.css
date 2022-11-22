@@ -25,6 +25,8 @@ img {
 }
 .qna__scope{
 	margin: 5px 0px 40px 0px;
+	font-size: 15px;
+	font-weight: 600;
 }
 
 .qna {

@@ -1,4 +1,5 @@
 
+<%@page import="dao.StoreService"%>
 <%@page import="dao.ReviewService"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -7,12 +8,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%
-	ReviewService service = new ReviewService();
-	request.setAttribute("s", service);
-	
-	HttpSession sess = request.getSession();
-	int userId = (int) sess.getAttribute("userNum");
-	System.out.println(userId);
+ReviewService service = new ReviewService();
+request.setAttribute("s", service);
+
+StoreService s = new StoreService();
+request.setAttribute("t", s);
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,86 +31,7 @@
 	font-weight: 600;
 }
 
-.review__scope {
-	margin: 0px 40px 20px 40px;
-	height: 200px;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	display: flex;
-	justify-content: center;
-}
 
-.review__scope__column {
-	margin: 20px;
-}
-
-.star-rating {
-	width: 304px;
-}
-
-.star-rating, .star-rating span {
-	display: inline-block;
-	height: 55px;
-	overflow: hidden;
-	background: url(image/star.png) no-repeat;
-}
-
-.star-rating span {
-	background-position: left bottom;
-	line-height: 0;
-	vertical-align: top;
-}
-
-.review__scope__column:first-child {
-	display: flex;
-	flex-direction: column;
-}
-
-.review__rating {
-	margin-left: 140px;
-	margin-bottom: 10px;
-	font-weight: 800;
-	font-size: 25px;
-}
-
-.review__scope__column:nth-child(2) {
-	margin-top: 30px;
-}
-
-.review__images {
-	display: flex;
-	margin: 0px 40px;
-	justify-content: flex-start;
-}
-
-.review__image {
-	width: 100%;
-	height: 200px;
-}
-
-.review__main {
-	margin: 0px 40px 0px 40px;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	border-left: none;
-	border-right: none;
-	font-weight: 500;
-}
-
-.review__column:first-child {
-	display: flex;
-}
-
-.review__column {
-	
-	
-}
-
-.review__check, .review__divider {
-	margin-right: 5px;
-}
-
-.review__divider {
-	color: rgba(0, 0, 0, 0.2);
-}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"
 	integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
@@ -124,6 +45,7 @@
 <link rel="stylesheet" href="css/nav.css" />
 <link rel="stylesheet" href="css/detail-main.css" />
 <link rel="stylesheet" href="css/detail-footer.css" />
+<link rel="stylesheet" href="css/review.css" />
 
 </head>
 <body>
@@ -148,6 +70,8 @@
 
 	<main>
 
+		
+
 		<c:set var="price" value="${product.price*(1-product.discount/100)}" />
 		<div class="product-detail">
 			<div class="product-detail__image">
@@ -161,7 +85,9 @@
 				<div class="product-detail__info">
 					<div class="product__name">${product.name}</div>
 					<div class="product__review">
-						<span>별점/</span><span>후기</span>
+						<c:set var="rating" value="${s.getRatingAvg(product.num)}"></c:set>
+						<span id="star">★</span><span><fmt:formatNumber
+								value="${rating}" pattern="${(rating==0.0)?0:.0}" /> / </span><span>${t.getCountReview(product.num)}</span>
 					</div>
 					<div class="product__discount">
 						<span id="discount">${product.discount}%</span>
@@ -255,8 +181,9 @@
 			<div class="qna__main">
 				<div class="qna__title">질문</div>
 				<div class="qna__question">${a.title}</div>
+				<div>${a.qcontents}</div>
 				<div class="qna__title--answer">답변</div>
-				<div class="qna__answer">${a.contents}</div>
+				<div class="qna__answer">${a.acontents}</div>
 				<c:if test="${st.index ==2}">
 					<c:set var="loop_flag" value="true" />
 				</c:if>
@@ -319,31 +246,34 @@
 			</div>
 		</div>
 		<div class="review__images">
-			
-			<c:forEach var="review" items="${review}" begin="0" end="6">
+	
+			<c:forEach var="review" items="${review}" begin="0" end="5">
 				<img class="review__image"
 					src="/yomozomo/uploadReview/${review.image}" />
+	
 			</c:forEach>
 		</div>
-		
-		<c:forEach var="review" items="${review}" varStatus="st" begin="0" end="4">
-		<c:set var="loop_flag" value="false" />
-		<div class="review__main">
-        <div class="review__column">
-          <div class="review__check">구매인증됨</div>
-          <div class="review__divider">|</div>
-          <div class="review__date">${review.regdate}</div>
-        </div>
-        <c:set var="v" value="<%=userId %>"></c:set>
 
-        <div class="review__column" id="nickname">${s.getUserId(v)}</div>
-        <div class="review__column"></div>
-        <div class="review__column">
-          <div class="review__contents" id="contents">${review.contents}</div>
-        </div>
-      </div>
- 
-      </c:forEach>
+		<c:forEach var="review" items="${review}" varStatus="st" begin="0"
+			end="4">
+			<div class="review__main">
+				<div class="review__column">
+					<div class="review__icon">🙂</div>
+					<div class="review__check">구매인증됨</div>
+					<div class="review__divider">|</div>
+					<div class="review__date">${review.regdate}</div>
+				</div>
+				<div class="review__column">
+					<span class="review__nickname">닉네임 : </span>
+					<span id="nickname">${s.getUserId(review.mnum)}</span>
+				</div>
+				<div class="review__column">
+					<img class="review__image"src="/yomozomo/uploadReview/${review.image}" />
+					<div class="review__contents" id="contents">${review.contents}</div>
+				</div>
+			</div>
+
+		</c:forEach>
 	</div>
 
 
@@ -425,7 +355,7 @@
 
 				$("html,body").animate({
 					scrollTop : $(this.hash).offset().top
-				}, 500);
+				}, 0);
 			});
 		});
 	</script>

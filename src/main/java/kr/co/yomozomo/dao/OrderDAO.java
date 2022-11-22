@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import kr.co.yomozomo.vo.BoardVO;
+import kr.co.yomozomo.vo.MemberVO;
 import kr.co.yomozomo.vo.OrderVO;
 import kr.co.yomozomo.vo.ProductVO;
 
@@ -80,6 +81,41 @@ public class OrderDAO {
 		
 	}
 	
+	
+	// ---------------회원 전체조회
+	public ArrayList<MemberVO> selectAllm(){
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
+		
+		sb.setLength(0);
+		sb.append("SELECT * FROM MEMBER ");
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String ADDRESS = rs.getString("ADDRESS");
+				String ADDRESSDETAIL = rs.getString("ADDRESSDETAIL");
+				String EMAIL = rs.getString("EMAIL");
+				String ID = rs.getString("ID");
+				int mnum = rs.getInt("M_NUM");
+				String NAME = rs.getString("NAME");
+				String NICKNAME = rs.getString("NICKNAME");
+				String PASSWORD = rs.getString("PASSWORD");
+				String PHONE = rs.getString("PHONE");
+				String REGDATE = rs.getString("REGDATE");
+				String ZIPCODE = rs.getString("ZIPCODE");
+				
+				MemberVO vo = new MemberVO(ADDRESS, ADDRESSDETAIL, EMAIL, ID, mnum, NAME, NICKNAME, PASSWORD, PHONE, REGDATE,ZIPCODE);
+				list.add(vo);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 	
 	// ---------------상품 전체조회
 	public ArrayList<ProductVO> selectAll(){
@@ -308,7 +344,16 @@ public class OrderDAO {
 		return vo;
 	}
 	
-		
+	// 자원반납
+	public void close() {
+		try {
+			if (rs != null)rs.close();
+			if (pstmt != null)pstmt.close();
+			if (conn != null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	
 
 }

@@ -3,23 +3,22 @@
 .product__thumbnail {
 	width: 250px;
 	height: 180px;
-	border: 1px solid rgba(0, 0, 0, 0.1);
+	border: 1px solid rgba(0,0,0,0.2);
 }
 
 .product {
 	display: flex;
-	justify-content: space-around;
+	justify-content: flex-start;
+	flex-wrap: wrap;
 	margin: 40px 0px;
+	margin-left: 100px;
 }
-
 .product__column {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	margin:10px;
+	width: 22%;
 }
-
-main {
-	margin: 30px 100px;
+.star{
+	color: #F1C40F;
 }
 
 .product__name {
@@ -34,15 +33,20 @@ main {
 }
 
 .total {
-	margin-left: 60px;
+	margin-left: 110px;
 }
 
 .discount__rate {
 	color: red;
+	margin-right: 5px;
 }
-
+#ppp{
+	font-weight: 600;
+}
 .review__text, .star {
 	font-size: 15px;
 	font-weight: 600;
 }
+
+
 

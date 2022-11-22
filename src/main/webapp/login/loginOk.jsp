@@ -23,6 +23,7 @@
 
 	MemberVO user = dao.isExists(id, pw);
 	int mnum = dao.userNum(id);
+	int admin = dao.checkAdmin(id, pw);
 
 	if (user == null) {
 		//로그인실패
@@ -33,15 +34,22 @@
 		script.println("location.href = 'login.jsp'");
 		script.println("</script>");
 
-	} else {
+	} 
+	else if(admin ==1 ){
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("location.href = '../admin/main/main.jsp'");
+		script.println("</script>");
+		session.setAttribute("vo", user);
+		session.setAttribute("userNum", mnum);
+	}
+	else {
 		//로그인 성공		
 
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("location.href = '../main/main.jsp'");
 		script.println("</script>");
-
-		
 
 
 		session.setAttribute("vo", user);

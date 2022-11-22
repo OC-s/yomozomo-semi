@@ -36,6 +36,7 @@
 		border-radius:10px;
 		background-color: skyblue;
 		color: white;
+		margin-top: 50px;
 	}
 	.login_header{
 		text-decoration:none;
@@ -74,7 +75,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-					<a href="">아이디를 잃어버리셨나요?</a>ㅣ
+					<a href="search.jsp">아이디를 잃어버리셨나요?</a>ㅣ
 					<a href="../regist/regist.jsp" id="login_btn2">회원가입</a>
 					</td>
 				</tr>				

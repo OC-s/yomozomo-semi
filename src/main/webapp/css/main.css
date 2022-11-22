@@ -13,6 +13,14 @@ html, body {
 
 a{
     text-decoration: none;
+    color: black;
+}
+
+a>span{
+	color: black;
+}
+a>div{
+	color: black;
 }
 
 #yomozomo{
