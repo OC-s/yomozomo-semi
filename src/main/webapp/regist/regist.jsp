@@ -32,6 +32,10 @@
 		});
 		
 		$("#searchAddrs").on("click", execDaumPostcode);
+		
+		$("#emailbtn").on("click", function(){
+			location.href=".../java/util/UserController.java";
+		});
 	});
 	
 	function idCheck(){
@@ -254,9 +258,10 @@
 		}
 		return true;
 	}
+	
+	
 </script>
 
-<link rel="stylesheet" href="../css/regist.css">
 <link rel="stylesheet" href="../css/footer.css">
 <style>
 div.container{
@@ -295,7 +300,7 @@ div#button{
 		<a href="../main/main.jsp" >YOMOZOMO</a>
 	</div>
 	<div id="regist">회원가입</div>
-<form action="registOk.jsp" method="post" onsubmit="return checkAll()">
+<form action=".../java/util/UserController.java" method="post" onsubmit="return checkAll()">
 	<h6>아이디</h6>
 	<div class="input-group mb-3">
 		<input type="text" id="id" name="id" class="form-control" placeholder="아이디" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -314,6 +319,9 @@ div#button{
     		<li><a class="dropdown-item" href="#">daum.net</a></li>
     		<li><a class="dropdown-item" href="#">hanmail.net</a></li>
   		</ul>
+	</div>
+	<div id="emailBtn">
+		<button id="emailbtn" type="button" class="btn btn-light">이메일 인증하기</button>
 	</div>
 	<h6>비밀번호</h6>
 	<div class="input-group mb-3">
