@@ -305,18 +305,18 @@ div#button{
 	</div>
 	<div id="idCheck"></div>
 	<h6>이메일</h6>
-	<div class="input-group mb-3">
-		<input type="text" id="email1" name="email1" class="form-control" placeholder="이메일 아이디" aria-label="Recipient's username" aria-describedby="button-addon2">
-  		&nbsp;@&nbsp;
-  		<input type="text" id="email2" name="email2" class="form-control" aria-label="Text input with dropdown button" placeholder="이메일 주소">
-  		<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
-  		<ul id="mytype" class="dropdown-menu dropdown-menu-end">
-    		<li><a class="dropdown-item" href="#">naver.com</a></li>
-    		<li><a class="dropdown-item" href="#">gmail.com</a></li>
-    		<li><a class="dropdown-item" href="#">daum.net</a></li>
-    		<li><a class="dropdown-item" href="#">hanmail.net</a></li>
-  		</ul>
-	</div>
+		<div class="input-group mb-3">
+  			<input type="text" id="email1" name="email1" class="form-control" placeholder="이메일 아이디" aria-label="Username">
+  			<span class="input-group-text">@</span>
+  			<input type="text" id="email2" name="email2" class="form-control" placeholder="이메일 주소" aria-label="Server">
+  			<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+  				<ul id="mytype" class="dropdown-menu dropdown-menu-end">
+    				<li><a class="dropdown-item" href="#">naver.com</a></li>
+    				<li><a class="dropdown-item" href="#">gmail.com</a></li>
+    				<li><a class="dropdown-item" href="#">daum.net</a></li>
+    				<li><a class="dropdown-item" href="#">hanmail.net</a></li>
+  				</ul>
+		</div>
 	<h6>비밀번호</h6>
 	<div class="input-group mb-3">
 		<input type="password" id="pw" name="pw" class="form-control" aria-label="Text input with dropdown button" placeholder="비밀번호 입력">

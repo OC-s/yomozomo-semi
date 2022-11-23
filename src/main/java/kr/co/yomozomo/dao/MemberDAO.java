@@ -297,6 +297,34 @@ public class MemberDAO {
 		}
 
 	}
+	
+	public void updateOne1(MemberVO vo) {
+		// 4.sql문 작성
+		sb.setLength(0);
+		sb.append("UPDATE MEMBER ");
+		sb.append("SET PASSWORD = ?, EMAIL = ?, NICKNAME = ?, PHONE = ?, ZIPCODE = ? ,ADDRESS = ? , ADDRESSDETAIL = ? ");
+		sb.append("WHERE M_NUM = ? ");
+
+		try {
+			// 5.문장객체 생성
+			pstmt = conn.prepareStatement(sb.toString());
+			
+			pstmt.setString(1, vo.getPASSWORD());
+			pstmt.setString(2, vo.getEMAIL());
+			pstmt.setString(3, vo.getNICKNAME());
+			pstmt.setString(4, vo.getPHONE());
+			pstmt.setString(5, vo.getZIPCODE());
+			pstmt.setString(6, vo.getADDRESS());
+			pstmt.setString(7, vo.getADDRESSDETAIL());
+			pstmt.setInt(8, vo.getM_NUM());
+			
+			// 6.실행
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	// 자원반납
 	public void close() {

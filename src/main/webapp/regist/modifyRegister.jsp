@@ -34,6 +34,9 @@ div#button{
 	text-align: center;
 	margin: 30px 0px;
 }
+input#name{
+	margin-bottom: 15px;
+}
 </style>
 <meta charset="UTF-8">
 <title>회원정보 수정</title>
@@ -226,24 +229,22 @@ if(obj!=null){
 	<div id="regist">회원정보 수정</div>
 <form action="modifyOk.jsp" method="post" onsubmit="return checkAll()">
 	<h6>아이디</h6>
-	<div class="input-group mb-3">
 		<input type="hidden" name="id" value="<%=vo.getID() %>" />
 		<input type="text" id="id"  value="<%=vo.getID() %>" class="form-control" placeholder="아이디" aria-label="Recipient's username" aria-describedby="button-addon2" disabled>
-	</div>
 	<div id="idCheck"></div>
 	<h6>이메일</h6>
-	<div class="input-group mb-3">
-		<input type="text" id="email1" name="email1" value="<%=(vo.getEMAIL()).substring(0, ((vo.getEMAIL()).indexOf("@"))) %>" class="form-control" placeholder="이메일 아이디" aria-label="Recipient's username" aria-describedby="button-addon2">
-  		&nbsp;@&nbsp;
-  		<input type="text" id="email2" name="email2" value="<%=(vo.getEMAIL()).substring(((vo.getEMAIL()).indexOf("@")+1), (vo.getEMAIL()).length()) %>" class="form-control" aria-label="Text input with dropdown button" placeholder="이메일 주소">
-  		<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
-  		<ul id="mytype" class="dropdown-menu dropdown-menu-end">
-    		<li><a class="dropdown-item" href="#">naver.com</a></li>
-    		<li><a class="dropdown-item" href="#">gmail.com</a></li>
-    		<li><a class="dropdown-item" href="#">daum.net</a></li>
-    		<li><a class="dropdown-item" href="#">hanmail.net</a></li>
-  		</ul>
-	</div>
+		<div class="input-group mb-3">
+  			<input type="text" id="email1" name="email1" value="<%=(vo.getEMAIL()).substring(0, ((vo.getEMAIL()).indexOf("@"))) %>" class="form-control" placeholder="이메일 아이디" aria-label="Username">
+  			<span class="input-group-text">@</span>
+  			<input type="text" id="email2" name="email2" value="<%=(vo.getEMAIL()).substring(((vo.getEMAIL()).indexOf("@")+1), (vo.getEMAIL()).length()) %>" class="form-control" placeholder="이메일 주소" aria-label="Server">
+  			<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+  				<ul id="mytype" class="dropdown-menu dropdown-menu-end">
+    				<li><a class="dropdown-item" href="#">naver.com</a></li>
+    				<li><a class="dropdown-item" href="#">gmail.com</a></li>
+    				<li><a class="dropdown-item" href="#">daum.net</a></li>
+    				<li><a class="dropdown-item" href="#">hanmail.net</a></li>
+  				</ul>
+		</div>
 	<h6>비밀번호</h6>
 	<div class="input-group mb-3">
 		<input type="password" id="pw" name="pw" class="form-control" aria-label="Text input with dropdown button" placeholder="비밀번호 입력">
@@ -258,10 +259,8 @@ if(obj!=null){
 		<input type="text" id="nickname" name="nickname" value="<%=vo.getNICKNAME() %>" class="form-control" aria-label="Text input with dropdown button" placeholder="닉네임 입력">
 	</div>
 	<h6>이름</h6>
-	<div class="input-group mb-3">
 		<input type="hidden" name="name" value=<%=vo.getNAME() %> />
 		<input type="text" id="name" value="<%=vo.getNAME() %>" class="form-control" aria-label="Text input with dropdown button" placeholder="이름 입력" disabled>
-	</div>
 	<h6>전화번호</h6>
 	<div class="input-group mb-3">
 		<input type="text" id="phone" name="phone" value="<%=vo.getPHONE() %>" class="form-control" aria-label="Text input with dropdown button" placeholder="하이픈(-)없이 입력">
