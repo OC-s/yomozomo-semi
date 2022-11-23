@@ -122,7 +122,7 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tree"></i>
               <p>
-               쇼핑몰 회원관리
+               회원관리
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
