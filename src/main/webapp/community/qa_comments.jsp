@@ -60,7 +60,7 @@
 				for (QacmtjoinVO vo2 : list) {
 
 					MemberVO log = (MemberVO) obj;
-					if (vo.getQAB_NUM() == vo2.getQAB_NUM() || log.getM_NUM()==9 ) {
+					if (vo.getQAB_NUM() == vo2.getQAB_NUM()) {
 				%>
 
 				<tr>

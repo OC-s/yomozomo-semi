@@ -60,7 +60,7 @@
 				for (CmtjoinVO vo2 : list) {
 
 					MemberVO log = (MemberVO) obj;
-					if (vo.getB_NUM() == vo2.getB_NUM() || log.getM_NUM()==9) {
+					if (vo.getB_NUM() == vo2.getB_NUM() ) {
 				%>
 
 				<tr>
