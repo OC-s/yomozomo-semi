@@ -1,3 +1,4 @@
+<%@page import="kr.co.yomozomo.vo.MemberVO"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="dao.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -7,11 +8,18 @@ request.setCharacterEncoding("UTF-8");
 response.setContentType("text/html;charset=UTF-8");
 
 String pw=request.getParameter("pw");
+out.println(pw);
 
+Object obj=session.getAttribute("vo");
+MemberVO vo=(MemberVO)obj;
 
+String realPw=vo.getPASSWORD();
+out.println(realPw);
 
-if(result){
-	response.sendRedirect("modifyRegister.jsp");
+//==쓰면 이상하게 작동함
+//equals메서드 쓰니 정상적으로 작동함
+if(realPw.equals(pw)){
+ 	response.sendRedirect("modifyRegister.jsp");
 }else{
 	PrintWriter script = response.getWriter();
 	script.println("<script>");

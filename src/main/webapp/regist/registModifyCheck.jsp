@@ -13,10 +13,12 @@
 Object obj = session.getAttribute("vo");
 
 if(obj!=null){
-	MemberVO vo = (MemberVO)obj;
 %>
 <h2>비밀번호를 입력하세요</h2>
+<form action="checkOk.jsp" method="post">
 <input type="text" name="pw" id="" />
+<button type="submit" class="btn btn-primary">제출</button>
+</form>
 
 <%
 }else{

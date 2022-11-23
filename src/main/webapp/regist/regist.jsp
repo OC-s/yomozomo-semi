@@ -32,10 +32,7 @@
 		});
 		
 		$("#searchAddrs").on("click", execDaumPostcode);
-		
-		$("#emailbtn").on("click", function(){
-			location.href=".../java/util/UserController.java";
-		});
+
 	});
 	
 	function idCheck(){
@@ -359,7 +356,6 @@ div#button{
 </form>
 
 </div>
-</head>
 <body>
 
 </html>
