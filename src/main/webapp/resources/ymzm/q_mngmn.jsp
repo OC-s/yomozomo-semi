@@ -111,7 +111,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="../../main/main.jsp" class="nav-link">
+            <a href="../../admin/main.jsp" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 쇼핑몰 홈
