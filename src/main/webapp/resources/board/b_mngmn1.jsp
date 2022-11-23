@@ -351,9 +351,10 @@ td#paging{
 						<th style="background-color: #eeeeee; text-align: center;">제목</th>
 						<th style="background-color: #eeeeee; text-align: center;">내용</th>
 						<th style="background-color: #eeeeee; text-align: center;">작성일시</th>
-						<th style="background-color: #eeeeee; text-align: center;">조회수</th>
 						<th style="background-color: #eeeeee; text-align: center;">이미지</th>
+						<th style="background-color: #eeeeee; text-align: center;">조회수</th>
 						<th style="background-color: #eeeeee; text-align: center;">삭제</th>
+						<th style="background-color: #eeeeee; text-align: center;">수정</th>
 					</tr>
 				</thead>
 				<%
@@ -368,11 +369,17 @@ td#paging{
 							<td><%=vo.getB_TITLE()%></td>
 							<td><%=vo.getB_CONTENTS() %></td>
 							<td><%=vo.getB_REGDATE()%></td>
-							<td><%=vo.getB_HIT()%></td>
 							<td><%=vo.getB_IMAGE()%></td>
+							<td><%=vo.getB_HIT()%></td>
 							<td>
 								<form action="deleteBoard.jsp">
 									<button type="submit" class="btn btn-danger">삭제</button>
+									<input type="hidden" name="bnum" value=<%=vo.getB_NUM() %> />
+								</form>
+							</td>
+							<td>
+								<form action="modifyBoard.jsp">
+									<button type="submit" class="btn btn-success">수정</button>
 									<input type="hidden" name="bnum" value=<%=vo.getB_NUM() %> />
 								</form>
 							</td>
@@ -413,7 +420,11 @@ td#paging{
 				</nav>
 			</td>
 		</tr>
-		
+		<tr>
+			<td colspan="8">
+				<button type="button" class="btn btn-secondary">게시글 추가</button>
+			</td>
+		</tr>
 	</tbody>
 	</table>
 	</div>

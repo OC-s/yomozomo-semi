@@ -82,6 +82,37 @@ public class MemberDAO {
 		
 	}
 	
+	public MemberVO selectOne(int mnum) {
+		sb.setLength(0);
+		sb.append("SELECT * FROM MEMBER ");
+		sb.append("WHERE M_NUM=? ");
+		MemberVO vo=null;
+		
+		try {
+			pstmt=conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, mnum);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String id=rs.getString("ID");
+				String password=rs.getString("PASSWORD");
+				String email=rs.getString("EMAIL");
+				String nickname=rs.getString("NICKNAME");
+				String regdate=rs.getString("PHONE");
+				String name=rs.getString("NAME");
+				String zipcode=rs.getString("ZIPCODE");
+				String address=rs.getString("ADDRESS");
+				String addrsDetail=rs.getString("ADDRESSDETAIL");
+				vo=new MemberVO(mnum, id, password, email, nickname, regdate, regdate, name, zipcode, address, addrsDetail);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return vo;
+	}
+	
 	public void close() {
 		try {
 			if(rs!=null) rs.close();

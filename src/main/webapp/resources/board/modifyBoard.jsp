@@ -1,3 +1,7 @@
+<%@page import="vo.MemberVO"%>
+<%@page import="dao.MemberDAO"%>
+<%@page import="kr.co.yomozomo.vo.BoardVO"%>
+<%@page import="kr.co.yomozomo.dao.BoardDAO"%>
 <%@page import="vo.ProductVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.ProductDAO"%>
@@ -16,6 +20,21 @@
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  
+  <!-- 서머노트 -->
+  <!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#summernote').summernote();
+	});
+</script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -241,8 +260,63 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
+    <%	
+    String bnum=request.getParameter("bnum");
     
+    int b=Integer.parseInt(bnum);
+    
+    BoardDAO bdao = new BoardDAO();
+    BoardVO bvo = bdao.selectOne(b);
+    
+    MemberDAO mdao = new MemberDAO();
+    MemberVO mvo = mdao.selectOne(bvo.getM_NUM());
+    %>
+    <section class="content">
+    	<!-- 수정완료 버튼 누르면 입력한 데이터 내용으로 db에서 수정될 수 있도록 하기 -->
+<div class="container">
+<form action="modifyOk.jsp" method="post" enctype="multipart/form-data">
+	<table class="table table-striped">
+		<tr>
+			<th>작성자id</th>
+			<td>
+				<input type="hidden" name="bnum" value="<%=bvo.getB_NUM() %>" />
+				<input type="text" name="writer" id="writer" value="<%=mvo.getId() %>" disabled />
+			</td>
+		</tr>
+		<tr>
+			<th>작성자 닉네임</th>
+			<td><input type="text" name="writer" id="writer" value="<%=mvo.getNickname() %>" disabled /></td>
+		</tr>
+		<tr>
+			<th>작성일시</th>
+			<td><input type="text" name="writer" id="writer" value="<%=bvo.getB_REGDATE() %>" disabled /></td>
+		</tr>
+		<tr>
+			<th>제목</th>
+			<td><input type="text" name="title" id="title" value="<%=bvo.getB_TITLE() %>" /></td>
+		</tr>
+		<tr>
+			<th>내용</th>
+			<td>
+				<textarea name="contents" id="summernote" cols="80" rows="20"><%=bvo.getB_CONTENTS() %></textarea>
+			</td>
+		</tr>
+		<tr>
+			<th>첨부파일</th>
+			<td>
+				<input type="file" name="filename" >
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<a href="b_mngmn1.jsp"><input type="button" value="수정취소" class="btn btn-secondary" /></a>
+				<input type="submit" value="수정완료" class="btn btn-primary" />
+			</td>
+		</tr>
+	</table>
+</form>
+</div>  		
+    	</div>
       
     </section>
     <!-- /.content -->
