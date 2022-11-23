@@ -94,6 +94,16 @@ request.setAttribute("t", s);
 	.delte-hide{
 		visibility: hidden;
 	}
+	#review__delete{
+		width: 50px;
+		height: 40px;
+		font-size: 10px;
+		text-align: center;
+		background-color: #A646F4;
+		border: none;
+		color: white;
+		border-radius: 3px;
+	}
     </style>
   </head>
   <body class="body">
@@ -198,11 +208,13 @@ request.setAttribute("t", s);
 					<span class="review__nickname">닉네임 : </span>
 					<span id="nickname">${s.getUserId(review.mnum)}</span>
 				</div>
+			
 				<div class="review__column">
 					<img class="review__image"src="/yomozomo/uploadReview/${review.image}" />
 					<div class="review__contents" id="contents">${review.contents}</div>
-					<div class="review__delete"><a href=""><span class="material-symbols-outlined">delete</span></a></div>
-			
+				<div class="review__delete">
+				</div>
+					<a href="/yomozomo/deleteReview?id=${review.pnum}&rnum=${review.rnum}"> <input type="${(mnum==review.mnum)?"button":"hidden"}" id="review__delete"  value="삭제"/>  </a>
 				</div>
 				
 			</div>

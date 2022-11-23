@@ -24,10 +24,12 @@ public class ReviewController extends HttpServlet{
 		int id = Integer.parseInt(request.getParameter("id"));
 		HttpSession session = request.getSession();
 		int mnum_=0;
-		String mnum = String.valueOf(session.getAttribute("userNum"));
 		
-		if (mnum!=null && !mnum.equals("null")) mnum_ = Integer.parseInt(mnum);
-	
+		String mnum = String.valueOf(session.getAttribute("userNum"));
+		if(mnum !=null && !mnum.equals("null"))
+			mnum_ =Integer.parseInt((String) mnum);
+		
+		
 
 		StoreService service = new StoreService();
 		ReviewService serviceReview = new ReviewService();
@@ -36,7 +38,7 @@ public class ReviewController extends HttpServlet{
 		ProductDTO product = service.getProductDetail(id);
 		List<ReviewDTO> review = serviceReview.getReview(id); 
 		
-		request.setAttribute("mnum",mnum);
+		request.setAttribute("mnum",mnum_);
 		request.setAttribute("review", review);
 		request.setAttribute("check",check);
 		request.setAttribute("product",product);

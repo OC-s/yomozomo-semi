@@ -25,7 +25,7 @@ public class QnaAskController extends HttpServlet {
 
 		int pnum = Integer.parseInt(request.getParameter("id"));
 
-		System.out.println(title + " " + contents + " " + secret + " id :" + pnum);
+		
 
 		QnaService service = new QnaService();
 

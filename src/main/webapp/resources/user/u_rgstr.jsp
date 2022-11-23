@@ -1,3 +1,6 @@
+<%@page import="kr.co.yomozomo.vo.MemberVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="kr.co.yomozomo.dao.OrderDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,6 +16,8 @@
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -209,8 +214,6 @@
           </li>
         <!-- 쇼핑몰 end -->
         
-        
-        
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -238,10 +241,158 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
-      
-      
-      
+		   	<%
+		
+			//현재 페이지
+			String cp = request.getParameter("cp");
+			
+			int currentPage = 0; 
+			
+			if (cp != null) {
+				currentPage = Integer.parseInt(cp);
+			} else {
+				currentPage = 1;
+			}
+		
+			//1페이지당 게시물 수		
+			int recoredPerPage = 10;
+			int startNo2 = (currentPage - 1) * recoredPerPage + 1;
+			int endNo2 = currentPage*recoredPerPage;
+		
+			//총게시물수
+			OrderDAO dao = new OrderDAO();
+			int totalCount = dao.getTotal();
+			//총 페이지
+			int totalPage = (totalCount % recoredPerPage == 0) ? totalCount / recoredPerPage : totalCount / recoredPerPage + 1;
+		
+			//시작페이지 번호	
+			int startPage = 1;
+		
+			//끝페이지 번호
+			int endPage = totalPage;
+		
+			//시작페이지 미세조정
+			if (currentPage <= 5) {
+				startPage = 1;
+			} else if (currentPage >= 6) {
+				startPage = currentPage - 4;
+			}
+		
+			//끝페이지 미세조정
+			if (totalPage - currentPage <= 5) {
+				endPage = totalPage;
+			} else if (totalPage - currentPage > 5) {
+				if (currentPage <= 5) {
+					if (totalPage > 10) {
+				endPage = 10;
+					} else {
+				endPage = totalPage;
+					}
+				} else {
+					endPage = currentPage + 4;
+				}
+			}
+			
+			boolean isNext = false;
+			boolean isPre = false;
+			
+			if(currentPage-5>0){
+				isPre = true;
+			}
+			
+			if(currentPage+5 <= totalPage){
+				isNext =true;
+			}
+			
+			%>
+		<div class="container" style="max-width:1400px">
+			<div class="row">
+				<table class="table table-bordered"
+					style="position: relative; text-align: center; border: 1px solid #dddddd; margin-top: 50px;">
+					<thead>
+						<tr>
+							<td colspan="11">
+								<h2>회원 전체목록</h2>						
+							</td>
+						</tr>
+						<tr>
+							<th style="background-color: #eeeeee; text-align: center;">회원번호</th>
+							<th style="background-color: #eeeeee; text-align: center;">이름</th>
+							<th style="background-color: #eeeeee; text-align: center;">닉네임</th>
+							<th style="background-color: #eeeeee; text-align: center;">ID</th>
+							<th style="background-color: #eeeeee; text-align: center;">비밀번호</th>
+							<th style="background-color: #eeeeee; text-align: center;">이메일</th>
+							<th style="background-color: #eeeeee; text-align: center;">가입날짜</th>
+							<th style="background-color: #eeeeee; text-align: center;">전화번호</th>
+							<th style="background-color: #eeeeee; text-align: center;">우편번호</th>
+							<th style="background-color: #eeeeee; text-align: center;">주소</th>
+							<th style="background-color: #eeeeee; text-align: center;">상세주소</th>
+						</tr>
+					</thead>
+					<%
+					ArrayList<MemberVO> list = dao.selectAllm(startNo2, endNo2);
+					for (MemberVO vo : list) {
+					%>
+	
+					<tbody>
+						<tr>
+							<td><%=vo.getM_NUM()%></td>
+							<td><%=vo.getNAME()%></td>
+							<td><%=vo.getNICKNAME()%></td>
+							<td><%=vo.getID() %></td>
+							<td><%=vo.getPASSWORD()%></td>
+							<td><%=vo.getEMAIL()%></td>
+							<td><%=vo.getREGDATE()%></td>
+							<td><%=vo.getPHONE()%></td>
+							<td><%=vo.getZIPCODE()%></td>
+							<td><%=vo.getADDRESS()%></td>
+							<td><%=vo.getADDRESSDETAIL()%></td>
+		
+						</tr>
+					<%
+					}
+					%>
+						<tr>
+							<td colspan="11">
+								<nav aria-label="Page navigation example">
+								  <ul class="pagination justify-content-center" >
+								  	<%
+								  		if(isPre){
+								  	%>
+								    		<li class="page-item"><a class="page-link" >Previous</a></li>
+									<%
+								  		}
+									%>		
+												  		
+								    <%
+										for(int i =startPage; i <= endPage; i++){
+									%>
+								   			 <li class="page-item"><a class="page-link" href="u_rgstr.jsp?cp=<%= i%>"><%= i%></a></li>
+								   	<% 
+										}
+									%>	
+								   
+								    <%
+								    	if(isNext){
+								    %>
+								    		<li class="page-item"><a class="page-link" href="#">Next</a></li>
+								    <% 
+								    	}
+								    %>
+								    
+								  </ul>
+								</nav>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="11" style="text-align: left;">
+								<a href="u_rgstradd.jsp"><input type="button" value="회원추가등록" /></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
     </section>
     <!-- /.content -->
   </div>

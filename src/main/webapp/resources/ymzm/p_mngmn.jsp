@@ -8,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin | 회원목록</title>
+  <title>Admin | 상품목록</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -139,7 +139,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../user/u_sales.jsp" class="nav-link">
+                <a href="../user/u_sales" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원매출 조회</p>
                 </a>
@@ -203,7 +203,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="q_mngmn.jsp" class="nav-link">
+                <a href="q_mngmn" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>문의 관리</p>
                 </a>
@@ -309,7 +309,7 @@
 				style="position: relative; text-align: center; border: 1px solid #dddddd; margin-top: 50px;">
 				<thead>
 					<tr>
-						<td colspan="6">
+						<td colspan="7">
 							<h2>상품 전체목록</h2>						
 						</td>
 					</tr>
@@ -320,6 +320,7 @@
 						<th style="background-color: #eeeeee; text-align: center;">가격</th>
 						<th style="background-color: #eeeeee; text-align: center;">할인</th>
 						<th style="background-color: #eeeeee; text-align: center;">수량</th>
+						<th style="background-color: #eeeeee; text-align: center;">수정/삭제</th>
 					</tr>
 				</thead>
 				<%
@@ -331,18 +332,28 @@
 					<tr>
 						<td><%=vo.getPnum()%></td>
 						<td><%=vo.getPcategory() %></td>
-						<td><%=vo.getPname()%></td>
+						<td><a href="/yomozomo/detail?id=<%=vo.getPnum()%>"><%=vo.getPname()%></a></td>
 						<td><%=vo.getPprice()%></td>
 						<td><%=vo.getPdiscount()%></td>
 						<td><%=vo.getPstock()%></td>
+						<td>
+							<a href="p_mngmn_modify.jsp?id=<%=vo.getPnum()%>">
+							<input type="button" value="수정" />
+							
+							</a>
+							
+							<a href="/yomozomo/admin/admin_deleteProOk.jsp?id=<%=vo.getPnum()%>">
+							<input type="button" value="삭제" />
+							</a>						
+						</td>
 	
 					</tr>
 				<%
 				}
 				%>
 					<tr>
-						<td colspan="6">
-							<a href="/yomozomo/admin/admin_addPro.jsp"><input type="button" value="상품등록" /></a>
+						<td colspan="7">
+							<a href="p_mngmn_add.jsp"><input type="button" value="상품등록" /></a>
 						</td>
 					</tr>
 				</tbody>

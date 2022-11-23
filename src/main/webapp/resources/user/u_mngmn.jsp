@@ -16,6 +16,17 @@
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  
+  <!-- 선택 체크확인-->
+  <script type="text/javascript">
+	function Checkform(){
+		if(document.querySelectorAll('input[name="mnum"]:checked').length==0){
+			alert("회원을 체크해주세요");
+			return false;
+		}
+	}
+  </script>
+  
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -243,14 +254,6 @@
     <!-- Main content -->
     <section class="content">
 		   	<%
-			/* int startNo2 = 0;
-			int endNo2 = 0;
-			int currentBlock = 0;
-			int totalCount = 0;
-			int totalPage = 0;
-			int recoredPerPage = 0;
-			int startPage = 0;
-			int endPage = 0; */
 		
 			//현재 페이지
 			String cp = request.getParameter("cp");
@@ -314,17 +317,18 @@
 			}
 			
 			%>
-		<div class="container">
+		<form method="post" name="form" id="test" onsubmit="return Checkform()" >
+		<div class="container" style="max-width:1400px">
 			<div class="row">
-				<table class="table table-bordered"
-					style="position: relative; text-align: center; border: 1px solid #dddddd; margin-top: 50px;">
+				<table class="table table-bordered" style="position: relative; text-align: center; border: 1px solid #dddddd; margin-top: 50px;">
 					<thead>
 						<tr>
-							<td colspan="11">
+							<td colspan="12">
 								<h2>회원 전체목록</h2>						
 							</td>
 						</tr>
 						<tr>
+							<th style="background-color: #eeeeee; text-align: center;">선택</th>
 							<th style="background-color: #eeeeee; text-align: center;">회원번호</th>
 							<th style="background-color: #eeeeee; text-align: center;">이름</th>
 							<th style="background-color: #eeeeee; text-align: center;">닉네임</th>
@@ -345,6 +349,7 @@
 	
 					<tbody>
 						<tr>
+							<td><input type="radio" name="mnum" value="<%= vo.getM_NUM()%>" /></td>
 							<td><%=vo.getM_NUM()%></td>
 							<td><%=vo.getNAME()%></td>
 							<td><%=vo.getNICKNAME()%></td>
@@ -356,13 +361,12 @@
 							<td><%=vo.getZIPCODE()%></td>
 							<td><%=vo.getADDRESS()%></td>
 							<td><%=vo.getADDRESSDETAIL()%></td>
-		
 						</tr>
 					<%
 					}
 					%>
 						<tr>
-							<td colspan="11">
+							<td colspan="12">
 								<nav aria-label="Page navigation example">
 								  <ul class="pagination justify-content-center" >
 								  	<%
@@ -394,14 +398,17 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan="11">
-								<a href="#"><input type="button" value=".임시" /></a>
+							<td colspan="12" style="text-align: left;">
+								<input type="reset" value="선택취소" />
+								<input type="submit" name="btn1" value="수정" formaction="u_mngmnMo.jsp" />
+								<input type="submit" name="btn1" value="삭제" formaction="u_mngmnDe.jsp" />
 							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
+		</form>
     </section>
     <!-- /.content -->
   </div>

@@ -270,6 +270,7 @@
     
     MemberDAO mdao = new MemberDAO();
     MemberVO mvo = mdao.selectOne(bvo.getM_NUM());
+    
     %>
     <section class="content">
     	<!-- 수정완료 버튼 누르면 입력한 데이터 내용으로 db에서 수정될 수 있도록 하기 -->
@@ -279,17 +280,17 @@
 		<tr>
 			<th>작성자id</th>
 			<td>
-				<input type="hidden" name="bnum" value="<%=bvo.getB_NUM() %>" />
+				<input type="hidden" name="bnum" id="bnum" value="<%=bvo.getB_NUM() %>" />
 				<input type="text" name="writer" id="writer" value="<%=mvo.getId() %>" disabled />
 			</td>
 		</tr>
 		<tr>
 			<th>작성자 닉네임</th>
-			<td><input type="text" name="writer" id="writer" value="<%=mvo.getNickname() %>" disabled /></td>
+			<td><input type="text" name="nickname" value="<%=mvo.getNickname() %>" disabled /></td>
 		</tr>
 		<tr>
 			<th>작성일시</th>
-			<td><input type="text" name="writer" id="writer" value="<%=bvo.getB_REGDATE() %>" disabled /></td>
+			<td><input type="text" name="regdate" value="<%=bvo.getB_REGDATE() %>" disabled /></td>
 		</tr>
 		<tr>
 			<th>제목</th>
@@ -304,7 +305,7 @@
 		<tr>
 			<th>첨부파일</th>
 			<td>
-				<input type="file" name="filename" >
+				<input type="file" name="image" value=<%=bvo.getB_IMAGE() %> >
 			</td>
 		</tr>
 		<tr>

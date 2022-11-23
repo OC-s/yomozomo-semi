@@ -81,6 +81,7 @@ public class MemberDAO {
 		}
 		
 	}
+
 	
 	public MemberVO selectOne(int mnum) {
 		sb.setLength(0);

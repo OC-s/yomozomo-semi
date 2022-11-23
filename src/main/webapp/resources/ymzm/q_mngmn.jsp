@@ -12,8 +12,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin | 회원목록</title>
-
+  <title>Admin | 질문목록</title>
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+	integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+	crossorigin="anonymous"></script>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -24,6 +26,9 @@
 <style>
 	a{
 		color: inherit;
+	}
+	.table-bordered{
+		margin-top: 82px;
 	}
 </style>
 <body class="hold-transition sidebar-mini">
@@ -148,7 +153,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="/yomozomo/resources/user/u_sales" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원매출 조회</p>
                 </a>
@@ -200,7 +205,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="/yomozomo/resources/ymzm/p_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>상품 관리</p>
                 </a>
@@ -212,7 +217,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/yomozomo/resources/ymzm/q_mngmn" class="nav-link">
+                <a href="/yomozomo/resources/ymzm/q_mngmn" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>문의 관리</p>
                 </a>
@@ -237,12 +242,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>상품목록</h1>
+            <h1>질문관리</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">상품목록</li>
+              <li class="breadcrumb-item active">질문목록</li>
             </ol>
           </div>
         </div>
@@ -321,7 +326,7 @@
 				<thead>
 					<tr>
 						<td colspan="6">
-							<h2>상품 전체목록</h2>						
+							<h2>질문 전체목록</h2>						
 						</td>
 					</tr>
 					<tr>
@@ -331,6 +336,7 @@
 						<th style="background-color: #eeeeee; text-align: center;">내용</th>
 						<th style="background-color: #eeeeee; text-align: center;">답변</th>
 						<th style="background-color: #eeeeee; text-align: center;">날짜</th>
+						<th style="background-color: #eeeeee; text-align: center;">삭제</th>
 					</tr>
 				</thead>
 
@@ -347,16 +353,16 @@
 							<c:if test="${empty ans}">
 								답변하러가기
 							</c:if>
-							<c:if test="${!empty ans}">
+							<c:if test="${!empty ans}" >
 								${ans}
 							</c:if>
 						 </a></td>
 						<td>${q.regdate}</td>
-	
+
+						<td><a href="/yomozomo/deleteQna?id=${q.qnum}"><input type="button" value="삭제" class="delete"/></a></td>
+						
 					</tr>
 					</c:forEach>
-		
-
 				</tbody>
 			</table>
 		</div>
@@ -430,7 +436,9 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+<script>
 
+</script>
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
