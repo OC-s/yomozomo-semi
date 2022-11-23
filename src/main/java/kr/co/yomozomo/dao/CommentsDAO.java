@@ -58,7 +58,51 @@ public class CommentsDAO {
 				String C_REGDATE = rs.getString("C_REGDATE");
 				String C_SECRET = rs.getString("C_SECRET");
 				int M_NUM = rs.getInt("M_NUM");
-				vo = new CommentsVO(B_NUM, C_CONTENTS, C_NUM, C_REGDATE, C_SECRET, M_NUM );
+				vo = new CommentsVO(B_NUM, C_CONTENTS, C_NUM, C_REGDATE, C_SECRET, M_NUM);
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	// 전체조회(join)
+	public ArrayList<CmtjoinVO> joinAll() {
+		ArrayList<CmtjoinVO> list = new ArrayList<CmtjoinVO>();
+
+		sb.setLength(0);
+		sb.append("SELECT * FROM COMMENTS ");
+		sb.append("INNER JOIN MEMBER ON COMMENTS.M_NUM = MEMBER.M_NUM ");
+		sb.append("ORDER BY C_NUM DESC ");
+
+		CmtjoinVO vo = null;
+
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				int B_NUM = rs.getInt("B_NUM");
+				String C_CONTENTS = rs.getString("C_CONTENTS");
+				int C_NUM = rs.getInt("C_NUM");
+				String C_REGDATE = rs.getString("C_REGDATE");
+				String C_SECRET = rs.getString("C_SECRET");
+				int M_NUM = rs.getInt("M_NUM");
+
+				String ADDRESS = rs.getString("ADDRESS");
+				String ADDRESSDETAIL = rs.getString("ADDRESSDETAIL");
+				String EMAIL = rs.getString("EMAIL");
+				String ID = rs.getString("ID");
+				String NAME = rs.getString("NAME");
+				String NICKNAME = rs.getString("NICKNAME");
+				String PASSWORD = rs.getString("PASSWORD");
+				String PHONE = rs.getString("PHONE");
+				String REGDATE = rs.getString("REGDATE");
+				String ZIPCODE = rs.getString("ZIPCODE");
+				vo = new CmtjoinVO(B_NUM, C_CONTENTS, C_NUM, C_REGDATE, C_SECRET, M_NUM, ADDRESS, ADDRESSDETAIL, EMAIL,
+						ID, NAME, NICKNAME, PASSWORD, PHONE, REGDATE, ZIPCODE);
 				list.add(vo);
 			}
 		} catch (SQLException e) {
@@ -68,48 +112,69 @@ public class CommentsDAO {
 		return list;
 	}
 	
-	// 전체조회(join)
-		public ArrayList<CmtjoinVO> joinAll() {
-			ArrayList<CmtjoinVO> list = new ArrayList<CmtjoinVO>();
-
-			sb.setLength(0);
-			sb.append("SELECT * FROM COMMENTS ");
-			sb.append("INNER JOIN MEMBER ON COMMENTS.M_NUM = MEMBER.M_NUM ");
-			sb.append("ORDER BY C_NUM DESC ");
-			
-			CmtjoinVO vo = null;
-
-			try {
-				pstmt = conn.prepareStatement(sb.toString());
-				rs = pstmt.executeQuery();
-
-				while (rs.next()) {
-					int B_NUM = rs.getInt("B_NUM");
-					String C_CONTENTS = rs.getString("C_CONTENTS");
-					int C_NUM = rs.getInt("C_NUM");
-					String C_REGDATE = rs.getString("C_REGDATE");
-					String C_SECRET = rs.getString("C_SECRET");
-					int M_NUM = rs.getInt("M_NUM");
-
-					String ADDRESS = rs.getString("ADDRESS");
-					String ADDRESSDETAIL = rs.getString("ADDRESSDETAIL");
-					String EMAIL = rs.getString("EMAIL");
-					String ID = rs.getString("ID");
-					String NAME = rs.getString("NAME");
-					String NICKNAME = rs.getString("NICKNAME");
-					String PASSWORD = rs.getString("PASSWORD");
-					String PHONE = rs.getString("PHONE");
-					String REGDATE = rs.getString("REGDATE");
-					String ZIPCODE = rs.getString("ZIPCODE");
-					vo = new CmtjoinVO(B_NUM, C_CONTENTS, C_NUM, C_REGDATE, C_SECRET, M_NUM, ADDRESS, ADDRESSDETAIL, EMAIL, ID, NAME, NICKNAME, PASSWORD, PHONE, REGDATE, ZIPCODE );
-					list.add(vo);
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return list;
+	public int getTotal() {
+		sb.setLength(0);
+		sb.append("SELECT count(*) cnt FROM COMMENTS");
+		int count = 1;
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			rs = pstmt.executeQuery();
+			rs.next();
+			count = rs.getInt("cnt");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		return count;		
+	}
+
+	// 전체조회(join)+페이징
+	public ArrayList<CmtjoinVO> joinpageAll(int startNo, int endNo) {
+		ArrayList<CmtjoinVO> list = new ArrayList<CmtjoinVO>();
+		
+
+		sb.setLength(0);
+		sb.append("SELECT * FROM COMMENTS ");
+		sb.append("INNER JOIN MEMBER ON COMMENTS.M_NUM = MEMBER.M_NUM ");
+		sb.append("ORDER BY C_NUM DESC ");
+		sb.append("LIMIT ?, ? ");
+		
+		CmtjoinVO vo = null;
+
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, startNo-1);
+			pstmt.setInt(2, endNo);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				int B_NUM = rs.getInt("B_NUM");
+				String C_CONTENTS = rs.getString("C_CONTENTS");
+				int C_NUM = rs.getInt("C_NUM");
+				String C_REGDATE = rs.getString("C_REGDATE");
+				String C_SECRET = rs.getString("C_SECRET");
+				int M_NUM = rs.getInt("M_NUM");
+
+				String ADDRESS = rs.getString("ADDRESS");
+				String ADDRESSDETAIL = rs.getString("ADDRESSDETAIL");
+				String EMAIL = rs.getString("EMAIL");
+				String ID = rs.getString("ID");
+				String NAME = rs.getString("NAME");
+				String NICKNAME = rs.getString("NICKNAME");
+				String PASSWORD = rs.getString("PASSWORD");
+				String PHONE = rs.getString("PHONE");
+				String REGDATE = rs.getString("REGDATE");
+				String ZIPCODE = rs.getString("ZIPCODE");
+				vo = new CmtjoinVO(B_NUM, C_CONTENTS, C_NUM, C_REGDATE, C_SECRET, M_NUM, ADDRESS, ADDRESSDETAIL, EMAIL,
+						ID, NAME, NICKNAME, PASSWORD, PHONE, REGDATE, ZIPCODE);
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	// 1건조회
 	public CommentsVO selectOne(int C_NUM) {
@@ -130,7 +195,7 @@ public class CommentsDAO {
 				String C_SECRET = rs.getString("C_SECRET");
 				int M_NUM = rs.getInt("M_NUM");
 
-				vo = new CommentsVO(B_NUM, C_CONTENTS, C_NUM, C_REGDATE, C_SECRET, M_NUM );
+				vo = new CommentsVO(B_NUM, C_CONTENTS, C_NUM, C_REGDATE, C_SECRET, M_NUM);
 
 			}
 		} catch (SQLException e) {
@@ -152,7 +217,6 @@ public class CommentsDAO {
 			pstmt.setInt(1, vo.getB_NUM());
 			pstmt.setString(2, vo.getC_CONTENTS());
 			pstmt.setInt(3, vo.getM_NUM());
-
 
 			pstmt.executeUpdate();
 		} catch (SQLException e) {

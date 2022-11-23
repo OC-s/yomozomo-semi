@@ -1,6 +1,10 @@
-<%@page import="vo.ProductVO"%>
+<%@page import="kr.co.yomozomo.vo.QacmtjoinVO"%>
+<%@page import="kr.co.yomozomo.dao.QacommentsDAO"%>
+<%@page import="kr.co.yomozomo.dao.CommentsDAO"%>
+<%@page import="kr.co.yomozomo.vo.CmtjoinVO"%>
+
 <%@page import="java.util.ArrayList"%>
-<%@page import="dao.ProductDAO"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,7 +12,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin | 회원목록</title>
+  <title>Admin | 댓글목록</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -139,7 +143,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../user/u_sales.jsp" class="nav-link">
+                <a href="../user/u_sales" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원매출 조회</p>
                 </a>
@@ -149,8 +153,8 @@
         <!-- 회원관리 end -->
         
           <!-- 게시판 관리 -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                게시판 관리
@@ -158,26 +162,26 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-             <li class="nav-item">
-                <a href="../board/c_mngmn.jsp" class="nav-link">
+              <li class="nav-item">
+                <a href="c_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>고양이자랑게시판 댓글 관리</p>
                 </a>
               </li>
-               <li class="nav-item">
-                <a href="../board/qac_mngmn.jsp" class="nav-link">
+              <li class="nav-item">
+                <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>질문게시판 댓글 관리</p>
                 </a>
               </li>
-             <li class="nav-item">
-                <a href="../board/b_mngmn1.jsp" class="nav-link">
+              <li class="nav-item">
+                <a href="b_mngmn1.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>고양이자랑게시판 조회,수정</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../board/b_mngmn2.jsp" class="nav-link">
+                <a href="b_mngmn2.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>질문게시판목록 조회,수정</p>
                 </a>
@@ -187,8 +191,8 @@
         <!-- 게시판 end -->
           
           <!-- 쇼핑몰 관리 -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                쇼핑몰 관리
@@ -197,25 +201,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="o_mngmn.jsp" class="nav-link">
+                <a href="../ymzm/o_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>주문 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="../ymzm/p_mngmn.jsp" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>상품 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="r_mngmn.jsp" class="nav-link">
+                <a href="../ymzm/r_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>리뷰 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="q_mngmn.jsp" class="nav-link">
+                <a href="../ymzm/q_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>문의 관리</p>
                 </a>
@@ -238,12 +242,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>상품관리</h1>
+            <h1>댓글관리</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">상품수정</li>
+              <li class="breadcrumb-item active">댓글목록</li>
             </ol>
           </div>
         </div>
@@ -252,69 +256,166 @@
 
     <!-- Main content -->
     <section class="content">
-    <div class="container">
-		<form action="/yomozomo/admin/admin_modifyProOk.jsp" method="post" enctype="multipart/form-data">
-			<table class="table table-bordered table-striped" id="admin_addPro_table">
+      <%
+	int startNo2 = 0;
+	int endNo2 = 0;
+	int currentPage = 0;
+	int currentBlock = 0;
+	int totalCount = 0;
+	int totalPage = 0;
+	int recoredPerPage = 0;
+	int startPage = 0;
+	int endPage = 0;
+
+	//현재 페이지
+	String cp = request.getParameter("cp");
+	if (cp != null) {
+		currentPage = Integer.parseInt(cp);
+	} else {
+		currentPage = 1;
+	}
+
+	//1페이지당 게시물 수		
+	recoredPerPage = 10;
+
+	startNo2 = (currentPage - 1) * recoredPerPage + 1;
+	
+	endNo2 = 10;
+
+	//총게시물수
+	QacommentsDAO dao = new QacommentsDAO();
+
+	totalCount = dao.getTotal();
+
+	//총 페이지
+	totalPage = (totalCount % recoredPerPage == 0) ? totalCount / recoredPerPage : totalCount / recoredPerPage + 1;
+
+	//시작페이지 번호	
+	startPage = 1;
+
+	//끝페이지 번호
+	endPage = totalPage;
+
+	//시작페이지 미세조정
+	if (currentPage <= 5) {
+		startPage = 1;
+	} else if (currentPage >= 6) {
+		startPage = currentPage - 4;
+	}
+
+	//끝페이지 미세조정
+	if (totalPage - currentPage <= 5) {
+		endPage = totalPage;
+	} else if (totalPage - currentPage > 5) {
+		if (currentPage <= 5) {
+			if (totalPage > 10) {
+		endPage = 10;
+			} else {
+		endPage = totalPage;
+			}
+		} else {
+			endPage = currentPage + 4;
+		}
+	}
+	%>
+	
+		<div class="container">
+		<div class="row">
+			<table class="table table-bordered"
+				style="position: relative; text-align: center; border: 1px solid #dddddd; margin-top: 50px;">
+				<thead>
+
+					<tr>
+						<td colspan="6">
+							<h2>질문게시판 댓글목록</h2>						
+						</td>
+					</tr>
+					<tr>
+						<th style="background-color: #eeeeee; text-align: center;">댓글번호</th>
+						<th style="background-color: #eeeeee; text-align: center;">게시글번호</th>
+						<th style="background-color: #eeeeee; text-align: center;">회원아이디</th>
+						<th style="background-color: #eeeeee; text-align: center;">댓글내용</th>
+						<th style="background-color: #eeeeee; text-align: center;">작성일시</th>
+						<th style="background-color: #eeeeee; text-align: center;">삭제</th>
+						
+					</tr>
+				</thead>
 				<%
-				request.setCharacterEncoding("UTF-8");
-				response.setContentType("text/html;charset=UTF-8");		
-				
-				String no = request.getParameter("id");
-				
-				if(no != null){
-					
-					int pnum = Integer.parseInt(no);
-					
-					ProductDAO dao = new ProductDAO();
-					
-					ProductVO vo = dao.selectOne(pnum);
+				ArrayList<QacmtjoinVO> list = dao.joinpageAll(startNo2, endNo2);
+				for (QacmtjoinVO vo : list) {
 				%>
-				<tr>
-					<td colspan="4">
-					<h2>상품수정</h2>
-					</td>
-				</tr>
-				<tr>
-					<th>카테고리</th>
-					<td><input type="text" name="P_CATEGORY" id="" value="<%=vo.getPcategory() %>"/>
-					<input type="hidden" name="id" value="<%=vo.getPnum() %>" />
-					</td>
-				</tr>
-				<tr>
-					<th>상품명</th>
-					<td><input type="text" name="P_NAME" id="" value="<%=vo.getPname() %>"/></td>
-				</tr>
-				<tr>
-					<th>가격</th>
-					<td><input type="text" name="P_PRICE" id="" value="<%=vo.getPprice()%>"/></td>
-				</tr>
-				<tr>
-					<th>할인</th>
-					<td><input type="text" name="P_DISCOUNT" id="" value="<%=vo.getPdiscount()%>"/></td>
-				</tr>
-				<tr>
-					<th>수량</th>
-					<td><input type="text" name="P_STOCK" id="" value="<%=vo.getPstock()%>"/></td>
-				</tr>
-				<tr>
-				<th>썸네일</th>
-				<td><input type="file" name="P_THUMBNAIL" id="" /></td>
-			   </tr>
-			   <tr>
-				<th>상세이미지</th>
-				<td><input type="file" name="P_IMAGE" id="" /></td>
-			   </tr>
-				  <%
-					}
-				  %> 
-				<tr>
-					<td colspan="4">					
-						<input type="submit" value="수정" />
-						<a href="p_mngmn.jsp"><input type="button" value="취소" /></a>
-					</td>
-				</tr>			
+				
+				<tbody>
+					<tr>
+						<td><%=vo.getQAC_NUM()%></td>
+						<td><%=vo.getQAB_NUM() %></td>
+						<td><%=vo.getID() %></td>
+						<td><a href="/yomozomo/community/qa_detail.jsp?qab_num=<%=vo.getQAB_NUM()%>"><%=vo.getQAC_CONTENTS()%></a></td>
+						<td><%=vo.getQAC_REGDATE()%></td>
+			
+						<td>
+							
+							<a href="/yomozomo/community/qa_comments_deleteOk.jsp?qab_num=<%=vo.getQAB_NUM()%>&qac_num=<%=vo.getQAC_NUM()%>">
+							<input type="button" value="삭제" />
+							</a>						
+						</td>
+	
+					</tr>
+				<%
+				}
+				%>
+					
+				</tbody>
 			</table>
-		</form>
+		</div>
+	</div>
+
+	<div class="container" id="admin_list_all_container">
+		<table class="table table-bordered" style="border: transparent;">
+			<tr>
+				<td colspan="4">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination justify-content-center">
+							<%
+							if (startPage == 1) {
+							%>
+							<li class="page-item"><a class="page-link" href="#"
+								tabindex="-1" aria-disabled="true">Previous</a></li>
+							<%
+							} else {
+							%>
+							<li class="page-item"><a class="page-link"
+								href="qac_mngmn.jsp?cp=<%=startPage - 1%>" tabindex="-1"
+								aria-disabled="true">Previous</a></li>
+							<%
+							}
+							%>
+							<%
+							for (int i = startPage; i <= endPage; i++) {
+							%>
+							<li class="page-item"><a class="page-link"
+								href="qac_mngmn.jsp?cp=<%=i%>"><%=i%></a></li>
+							<%
+							}
+							%>
+							<%
+							if (totalPage == endPage) {
+							%>
+							<li class="page-item disalbed "><a class="page-link"
+								href="#">Next</a></li>
+							<%
+							} else {
+							%>
+							<li class="page-item"><a class="page-link"
+								href="qac_mngmn.jsp?cp=<%=endPage + 1%>">Next</a></li>
+							<%
+							}
+							%>
+						</ul>
+					</nav>
+				</td>
+			</tr>			
+		</table>
 	</div>
       
     </section>

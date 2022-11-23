@@ -69,7 +69,7 @@
 					<td style="text-align: right;"><%=vo2.getC_REGDATE()%> <%
 						 if (obj != null) {
 						
-						 	if (log.getM_NUM() == vo2.getM_NUM()) {
+						 	if (log.getM_NUM() == vo2.getM_NUM() || log.getM_NUM()==9) {
 						 %> 
 						 <a href="pic_comments_modify.jsp?b_num=<%=vo2.getB_NUM()%>&c_num=<%=vo2.getC_NUM()%>">
 							<input type="button" value="[수정]" class="btn btn-default btn-xs" />
