@@ -356,6 +356,7 @@ td#paging{
 						<th style="background-color: #eeeeee; text-align: center;">조회수</th>
 						<th style="background-color: #eeeeee; text-align: center;">이미지</th>
 						<th style="background-color: #eeeeee; text-align: center;">삭제</th>
+						<th style="background-color: #eeeeee; text-align: center;">수정</th>
 					</tr>
 				</thead>
 				<%
@@ -375,6 +376,12 @@ td#paging{
 							<td>
 								<form action="deleteQaboard.jsp">
 									<button type="submit" class="btn btn-danger">삭제</button>
+									<input type="hidden" name="qanum" value=<%=vo.getQAB_NUM() %> />
+								</form>
+							</td>
+							<td>
+								<form action="modifyQaboard.jsp">
+									<button type="submit" class="btn btn-success">수정</button>
 									<input type="hidden" name="qanum" value=<%=vo.getQAB_NUM() %> />
 								</form>
 							</td>

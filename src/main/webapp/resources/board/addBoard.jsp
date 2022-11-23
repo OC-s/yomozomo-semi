@@ -1,5 +1,7 @@
-<%@page import="kr.co.yomozomo.dao.BoardDAO"%>
+<%@page import="kr.co.yomozomo.vo.MemberVO"%>
+<%@page import="dao.MemberDAO"%>
 <%@page import="kr.co.yomozomo.vo.BoardVO"%>
+<%@page import="kr.co.yomozomo.dao.BoardDAO"%>
 <%@page import="vo.ProductVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.ProductDAO"%>
@@ -7,11 +9,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-<style>
-td#paging{
-	text-align: center;
-}
-</style>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,6 +20,21 @@ td#paging{
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  
+  <!-- 서머노트 -->
+  <!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#summernote').summernote();
+	});
+</script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -134,7 +146,7 @@ td#paging{
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../user/u_rgstr.jsp" class="nav-link">
+                <a href="../user/u_restr.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원 등록</p>
                 </a>
@@ -166,21 +178,15 @@ td#paging{
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="b_rgstr.jsp" class="nav-link">
+                <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>게시판 등록</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="b_mngmn1.jsp" class="nav-link">
+                <a href="b_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>고양이자랑게시판 조회,수정</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="b_mngmn2.jsp" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>질문게시판목록 조회,수정</p>
+                  <p>게시판목록 조회,수정</p>
                 </a>
               </li>
             </ul>
@@ -254,181 +260,55 @@ td#paging{
     </section>
 
     <!-- Main content -->
-    <section class="content">
     <%
-    //현재 페이지 번호값
-    String cp=request.getParameter("cp");
+    Object obj = session.getAttribute("vo");
+	if(obj != null){
+			MemberVO vo = (MemberVO)obj;
     
-    //페이지 번호 담아줄 변수
-    int currentPage=0;
-    
-    //만약 cp가 0이 아니면
-    if(cp!=null){
-    	//만들어준 페이지 번수에 얻어온 파라미터 값을 형변환해서 담아줌
-    	currentPage=Integer.parseInt(cp);
-    	
-    	//파라미터 값이 null이면(==처음 페이지면)
-    }else{
-    	//페이지번호는 무조건 1로 주기
-    	currentPage=1;
-    }
-    
-    //1페이지당 게시물 수 10개로 설정
-    int recordPerPage=10;
-    
-    int startNo=(currentPage-1)*recordPerPage+1;
-    
-    //끝번호
-    int endNo=currentPage*recordPerPage;
-    
-    //총 게시물 수 알아오기
-    BoardDAO dao=new BoardDAO();
-    int totalCount=dao.getTotal();
-    
-    int totalPage=(totalCount%recordPerPage==0)? totalCount/recordPerPage:totalCount/recordPerPage+1;
-    
-    //시작페이지 번호
-    int startPage=1;
-    //끝페이지
-    int endPage=totalPage;
-    
-  //시작 페이지 미세조정
-  	if(currentPage<=5){
-  		startPage=1;
-  	}else if(currentPage>=6){
-  		startPage = currentPage-4;
-  	}
-  	
-  	//끝 페이지 미세조정
-  	if(totalPage-currentPage<=5){
-  		endPage=totalPage;
-  	}else if(totalPage-currentPage>5){
-  		if(currentPage<=5){
-  			if(totalPage>10){
-  				endPage=10;
-  			}else{
-  				endPage=totalPage;
-  			}
-  		}else{
-  			endPage=currentPage+4;
-  		}
-  	}
-  	
-  	//previous, next버튼 보일지 안 보일지 정해줄 변수 설정
-  	boolean isPre = false;
-  	boolean isNext = false;
-  	
-  	//이전값이 존재하면 true
-  	//다음값이 존재하면 true
-  	
-  	//현재페이지번호에서 6을 뺀 값이 0 이상이면 이전값이 존재
-  	//6페이지부터 previous버튼이 보이도록 하기
-  	if(currentPage-5> 0){
-  		isPre=true;
-  	}
-
-  	//현재 페이지 번호에서 5를 더한 값이 끝페이지 번호보다 작으면 다음값이 존재
-  	//38페이지부터 next버튼이 보이도록 하기
-  	if(currentPage+5 <=totalPage){
-  		isNext=true;
-  	}
-
     %>
-    
-    <div class="container">
-		<div class="row">
-			<table class="table table-bordered"
-				style="position: relative; text-align: center; border: 1px solid #dddddd; margin-top: 50px;">
-				<thead>
-					<tr>
-						<td colspan="11">
-							<h2>고양이자랑해요 게시글 전체목록</h2>						
-						</td>
-					</tr>
-					<tr>
-						<th style="background-color: #eeeeee; text-align: center;">회원번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">게시글 번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">제목</th>
-						<th style="background-color: #eeeeee; text-align: center;">내용</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성일시</th>
-						<th style="background-color: #eeeeee; text-align: center;">이미지</th>
-						<th style="background-color: #eeeeee; text-align: center;">조회수</th>
-						<th style="background-color: #eeeeee; text-align: center;">삭제</th>
-						<th style="background-color: #eeeeee; text-align: center;">수정</th>
-					</tr>
-				</thead>
-				<%
-				ArrayList<BoardVO> list =dao.selectAll(startNo, endNo);
-				for(BoardVO vo : list){
-				%>
-				
-				<tbody>
-						<tr>
-							<td><%=vo.getM_NUM()%></td>
-							<td><%=vo.getB_NUM()%></td>
-							<td><%=vo.getB_TITLE()%></td>
-							<td><%=vo.getB_CONTENTS() %></td>
-							<td><%=vo.getB_REGDATE()%></td>
-							<td><%=vo.getB_IMAGE()%></td>
-							<td><%=vo.getB_HIT()%></td>
-							<td>
-								<form action="deleteBoard.jsp">
-									<button type="submit" class="btn btn-danger">삭제</button>
-									<input type="hidden" name="bnum" value=<%=vo.getB_NUM() %> />
-								</form>
-							</td>
-							<td>
-								<form action="modifyBoard.jsp">
-									<button type="submit" class="btn btn-success">수정</button>
-									<input type="hidden" name="bnum" value=<%=vo.getB_NUM() %> />
-								</form>
-							</td>
-						</tr>
-				<%
-				}
-				dao.close();
-				%>
-				<tr>
-					<td colspan="8"></td>
-				</tr>
-				<tr>
-					<td id="paging" colspan="8">
-						<nav aria-label="Page navigation example">
-  							<ul class="pagination">
-  				<%
-  				if(isPre){
-  				%>
-  					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-  				<%
-  				}
-  				%>
-  				<%
-  					for(int i=startPage;i<=endPage;i++){
-  				%>
-  					<li class="page-item"><a class="page-link" href="b_mngmn1.jsp?cp=<%=i%>"><%=i %></a></li>
-				<%
-  					}
-				%>
-				<%
-				if(isNext){
-				%>
-					<li class="page-item"><a class="page-link" href="#">Next</a></li>
-				<%
-				}
-				%>
-					</ul>
-				</nav>
+    <section class="content">
+    	<!-- 수정완료 버튼 누르면 입력한 데이터 내용으로 db에서 수정될 수 있도록 하기 -->
+<div class="container">
+<form action="addOk.jsp" method="post" enctype="multipart/form-data">
+	<table class="table table-striped">
+		<tr>
+			<th>작성자id</th>
+			<td>
+				<input type="hidden" name="mnum" value="<%=vo.getM_NUM() %>" />
+				<input type="hidden" name="writer" value="<%=vo.getID() %>" />
+				<input type="text" name="id" id="id" value="<%=vo.getID() %>" disabled />
 			</td>
 		</tr>
 		<tr>
-			<td colspan="8">
-				<a href="addBoard.jsp"><button type="button" class="btn btn-secondary">게시글 추가</button></a>
+			<th>제목</th>
+			<td><input type="text" name="title" id="title" /></td>
+		</tr>
+		<tr>
+			<th>내용</th>
+			<td>
+				<textarea name="contents" id="summernote" cols="80" rows="20"></textarea>
 			</td>
 		</tr>
-	</tbody>
+		<tr>
+			<th>첨부파일</th>
+			<td>
+				<input type="file" name="image" />
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<a href="b_mngmn1.jsp"><input type="button" value="작성취소" class="btn btn-secondary" /></a>
+				<input type="submit" value="작성완료" class="btn btn-primary" />
+			</td>
+		</tr>
 	</table>
-	</div>
-    </div>  
+</form>
+</div>  
+<%
+	}
+%>		
+    	</div>
+      
     </section>
     <!-- /.content -->
   </div>
