@@ -421,7 +421,7 @@ td#paging{
 		</tr>
 		<tr>
 			<td colspan="8">
-				
+				<a href="addQaboard.jsp"><button type="button" class="btn btn-secondary">게시글 추가</button></a>
 			</td>
 		</tr>
 		

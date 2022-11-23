@@ -6,22 +6,22 @@
 request.setCharacterEncoding("UTF-8");
 response.setContentType("text/html;charset=UTF-8");
 
-String qanum=request.getParameter("qanum");
+String mnum=request.getParameter("mnum");
 String contents=request.getParameter("contents");
 String image=null;
 String title=request.getParameter("title");
 
+int m=Integer.parseInt(mnum);
+
 QaboardDAO dao=new QaboardDAO();
 QaboardVO vo=new QaboardVO();
 
-int q=Integer.parseInt(qanum);
-
+vo.setQAB_IMAGE(image);
 vo.setQAB_CONTENTS(contents);
 vo.setQAB_TITLE(title);
-vo.setQAB_IMAGE(image);
-vo.setQAB_NUM(q);
+vo.setM_NUM(m);
 
-dao.updateOne(vo);
+dao.insertOne(vo);
 dao.close();
 
 response.sendRedirect("b_mngmn2.jsp");
