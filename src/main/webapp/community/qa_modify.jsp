@@ -27,10 +27,10 @@
 	}
 
 </style>
-
+<link rel="stylesheet" href="../css/main.css" />
 <body>
 
-	<jsp:include page="commu_header.jsp"/>
+	<jsp:include page="../source/header.jsp"/>
 	<jsp:include page="commuNav.jsp"/>
 	<jsp:include page="qa_Nav.jsp"/>
 

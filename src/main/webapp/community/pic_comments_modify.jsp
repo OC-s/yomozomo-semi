@@ -81,7 +81,7 @@
 	border-radius: 20px 20px 20px 20px;
 }
 </style>
-
+<link rel="stylesheet" href="../css/main.css" />
 <script>
 
 	$(function(){
@@ -121,7 +121,7 @@
 
 		//out.println(vo);
 	%>
-	<jsp:include page="commu_header.jsp"/>
+	<jsp:include page="../source/header.jsp"/>
 	<jsp:include page="commuNav.jsp" />
 	<jsp:include page="pic_Nav.jsp" />
 
