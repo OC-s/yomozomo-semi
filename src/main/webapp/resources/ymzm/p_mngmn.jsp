@@ -308,6 +308,7 @@
 			<table class="table table-bordered"
 				style="position: relative; text-align: center; border: 1px solid #dddddd; margin-top: 50px;">
 				<thead>
+
 					<tr>
 						<td colspan="7">
 							<h2>상품 전체목록</h2>						
@@ -327,7 +328,7 @@
 				ArrayList<ProductVO> list = dao.selectAll(startNo2, endNo2);
 				for (ProductVO vo : list) {
 				%>
-
+				
 				<tbody>
 					<tr>
 						<td><%=vo.getPnum()%></td>

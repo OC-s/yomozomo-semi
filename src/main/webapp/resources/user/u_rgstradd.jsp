@@ -20,6 +20,26 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  
+      <!-- 주소가져오기 -->
+	<script type="text/javascript">
+		/* daum 주소 가져오기 */
+		window.onload=function(){
+			var btn = document.getElementById("btn2");
+			btn.onclick=openKakaoPostcode;
+		}
+		function openKakaoPostcode(){
+			new daum.Postcode({
+				oncomplete : function(data){
+					
+					document.getElementById("ZIPCODE").value=data.zonecode;
+					document.getElementById("ADDRESS").value=data.roadAddress;
+				}
+			}).open();
+		}
+		    
+	</script>
   
   <!-- 작성 체크 -->
   <script type="text/javascript">
@@ -129,9 +149,9 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!--  -->
-    <a href="index3.html" class="brand-link">
-      <img src="" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">yomozomo</span>
+   <a href="../index3.html" class="brand-link">
+      <img src="../../image/icon/logo.png" alt="" class="brand-image" style="opacity: .8">
+      <span class="brand-text font-weight-light"></span>
     </a>
 
     <!-- Sidebar -->
@@ -139,10 +159,9 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">admin</a>
+          <a href="#" class="d-block" style="text-align: center;">admin</a>
         </div>
       </div>
 
@@ -205,7 +224,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="u_sales.jsp" class="nav-link">
+                <a href="u_sales" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원매출 조회</p>
                 </a>
@@ -338,15 +357,18 @@
 	    		</tr>
 	    		<tr>
 	    			<th>우편번호</th>
-	    			<td><input type="text" name=ZIPCODE id="ZIPCODE"/></td>
+	    			<td>
+	    				<button class="section_btn" type="button" value="주소찾기" id="btn2" style="border: 1px solid black;">주소찾기</button>
+	    				<input type="text" name=ZIPCODE id="ZIPCODE" style="width: 100px;"/>
+    				</td>
 	    		</tr>
 	    		<tr>
 	    			<th>주소</th>
-	    			<td><input type="text" name=ADDRESS id="ADDRESS" /></td>
+	    			<td><input type="text" name=ADDRESS id="ADDRESS" style="width: 250px;"/></td>
 	    		</tr>
 	    		<tr>
 	    			<th>상세주소</th>
-	    			<td><input type="text" name=ADDRESSDETAIL id="ADDRESSDETAIL"/></td>
+	    			<td><input type="text" name=ADDRESSDETAIL id="ADDRESSDETAIL" style="width: 250px;"/></td>
 	    		</tr>
 	    		<tr>
 					<td colspan="2" style="text-align: left;">

@@ -15,7 +15,7 @@ public class SalesService {
 	String user = "admin";
 	String passWord = "yomozomo";
 
-	public List<AdminSalesDTO> getMemberSales() {
+	public List<AdminSalesDTO> getMemberSales(int page) {
 		List<AdminSalesDTO> list = new ArrayList<AdminSalesDTO>();
 		AdminSalesDTO a = null;
 		try {
@@ -23,12 +23,14 @@ public class SalesService {
 					+ "FROM MEMBER M LEFT JOIN UserOrder U "
 					+ "ON M.M_NUM = U.M_NUM "
 					+ "GROUP BY M.M_NUM "
-					+ "order by total desc";
+					+ "order by total desc "
+					+ "LIMIT ?,? ";
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(url, user, passWord);
 			PreparedStatement st = con.prepareStatement(sql);
-
+			st.setInt(1, (1+(page-1)*15)-1);
+			st.setInt(2, page*15);
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				int mnum = rs.getInt("M_NUM");
@@ -45,5 +47,30 @@ public class SalesService {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	public int getCountSales() {
+		int count =0;
+		try {
+			String sql = "SELECT M.M_NUM, M.ID, M.NAME, SUM(U.O_TOTAL) TOTAL, count(*) COUNT "
+					+ "FROM MEMBER M LEFT JOIN UserOrder U "
+					+ "ON M.M_NUM = U.M_NUM "
+					+ "GROUP BY M.M_NUM  "
+					+ "order by total desc";
+			
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection(url, user, passWord);
+			PreparedStatement st = con.prepareStatement(sql);
+
+			ResultSet rs = st.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt("COUNT");
+			}
+			rs.close();
+			st.close();
+			con.close();
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return count;
 	}
 }

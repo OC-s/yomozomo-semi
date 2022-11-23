@@ -49,7 +49,7 @@ request.setAttribute("t", s);
 
 </head>
 <body>
-	<%@include file="/source/header.jsp"%>
+	<%@ include file="/source/header.jsp" %>
 
 	<nav>
 		<div>

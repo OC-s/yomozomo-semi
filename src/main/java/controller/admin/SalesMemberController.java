@@ -16,8 +16,14 @@ import controller.admin.dto.AdminSalesDTO;
 public class SalesMemberController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String page = request.getParameter("cp");
+		int page_=1;
+		if(page!=null && !page.equals("")) page_ =  Integer.parseInt(request.getParameter("cp")); 
 		SalesService sService = new SalesService();
-		List<AdminSalesDTO> list = sService.getMemberSales();
+		
+
+		
+		List<AdminSalesDTO> list = sService.getMemberSales(page_);
 		
 		request.setAttribute("list", list);
 
