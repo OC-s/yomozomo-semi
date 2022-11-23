@@ -165,7 +165,7 @@ public class QacommentsDAO {
 	
 	public int getTotal() {
 		sb.setLength(0);
-		sb.append("SELECT count(*) cnt FROM QACOMMENTS");
+		sb.append("SELECT count(*) cnt FROM QACMT");
 		int count = 1;
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
