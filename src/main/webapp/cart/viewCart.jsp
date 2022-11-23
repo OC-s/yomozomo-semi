@@ -80,7 +80,7 @@ div#orderBtn{
 <jsp:include page="../source/header.jsp"></jsp:include>
 
 	<%
-	//현재 세션에서 cart의 속성 가져오기
+	//현재 세션에서 cart의 속성 가져오
 	Object obj1=session.getAttribute("cart");
 	
 	if(obj1!=null){
