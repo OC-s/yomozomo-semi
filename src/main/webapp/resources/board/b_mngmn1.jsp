@@ -166,7 +166,7 @@ td#paging{
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="q_mngmn.jsp" class="nav-link">
+                <a href="c_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>고양이자랑게시판 댓글 관리</p>
                 </a>

@@ -151,8 +151,8 @@
         <!-- 회원관리 end -->
         
           <!-- 게시판 관리 -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                게시판 관리
@@ -189,8 +189,8 @@
         <!-- 게시판 end -->
           
           <!-- 쇼핑몰 관리 -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                쇼핑몰 관리
@@ -199,25 +199,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="o_mngmn.jsp" class="nav-link">
+                <a href="../ymzm/o_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>주문 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="../ymzm/p_mngmn.jsp" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>상품 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="r_mngmn.jsp" class="nav-link">
+                <a href="../ymzm/r_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>리뷰 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="q_mngmn" class="nav-link">
+                <a href="../ymzm/q_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>문의 관리</p>
                 </a>
