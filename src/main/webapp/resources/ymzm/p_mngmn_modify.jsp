@@ -297,7 +297,8 @@
 				  %> 
 				<tr>
 					<td colspan="4">					
-						<input type="submit" value="수정" class="btn btn-outline-secondary" />
+						<input type="submit" value="수정" />
+						<a href="p_mngmn.jsp"><input type="button" value="취소" /></a>
 					</td>
 				</tr>			
 			</table>
