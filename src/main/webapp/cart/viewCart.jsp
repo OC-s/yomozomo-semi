@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="vo.ProductVO"%>
 <%@page import="java.util.Iterator"%>
@@ -63,11 +64,11 @@ div#totalprice{
 }
 span#tp{
 	position: relative;
-	right: 85px;
+	right: 45px;
 }
 span#tpmsg{
 	position: relative;
-	right: 160px;
+	right: 140px;
 }
 div#orderBtn{
 	position: absolute;
@@ -116,22 +117,22 @@ div#orderBtn{
 			ProductVO vo=dao.selectOne(key);
 			int cnt=list.get(key);
 	%>
-	<form action="deleteCart.jsp">
     	<tr>
       		<td><div id="product_img"><img id="pimage" src="../<%=vo.getPthumbnail() %>" alt="" /></div></td>
       		<td><div id="product_name"><%=vo.getPname() %></div></td>
       		<td><div id="product_price"><%=df.format(vo.getPprice()) %></div></td>
       		<td><div id="product_cnt"><%=cnt %></div></td>
       		<td><div id="product_tprice"><%=df.format(cnt*(vo.getPprice())) %></div></td>
-      		<td><button type="submit" class="btn btn-danger">삭제</button></td>
+      		<td><button type="button" class="btn btn-danger" onclick="deleteOne()">삭제</button></td>
     	</tr>
-	</form>
 	<%
 		totalSum += cnt*(vo.getPprice());
 		}
+		
+		/* 장바구니 개별 항목 삭제 방법 모르겠음...... */
 	%>
 	<tr>
-		<td colspan="5" id="totalprice" >
+		<td colspan="6" id="totalprice" >
 			<span id="tpmsg">
 				합계
 			</span>
