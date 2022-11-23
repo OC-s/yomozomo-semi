@@ -1,3 +1,4 @@
+<%@page import="controller.admin.dao.SalesService"%>
 <%@page import="controller.admin.dao.QnaService"%>
 <%@page import="vo.ProductVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -281,9 +282,9 @@
 	endNo2 = 15;
 
 	//총게시물수
-	QnaService qnaService= new QnaService();
+	SalesService sService = new SalesService();
 
-	totalCount = qnaService.getCountAnswer();
+	totalCount = sService.getCountSales();
 
 	//총 페이지
 	totalPage = (totalCount % recoredPerPage == 0) ? totalCount / recoredPerPage : totalCount / recoredPerPage + 1;
@@ -368,7 +369,7 @@
 							} else {
 							%>
 							<li class="page-item"><a class="page-link"
-								href="q_mngmn?cp=<%=startPage - 1%>" tabindex="-1"
+								href="u_sales?cp=<%=startPage - 1%>" tabindex="-1"
 								aria-disabled="true">Previous</a></li>
 							<%
 							}
@@ -377,7 +378,7 @@
 							for (int i = startPage; i <= endPage; i++) {
 							%>
 							<li class="page-item"><a class="page-link"
-								href="q_mngmn?cp=<%=i%>"><%=i%></a></li>
+								href="u_sales?cp=<%=i%>"><%=i%></a></li>
 							<%
 							}
 							%>
@@ -390,7 +391,7 @@
 							} else {
 							%>
 							<li class="page-item"><a class="page-link"
-								href="q_mngmn?cp=<%=endPage + 1%>">Next</a></li>
+								href="u_sales?cp=<%=endPage + 1%>">Next</a></li>
 							<%
 							}
 							%>
