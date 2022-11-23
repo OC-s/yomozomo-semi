@@ -129,8 +129,8 @@
           
           
           <!-- 회원관리 -->
-          <li class="nav-item" >
-            <a href="#" class="nav-link">
+          <li class="nav-item menu-open" >
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                쇼핑몰 회원관리
@@ -139,19 +139,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="u_rgstr.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원 등록</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="u_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원목록 조회,수정</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/yomozomo/resources/user/u_sales" class="nav-link">
+                <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원매출 조회</p>
                 </a>
@@ -171,13 +171,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="../board/b_rgstr.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>게시판 등록</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="../board/b_mngmn1.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>게시판목록 조회,수정</p>
                 </a>
@@ -187,8 +187,8 @@
         <!-- 게시판 end -->
           
           <!-- 쇼핑몰 관리 -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                쇼핑몰 관리
@@ -197,25 +197,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="../ymzm/o_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>주문 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/yomozomo/resources/ymzm/p_mngmn.jsp" class="nav-link active">
+                <a href="../ymzm/p_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>상품 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="../ymzm/r_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>리뷰 관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/yomozomo/resources/ymzm/q_mngmn" class="nav-link">
+                <a href="../ymzm/q_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>문의 관리</p>
                 </a>

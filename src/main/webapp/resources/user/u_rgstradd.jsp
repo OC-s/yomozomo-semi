@@ -20,6 +20,26 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  
+      <!-- 주소가져오기 -->
+	<script type="text/javascript">
+		/* daum 주소 가져오기 */
+		window.onload=function(){
+			var btn = document.getElementById("btn2");
+			btn.onclick=openKakaoPostcode;
+		}
+		function openKakaoPostcode(){
+			new daum.Postcode({
+				oncomplete : function(data){
+					
+					document.getElementById("post").value=data.zonecode;
+					document.getElementById("addrs").value=data.roadAddress;
+				}
+			}).open();
+		}
+		    
+	</script>
   
   <!-- 작성 체크 -->
   <script type="text/javascript">
@@ -338,7 +358,7 @@
 	    		</tr>
 	    		<tr>
 	    			<th>우편번호</th>
-	    			<td><input type="text" name=ZIPCODE id="ZIPCODE"/></td>
+	    			<td><button class="section_btn" type="button" value="주소찾기" id="btn2">주소찾기</button> <input type="text" name=ZIPCODE id="ZIPCODE"/></td>
 	    		</tr>
 	    		<tr>
 	    			<th>주소</th>
