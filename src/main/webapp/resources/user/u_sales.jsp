@@ -326,7 +326,7 @@
 		<div class="container">
 		<div class="row">
 			<table class="table table-bordered"
-				style="position: relative; top: 100px; text-align: center; border: 1px solid #dddddd; margin-top: 50px;">
+				style="position: relative; top: 100px; text-align: center; border: 1px solid #dddddd; margin-top: -50px;">
 				<thead>
 					<tr>
 						<td colspan="6">
