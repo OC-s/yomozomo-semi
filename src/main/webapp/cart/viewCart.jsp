@@ -74,11 +74,10 @@ div#orderBtn{
 	right: 175px;
 }
 </style>
-<link rel="stylesheet" href="../css/order2.css" />
-<link rel="stylesheet" href="../css/footer.css" />
+<link rel="stylesheet" href="../css/main.css" />
 </head>
 <body>
-	<%@include file="/source/header.jsp" %>
+<jsp:include page="../source/header.jsp"></jsp:include>
 
 	<%
 	//현재 세션에서 cart의 속성 가져오기
@@ -172,6 +171,6 @@ div#orderBtn{
 	<%
 	}
 	%>
-<jsp:include page="../layout/footer.html"></jsp:include>
+<jsp:include page="../source/footer.jsp"></jsp:include>
 </body>
 </html>
