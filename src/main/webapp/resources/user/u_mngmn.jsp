@@ -169,9 +169,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../board/b_rgstr.jsp" class="nav-link">
+                <a href="../board/c_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>게시판 등록</p>
+                  <p>고양이자랑게시판 댓글 관리</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a href="../board/qac_mngmn.jsp" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>질문게시판 댓글 관리</p>
                 </a>
               </li>
               <li class="nav-item">
