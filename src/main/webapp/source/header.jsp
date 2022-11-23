@@ -64,7 +64,7 @@
 					<div class="header__divider"></div>
 					<a href="/yomozomo/login/logout.jsp"><span class="header__text2"><%= vo.getNAME()%> 로그아웃</span></a>
 					<div class="header__divider"></div>
-					<a href="/yomozomo/regist/regist.jsp"><span class="header__text2">회원가입</span></a>
+					<a href="/yomozomo/regist/registModifyCheck.jsp"><span class="header__text2">회원정보 수정</span></a>
 					<div class="header__divider"></div>
 					<a href="#"><span class="header__text2">고객센터</span></a>
 				</div>

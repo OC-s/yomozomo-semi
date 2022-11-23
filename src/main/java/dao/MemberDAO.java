@@ -114,6 +114,32 @@ public class MemberDAO {
 		return vo;
 	}
 	
+	//비밀번호 확인
+	public boolean isExistsPw(String pw) {
+
+		// id와 pw를 가지고 있는 사람의 데이터를 vo로 리턴
+		sb.setLength(0);
+		sb.append("SELECT * FROM MEMBER ");
+		sb.append("WHERE PASSWORD=? ");
+		// boolean 변수를 만들어주기
+		boolean isOk = false;
+
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			// 바인드 변수 채워주는 과정 거쳐야 함
+			pstmt.setString(1, pw);
+
+			rs = pstmt.executeQuery();
+			// 데이터가 있다면 isOk에 true를 넣어주기
+			isOk = rs.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return isOk; // false라면 존재하지 않는 회원
+		// true라면 존재하는 회원
+	}
+	
 	public void close() {
 		try {
 			if(rs!=null) rs.close();

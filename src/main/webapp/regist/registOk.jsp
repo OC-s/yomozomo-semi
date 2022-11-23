@@ -10,14 +10,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="../css/order2.css" />
-<link rel="stylesheet" href="../css/footer.css" />
+ <link rel="stylesheet" href="../css/header&main&footer.css"/>
+
 <style>
 div#main{
 	position: relative;
-	top: 110px;
 	background-color: #eeeeee;
-	padding: 100px;
+	height: 300px;
+	padding: 100px 0px;
 }
 div#msg{
 	text-align: center;
@@ -60,10 +60,12 @@ vo.setAddrsDetail(addrsDetail);
 dao.insertOne(vo);
 dao.close();
 %>
-<jsp:include page="../layout/header.html"></jsp:include>
+
+<jsp:include page="../source/header.jsp"></jsp:include>
+<jsp:include page="../source/menubar.jsp"></jsp:include>
 <div id="main">
-	<div id="msg"><%=name %>님, 이메일 인증을 하면 회원가입이 완료됩니다.</div> <br />
-	<div id="login"><a href="../login/login.jsp">이메일 인증 진행하기</a></div>
+	<div id="msg"><%=name %>님, 회원가입이 완료되었습니다.</div> <br />
+	<a href="../login/login.jsp"><div id="msg">로그인 페이지로 돌아가기</div></a>
 </div>
 <jsp:include page="../layout/footer.html"></jsp:include>
 </body>
