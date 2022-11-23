@@ -150,7 +150,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="u_sales.jsp" class="nav-link">
+                <a href="u_sales" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원매출 조회</p>
                 </a>

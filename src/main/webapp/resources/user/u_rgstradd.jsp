@@ -33,8 +33,8 @@
 			new daum.Postcode({
 				oncomplete : function(data){
 					
-					document.getElementById("post").value=data.zonecode;
-					document.getElementById("addrs").value=data.roadAddress;
+					document.getElementById("ZIPCODE").value=data.zonecode;
+					document.getElementById("ADDRESS").value=data.roadAddress;
 				}
 			}).open();
 		}
@@ -225,7 +225,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="u_sales.jsp" class="nav-link">
+                <a href="u_sales" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원매출 조회</p>
                 </a>
@@ -358,15 +358,18 @@
 	    		</tr>
 	    		<tr>
 	    			<th>우편번호</th>
-	    			<td><button class="section_btn" type="button" value="주소찾기" id="btn2">주소찾기</button> <input type="text" name=ZIPCODE id="ZIPCODE"/></td>
+	    			<td>
+	    				<button class="section_btn" type="button" value="주소찾기" id="btn2" style="border: 1px solid black;">주소찾기</button>
+	    				<input type="text" name=ZIPCODE id="ZIPCODE" style="width: 100px;"/>
+    				</td>
 	    		</tr>
 	    		<tr>
 	    			<th>주소</th>
-	    			<td><input type="text" name=ADDRESS id="ADDRESS" /></td>
+	    			<td><input type="text" name=ADDRESS id="ADDRESS" style="width: 250px;"/></td>
 	    		</tr>
 	    		<tr>
 	    			<th>상세주소</th>
-	    			<td><input type="text" name=ADDRESSDETAIL id="ADDRESSDETAIL"/></td>
+	    			<td><input type="text" name=ADDRESSDETAIL id="ADDRESSDETAIL" style="width: 250px;"/></td>
 	    		</tr>
 	    		<tr>
 					<td colspan="2" style="text-align: left;">
