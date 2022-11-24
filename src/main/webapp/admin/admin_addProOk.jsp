@@ -29,7 +29,7 @@
 	int maxFileSize = 1024*1024*10;
 	
 	//파라미터값가져오기
-	MultipartRequest mr = new MultipartRequest(request,realFolder,maxFileSize,"UTF-8",new DefaultFileRenamePolicy());
+	MultipartRequest mr = new MultipartRequest(request,saveDir,maxFileSize,"UTF-8",new DefaultFileRenamePolicy());
 	
 	String P_CATEGORY = mr.getParameter("P_CATEGORY");
 	String P_NAME = mr.getParameter("P_NAME");
