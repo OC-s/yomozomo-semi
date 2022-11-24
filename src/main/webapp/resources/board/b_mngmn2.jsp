@@ -72,9 +72,9 @@ td#paging{
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!--  -->
-    <a href="index3.html" class="brand-link">
-      <img src="" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">yomozomo</span>
+    <a href="../adpage.jsp" class="brand-link">
+      <img src="../../image/icon/logo.png" alt="" class="brand-image" style="opacity: .8">
+      <span class="brand-text font-weight-light"></span>
     </a>
 
     <!-- Sidebar -->
@@ -82,10 +82,9 @@ td#paging{
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">admin</a>
+          <a href="#" class="d-block" style="text-align: center;">admin</a>
         </div>
       </div>
 
@@ -106,7 +105,7 @@ td#paging{
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="../../main/main.jsp" class="nav-link">
+            <a href="../../admin/main.jsp" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 쇼핑몰 홈
@@ -116,7 +115,7 @@ td#paging{
           </li>
           
           <li class="nav-item">
-            <a href="../index3.html" class="nav-link">
+            <a href="../adpage.jsp" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -148,7 +147,7 @@ td#paging{
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../user/u_sales.jsp" class="nav-link">
+                <a href="../user/u_sales" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>회원매출 조회</p>
                 </a>

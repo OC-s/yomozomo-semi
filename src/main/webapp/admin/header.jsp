@@ -64,7 +64,7 @@
 					<div class="header__divider"></div>
 					<a href="/yomozomo/login/logout.jsp"><span class="header__text2"><%= vo.getNAME()%> 로그아웃</span></a>
 					<div class="header__divider"></div>
-					<a href="/yomozomo/resources/index3.html"><span class="header__text2">관리자 페이지</span></a>
+					<a href="/yomozomo/resources/adpage.jsp"><span class="header__text2">관리자 페이지</span></a>
 					<div class="header__divider"></div>
 					<a href="#"><span class="header__text2">고객센터</span></a>
 				</div>

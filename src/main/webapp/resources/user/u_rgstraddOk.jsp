@@ -44,11 +44,6 @@
 		response.sendRedirect("u_rgstr.jsp");
 		
 	%>
-	
-
-
-
-
 
 
 
