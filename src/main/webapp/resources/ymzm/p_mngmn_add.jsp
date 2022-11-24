@@ -195,24 +195,14 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="o_mngmn.jsp" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>주문 관리</p>
-                </a>
-              </li>
+             
               <li class="nav-item">
                 <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>상품 관리</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="r_mngmn.jsp" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>리뷰 관리</p>
-                </a>
-              </li>
+              
               <li class="nav-item">
                 <a href="q_mngmn" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

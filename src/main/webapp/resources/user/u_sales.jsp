@@ -208,24 +208,14 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../ymzm/o_mngmn.jsp" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>주문 관리</p>
-                </a>
-              </li>
+             
               <li class="nav-item">
                 <a href="../ymzm/p_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>상품 관리</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../ymzm/r_mngmn.jsp" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>리뷰 관리</p>
-                </a>
-              </li>
+              
               <li class="nav-item">
                 <a href="../ymzm/q_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

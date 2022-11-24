@@ -208,25 +208,13 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/yomozomo/resources/ymzm/o_mngmn.jsp" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>주문 관리</p>
-                </a>
-              </li>
+            <ul class="nav nav-treeview">           
               <li class="nav-item">
                 <a href="/yomozomo/resources/ymzm/p_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>상품 관리</p>
                 </a>
-              </li>
-              <li class="nav-item">
-                <a href="/yomozomo/resources/ymzm/r_mngmn.jsp" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>리뷰 관리</p>
-                </a>
-              </li>
+              </li>             
               <li class="nav-item">
                 <a href="/yomozomo/resources/ymzm/q_mngmn" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
