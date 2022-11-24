@@ -353,6 +353,8 @@
                     </div>
                 </section>
                 
+                
+                
                 <br><br>
 	           <section class="section_box">
 	             <section>
@@ -365,6 +367,9 @@
            		int sum = 0;
            		int price = 0;
            		int dis = 0;
+           		
+           		session.setAttribute("cart2",session.getAttribute("cart"));
+           		
          		HashMap<Integer, Integer> list = (HashMap<Integer, Integer>)session.getAttribute("cart");
             		
           		if(list == null){
@@ -396,6 +401,7 @@
 	       				
 	       				/* 원가 총상품금액  */
 	       				price += cnt*(vo.getPprice());
+	       				
 	       			
         	%>  
         		

@@ -51,7 +51,7 @@
             int sum = 0;
          	String pname = ""; 
           	int namecnt = 0;
-            HashMap<Integer, Integer> list = (HashMap<Integer, Integer>)session.getAttribute("cart");
+            HashMap<Integer, Integer> list = (HashMap<Integer, Integer>)session.getAttribute("cart2");
             if(list == null){
 				list = new HashMap<>();
 				
