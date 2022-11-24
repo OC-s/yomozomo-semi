@@ -1,7 +1,5 @@
-/kr/
-<<<<<<< HEAD
-/util/
-=======
-/controller/
->>>>>>> branch 'master' of https://github.com/jemok96/yomozomo.git
 /dao/
+/dto/
+/kr/
+/util/
+/vo/
