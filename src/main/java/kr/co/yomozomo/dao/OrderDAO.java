@@ -80,7 +80,26 @@ public class OrderDAO {
 		}
 		
 	}
+
+	/* 
+	  // SELECT SUBSTR(O_DATE,1,7), sum(O_TOTAL) FROM UserOrder; // 월별 판매금액 public
+	  public ArrayList<OrderVO> monthTotal() { 
+	  ArrayList<OrderVO> list = new ArrayList<OrderVO>(); sb.setLength(0);
+	  sb.append("SELECT SUBSTR(O_DATE,1,7), sum(O_TOTAL) FROM UserOrder ");
+	  
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			rs = pstmt.executeQuery();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
 	
+	*/
+		
 	// -- 회원 count
 	public int getTotal() {
 		sb.setLength(0);
@@ -96,6 +115,44 @@ public class OrderDAO {
 			e.printStackTrace();
 		}
 		return count;		
+	}
+	
+	
+	// ---------------주문 전체조회
+	public ArrayList<OrderVO> selectAll2(){
+		ArrayList<OrderVO> list2 = new ArrayList<OrderVO>();
+		
+		sb.setLength(0);
+		sb.append("SELECT * FROM UserOrder ");
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String O_DATE = rs.getString("O_DATE");
+				String O_ZIPCODE = rs.getString("O_ZIPCODE");
+				String O_ADDRESS = rs.getString("O_ADDRESS");
+				String O_ADDRESSDETAIL = rs.getString("O_ADDRESSDETAIL");
+				String O_NAME = rs.getString("O_NAME");
+				String O_PHONE = rs.getString("O_PHONE");
+				String O_STATUS = rs.getString("O_STATUS");
+				int O_TOTAL = rs.getInt("O_TOTAL");
+				String O_EMAIL = rs.getString("O_EMAIL");
+				String O_ADDNAME = rs.getString("O_ADDNAME");
+				String O_ADDNAME2 = rs.getString("O_ADDNAME2");
+				String O_ADDTEL = rs.getString("O_ADDTEL");
+				
+				OrderVO vo2 = new OrderVO(O_TOTAL, O_DATE, O_ZIPCODE, O_ADDRESS, O_ADDRESSDETAIL, O_NAME, O_PHONE, O_STATUS, O_TOTAL, O_EMAIL, O_ADDNAME, O_ADDNAME2, O_ADDTEL);
+				
+				list2.add(vo2);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list2;
 	}
 	
 	

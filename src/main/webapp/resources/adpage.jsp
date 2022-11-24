@@ -1,3 +1,9 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="kr.co.yomozomo.vo.OrderVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="kr.co.yomozomo.dao.OrderDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +19,7 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  
 </head>
 <!--
 `body` tag options:
@@ -228,15 +235,33 @@
             </ul>
           </li>
         <!-- 쇼핑몰 end -->
-        
-        
-        
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
+  
+  		<%
+			OrderDAO dao = new OrderDAO();
+			
+			ArrayList<OrderVO> list = dao.selectAll2();
+			
+			int sum = 0;
+			String data = "";
+			DecimalFormat df = new DecimalFormat("#원,##0");
+			
+			for(OrderVO vo : list) {
+				data = vo.getO_DATE().substring(0,7);
+				
+				/*  11월 매출액  */
+				if(data.equals("2022-11")){
+					sum += vo.getO_TOTAL();
+				}
+				
+			}
+			
+		%>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -271,14 +296,12 @@
               <div class="card-body">
                 <div class="d-flex">
                   <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">총판매금액:</span>
-                    <span>Sales Over Time</span>
+                    <span class="text-bold text-lg"> 총판매금액 : <%= df.format(sum) %></span>
                   </p>
                   <p class="ml-auto d-flex flex-column text-right">
                     <span class="text-success">
                       <i class="fas fa-arrow-up"></i> 
                     </span>
-                    <span class="text-muted">Since last month</span>
                   </p>
                 </div>
                 <!-- /.d-flex -->
@@ -339,6 +362,155 @@
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard3.js?var=2"></script>
+  <script type="text/javascript">
+  $(function () {
+	  'use strict'
+
+	  var ticksStyle = {
+	    fontColor: '#495057',
+	    fontStyle: 'bold'
+	  }
+
+	  var mode = 'index'
+	  var intersect = true
+
+	  var $salesChart = $('#sales-chart')
+	  var sum = "<%= sum%>";
+	  // eslint-disable-next-line no-unused-vars
+	  var salesChart = new Chart($salesChart, {
+
+	    type: 'bar',
+	    data: {
+	      labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	      datasets: [
+	        {
+	          backgroundColor: '#007bff',
+	          borderColor: '#007bff',
+	          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, sum, 0]
+	        },
+	       /* {
+	          backgroundColor: '#ced4da',
+	          borderColor: '#ced4da',
+	          data: [700, 1700, 2700, 2000, 1800, 1500, 2000, 2000, 3000, 2500, 2700, 2500]
+	        } */
+	      ]
+	    },
+	    options: {
+	      maintainAspectRatio: false,
+	      tooltips: {
+	        mode: mode,
+	        intersect: intersect
+	      },
+	      hover: {
+	        mode: mode,
+	        intersect: intersect
+	      },
+	      legend: {
+	        display: false
+	      },
+	      scales: {
+	        yAxes: [{
+	          // display: false,
+	          gridLines: {
+	            display: true,
+	            lineWidth: '4px',
+	            color: 'rgba(0, 0, 0, .2)',
+	            zeroLineColor: 'transparent'
+	          },
+	          ticks: $.extend({
+	            beginAtZero: true,
+
+	            // Include a dollar sign in the ticks
+	            callback: function (value) {
+	              if (value >= 10000) {
+	                value /= 10000
+	                value += '만'
+	              }
+
+	              return value + '원' 
+	            }
+	          }, ticksStyle)
+	        }],
+	        xAxes: [{
+	          display: true,
+	          gridLines: {
+	            display: false
+	          },
+	          ticks: ticksStyle
+	        }]
+	      }
+	    }
+	  })
+
+	  var $visitorsChart = $('#visitors-chart')
+	  // eslint-disable-next-line no-unused-vars
+	  var visitorsChart = new Chart($visitorsChart, {
+	    data: {
+	      labels: ['18th', '20th', '22nd', '24th', '26th', '28th', '30th'],
+	      datasets: [{
+	        type: 'line',
+	        data: [100, 120, 170, 167, 180, 177, 160],
+	        backgroundColor: 'transparent',
+	        borderColor: '#007bff',
+	        pointBorderColor: '#007bff',
+	        pointBackgroundColor: '#007bff',
+	        fill: false
+	        // pointHoverBackgroundColor: '#007bff',
+	        // pointHoverBorderColor    : '#007bff'
+	      },
+	      {
+	        type: 'line',
+	        data: [60, 80, 70, 67, 80, 77, 100],
+	        backgroundColor: 'tansparent',
+	        borderColor: '#ced4da',
+	        pointBorderColor: '#ced4da',
+	        pointBackgroundColor: '#ced4da',
+	        fill: false
+	        // pointHoverBackgroundColor: '#ced4da',
+	        // pointHoverBorderColor    : '#ced4da'
+	      }]
+	    },
+	    options: {
+	      maintainAspectRatio: false,
+	      tooltips: {
+	        mode: mode,
+	        intersect: intersect
+	      },
+	      hover: {
+	        mode: mode,
+	        intersect: intersect
+	      },
+	      legend: {
+	        display: false
+	      },
+	      scales: {
+	        yAxes: [{
+	          // display: false,
+	          gridLines: {
+	            display: true,
+	            lineWidth: '4px',
+	            color: 'rgba(0, 0, 0, .2)',
+	            zeroLineColor: 'transparent'
+	          },
+	          ticks: $.extend({
+	            beginAtZero: true,
+	            suggestedMax: 200
+	          }, ticksStyle)
+	        }],
+	        xAxes: [{
+	          display: true,
+	          gridLines: {
+	            display: false
+	          },
+	          ticks: ticksStyle
+	        }]
+	      }
+	    }
+	  })
+	})
+  
+  
+  
+  </script>
 </body>
 </html>

@@ -12,8 +12,11 @@ $(function () {
   var intersect = true
 
   var $salesChart = $('#sales-chart')
+  
+  var sum = '<%= request.getSession().getAttribute("sum2") %>';
   // eslint-disable-next-line no-unused-vars
   var salesChart = new Chart($salesChart, {
+
     type: 'bar',
     data: {
       labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
@@ -21,7 +24,7 @@ $(function () {
         {
           backgroundColor: '#007bff',
           borderColor: '#007bff',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2700, 0]
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, sum, 0]
         },
        /* {
           backgroundColor: '#ced4da',
