@@ -110,4 +110,26 @@ public class PayService {
 
 		return price;
 	}
+	public int updateProducStock(int pnum, int count) {
+		int result = 0;
+		try {
+			String sql = "UPDATE PRODUCT "
+					+ "SET P_STOCK = P_STOCK - ? "
+					+ "WHERE P_NUM =?";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection(url, user, passWord);
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1,count);
+			st.setInt(2, pnum);
+			result = st.executeUpdate();
+
+			st.close();
+			con.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+
+		return result;
+		
+	}
 }

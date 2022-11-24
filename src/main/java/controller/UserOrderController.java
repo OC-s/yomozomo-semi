@@ -51,7 +51,10 @@ public class UserOrderController extends HttpServlet{
 			int pnum = entry.getKey();
 			int count = entry.getValue();
 			int result2 = payService.insertUserOrderDetail(recentNum, pnum, count, price);
-//			System.out.println(result2);
+			int result3 = payService.updateProducStock(pnum, count);
+//			System.out.println(pnum+" "+count);
+//			System.out.println(result3);
+			//			System.out.println(result2);
 		}
 		
 		
