@@ -6,6 +6,11 @@
 <%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	
+	session = request.getSession();
+	String add = (String)session.getAttribute("add");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +56,7 @@
             int sum = 0;
          	String pname = ""; 
           	int namecnt = 0;
-            HashMap<Integer, Integer> list = (HashMap<Integer, Integer>)session.getAttribute("cart");
+            HashMap<Integer, Integer> list = (HashMap<Integer, Integer>)session.getAttribute("cart2");
             if(list == null){
 				list = new HashMap<>();
 				
@@ -82,8 +87,9 @@
                 </tr>
                 
                 <tr class="order_tr">
+                	
                     <td class="order_td">배송지</td>
-                    <td class="order_td2"><%= request.getParameter("addrs") +request.getParameter("addrs2")%></td>
+                    <td class="order_td2">${add}</td>
                 </tr>
                 
                 <tr class="order_tr">

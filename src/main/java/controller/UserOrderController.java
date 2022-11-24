@@ -57,6 +57,7 @@ public class UserOrderController extends HttpServlet{
 		
 		s.removeAttribute("cart");
 		
+		s.setAttribute("add", addrs+addrs2);
 		PrintWriter out = response.getWriter();
 		out.print("y");
 	}
