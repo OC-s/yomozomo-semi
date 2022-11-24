@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="../css/main.css" />
 <body>
 
-	<jsp:include page="../order/order.jsp"/>
+	<jsp:include page="../source/header.jsp"/>
 	<jsp:include page="commuNav.jsp"/>
 	<jsp:include page="pic_Nav.jsp"/>
  	
