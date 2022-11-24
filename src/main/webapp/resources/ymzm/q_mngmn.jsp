@@ -76,10 +76,10 @@
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!--  -->
-    <a href="index3.html" class="brand-link">
-      <img src="" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">yomozomo</span>
+   <!--  -->
+    <a href="../adpage.jsp" class="brand-link">
+      <img src="../../image/icon/logo.png" alt="" class="brand-image" style="opacity: .8">
+      <span class="brand-text font-weight-light"></span>
     </a>
 
     <!-- Sidebar -->
@@ -87,10 +87,9 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">admin</a>
+          <a href="#" class="d-block" style="text-align: center;">admin</a>
         </div>
       </div>
 
@@ -121,7 +120,7 @@
           </li>
           
           <li class="nav-item">
-            <a href="../index3.html" class="nav-link">
+            <a href="../adpage.jsp" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -211,7 +210,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="/yomozomo/resources/ymzm/o_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>주문 관리</p>
                 </a>
@@ -223,7 +222,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="/yomozomo/resources/ymzm/r_mngmn.jsp" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>리뷰 관리</p>
                 </a>
