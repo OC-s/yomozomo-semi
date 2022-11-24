@@ -1,3 +1,4 @@
+<%@page import="org.eclipse.jdt.internal.compiler.lookup.MemberTypeBinding"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.Iterator"%>
@@ -308,6 +309,18 @@
                 
                 <br><br>
                 
+                <%
+                
+                MemberVO vo3 = (MemberVO)obj;
+				
+                String mail = vo3.getEMAIL();
+                int idx = mail.indexOf("@");
+                
+                String mail1 = mail.substring(0, idx); // @기준 앞부분
+                String mail2 = mail.substring(idx+1); // 뒷부분
+                
+                %>
+                
                 <section class="section_box">
                     <section>
                         <div class="order_title">주문자</div>
@@ -317,13 +330,13 @@
                         <section class="section_box2">
                             <label class="section_label">
                                 <div class="section_title">이름</div>
-                                <input class="section_text" type="text" name="oname" id="oname"><br>
+                                <input class="section_text" type="text" name="oname" id="oname" value="<%= vo3.getNAME() %>"><br>
                             </label>
                             
                             <label class="section_label">
                                 <div class="section_title">이메일</div>
-	                                <input class="section_text" type="text" name="email1" id="email1" style="width: 150px" >   @
-	                                <input class="section_text" type="text" name="email2" id="email2" style="width: 150px" >
+	                                <input class="section_text" type="text" name="email1" id="email1" style="width: 150px" value="<%= mail1 %>" >   @
+	                                <input class="section_text" type="text" name="email2" id="email2" style="width: 150px" value="<%= mail2 %>" >
 	                                <select class="section_email" name="email" id="email" style="width: 130px" onChange="selectEmail(this)">
 	                                    <option value="" selected>선택하세요</option>
 	                                    <option value="naver.com">naver.com</option>
