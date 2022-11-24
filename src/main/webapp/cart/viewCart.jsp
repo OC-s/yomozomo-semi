@@ -22,10 +22,6 @@
 		console.log("이미지 출처: 고양이, 고양이, 동물 https://.pngtree.com/freepng/고양이--고양이--동물_6736820.html?share=1");
 		
 	});
-	
-	function delete(){
-		location.href="deleteOne.jsp";
-	}
 </script>
 <style>
 div#maindiv1{
@@ -86,7 +82,6 @@ div#orderBtn{
 	
 	if(obj1!=null){
 	%>
-<form action="../order/order.jsp">
 <div id="maindiv1">
 	<div id="table">
 	<table class="table">
@@ -103,8 +98,6 @@ div#orderBtn{
 		<tbody class="table-group-divider">
 	<%
 		HashMap<Integer, Integer> list= (HashMap<Integer, Integer>)obj1;
-		
-		
 		ProductDAO dao=new ProductDAO();
 		
 		Set<Integer> set=list.keySet();
@@ -117,19 +110,21 @@ div#orderBtn{
 			ProductVO vo=dao.selectOne(key);
 			int cnt=list.get(key);
 	%>
+	<form>
+    	<input type="hidden" name="pnum" value="<%=vo.getPnum() %>" />
     	<tr>
       		<td><div id="product_img"><img id="pimage" src="../<%=vo.getPthumbnail() %>" alt="" /></div></td>
       		<td><div id="product_name"><%=vo.getPname() %></div></td>
       		<td><div id="product_price"><%=df.format(vo.getPprice()) %></div></td>
       		<td><div id="product_cnt"><%=cnt %></div></td>
       		<td><div id="product_tprice"><%=df.format(cnt*(vo.getPprice())) %></div></td>
-      		<td><button type="button" class="btn btn-danger" onclick="deleteOne()">삭제</button></td>
+      		<td><button type="submit" class="btn btn-danger" formaction="deleteCart.jsp">삭제</button></td>
     	</tr>
+	</form>
 	<%
 		totalSum += cnt*(vo.getPprice());
 		}
-		
-		/* 장바구니 개별 항목 삭제 방법 모르겠음...... */
+
 	%>
 	<tr>
 		<td colspan="6" id="totalprice" >
@@ -150,11 +145,12 @@ div#orderBtn{
 	<span id="cancelBtn">
 		<a href="clearCart.jsp"><button type="button" class="btn btn-danger">장바구니 비우기</button></a>
 	</span>
-	<span id="orderBtn">
-		<a href="../order/order.jsp"><button type="submit" class="btn btn-primary">결제하기</button></a>
-	</span>
+	<form action="../order/order.jsp">
+		<span id="orderBtn">
+			<a href="../order/order.jsp"><button type="submit" class="btn btn-primary">결제하기</button></a>
+		</span>
+	</form>
 </div>
-</form>
 	<%
 	}else{
 	%>
