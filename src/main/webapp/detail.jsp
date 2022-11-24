@@ -30,7 +30,21 @@ request.setAttribute("t", s);
 .information__text a {
 	font-weight: 600;
 }
-
+.star-rating {
+  width: 304px;
+}
+.star-rating,
+.star-rating span {
+  display: inline-block;
+  height: 55px;
+  overflow: hidden;
+  background: url(image/star.png) no-repeat;
+}
+.star-rating span {
+  background-position: left bottom;
+  line-height: 0;
+  vertical-align: top;
+}
 
 </style>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"
