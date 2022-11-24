@@ -20,7 +20,7 @@
 
 #footer{
 	
-    background-color: wheat;
+    background-color: linen;
     width: 100%;
     height: 270px;
     position: relative; 
