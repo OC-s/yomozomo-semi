@@ -1,3 +1,4 @@
+<%@page import="kr.co.yomozomo.vo.OrderjoinVO"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="kr.co.yomozomo.vo.OrderVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -245,6 +246,7 @@
   		<%
 			OrderDAO dao = new OrderDAO();
 			
+			ArrayList<OrderjoinVO> list2 = dao.selectAll3();
 			ArrayList<OrderVO> list = dao.selectAll2();
 			
 			int sum = 0;
@@ -286,11 +288,63 @@
     <!-- Main content -->
     <div class="content">
     
+    	 <!-- Info boxes -->
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Likes</span>
+                <span class="info-box-number">?</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+
+          <!-- fix for small devices only -->
+          <div class="clearfix hidden-md-up"></div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+			
+			<%
+			int count = dao.getCnt();
+			int member = dao.getTotal();
+			%>
+			
+              <div class="info-box-content">
+                <span class="info-box-text">판매량</span>
+                <span class="info-box-number"><%= count %></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">회원수</span>
+                <span class="info-box-number"><%= member %></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
     
     	<div class="container-fluid">
         <div class="row">
           
-          <!-- /.col-md-6  매출 -->
+          <!--  매출 -->
           <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
@@ -318,16 +372,199 @@
               </div>
             </div>
             <!-- /.card -->
-
           </div>
-          <!-- /.col-md-6 -->
+          <!-- 매출end -->
+
+		 <!-- 대시보드 마지막주문 6건 -->
+            <div class="card">
+              <div class="card-header border-transparent">
+                <h3 class="card-title">Latest Orders</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body p-0">
+                <div class="table-responsive">
+                  <table class="table m-0">
+                    <thead>
+                    <tr>
+                      <th>주문자명</th>
+                      <th>상품명</th>
+                      <th>주문상태</th>
+                      <th>주문금액</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    
+                 <%
+                    for(OrderjoinVO vo : list2){
+                    	
+                    	String pname = vo.getP_NAME();
+                    	
+                    	if(pname.length()>15){
+	       					pname = pname.substring(0,15)+"...";
+	       				}
+                  
+                    	
+                %>
+                    
+                    <tr>
+                      <td><a href="pages/examples/invoice.html"><%= vo.getO_NAME() %></a></td>
+                      <td><%= pname%></td>
+                      <td><span class="badge badge-success">결제완료</span></td>
+                      <td>
+                        <div class="sparkbar" data-color="#00a65a" data-height="20"><%= vo.getO_TOTAL() %></div>
+                      </td>
+                    </tr>
+                    
+               <%     	
+                    }
+                %>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.table-responsive -->
+              </div>
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+
+
+		   <!-- 할일 목록 -->
+            <div class="card" style="max-width: 1640px;">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="ion ion-clipboard mr-1"></i>
+                  To Do List
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <ul class="todo-list" data-widget="todo-list">
+                  <li>
+                    <!-- drag handle -->
+                    <span class="handle">
+                      <i class="fas fa-ellipsis-v"></i>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                    <!-- checkbox -->
+                    <div  class="icheck-primary d-inline ml-2">
+                      <input type="checkbox" value="" name="todo1" id="todoCheck1">
+                      <label for="todoCheck1"></label>
+                    </div>
+                    <!-- todo text -->
+                    <span class="text">25일 발표....</span>
+                    <!-- Emphasis label -->
+                    <small class="badge badge-danger"><i class="far fa-clock"></i> 10 mins</small>
+                    <!-- General tools such as edit or delete-->
+                    <div class="tools">
+                      <i class="fas fa-edit"></i>
+                      <i class="fas fa-trash-o"></i>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="handle">
+                      <i class="fas fa-ellipsis-v"></i>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                    <div  class="icheck-primary d-inline ml-2">
+                      <input type="checkbox" value="" name="todo2" id="todoCheck2" checked>
+                      <label for="todoCheck2"></label>
+                    </div>
+                    <span class="text">총 판매금액 표시하기</span>
+                    <small class="badge badge-info"><i class="far fa-clock"></i> 12 hours</small>
+                    <div class="tools">
+                      <i class="fas fa-edit"></i>
+                      <i class="fas fa-trash-o"></i>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="handle">
+                      <i class="fas fa-ellipsis-v"></i>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                    <div  class="icheck-primary d-inline ml-2">
+                      <input type="checkbox" value="" name="todo3" id="todoCheck3" checked>
+                      <label for="todoCheck3"></label>
+                    </div>
+                    <span class="text">판매량, 회원수 체크</span>
+                    <small class="badge badge-warning"><i class="far fa-clock"></i> 1 day</small>
+                    <div class="tools">
+                      <i class="fas fa-edit"></i>
+                      <i class="fas fa-trash-o"></i>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="handle">
+                      <i class="fas fa-ellipsis-v"></i>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                    <div  class="icheck-primary d-inline ml-2">
+                      <input type="checkbox" value="" name="todo4" id="todoCheck4">
+                      <label for="todoCheck4"></label>
+                    </div>
+                    <span class="text">목록추가 작성수정 기능 넣기</span>
+                    <small class="badge badge-success"><i class="far fa-clock"></i> 22 days</small>
+                    <div class="tools">
+                      <i class="fas fa-edit"></i>
+                      <i class="fas fa-trash-o"></i>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="handle">
+                      <i class="fas fa-ellipsis-v"></i>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                    <div  class="icheck-primary d-inline ml-2">
+                      <input type="checkbox" value="" name="todo5" id="todoCheck5">
+                      <label for="todoCheck5"></label>
+                    </div>
+                    <span class="text">spring</span>
+                    <small class="badge badge-primary"><i class="far fa-clock"></i> 2 week</small>
+                    <div class="tools">
+                      <i class="fas fa-edit"></i>
+                      <i class="fas fa-trash-o"></i>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="handle">
+                      <i class="fas fa-ellipsis-v"></i>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                    <div  class="icheck-primary d-inline ml-2">
+                      <input type="checkbox" value="" name="todo6" id="todoCheck6">
+                      <label for="todoCheck6"></label>
+                    </div>
+                    <span class="text">취업..</span>
+                    <small class="badge badge-secondary"><i class="far fa-clock"></i> 3 month</small>
+                    <div class="tools">
+                      <i class="fas fa-edit"></i>
+                      <i class="fas fa-trash-o"></i>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i> 목록 추가</button>
+              </div>
+            </div>
+            <!-- /.card -->
+
+
+          
         </div>
         <!-- /.row -->
       </div>
       <!-- /.container-fluid -->
-            
-  
-  
     </div>
     <!-- /.content -->
   </div>

@@ -11,6 +11,7 @@ import java.util.List;
 import kr.co.yomozomo.vo.BoardVO;
 import kr.co.yomozomo.vo.MemberVO;
 import kr.co.yomozomo.vo.OrderVO;
+import kr.co.yomozomo.vo.OrderjoinVO;
 import kr.co.yomozomo.vo.OrdermtVO;
 import kr.co.yomozomo.vo.ProductVO;
 
@@ -164,6 +165,66 @@ public class OrderDAO {
 			e.printStackTrace();
 		}
 		return list2;
+	}
+	
+	
+	// ---------------주문 카운트
+	public int getCnt(){
+		sb.setLength(0);
+		sb.append("SELECT COUNT(*) cnt FROM UserOrder ");
+		
+		int count = 1;
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			rs = pstmt.executeQuery();
+			rs.next();
+			count = rs.getInt("cnt");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+	
+	// ---------------주문 마지막 순서 5개
+	/*
+	 SELECT * FROM UserOrder 
+	 INNER JOIN UserOrder_detail ON UserOrder.O_NUM = UserOrder_detail.O_NUM 
+	 INNER JOIN PRODUCT ON UserOrder_detail.P_NUM =PRODUCT.P_NUM 
+	 ORDER BY O_DATE DESC LIMIT 6
+	 */
+	
+	public ArrayList<OrderjoinVO> selectAll3(){
+		ArrayList<OrderjoinVO> list3 = new ArrayList<OrderjoinVO>();
+		
+		sb.setLength(0);
+		sb.append("SELECT * FROM UserOrder ");
+		sb.append("INNER JOIN UserOrder_detail ON UserOrder.O_NUM = UserOrder_detail.O_NUM  ");
+		sb.append("INNER JOIN PRODUCT ON UserOrder_detail.P_NUM = PRODUCT.P_NUM ");
+		sb.append("ORDER BY O_DATE DESC LIMIT 5 ");
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String O_NAME = rs.getString("O_NAME");
+				String P_NAME = rs.getString("P_NAME");
+				String O_DATE = rs.getString("O_DATE");
+				String O_STATUS = rs.getString("O_STATUS");
+				int O_TOTAL = rs.getInt("O_TOTAL");
+				
+				OrderjoinVO vo3 = new OrderjoinVO(O_NAME, P_NAME, O_DATE, O_STATUS, O_TOTAL);
+				
+				list3.add(vo3);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list3;
 	}
 	
 	
