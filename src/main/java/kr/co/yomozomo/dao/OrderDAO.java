@@ -6,10 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import kr.co.yomozomo.vo.BoardVO;
 import kr.co.yomozomo.vo.MemberVO;
 import kr.co.yomozomo.vo.OrderVO;
+import kr.co.yomozomo.vo.OrdermtVO;
 import kr.co.yomozomo.vo.ProductVO;
 
 public class OrderDAO {
@@ -81,15 +83,25 @@ public class OrderDAO {
 		
 	}
 
-	/* 
+	
 	  // SELECT SUBSTR(O_DATE,1,7), sum(O_TOTAL) FROM UserOrder; // 월별 판매금액 public
-	  public ArrayList<OrderVO> monthTotal() { 
-	  ArrayList<OrderVO> list = new ArrayList<OrderVO>(); sb.setLength(0);
-	  sb.append("SELECT SUBSTR(O_DATE,1,7), sum(O_TOTAL) FROM UserOrder ");
+	  public List<OrdermtVO> monthTotal() { 
+	  List<OrdermtVO> list = new ArrayList<OrdermtVO>(); 
+	  sb.setLength(0);
+	  sb.append("SELECT SUBSTR(O_DATE,1,7) date, sum(O_TOTAL) total FROM UserOrder ");
 	  
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
 			rs = pstmt.executeQuery();
+
+			rs.next();
+			
+			String d = rs.getString("date");
+			int t = rs.getInt("total");
+			
+			OrdermtVO vo = new OrdermtVO(d, t);
+			
+			list.add(vo);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -98,7 +110,6 @@ public class OrderDAO {
 		return list;
 	}
 	
-	*/
 		
 	// -- 회원 count
 	public int getTotal() {
