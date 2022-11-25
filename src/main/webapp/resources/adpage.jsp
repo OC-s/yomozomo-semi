@@ -607,6 +607,7 @@
 	  var $salesChart = $('#sales-chart')
 	  var sum = "<%= sum%>";
 	  var sum1 = "<%= sum1%>";
+	  
 	  // eslint-disable-next-line no-unused-vars
 	  var salesChart = new Chart($salesChart, {
 
