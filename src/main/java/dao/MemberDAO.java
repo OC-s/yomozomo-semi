@@ -60,7 +60,7 @@ public class MemberDAO {
 	public void insertOne(MemberVO vo) {
 		sb.setLength(0);
 		sb.append("INSERT INTO MEMBER (ID, PASSWORD, EMAIL, NICKNAME, PHONE, NAME, ZIPCODE, ADDRESS, ADDRESSDETAIL) ");
-		sb.append("VALUES (?,?,?,?,?,?,?,?,?,?,false) ");
+		sb.append("VALUES (?,?,?,?,?,?,?,?,?) ");
 		
 		try {
 			pstmt=conn.prepareStatement(sb.toString());
