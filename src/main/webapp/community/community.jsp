@@ -17,7 +17,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 </style>
-<title>Insert title here</title>
+<title>커뮤니티</title>
 <style>
  body{
  	margin: 0:

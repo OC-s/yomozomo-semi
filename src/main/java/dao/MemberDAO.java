@@ -79,13 +79,12 @@ public class MemberDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
 	
 	public MemberVO selectOne(int mnum) {
 		sb.setLength(0);
-		sb.append("SELECT * FROM MEMBER ");
+		sb.append("SELECT ID, PASSWORD, EMAIL, NICKNAME, PHONE, NAME, ZIPCODE, ADDRESS, ADDRESSDETAIL FROM MEMBER ");
 		sb.append("WHERE M_NUM=? ");
 		MemberVO vo=null;
 		
@@ -142,6 +141,7 @@ public class MemberDAO {
 				e.printStackTrace();
 			}
 		}
+		
 	
 	public void close() {
 		try {

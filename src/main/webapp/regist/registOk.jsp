@@ -17,7 +17,8 @@ div#main{
 	position: relative;
 	background-color: #eeeeee;
 	height: 300px;
-	padding: 100px 0px;
+	margin-bottom: -100px;
+	margin-top: 100px;
 }
 div#msg{
 	text-align: center;
@@ -30,6 +31,7 @@ div#footer{
 	top: 150px;
 }
 </style>
+<link rel="stylesheet" href="../css/main.css"/>
 </head>
 <body>
 <%
@@ -62,11 +64,10 @@ dao.close();
 %>
 
 <jsp:include page="../source/header.jsp"></jsp:include>
-<jsp:include page="../source/menubar.jsp"></jsp:include>
 <div id="main">
 	<div id="msg"><%=name %>님, 회원가입이 완료되었습니다.</div> <br />
 	<a href="../login/login.jsp"><div id="msg">로그인 페이지로 돌아가기</div></a>
 </div>
-<jsp:include page="../layout/footer.html"></jsp:include>
+<jsp:include page="../source/footer.jsp"></jsp:include>
 </body>
 </html>

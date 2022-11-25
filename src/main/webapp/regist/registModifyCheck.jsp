@@ -37,7 +37,7 @@ if(obj!=null){
 <form action="checkOk.jsp" method="post">
 	<span>비밀번호를 입력하세요</span>
 <div id="pw" class="input-group mb-3">
-  	<input type="text" class="form-control" placeholder="비밀번호 입력" aria-label="Recipient's username" aria-describedby="button-addon2">
+  	<input type="password" class="form-control" name="pw" placeholder="비밀번호 입력" aria-label="Recipient's username" aria-describedby="button-addon2">
   	<button class="btn btn-outline-secondary" type="submit" id="button-addon2">확인</button>
 </div>
 </form>

@@ -28,17 +28,22 @@
 	});
 </script>
 <style>
+
 div#maindiv1{
 	position: relative;
 	top: 50px;
 	padding: 100px;
 }
 div#maindiv2{
-	text-align: center;
 	background-color: #eeeeee;
+	text-align: center;
 	position: relative;
-	top: 110px;
-	padding: 100px;
+	top: 50px;
+	padding-top: 80px;
+	padding-bottom: 320px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	height: 300px;
 }
 img#pimage{
 	width: 100px;
@@ -48,11 +53,10 @@ img#cat{
 }
 div#footer{
 	position: relative;
-	top: 150px;
+	top: 40px;
 }
-
 div#totalprice{
-	border: 1px solid #dddddd;
+	border: 1px solid #eeeeee;
 	position: relative;
 	left: 900px;
 	width: 400px;
@@ -76,6 +80,7 @@ div#orderBtn{
 }
 </style>
 <link rel="stylesheet" href="../css/main.css" />
+
 </head>
 <body>
 <jsp:include page="../source/header.jsp"></jsp:include>
@@ -86,6 +91,7 @@ div#orderBtn{
 	
 	if(obj1!=null){
 	%>
+
 <div id="maindiv1">
 	<div id="table">
 	<table class="table table-hover">
