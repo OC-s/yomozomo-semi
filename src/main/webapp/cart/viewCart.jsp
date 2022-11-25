@@ -37,8 +37,8 @@ div#maindiv2{
 	text-align: center;
 	background-color: #eeeeee;
 	position: relative;
-	top: 110px;
-	padding: 100px;
+	top: 54px;
+	padding: 380px;
 }
 img#pimage{
 	width: 100px;
@@ -48,7 +48,7 @@ img#cat{
 }
 div#footer{
 	position: relative;
-	top: 150px;
+	top: 54px;
 }
 
 div#totalprice{
@@ -86,6 +86,7 @@ div#orderBtn{
 	
 	if(obj1!=null){
 	%>
+
 <div id="maindiv1">
 	<div id="table">
 	<table class="table table-hover">
