@@ -7,11 +7,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-<style>
-td#paging{
-	text-align: center;
-}
-</style>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -384,12 +379,9 @@ td#paging{
 				dao.close();
 				%>
 				<tr>
-					<td colspan="8"></td>
-				</tr>
-				<tr>
-					<td id="paging" colspan="8">
+					<td colspan="9">
 						<nav aria-label="Page navigation example">
-  							<ul class="pagination">
+  							<ul class="pagination justify-content-center">
   				<%
   				if(isPre){
   				%>
@@ -416,14 +408,14 @@ td#paging{
 			</td>
 		</tr>
 		<tr>
-			<td colspan="8">
+			<td colspan="9">
 				<a href="addBoard.jsp"><button type="button" class="btn btn-secondary">게시글 추가</button></a>
 			</td>
 		</tr>
 	</tbody>
 	</table>
 	</div>
-    </div>  
+</div>  
     </section>
     <!-- /.content -->
   </div>

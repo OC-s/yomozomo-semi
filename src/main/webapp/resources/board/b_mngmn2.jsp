@@ -386,9 +386,9 @@ td#paging{
 				dao.close();
 				%>
 				<tr>
-					<td id="paging" colspan="8">
+					<td id="paging" colspan="9">
 						<nav aria-label="Page navigation example">
-  							<ul class="pagination">
+  							<ul class="pagination justify-content-center">
   				<%
   				if(isPre){
   				%>
@@ -415,7 +415,7 @@ td#paging{
 			</td>
 		</tr>
 		<tr>
-			<td colspan="8">
+			<td colspan="9">
 				<a href="addQaboard.jsp"><button type="button" class="btn btn-secondary">게시글 추가</button></a>
 			</td>
 		</tr>
