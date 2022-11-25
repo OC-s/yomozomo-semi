@@ -239,6 +239,7 @@
 			ArrayList<OrderVO> list = dao.selectAll2();
 			
 			int sum = 0;
+			int sum1 = 0;
 			String data = "";
 			DecimalFormat df = new DecimalFormat("#원,##0");
 			
@@ -248,6 +249,9 @@
 				/*  11월 매출액  */
 				if(data.equals("2022-11")){
 					sum += vo.getO_TOTAL();
+				}
+				if(data.equals("2022-12")){
+					sum1 += vo.getO_TOTAL();
 				}
 				
 			}
@@ -602,6 +606,7 @@
 
 	  var $salesChart = $('#sales-chart')
 	  var sum = "<%= sum%>";
+	  var sum1 = "<%= sum1%>";
 	  // eslint-disable-next-line no-unused-vars
 	  var salesChart = new Chart($salesChart, {
 
@@ -612,7 +617,7 @@
 	        {
 	          backgroundColor: '#007bff',
 	          borderColor: '#007bff',
-	          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, sum, 0]
+	          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, sum, sum1]
 	        },
 	       /* {
 	          backgroundColor: '#ced4da',
